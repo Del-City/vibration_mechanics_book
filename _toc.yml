@@ -1,61 +1,68 @@
 format: jb-book
 root: index
 
-chapters:
-  - file: ch01/intro
-    sections:
-      - file: ch01/1.1
-      - file: ch01/1.2
-      - file: ch01/1.3
-      - file: ch01/1.4
-      - file: ch01/1.5
-      - file: ch01/1.6
-      - file: ch01/exercises
-  - file: ch02/intro
-    sections:
-      - file: ch02/2.1
-      - file: ch02/2.2
-      - file: ch02/2.3
-      - file: ch02/2.4
-      - file: ch02/2.5
-      - file: ch02/exercises
-  - file: ch03/intro
-    sections:
-      - file: ch03/3.1
-      - file: ch03/3.2
-      - file: ch03/3.3
-      - file: ch03/3.4
-      - file: ch03/3.5
-      - file: ch03/exercises
-  - file: ch04/intro
-    sections:
-      - file: ch04/4.1
-      - file: ch04/4.2
-      - file: ch04/4.3
-      - file: ch04/4.4
-      - file: ch04/exercises
-  - file: ch05/intro
-    sections:
-      - file: ch05/5.1
-      - file: ch05/5.2
-      - file: ch05/5.3
-      - file: ch05/5.4
-      - file: ch05/5.5
-      - file: ch05/exercises
-  - file: ch06/intro
-    sections:
-      - file: ch06/6.1
-      - file: ch06/6.2
-      - file: ch06/6.3
-      - file: ch06/6.4
-      - file: ch06/6.5
-      - file: ch06/exercises
-  - file: ch07/intro
-    sections:
-      - file: ch07/7.1
-      - file: ch07/7.2
-      - file: ch07/7.3
-      - file: ch07/7.4
-      - file: ch07/7.5
-      - file: ch07/exercises
-  - file: references
+# 使用 parts 将书籍分为“正文”和“附录”两部分
+parts:
+  - caption: 课程正文  # 这会在左侧边栏显示为一个灰色的小标题
+    numbered: true     # 🌟 关键开关：开启这部分所有章节的自动编号
+    chapters:
+      - file: ch01/intro
+        sections:
+          - file: ch01/1.1
+          - file: ch01/1.2
+          - file: ch01/1.3
+          - file: ch01/1.4
+          - file: ch01/1.5
+          - file: ch01/1.6
+          - file: ch01/exercises
+      - file: ch02/intro
+        sections:
+          - file: ch02/2.1
+          - file: ch02/2.2
+          - file: ch02/2.3
+          - file: ch02/2.4
+          - file: ch02/2.5
+          - file: ch02/exercises
+      - file: ch03/intro
+        sections:
+          - file: ch03/3.1
+          - file: ch03/3.2
+          - file: ch03/3.3
+          - file: ch03/3.4
+          - file: ch03/3.5
+          - file: ch03/exercises
+      - file: ch04/intro
+        sections:
+          - file: ch04/4.1
+          - file: ch04/4.2
+          - file: ch04/4.3
+          - file: ch04/4.4
+          - file: ch04/exercises
+      - file: ch05/intro
+        sections:
+          - file: ch05/5.1
+          - file: ch05/5.2
+          - file: ch05/5.3
+          - file: ch05/5.4
+          - file: ch05/5.5
+          - file: ch05/exercises
+      - file: ch06/intro
+        sections:
+          - file: ch06/6.1
+          - file: ch06/6.2
+          - file: ch06/6.3
+          - file: ch06/6.4
+          - file: ch06/6.5
+          - file: ch06/exercises
+      - file: ch07/intro
+        sections:
+          - file: ch07/7.1
+          - file: ch07/7.2
+          - file: ch07/7.3
+          - file: ch07/7.4
+          - file: ch07/7.5
+          - file: ch07/exercises
+
+  - caption: 附录资料
+    chapters:
+      - file: references # 参考文献不需要编号，所以放在没有 numbered: true 的 part 里

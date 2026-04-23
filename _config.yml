@@ -30,3 +30,19 @@ repository:
 html:
   use_issues_button: true
   use_repository_button: true
+
+  # 开启公式和图片的自动编号功能
+sphinx:
+  config:
+    numfig: true
+    # 设置编号的格式，{number} 会根据章节层级自动变为 1.1, 1.2 等
+    numfig_format:
+      equation: "({number})"
+    # 设置编号起始的深度，1 代表从第一级标题（章）开始编号
+    numfig_secnum_depth: 1
+
+# 确保启用了数学扩展
+parse:
+  myst_enable_extensions:
+    - amsmath
+    - dollarmath
