@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch01/1.4';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -447,7 +449,119 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.4. </span>周期激励作用下的强迫振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>此处添加内容…</p>
+<p>如果单自由度系统所受外荷载是周期性荷载，则可以通过傅里叶级数将此荷载化成一些简谐分量的叠加。将这些简谐荷载作用到系统上去，用前节给出的方法算出相应的简谐响应，然后应用叠加原理，就可以得到系统总的响应。如图2-21所示的周期性荷载可展为傅里叶级数,即:</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-86">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-1-86" title="Link to this equation">#</a></span>\[
+F_{\mathrm{e}}(t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty} a_{n} \cos \frac{2 n \pi t}{T_{\mathrm{f}}}+\sum_{n=1}^{\infty} b_{n} \sin \frac{2 n \pi t}{T_{\mathrm{f}}}
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(T_{\mathrm{f}}\)</span> 为荷载函数的周期，系数由下式计算：</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-87a">
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-1-87a" title="Link to this equation">#</a></span>\[
+a_{0}=\frac{2}{T_{\mathrm{f}}} \int_{0}^{T_{\mathrm{f}}} F_{\mathrm{e}}(t) \mathrm{d}
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-1-87b">
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-1-87b" title="Link to this equation">#</a></span>\[
+a_{n}=\frac{2}{T_{\mathrm{f}}} \int_{0}^{T_{\mathrm{f}}} F_{\mathrm{e}}(t) \cos \frac{2 n \pi t}{T_{\mathrm{f}}} \mathrm{d} t
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-1-87c">
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-1-87c" title="Link to this equation">#</a></span>\[
+b_{n}=\frac{2}{T_{\mathrm{f}}} \int_{0}^{T_{\mathrm{f}}} F_{\mathrm{e}}(t) \sin \frac{2 n \pi t}{T_{\mathrm{f}}} \mathrm{d} t
+\]</div>
+<p>若令</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-88">
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-1-88" title="Link to this equation">#</a></span>\[
+\omega _{f}= \frac{2\pi }{T_{\mathrm{f}}}
+\]</div>
+<p>则式<a class="reference internal" href="#equation-eq-1-86">(1.5)</a>可改写为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-89">
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-1-89" title="Link to this equation">#</a></span>\[
+F_{\mathrm{e}}(t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty} a_{n} \cos n\omega _{f}t +\sum_{n=1}^{\infty} b_{n} \sin n\omega _{f}t
+\]</div>
+<p>当任一周期性荷载已展成式<a class="reference internal" href="#equation-eq-1-89">(1.10)</a>所表示的傅里叶级数形式时，显然这个级数包括常量荷载（用幅值<span class="math notranslate nohighlight">\(\frac{a_{0}}{2}\)</span>表示的平均荷载值）与一系列频率为<span class="math notranslate nohighlight">\(n\omega _{f}\)</span>、幅值为<span class="math notranslate nohighlight">\(a_{n}\)</span>和<span class="math notranslate nohighlight">\(b_{n}\)</span>的简谐荷载。对常量荷载的稳态响应仅为静挠度，而对每个简谐荷载的稳态响应可由1.3节给出的方法算出，系统总的响应即为上述各项响应的总和。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>【例1-8】假设无阻尼单自由度系统受到如图2-22所示周期力<span class="math notranslate nohighlight">\(F_{e} \left (t  \right )\)</span>的作用。应用傅里叶级数求该系统的稳态响应。
+解：首先确定<span class="math notranslate nohighlight">\(F_{e} \left (t  \right )\)</span>的傅里叶级数展开式。由式<a class="reference internal" href="#equation-eq-1-87a">(1.6)</a>-<a class="reference internal" href="#equation-eq-1-87c">(1.8)</a>求出其相应的各项系数如下：</p>
+<div class="math notranslate nohighlight">
+\[
+a_{0}=\frac{2}{T} \int_{0}^{T} \frac{F_{0}}{T} t \mathrm{d} t=F_{0} \tag{1}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+a_{n}=\frac{2}{T} \int_{0}^{T} \frac{F_{0}}{T}t  \cos \frac{2 n \pi t}{T} \mathrm{d} t= 0 \tag{2}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+b_{n}=\frac{2}{T} \int_{0}^{T} \frac{F_{0}}{T}t  \sin \frac{2 n \pi t}{T} \mathrm{d} t= - \frac{F_{0} }{n\pi } \tag{3}
+\]</div>
+<p>若令<span class="math notranslate nohighlight">\(\omega = \frac{2\pi }{T}\)</span>，则</p>
+<div class="math notranslate nohighlight">
+\[
+F_{e} \left (t  \right )= \frac{F_{0}}{2}- \sum_{n= 1}^{\infty}\frac{F_{0} }{n\pi }\sin n\omega t \tag{4}
+\]</div>
+<p>在简谐荷载<span class="math notranslate nohighlight">\(\sin n\omega t\)</span>作用下，无阻尼单自由度系统的稳态响应可由1.3节介绍的方法求得</p>
+<div class="math notranslate nohighlight">
+\[
+x\left ( t \right )= \frac{1}{m\left ( \omega _{0}^{2} - n^{2}\omega ^{2}   \right ) } \sin n\omega t \tag{5}
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\omega _{0}= \sqrt{\frac{k}{m} } \)</span>为系统的自振圆频率。因此，无阻尼单自由度系统在上述周期力作用下的稳态响应为</p>
+<div class="math notranslate nohighlight">
+\[
+x\left ( t \right )=\frac{F_{0} }{2k} - \sum_{n=1}^{\infty} \frac{F_{0} \sin n\omega t    }{n\pi m\left ( \omega _{0}^{2} - n^{2}\omega ^{2}   \right ) } \tag{6}
+\]</div>
+</div>
+<p>实际上，傅里叶级数表达式<a class="reference internal" href="#equation-eq-1-89">(1.10)</a>也可写成指数形式：</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-90">
+<span class="eqno">(1.11)<a class="headerlink" href="#equation-eq-1-90" title="Link to this equation">#</a></span>\[
+F_{e}\left(t\right)= \sum_{n=-\infty }^{+\infty} c_{n}e^{in\omega _{f} t}  
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-91">
+<span class="eqno">(1.12)<a class="headerlink" href="#equation-eq-1-91" title="Link to this equation">#</a></span>\[
+c_{n}= \frac{1}{T_{f}} \int_{0}^{T_{f}} F_{e} \left ( t \right ) e^{- in\omega _{f} t}\mathrm{d}t
+\]</div>
+<p>现在讨论单自由度系统在单位复数外载<span class="math notranslate nohighlight">\(e^{i\omega t}\)</span>作用下的稳态响应。将<span class="math notranslate nohighlight">\(e^{i\omega t}\)</span>代入运动方程<a class="reference internal" href="1.2.html#equation-eq-1-3">(1.3)</a>中，即</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-92">
+<span class="eqno">(1.13)<a class="headerlink" href="#equation-eq-1-92" title="Link to this equation">#</a></span>\[
+m\ddot{x}\left ( t \right )+  c\dot{x}\left ( t \right )+  kx \left ( t \right )=e^{i\omega t}
+\]</div>
+<p>令</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-93">
+<span class="eqno">(1.14)<a class="headerlink" href="#equation-eq-1-93" title="Link to this equation">#</a></span>\[
+x \left ( t \right )=H\left ( \omega \right )e^{i\omega t}
+\]</div>
+<p>则</p>
+<div class="math notranslate nohighlight">
+\[
+\dot{x}\left ( t \right )=H\left ( \omega \right )i\omega e^{i\omega t}，\ddot{x}\left ( t \right )=-H\left ( \omega \right )\omega^{2}  e^{i\omega t} 
+\]</div>
+<p>将<span class="math notranslate nohighlight">\(x \left ( t \right )\)</span>及其一、二阶导数代入式<a class="reference internal" href="#equation-eq-1-92">(1.13)</a>，可得</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-94">
+<span class="eqno">(1.15)<a class="headerlink" href="#equation-eq-1-94" title="Link to this equation">#</a></span>\[
+H\left ( \omega \right )=\frac{1}{k-\omega ^{2}m+i\omega c } 
+\]</div>
+<p>或</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-95">
+<span class="eqno">(1.16)<a class="headerlink" href="#equation-eq-1-95" title="Link to this equation">#</a></span>\[
+H\left ( \omega \right )=\frac{1}{m\left ( \omega _{0}^{2}-\omega ^{2}+2i\zeta \omega _{0}\omega\right ) } 
+\]</div>
+<p>其中，<span class="math notranslate nohighlight">\(\omega _{0}= \sqrt{\frac{k}{m}}\)</span>、<span class="math notranslate nohighlight">\(\zeta = \frac{c}{2\sqrt{mk} } \)</span>分别为系统的自振圆频率与阻尼比。
+<span class="math notranslate nohighlight">\(H\left ( \omega \right )\)</span>是圆频率为<span class="math notranslate nohighlight">\(\omega\)</span>的单位复数外载<span class="math notranslate nohighlight">\(e^{i\omega t}\)</span>所引起的结构稳态简谐响应的振幅，称为频率响应函数或频响函数（Frequency Response Function）。简谐激励<span class="math notranslate nohighlight">\(e^{i\omega t}\)</span>作用在系统上就得到简谐响应<span class="math notranslate nohighlight">\(H\left ( \omega \right )e^{i\omega t}\)</span>，所以<span class="math notranslate nohighlight">\(H\left ( \omega \right )\)</span>也称为转换函数。根据复数的三角函数表示法，知</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-96">
+<span class="eqno">(1.17)<a class="headerlink" href="#equation-eq-1-96" title="Link to this equation">#</a></span>\[
+e^{i\omega t}= \cos \omega t+i\sin \omega t
+\]</div>
+<p>它同时包含了简谐荷载<span class="math notranslate nohighlight">\(\cos \omega t\)</span>（实部）和<span class="math notranslate nohighlight">\(\sin \omega t\)</span>（虚部）。因此，简谐荷载<span class="math notranslate nohighlight">\(\cos \omega t\)</span>或<span class="math notranslate nohighlight">\(\sin \omega t\)</span>所引起的结构稳态响应就可由响应<span class="math notranslate nohighlight">\(H\left ( \omega \right )e^{i\omega t}\)</span>分别取其实部或虚部得到。
+当扰力频率为<span class="math notranslate nohighlight">\(n\omega _{f}\)</span>时，其频响函数为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-97">
+<span class="eqno">(1.18)<a class="headerlink" href="#equation-eq-1-97" title="Link to this equation">#</a></span>\[
+H\left ( n\omega _{f} \right )=\frac{1}{k-n^{2} \omega_{f}^{2}m+i n\omega _{f} c}
+\]</div>
+<p>则系统的响应为<span class="math notranslate nohighlight">\(H\left ( n\omega _{f} \right )e^{in\omega _{f}t} \)</span>。利用叠加原理，则系统对任何周期性扰力函数的总稳态响 应为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-98">
+<span class="eqno">(1.19)<a class="headerlink" href="#equation-eq-1-98" title="Link to this equation">#</a></span>\[
+x \left ( t \right )= \sum_{n=-\infty }^{+  \infty }c_{n}H\left ( n\omega _{f} \right )e^{in\omega _{f}t}
+\]</div>
 </section>
 
     <script type="text/x-thebe-config">
