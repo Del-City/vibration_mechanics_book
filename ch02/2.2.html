@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch02/2.2';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -420,7 +422,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -436,6 +440,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 两自由度系统的自由振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. 多自由度系统的固有频率和固有振型</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -447,7 +460,314 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2.2. </span>多自由度系统的自由振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>此处添加内容…</p>
+<section id="id2">
+<h2><span class="section-number">2.2.1. </span>两自由度系统的自由振动<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>与单自由度系统一样，建立多自由度系统的运动微分方程式，可以用牛顿-达兰贝尔原理， 即在系统上附加惯性力(力矩)后，按静力学方法建立平衡方程。应用这种方法需要画出质量的受力图，并考虑约束反力。对于自由度数很少的简单系统，这种方法有其方便性。</p>
+<p>下面通过举例来说明。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>例2.1  图2-3为无阻尼两自由度振动系统，试用达兰贝尔原理建立其运动微分方程式。
+解：以静平衡位置为坐标原点，设质量<span class="math notranslate nohighlight">\(M₁\)</span>和<span class="math notranslate nohighlight">\(M_{2} \)</span>的广义坐标为<span class="math notranslate nohighlight">\(x₁\)</span>和<span class="math notranslate nohighlight">\(x₂\)</span>, 并假设它们足够小，以保证系统在线性范围内运动。
+将<span class="math notranslate nohighlight">\(M₁\)</span>和<span class="math notranslate nohighlight">\(M_{2}\)</span>从系统中分离出来，并将其受到的弹性力和惯性力标于图上，容易得到如下的运动微分方程式。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{array}{l}
+M_{1} \ddot{x}_{1}+\left(K_{1}+K_{2}\right) x_{1}-K_{2} x_{2}=0 \\
+M_{2} \ddot{x}_{2}-K_{2} x_{1}+\left(K_{2}+K_{3}\right) x_{2}=0
+\end{array}
+\end{split}\]</div>
+</div>
+<p>例2.1已经得到了无阻尼两自由度系统的运动微分方程式。这是两阶常系数线性齐次常微分方程式组，其更一般的形式为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-17">
+<span class="eqno">(2.1)<a class="headerlink" href="#equation-eq-2-17" title="Link to this equation">#</a></span>\[
+M_{11} \ddot{x}_{1}+M_{12} \ddot{x}_{2}+K_{11} x_{1}+K_{12} x_{2}=0
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-2-18">
+<span class="eqno">(2.2)<a class="headerlink" href="#equation-eq-2-18" title="Link to this equation">#</a></span>\[
+M_{21} \ddot{x}_{1}+M_{22} \ddot{x}_{2}+K_{21} x_{1}+K_{22} x_{2}=0
+\]</div>
+<p>求解自由振动的步骤如下:
+(1)假设简谐形式的解。设振动时两广义坐标按相同频率和相位作简谐振动：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-19">
+<span class="eqno">(2.3)<a class="headerlink" href="#equation-eq-2-19" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{array}{l}
+x_{1}=A_{1} \sin \left(\omega_{\mathrm{n}} t+\theta\right) \\
+x_{2}=A_{2} \sin \left(\omega_{\mathrm{n}} t+\theta\right)
+\end{array}
+\end{split}\]</div>
+<p>(2)将上述假设解代入运动方程式，得代数特征值问题：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-20">
+<span class="eqno">(2.4)<a class="headerlink" href="#equation-eq-2-20" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{array}{l}
+\left(K_{11}-\omega_{\mathrm{n}}^{2} M_{11}\right) A_{1}+\left(K_{12}-\omega_{\mathrm{n}}^{2} M_{12}\right) A_{2}=0 \\
+\left(K_{21}-\omega_{\mathrm{n}}^{2} M_{21}\right) A_{1}+\left(K_{22}-\omega_{\mathrm{n}}^{2} M_{22}\right) A_{2}=0
+\end{array}
+\end{split}\]</div>
+<p>(3)因为这是一组线性齐次代数方程组，由其非零解条件<span class="math notranslate nohighlight">\(A₁\)</span>和<span class="math notranslate nohighlight">\(A₂\)</span>的系数行列式为零，得到关于<span class="math notranslate nohighlight">\(\omega _{n}^{2}\)</span>的特征方程式：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-21">
+<span class="eqno">(2.5)<a class="headerlink" href="#equation-eq-2-21" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+D\left(\omega_{\mathrm{n}}^{2}\right)= &amp; \left|\begin{array}{ll}
+K_{11}-\omega_{\mathrm{n}}^{2} M_{11} &amp; K_{12}-\omega_{\mathrm{n}}^{2} M_{12} \\
+K_{21}-\omega_{\mathrm{n}}^{2} M_{21} &amp; K_{22}-\omega_{\mathrm{n}}^{2} M_{22}
+\end{array}\right| \\
+= &amp; M_{11} M_{22} \omega_{\mathrm{n}}^{4}-\left(K_{11} M_{22}+K_{22} M_{11}-K_{12} M_{21}-K_{21} M_{12}\right) \omega_{\mathrm{n}}^{2}+ \\
+&amp; \left(K_{11} K_{22}-K_{12} K_{21}\right)=0
+\end{aligned}
+\end{split}\]</div>
+<p>这是<span class="math notranslate nohighlight">\(\omega _{n}^{2}\)</span>的二次多项式，亦称频率方程式。
+(4)解特征方程式的根，得两个根：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-22">
+<span class="eqno">(2.6)<a class="headerlink" href="#equation-eq-2-22" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+\left. \begin{matrix} \omega_{n1}^2 \\ \omega_{n2}^2 \end{matrix} \right\} &amp;= \frac{1}{2} \frac{K_{11}M_{22} + K_{22}M_{11} - K_{12}M_{21} - K_{21}M_{12}}{M_{11}M_{22}} \mp \\
+&amp;\quad \frac{1}{2} \left[ \left( \frac{K_{11}M_{22} + K_{22}M_{11} - K_{12}M_{21} - K_{21}M_{12}}{M_{11}M_{22}} \right)^2 - \right. \\
+&amp;\quad \left. 4 \left( \frac{K_{11}K_{22} - K_{12}K_{21}}{M_{11}M_{22}} \right) \right]^{\frac{1}{2}}
+\end{aligned}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\omega _{n1}\)</span> ≤ <span class="math notranslate nohighlight">\(\omega _{n2}\)</span>，<span class="math notranslate nohighlight">\(\omega _{n1}\)</span>和<span class="math notranslate nohighlight">\(\omega _{n2}\)</span>称为一阶和二阶的固有圆频率(或简称固有频率)。数学术语称固有频率的平方值<span class="math notranslate nohighlight">\(\omega _{n1}^{2}\)</span>和<span class="math notranslate nohighlight">\(\omega _{n2}^{2}\)</span>为特征值。</p>
+<p>(5)将特征值<span class="math notranslate nohighlight">\(\omega _{ni}^{2}(i=1,2)\)</span>代入式(2.20)的任一式，对应于<span class="math notranslate nohighlight">\(\omega _{n1}^{2}\)</span>和<span class="math notranslate nohighlight">\(\omega _{n2}^{2}\)</span>分别得到振幅<span class="math notranslate nohighlight">\(A₁\)</span>和<span class="math notranslate nohighlight">\(A₂\)</span>之间的两个确定的比值：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-23">
+<span class="eqno">(2.7)<a class="headerlink" href="#equation-eq-2-23" title="Link to this equation">#</a></span>\[
+\beta^{(i)}=\frac{A_{2}^{(i)}}{A_{1}^{(i)}}=-\frac{K_{11}-\omega_{n \mathrm{n}}^{2} M_{11}}{K_{12}-\omega_{n \mathrm{n}}^{2} M_{12}}=-\frac{K_{21}-\omega_{n \mathrm{n}}^{2} M_{21}}{K_{22}-\omega_{n \mathrm{n}}^{2} M_{22}} \quad(i=1,2)
+\]</div>
+<p>上式表明，当系统按某一固有频率振动时(见式(2.19)),振幅比只取决于系统本身的物理 性质，而与初始条件无关。这样，在振动过程中，系统各广义坐标的位移之比值均可由该振幅比确定。该比值确定了整个振动系统的振动形态，称为主振型或固有振型。与<span class="math notranslate nohighlight">\(\omega _{n1}\)</span>对应的振幅比<span class="math notranslate nohighlight">\(\left\{\begin{array}{l}A_{1}^{(1)} \\A_{2}^{(1)}\end{array}\right\}\)</span>为第一阶主振型，与<span class="math notranslate nohighlight">\(\omega _{n2}\)</span>对应的振幅比<span class="math notranslate nohighlight">\(\left\{\begin{array}{l}A_{1}^{(2)} \\A_{2}^{(2)}\end{array}\right\}\)</span>为第二阶主振型。</p>
+<p>(6)主振动的确定。系统以某一阶固有频率按其相应的主振型作振动，称为系统的主振动。因此，第一和第二阶主振动分别为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-24">
+<span class="eqno">(2.8)<a class="headerlink" href="#equation-eq-2-24" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{array}{l}
+x_{1}^{(i)}=A_{1}^{(i)} \sin \left(\omega_{\mathrm{n} i} t+\theta_{i}\right) \\
+x_{2}^{(i)}=A_{2}^{(i)} \sin \left(\omega_{\mathrm{n} i} t+\theta_{i}\right)=\beta^{(i)} A_{1}^{(i)} \sin \left(\omega_{\mathrm{n} i} t+\theta_{i}\right) \quad(i=1,2)
+\end{array}
+\end{split}\]</div>
+<p>可见，系统作主振动时，各广义坐标同时经过静平衡位置和到达最大偏离位置，这是一种有确定的频率和振型的简谐振动。</p>
+<p>（7）一般情况下自由振动的通解。并非在任何情况下系统都会作主振动形式的运动。一般情况下，式(2.17)和(2.18)的通解是上述两种主振动的叠加，即</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-25">
+<span class="eqno">(2.9)<a class="headerlink" href="#equation-eq-2-25" title="Link to this equation">#</a></span>\[\begin{split}
+\left\{\begin{aligned}
+x_{1} &amp; =A_{1}^{(1)} \sin \left(\omega_{\mathrm{n} 1} t+\theta_{1}\right)+A_{1}^{(2)} \sin \left(\omega_{\mathrm{n} 2} t+\theta_{2}\right) \\
+x_{2} &amp; =A_{2}^{(1)} \sin \left(\omega_{\mathrm{n} 1} t+\theta_{1}\right)+A_{2}^{(2)} \sin \left(\omega_{\mathrm{n} 2} t+\theta_{2}\right) \\
+&amp; =\beta^{(1)} A_{1}^{(1)} \sin \left(\omega_{\mathrm{n} 1} t+\theta_{1}\right)+\beta^{(2)} A_{1}^{(2)} \sin \left(\omega_{n 2} t+\theta_{2}\right)
+\end{aligned}\right.
+\end{split}\]</div>
+<p>所以，在一般情况下，系统的自由振动是两种不同频率的主振动的线性组合，其结果不一定是简谐振动，这是和单自由度系统自由振动有重大区别的地方。</p>
+<p>(8)系统对初始条件的响应。由于式(2.17)和(2.18)是两个二阶常微分方程组，所以其解式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a> 有四个待定常数<span class="math notranslate nohighlight">\(A_{1}^{(1)} \)</span>、<span class="math notranslate nohighlight">\(A_{1}^{(2)} \)</span>和<span class="math notranslate nohighlight">\(\theta _{1} \)</span>、<span class="math notranslate nohighlight">\(\theta _{2} \)</span>,需要由四个初始条件确定。</p>
+<p>在特殊的初始条件下，若<span class="math notranslate nohighlight">\(A_{i}^{(2)}=0(i=1,2)\)</span>,系统便作第一主振动；若<span class="math notranslate nohighlight">\(A_{i}^{(1)}=0(i=1,2)\)</span>，系统便作第二主振动。如果系统的初始位移和初始速度的比值都等于振幅比<span class="math notranslate nohighlight">\(\beta^{(1)}\)</span>或<span class="math notranslate nohighlight">\(\beta^{(2)}\)</span>,就可得到<span class="math notranslate nohighlight">\(A_{i}^{(2)}=0\)</span>或<span class="math notranslate nohighlight">\(A_{i}^{(1)}=0\)</span>的条件。当然，还可以有其他的初始条件达到此结果。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>例2.6 试求例2.1系统的无阻尼自由振动的固有频率、固有振型。设<span class="math notranslate nohighlight">\(M_{1}=M_{2}=M\)</span>及<span class="math notranslate nohighlight">\(K_{1}=K_{2}=K_{3}=K\)</span>。若初始条件为<span class="math notranslate nohighlight">\(x_{1}(0)=\dot{x}_{1}(0)=\dot{x}_{2}(0)=0\)</span>及<span class="math notranslate nohighlight">\(x_{2}(0)=x_{0}\)</span>，试求其自由振动响应。
+解：将上述质量与刚度代入运动微分方程式 <a class="reference internal" href="#equation-eq-2-17">(2.1)</a> 和 <a class="reference internal" href="#equation-eq-2-18">(2.2)</a> ,可知<span class="math notranslate nohighlight">\(M_{11}=M_{22}=M\)</span>,<span class="math notranslate nohighlight">\(M_{12}=M_{21}=0\)</span>,<span class="math notranslate nohighlight">\(K_{11}=K_{22}=2K\)</span>，<span class="math notranslate nohighlight">\(K_{12}=K_{21}=K\)</span>便可求得固有频率为</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{n1}=\left(\frac{K}{M}\right)^{\frac{1}{2}}\quad\omega_{n2}=\left(\frac{3K}{M}\right)^{\frac{1}{2}}
+\]</div>
+<p>相应地</p>
+<div class="math notranslate nohighlight">
+\[
+\beta^{(1)}=1\quad\beta^{(2)}=-1
+\]</div>
+<p>若令<span class="math notranslate nohighlight">\(A_{i}^{(1)}=1\)</span>,则<span class="math notranslate nohighlight">\(A_{2}^{(i)}=\beta^{(i)} A_{1}^{(i)}=\beta^{(i)}(i=1,2)\)</span>,便可画出振型图(见图2-8)。
+将式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a>代入初始条件。为方便起见，将式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a>化为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left\{\begin{aligned}x_1&amp;=A_1\cos\omega_{n1}t+B_1\sin\omega_{n1}t+A_2\cos\omega_{n2}t+B_2\sin\omega_{n2}t\\x_2&amp;=\beta^{(1)}A_1\cos\omega_{n1}t+\beta^{(1)}B_1\sin\omega_{n1}t+\beta^{(2)}A_2\cos\omega_{n2}t+\beta^{(2)}B_2\sin\omega_{n2}t\end{aligned}\right.
+\end{split}\]</div>
+<p>故</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\left\{\begin{aligned}x_1&amp;=\frac{x_0}{2}\left(\cos\omega_{n1}t-\cos\omega_{n2}t\right)\\x_2&amp;=\frac{x_0}{2}\left(\cos\omega_{n1}t-\cos\omega_{n2}t\right)\end{aligned}\right.
+\end{split}\]</div>
+<p>若取<span class="math notranslate nohighlight">\(x_0=2cm\)</span>，<span class="math notranslate nohighlight">\(\omega _{n1} =1rad/s\)</span>则<span class="math notranslate nohighlight">\(\omega _{n2} =\sqrt{3} =1.732rad/s\)</span>,那么,最终的自由振动响应见图2-9。</p>
+<p>在上述的初始条件下，自由振动不是简谐振动。只有在特定的初始条件下，其自由振动才表现为单一振型的主振动，才是一种简谐振动。有兴趣的读者可思考此条件该取何种形式。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>例2.7 确定例2.3中汽车的固有频率和固有振型。若设其参数如下：</p>
+<p>质量<span class="math notranslate nohighlight">\(M=1500 \mathrm{kg}\)</span></p>
+<p>绕质心的回转半径<span class="math notranslate nohighlight">\(\rho_c=1.1 \mathrm{~m}\)</span></p>
+<p>前轴与质心的距离<span class="math notranslate nohighlight">\(l_1=1.5 \mathrm{~m}\)</span></p>
+<p>后轴与质心的距离<span class="math notranslate nohighlight">\(l_2=1.6 \mathrm{~m}\)</span></p>
+<p>前弹簧刚度<span class="math notranslate nohighlight">\(K_1 = 36\,\mathrm{kN/m} \)</span></p>
+<p>后弹簧刚度<span class="math notranslate nohighlight">\(K_2 = 39\,\mathrm{kN/m}\)</span></p>
+<p>解：其运动微分方程式以如例2.3所列出。设</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}x(t)&amp;=A_1\sin\left(\omega_n t+\varphi\right)\\\theta(t)&amp;=A_2\sin\left(\omega_n t+\varphi\right)\end{aligned}
+\end{split}\]</div>
+<p>代入上述方程式，得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}\left(-M\omega_n^2+K_1+K_2\right)A_1+\left(-K_1 l_1+K_2 l_2\right)A_2&amp;=0\\\left(-K_1 l_1+K_2 l_2\right)A_1+\left(-I_C\omega_n^2+K_1 l_1^2+K_2 l_2^2\right)A_2&amp;=0\end{aligned}
+\end{split}\]</div>
+<p>代入数据得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}\left(-1500\omega_n^2+75000\right)A_1+8400A_2&amp;=0\\8400A_1+\left(-1815\omega_n^2+180840\right)A_2&amp;=0\end{aligned}
+\end{split}\]</div>
+<p>由上式的非零解条件得频率方程式为
+$<span class="math notranslate nohighlight">\(
+2.7225\omega_n^4 - 407.385\omega_n^2 + 13492.44 = 0 
+\)</span>$</p>
+<p>由此求得固有频率</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{n1} = 7.0344\,\text{rad/s}  \quad \omega_{n2} = 10.0077\,\text{rad/s}
+\]</div>
+<p>由方程式(1)得</p>
+<div class="math notranslate nohighlight">
+\[
+\beta = \frac{A_1}{A_2} = \frac{-K_1 l_1 + K_2 l_2}{-M\omega_n^2 + K_1 + K_2}
+\]</div>
+<p>则第一阶固有振型为</p>
+<div class="math notranslate nohighlight">
+\[
+\beta^{(1)} = \frac{A_1^{(1)}}{A_2^{(1)}} = -10.8359
+\]</div>
+<p>第二阶固有振型为</p>
+<div class="math notranslate nohighlight">
+\[
+\beta^{(1)} = \frac{A_1^{(1)}}{A_2^{(1)}} = -10.8359
+\]</div>
+<p>其振型图见图2-10。
+请读者观察图2-10的两个振型图，并分别描述这两个振型的性质和特点。</p>
+</div>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.2.2. </span>多自由度系统的固有频率和固有振型<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>式<code class="xref eq docutils literal notranslate"><span class="pre">eq:2-13</span></code>的等号右端项为零，为多自由度系统无阻尼自由振动方程式的一般形式：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-26">
+<span class="eqno">(2.10)<a class="headerlink" href="#equation-eq-2-26" title="Link to this equation">#</a></span>\[
+M\ddot{q}+Kq=0
+\]</div>
+<p>其展开形式为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-27">
+<span class="eqno">(2.11)<a class="headerlink" href="#equation-eq-2-27" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{bmatrix}M_{11}&amp;\cdots&amp;M_{1n}\\\vdots&amp;&amp;\vdots\\M_{n1}&amp;\cdots&amp;M_{nn}\end{bmatrix}\begin{Bmatrix}\ddot{q}_1\\\vdots\\\ddot{q}_n\end{Bmatrix}+\begin{bmatrix}K_{11}&amp;\cdots&amp;K_{1n}\\\vdots&amp;&amp;\vdots\\K_{n1}&amp;\cdots&amp;K_{nn}\end{bmatrix}\begin{Bmatrix}q_1\\\vdots\\q_n\end{Bmatrix}=\begin{Bmatrix}0\\\vdots\\0\end{Bmatrix}
+\end{split}\]</div>
+<p>设上式具有下述形式的解：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-28">
+<span class="eqno">(2.12)<a class="headerlink" href="#equation-eq-2-28" title="Link to this equation">#</a></span>\[
+\boldsymbol{q}=\boldsymbol{A} \sin (\lambda t+\theta)
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\lambda \)</span>——无阻尼自由振动的固有频率；<span class="math notranslate nohighlight">\(\theta \)</span>——相位角；<span class="math notranslate nohighlight">\(\boldsymbol{q} = [q_1, \cdots, q_n]^{\mathrm{T}}\)</span>——系统的广义坐标的<span class="math notranslate nohighlight">\(n\)</span>阶列阵；<span class="math notranslate nohighlight">\(\mathbf{A} = [A_1, \cdots, A_n]^{\mathrm{T}}\)</span>——系统的广义坐标幅值列阵；将其代入式<a class="reference internal" href="#equation-eq-2-27">(2.11)</a>得到关于<span class="math notranslate nohighlight">\(A_{i} (i=1,2,...,n)\)</span>的线性齐次代数方程式组:</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-29">
+<span class="eqno">(2.13)<a class="headerlink" href="#equation-eq-2-29" title="Link to this equation">#</a></span>\[\begin{split}
+\left\{\begin{array}{l}
+\left(K_{11}-\lambda^{2} M_{11}\right) A_{1}+\left(K_{12}-\lambda^{2} M_{12}\right) A_{2}+\cdots+\left(K_{1 n}-\lambda^{2} M_{1 n}\right) A_{n}=0 \\
+\left(K_{21}-\lambda^{2} M_{21}\right) A_{1}+\left(K_{22}-\lambda^{2} M_{22}\right) A_{2}+\cdots+\left(K_{2 n}-\lambda^{2} M_{2 n}\right) A_{n}=0 \\
+\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots\cdots \\
+\left(K_{n 1}-\lambda^{2} M_{n 1}\right) A_{1}+\left(K_{n 2}-\lambda^{2} M_{n 2}\right) A_{2}+\cdots+\left(K_{n n}-\lambda^{2} M_{n n}\right) A_{n}=0
+\end{array}\right.
+\end{split}\]</div>
+<p>其矩阵形式为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-30">
+<span class="eqno">(2.14)<a class="headerlink" href="#equation-eq-2-30" title="Link to this equation">#</a></span>\[
+\left(\boldsymbol{K}-\lambda^{2} \boldsymbol{M}\right) \boldsymbol{A}=\mathbf{0}
+\]</div>
+<p>式<a class="reference internal" href="#equation-eq-2-29">(2.13)</a>或<a class="reference internal" href="#equation-eq-2-30">(2.14)</a>是一组 <span class="math notranslate nohighlight">\(A_{i}\)</span> 的 <span class="math notranslate nohighlight">\(n\)</span> 元线性齐次代数方程式组，其非零解的条件是系数行列式为零：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-31">
+<span class="eqno">(2.15)<a class="headerlink" href="#equation-eq-2-31" title="Link to this equation">#</a></span>\[
+D(\lambda^2)=\left|\boldsymbol{K}-\lambda^2\boldsymbol{M}\right|=0
+\]</div>
+<p>上式称为特征方程式或频率方程式。</p>
+<p>对于<span class="math notranslate nohighlight">\(n\)</span>个自由度的系统，式<a class="reference internal" href="#equation-eq-2-31">(2.15)</a>是<span class="math notranslate nohighlight">\(\lambda ^{2} \)</span>的<span class="math notranslate nohighlight">\(n\)</span>次方程式。因为 <span class="math notranslate nohighlight">\(M\)</span> 和 <span class="math notranslate nohighlight">\(K\)</span> 均为实对称矩阵，故频率方程式必有 <span class="math notranslate nohighlight">\(n\)</span> 个正实根 <span class="math notranslate nohighlight">\(\lambda_1^2 &lt; \lambda_2^2 &lt; \cdots &lt; \lambda_n^2\)</span>，称为特征根。由于特征根 <span class="math notranslate nohighlight">\(\lambda_r^2 \quad(r = 1, 2, \cdots, n)\)</span> 与初始条件无关，仅取决于系统的固有的物理参数 <span class="math notranslate nohighlight">\(M\)</span> 和 <span class="math notranslate nohighlight">\(K\)</span>，故称 <span class="math notranslate nohighlight">\(\lambda _{r} \)</span> 为它的固有频率。</p>
+<p>对于每一固有频率 <span class="math notranslate nohighlight">\(\lambda _{r} \)</span> ,由式<a class="reference internal" href="#equation-eq-2-29">(2.13)</a>可求得一个相应的振幅矢量<span class="math notranslate nohighlight">\(\mathbf{A}^{(r)}\)</span>。由于<span class="math notranslate nohighlight">\(\lambda=\lambda _{r}\)</span>时,<span class="math notranslate nohighlight">\(D(\lambda^2) = 0\)</span>,故<span class="math notranslate nohighlight">\(\mathbf{A}^{(r)}\)</span>的<span class="math notranslate nohighlight">\(n\)</span>个元素<span class="math notranslate nohighlight">\(A_1^{(r)}, A_2^{(r)}, \cdots, A_n^{(r)}\)</span>所构成的线性代数方程式组(2.29)中，只有<span class="math notranslate nohighlight">\(n-1\)</span>个方程是线性独立的。因此，对每一个<span class="math notranslate nohighlight">\(λ²\)</span>，只能解得一组<span class="math notranslate nohighlight">\(A_1^{(r)}, A_2^{(r)}, \cdots, A_n^{(r)}\)</span>之间的比例，即只能得到包含一个待定常数的振动形状。求解时，只需任意<span class="math notranslate nohighlight">\(n-1\)</span>个方程式，例如，取后<span class="math notranslate nohighlight">\(n-1\)</span>个方程式。此时，有<span class="math notranslate nohighlight">\(n\)</span>个未知量，可取任一个元素<span class="math notranslate nohighlight">\(A_i^{(r)} \quad (i = 1, 2, \cdots, n)\)</span>为自由未知量，例如，取<span class="math notranslate nohighlight">\(\mathbf{A}_n^{(r)}\)</span>为自由未知量。这时，式(2.29)后<span class="math notranslate nohighlight">\(n-1\)</span>个方程式可改写为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-32">
+<span class="eqno">(2.16)<a class="headerlink" href="#equation-eq-2-32" title="Link to this equation">#</a></span>\[\begin{split}
+\left\{\begin{matrix}
+\left(K_{21}-\lambda_{r}^{2} M_{21}\right) A_{1}^{(r)}+\left(K_{22}-\lambda_{r}^{2} M_{22}\right) A_{2}^{(r)}+\cdots+\left(K_{2, n-1}-\lambda_{r}^{2} M_{2, n-1}\right) A_{n-1}^{(r)}=-\left(K_{2, n}-\lambda_{r}^{2} M_{2, n}\right) A_{n}^{(r)} \\
+\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot \\
+\left(K_{j 1}-\lambda_{r}^{2} M_{j 1}\right) A_{1}^{(r)}+\left(K_{j 2}-\lambda_{r}^{2} M_{j 2}\right) A_{2}^{(r)}+\cdots+\left(K_{j, n-1}-\lambda_{r}^{2} M_{j, n-1}\right) A_{r-1}^{(r)}=-\left(K_{j, n}-\lambda_{r}^{2} M_{j, n}\right) A_{n}^{(r)} \\
+\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot\cdot \\
+\left(K_{n 1}-\lambda_{r}^{2} M_{n 1}\right) A_{1}^{(r)}+\left(K_{n 2}-\lambda_{r}^{2} M_{n 2}\right) A_{2}^{(r)}+\cdots+\left(K_{n, n-1}-\lambda_{r}^{2} M_{n, n-1}\right) A_{n-1}^{(r)}=-\left(K_{m}-\lambda_{r}^{2} M_{m}\right) A_{n}^{(r)}
+\end{matrix}\right.
+\end{split}\]</div>
+<p>由此可解得其余<span class="math notranslate nohighlight">\(n-1\)</span>个元素。故可得振幅矢量<span class="math notranslate nohighlight">\(\mathbf{A}^{(r)}\)</span>的<span class="math notranslate nohighlight">\(n\)</span>个元素之间的比例关系如下:</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-33">
+<span class="eqno">(2.17)<a class="headerlink" href="#equation-eq-2-33" title="Link to this equation">#</a></span>\[
+\frac{A_1^{(r)}}{\rho_1^{(r)}}=\frac{A_2^{(r)}}{\rho_2^{(r)}}=\dots=\frac{A_j^{(r)}}{\rho_j^{(r)}}=\dots=\frac{A_n^{(r)}}{\rho_n^{(r)}}=p^{(r)}
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\rho_j^{(r)}\)</span>——行列式<span class="math notranslate nohighlight">\(D(\lambda_r^2) = |K - \lambda_r^2 M|\)</span>中第1行、第<span class="math notranslate nohighlight">\(j\)</span>列元素<span class="math notranslate nohighlight">\(K_{1j}-\lambda_r^2 M_{1j}\)</span>的代数余子式，
+即</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-34">
+<span class="eqno">(2.18)<a class="headerlink" href="#equation-eq-2-34" title="Link to this equation">#</a></span>\[\begin{split}
+\rho_j^{(r)} = (-1)^{j+1}
+\begin{vmatrix}
+K_{21} - \lambda_r^2 M_{21} &amp; \cdots &amp; K_{2,j-1} - \lambda_r^2 M_{2,j-1} &amp; K_{2,j+1} - \lambda_r^2 M_{2,j+1} &amp; \cdots &amp; K_{2n} - \lambda_r^2 M_{2n} \\
+\vdots &amp; &amp; \vdots &amp; \vdots &amp; &amp; \vdots \\
+K_{i1} - \lambda_r^2 M_{i1} &amp; \cdots &amp; K_{i,j-1} - \lambda_r^2 M_{i,j-1} &amp; K_{i,j+1} - \lambda_r^2 M_{i,j+1} &amp; \cdots &amp; K_{in} - \lambda_r^2 M_{in} \\
+\vdots &amp; &amp; \vdots &amp; \vdots &amp; &amp; \vdots \\
+K_{n1} - \lambda_r^2 M_{n1} &amp; \cdots &amp; K_{n,j-1} - \lambda_r^2 M_{n,j-1} &amp; K_{n,j+1} - \lambda_r^2 M_{n,j+1} &amp; \cdots &amp; K_{nn} - \lambda_r^2 M_{nn}
+\end{vmatrix}
+\end{split}\]</div>
+<p>故式<a class="reference internal" href="#equation-eq-2-33">(2.17)</a>可写为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-35">
+<span class="eqno">(2.19)<a class="headerlink" href="#equation-eq-2-35" title="Link to this equation">#</a></span>\[
+\boldsymbol{A}^{(r)}=\boldsymbol{\rho}^{(r)} p^{(r)}
+\]</div>
+<p>式中，</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\rho}^{(r)}=\left[\rho_{1}^{(r)} \rho_{2}^{(r)} \cdots \rho_{n}^{(r)}\right]^{\mathrm{T}}\\
+\boldsymbol{A}^{(r)}=\left[A_{1}^{(r)} A_{2}^{(r)} \cdots A_{n}^{(r)}\right]^{\mathrm{T}}
+\end{split}\]</div>
+<p>而<span class="math notranslate nohighlight">\(p^{(r)}\)</span>是一任意的比例常数。显然，特征矢量<span class="math notranslate nohighlight">\(A^{(r)}\)</span>或<span class="math notranslate nohighlight">\(\boldsymbol{\rho}^{(r)}\)</span>表示系统按第<span class="math notranslate nohighlight">\(r\)</span>阶固有频率<span class="math notranslate nohighlight">\(\lambda_r\)</span>,作主振动时的振动形式，称为固有振型。因为它也与初始条件无关，故仅取决于系统的固有属性<span class="math notranslate nohighlight">\(M\)</span>和<span class="math notranslate nohighlight">\(K\)</span>。</p>
+<p><span class="math notranslate nohighlight">\(n\)</span>自由度系统有<span class="math notranslate nohighlight">\(n\)</span>个固有频率和对应的固有振型。还应当了解，固有振型只能确定到包含一个常数因子，它并不代表系统的实际振幅，而只是系统振动特性的反映。</p>
+<p>一般来说，特征方程式<a class="reference internal" href="#equation-eq-2-31">(2.15)</a>的<span class="math notranslate nohighlight">\(n\)</span>个根，可以是单根或复根，也可以是实根或重根。但是，对系统的质量矩阵为正定实对称矩阵，刚度矩阵为正定或半正定实对称矩阵时，根据线性代数理论，所有的特征值都是实数，为正数或零。其中，只有半正定系统(在物理上为可能发生刚体运动的系统)才有零特征值。</p>
+<p>例2.8 确定图2-11(a)所示系统的固有频率和固有振型，并求正则振型。令<span class="math notranslate nohighlight">\(M=1\)</span>,<span class="math notranslate nohighlight">\(K=1\)</span>。</p>
+<p>解：写出质量矩阵和刚度矩阵为</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+\boldsymbol{M}=\begin{bmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix},\quad\boldsymbol{K}=\begin{bmatrix}2&amp;-1&amp;0\\-1&amp;2&amp;-1\\0&amp;-1&amp;2\end{bmatrix}
+$$（1）\end{split}\\系统的运动微分方程有\end{aligned}\end{align} \]</div>
+<p>\boldsymbol{M}\ddot{\boldsymbol{x}}(t)+\boldsymbol{K}\boldsymbol{x}(t)=\boldsymbol{0}
+$$（2）</p>
+<p>其特征值问题为</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+\boldsymbol{K}\boldsymbol{A}=\omega_n^2\boldsymbol{M}\boldsymbol{A}
+$$（3）\\特征方程为\end{aligned}\end{align} \]</div>
+<p>\begin{aligned}\Delta(\omega_n^2)&amp;=\begin{vmatrix}2-\omega_n^2&amp;-1&amp;0-1&amp;2-\omega_n^2&amp;-1\0&amp;-1&amp;2-\omega_n^2\end{vmatrix}\&amp;=\left(2-\omega_n^2\right)\left(\omega_n^4-4\omega_n^2+2\right)=0\end{aligned}
+$$（4）</p>
+<p>求得特征值</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}
+\omega_{n1}^2=2-\sqrt{2},\quad\omega_{n2}^2=2,\quad\omega_{n3}^2=2+\sqrt{2}
+$$（5）\\以下，计算对应于三个固有频率的振型向量。
+将$\omega_{n1}^2 = 2 - \sqrt{2}$代人方程式(3)中，有\end{aligned}\end{align} \]</div>
+<p>\begin{bmatrix}\sqrt{2}&amp;-1&amp;0-1&amp;\sqrt{2}&amp;-1\0&amp;-1&amp;\sqrt{2}\end{bmatrix}\begin{Bmatrix}A_1^{(1)}\A_2^{(1)}\A_3^{(1)}\end{Bmatrix}=\begin{Bmatrix}0\0\0\end{Bmatrix}
+$$（6）</p>
+<p>因为是齐次方程组，如果未知数中有一个被给定，那么就可以唯一地求出其余2个未知数。令<span class="math notranslate nohighlight">\(A_1^{(1)} = 1\)</span>,则方程式(6)变为</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+\begin{bmatrix}\sqrt{2}&amp;-1&amp;0\\-1&amp;\sqrt{2}&amp;-1\\0&amp;-1&amp;\sqrt{2}\end{bmatrix}\begin{Bmatrix}1\\A_2^{(1)}\\A_3^{(1)}\end{Bmatrix}=\begin{Bmatrix}0\\0\\0\end{Bmatrix}
+$$（7）\end{split}\\解出\end{aligned}\end{align} \]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-afd66cb0-317f-45d0-b288-4e06145dc748">
+<span class="eqno">(2.20)<a class="headerlink" href="#equation-afd66cb0-317f-45d0-b288-4e06145dc748" title="Permalink to this equation">#</a></span>\[\begin{Bmatrix}A_2^{(1)}\\A_3^{(1)}\end{Bmatrix}=-\begin{bmatrix}\sqrt{2}&amp;-1\\-1&amp;\sqrt{2}\end{bmatrix}^{-1}\begin{Bmatrix}-1\\0\end{Bmatrix}=\begin{Bmatrix}\sqrt{2}\\1\end{Bmatrix}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}（8）\\故求得对应$\omega_{n1}^2 = 2 - \sqrt{2}$的振型向量\end{aligned}\end{align} \]</div>
+<p>\boldsymbol{A}^{(1)}=\begin{Bmatrix}1\sqrt{2}\1\end{Bmatrix}
+$$（9）</p>
+<p>再计算对应<span class="math notranslate nohighlight">\(\omega_{n2}^2 = 2\)</span>的振型向量。同样，将<span class="math notranslate nohighlight">\(\omega_{n2}^2 = 2\)</span>代入式<code class="xref eq docutils literal notranslate"><span class="pre">(3)</span></code>中，并令<span class="math notranslate nohighlight">\(A_1^{(2)} = 1\)</span>,有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+\begin{bmatrix}0&amp;-1&amp;0\\-1&amp;0&amp;-1\\0&amp;-1&amp;0\end{bmatrix}\begin{Bmatrix}1\\A_2^{(2)}\\A_3^{(2)}\end{Bmatrix}=\begin{Bmatrix}0\\0\\0\end{Bmatrix}
+$$（10）\end{split}\\求得\end{aligned}\end{align} \]</div>
+<div class="amsmath math notranslate nohighlight" id="equation-a13441f9-438d-452c-92ef-c9d39ca35c35">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-a13441f9-438d-452c-92ef-c9d39ca35c35" title="Permalink to this equation">#</a></span>\[\begin{Bmatrix}A_2^{(2)}\\A_3^{(2)}\end{Bmatrix}=-\begin{bmatrix}0&amp;-1\\-1&amp;0\end{bmatrix}^{-1}\begin{Bmatrix}-1\\0\end{Bmatrix}=\begin{Bmatrix}0\\-1\end{Bmatrix}\]</div>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}（11）\\则对应$\omega_{n3}^2 = 2 + \sqrt{2}$的振型向量\end{aligned}\end{align} \]</div>
+<p>\boldsymbol{A}^{(2)}=\begin{Bmatrix}1\0-1\end{Bmatrix}
+$$（12）</p>
+<p>同理，将<span class="math notranslate nohighlight">\(\omega_{n3}^2 = 2 + \sqrt{2}\)</span>代入式<code class="xref eq docutils literal notranslate"><span class="pre">(3)</span></code>中，并令<span class="math notranslate nohighlight">\(A_1^{(3)} = 1\)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}
+\begin{bmatrix}-\sqrt{2}&amp;-1&amp;0\\-1&amp;-\sqrt{2}&amp;-1\\0&amp;-1&amp;-\sqrt{2}\end{bmatrix}\begin{Bmatrix}1\\A_2^{(3)}\\A_3^{(3)}\end{Bmatrix}=\begin{Bmatrix}0\\0\\0\end{Bmatrix}
+$$（13）\end{split}\\求得对应$\omega_{n3}^2 = 2 + \sqrt{2}$的振型向量为\end{aligned}\end{align} \]</div>
+<p>\boldsymbol{A}^{(3)}=\begin{Bmatrix}1-\sqrt{2}\1\end{Bmatrix}
+$$（14）</p>
+<p>各阶振型图如图2-11(b)所示。</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -504,6 +824,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.2.1. 两自由度系统的自由振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.2.2. 多自由度系统的固有频率和固有振型</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

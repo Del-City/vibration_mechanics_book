@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch01/1.6';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -420,7 +422,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -436,6 +440,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.6.1. 第一类隔振</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.6.2. 第二类隔振</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -447,7 +460,67 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.6. </span>隔振原理<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>此处添加内容…</p>
+<section id="id2">
+<h2><span class="section-number">1.6.1. </span>第一类隔振<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>在船上有各种隔振，如主机、辅机等，它们在运转时所产生的干扰力会引起船体结构的振动。为了减少这些干扰力对船体的作用，通常在这些机械装置和船体结构之间装上一种称为减振器的隔振装置。它由弹性元件和阻尼元件组成。适当地选择减振器的弹簧常数和阻尼系数可使传递至船体结构的干扰力大为减小，这种隔振是把振源的干扰力和船体结构相隔离开，有时，称为第一类隔振，或简称为隔力。图1-20(a)是这种隔振的示意图。</p>
+<p>对于第一类隔振，传递到基础的力是弹簧力和阻尼力之和，若采用复数解法，则传递力为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-122">
+<span class="eqno">(1.43)<a class="headerlink" href="#equation-eq-1-122" title="Link to this equation">#</a></span>\[
+F_{t}  = Kx + C\dot{x}
+\]</div>
+<p>如果激励力是简谐的，<span class="math notranslate nohighlight">\(P\left ( t \right )  = P_{0}\sin \omega t\)</span>，则</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-123">
+<span class="eqno">(1.44)<a class="headerlink" href="#equation-eq-1-123" title="Link to this equation">#</a></span>\[
+P\left ( t \right)= \bar{P} e^{i\omega t}, \bar{P} = P_{0} 
+\]</div>
+<p>其稳态振动的解为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-124">
+<span class="eqno">(1.45)<a class="headerlink" href="#equation-eq-1-124" title="Link to this equation">#</a></span>\[
+x\left ( t \right) = \bar{X} e^{i\omega t}
+\]</div>
+<p>式中，</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-125">
+<span class="eqno">(1.46)<a class="headerlink" href="#equation-eq-1-125" title="Link to this equation">#</a></span>\[
+\bar{X} = \frac{\bar{P}}{K- M\omega ^{2}+ iC\omega} 
+\]</div>
+<p>于是，通过弹簧和阻尼器传递到基础上的力为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-126">
+<span class="eqno">(1.47)<a class="headerlink" href="#equation-eq-1-126" title="Link to this equation">#</a></span>\[
+F_{t}  = Kx + C\dot{x}= \left ( K+  iC\omega\right )\bar{X}e^{i\omega t}=\bar{F_{t} }e^{i\omega t}
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-1-127">
+<span class="eqno">(1.48)<a class="headerlink" href="#equation-eq-1-127" title="Link to this equation">#</a></span>\[
+\bar{F_{t} }= \left ( K+  iC\omega\right )\bar{X}= \frac{K+iC\omega}{K- M\omega ^{2}+iC\omega} \bar{P}  
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\bar{F_{t} }\)</span>为传递力的复数形式的幅值。于是传递力与激励力的复数幅值比</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-128">
+<span class="eqno">(1.49)<a class="headerlink" href="#equation-eq-1-128" title="Link to this equation">#</a></span>\[
+\frac{\bar{F_{t} }}{\bar{P}}  = \frac{K+iC\omega}{K- M\omega ^{2}+iC\omega}
+\]</div>
+<p>由此，可求得传递力与激励力振幅值比（又称力传递函数）及相位差</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-129">
+<span class="eqno">(1.50)<a class="headerlink" href="#equation-eq-1-129" title="Link to this equation">#</a></span>\[
+H_{F} \left ( \omega  \right )=  \frac{F_{t}}{P}= \frac{\sqrt{1+  \left ( 2\zeta r  \right )^{2}  } }{\sqrt{\left (  1-r ^{2} \right )^{2}+ \left ( 2\zeta r \right )^{2}   }   }
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-1-130">
+<span class="eqno">(1.51)<a class="headerlink" href="#equation-eq-1-130" title="Link to this equation">#</a></span>\[
+\theta = \arctan \frac{2\zeta r ^{3} }{1- r ^{2}+  \left ( 2\zeta r  \right )^{2}   }
+\]</div>
+<p>显然，它与1.6.1节中位移传递函数<span class="math notranslate nohighlight">\(H_{1} \left ( \omega  \right ) \)</span>是相同的。由图1-16可见，当<span class="math notranslate nohighlight">\(r = \sqrt{2} \)</span>时，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )=1 \)</span>；当<span class="math notranslate nohighlight">\(r&gt;  \sqrt{2}\)</span>时，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )&lt; 1\)</span>，即引起隔振的效果，<span class="math notranslate nohighlight">\(r\)</span>越大，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )\)</span>越小，隔振效果越好。但<span class="math notranslate nohighlight">\(r\)</span>过大意味着<span class="math notranslate nohighlight">\(\omega _{n}\)</span>很小。这就造成隔振系统静伸长很大。在有外界低频骚扰时，往往会使动力机械不能正常工作。从图1-16还可看出当<span class="math notranslate nohighlight">\(r &gt;  \sqrt{2}\)</span>时，阻尼增大反而使隔振的效果降低。因而隔振器的阻尼比不能设计得太大。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.6.2. </span>第二类隔振<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>为了把某些经不起振动的精密仪器等与船舶舱室内振动的环境隔离开来，使其受不到周围剧烈环境振动的影响，往往在这些仪器和固定它们的基础（如船体或船上的舱室）之间也要安装弹性隔振装置，有时这种隔振装置称第二类隔振，或简称隔幅，即隔去基础振幅之意。图1-20(b)是此种隔振的示意图。</p>
+<p>对于第二类隔振，要求将被隔物体，即振动系统中质量<span class="math notranslate nohighlight">\(M\)</span>与外界基础或支座的振动隔离开，使被隔离的物体在空间保持静止状态。因此，人们关心的是其绝对位移的响应，其绝对位移传递函数的幅值及相位差同样可由式(1.88)和式(1.87)给出，与力的传递函数式<a class="reference internal" href="#equation-eq-1-129">(1.50)</a>
+和<a class="reference internal" href="#equation-eq-1-130">(1.51)</a>相同，因而隔振效果的结论也如第一类隔振所述。</p>
+<p>隔振效果通常用隔振效率<span class="math notranslate nohighlight">\(\eta \)</span>表示，<span class="math notranslate nohighlight">\(\eta= \left [ 1- H_{F} \left ( \omega  \right ) \right ]\times100\%\)</span>。</p>
+<p>由于实际的减振器阻尼比不大，故可近似地取<span class="math notranslate nohighlight">\(\zeta = 0 \)</span>时的<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )\)</span></p>
+<div class="math notranslate nohighlight" id="equation-eq-1-131">
+<span class="eqno">(1.52)<a class="headerlink" href="#equation-eq-1-131" title="Link to this equation">#</a></span>\[
+H_{F} \left ( \omega  \right )= H_{1} \left ( \omega  \right )= \frac{1}{r ^{2}- 1 } =\frac{1}{\frac{4\pi ^{2} }{g}f^{2} \delta _{st}- 1  } 
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(f=\frac{\omega}{2\pi}\)</span>为隔振系统的输入频率；<span class="math notranslate nohighlight">\(\delta _{st}=\frac{Mg}{K}\)</span>为隔振系统的静伸长。</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -504,6 +577,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.6.1. 第一类隔振</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.6.2. 第二类隔振</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
