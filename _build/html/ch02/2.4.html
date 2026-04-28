@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch02/2.4';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -420,7 +422,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -436,6 +440,15 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.1. 主从系统</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.4.2. 主从系统的耦合作用</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -447,7 +460,76 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2.4. </span>主从系统的耦合振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>此处添加内容…</p>
+<section id="id2">
+<h2><span class="section-number">2.4.1. </span>主从系统<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>任何一个复杂的多自由度系统总可以看成是由两个或若干个子系统组成。从振动角度看，最基本的子系统是一个单自由度系统——弹簧、质量和阻尼系统。通常，我们把所关心的、要进行仔细分析的那个系统称为主系统，而另一个或若干个我们并不十分感兴趣的，但对主系统振动性质有影响的子系统称为副系统或从属系统（简称从系统）。例如，船体-主机构成一复杂的振动系统，可将船体和主机作为两个子系统，它们通过机座、轴承、减振器等发生关系。在研究船体振动时，可将船体作为主系统，而把主机作为从系统。反之，在研究主机振动时，则主机作为主系统，船体作为从系统。因此，主从系统的确定是辩证的。</p>
+<p>一般而言，各子系统的振动是相互耦合的。本节则从两个自由度的主从系统的自由振动 和强迫振动两方面，讨论从系统对主系统固有频率和响应的影响。其建立的方法和结论对于振动设计和分析以及振动控制有普遍意义。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.4.2. </span>主从系统的耦合作用<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>双质量、弹簧系统如图2-19所示，可以认为它由两个单质量、弹簧(<span class="math notranslate nohighlight">\(M₁\)</span>、<span class="math notranslate nohighlight">\(K₁\)</span>和<span class="math notranslate nohighlight">\(M₂\)</span>、<span class="math notranslate nohighlight">\(K₂\)</span>)的单自由度系统构成。若<span class="math notranslate nohighlight">\(M₁-K₁\)</span>系统是我们感兴趣的，称其为主系统，而<span class="math notranslate nohighlight">\(M₂-K₂\)</span>则称为从系统。现在讨论从系统对主系统振动的影响。</p>
+<p>主从系统的无阻尼自由振动方程、频率方程和固有频率可以方便地导出：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-126">
+<span class="eqno">(2.20)<a class="headerlink" href="#equation-eq-2-126" title="Link to this equation">#</a></span>\[
+M_1 \ddot{x}_1 + (K_1 + K_2) x_1 - K_2 x_2 = 0
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-2-127">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-eq-2-127" title="Link to this equation">#</a></span>\[
+M_2 \ddot{x}_2 + K_2 x_2 - K_2 x_1 = 0
+\]</div>
+<p>不难得出，其频率方程为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-128">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-eq-2-128" title="Link to this equation">#</a></span>\[
+D(\omega_{\mathrm{n}}^2) = (K_1 + K_2 - M_1 \omega_{\mathrm{n}}^2)(K_2 - M_2 \omega_{\mathrm{n}}^2) - K_2^2 = 0
+\]</div>
+<p>由此得出固有频率为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-129">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-eq-2-129" title="Link to this equation">#</a></span>\[
+\omega_{\mathrm{n}1,2}^2 = \frac{K_1 + K_2}{2M_1} + \frac{K_2}{2M_2} \mp \sqrt{\frac{1}{4} \left[ \frac{K_1 + K_2}{M_1} + \frac{K_2}{M_2} \right]^2 - \frac{K_1 K_2}{M_1 M_2}}
+\]</div>
+<p>令</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-130">
+<span class="eqno">(2.24)<a class="headerlink" href="#equation-eq-2-130" title="Link to this equation">#</a></span>\[
+\omega_{01} = \sqrt{\frac{K_1}{M_1}}, \quad \omega_{02} = \sqrt{\frac{K_2}{M_2}}
+\]</div>
+<p>分别为主系统和从系统单独存在时的固有频率，则主从系统的固有频率方程可改写为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-131">
+<span class="eqno">(2.25)<a class="headerlink" href="#equation-eq-2-131" title="Link to this equation">#</a></span>\[
+D(\omega_{\mathrm{n}}^2) = Z^2 - [1 + (1 + a)\xi]Z + \xi = 0
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(Z = \omega_{\mathrm{n}}^2 / \omega_{01}^2\)</span>——主从系统的无因次固有频率(平方值)；<span class="math notranslate nohighlight">\(a = M_2 / M_1\)</span>——从系统与主系统的质量比；<span class="math notranslate nohighlight">\(\xi = \omega_{02}^2 / \omega_{01}^2\)</span>——频率错开系数，其定义域为<span class="math notranslate nohighlight">\([0, \infty)\)</span>。由式<a class="reference internal" href="#equation-eq-2-131">(2.25)</a>,可得主从系统的两个无因次频率值为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-132">
+<span class="eqno">(2.26)<a class="headerlink" href="#equation-eq-2-132" title="Link to this equation">#</a></span>\[
+Z_{1,2} = \frac{1 + (1+a)\xi \mp \sqrt{[1 + (1+a)\xi]^2 - 4\xi}}{2}
+\]</div>
+<p>式中，</p>
+<div class="math notranslate nohighlight">
+\[
+Z_1 = \omega_{\mathrm{n}1}^2 / \omega_{01}^2, \quad Z_2 = \omega_{\mathrm{n}2}^2 / \omega_{02}^2
+\]</div>
+<p><span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span>和<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span>分别是主从系统的第一及第二阶固有频率。</p>
+<p>首先，定性地判断主从系统固有频率的区间和变化：</p>
+<p>当<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}}^2 = 0\)</span>时 ，<span class="math notranslate nohighlight">\(D(\omega_{\mathrm{n}}^2) = K_1 K_2 &gt; 0\)</span></p>
+<p>当<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}}^2 = \omega_{01}^2\)</span>时 ，<span class="math notranslate nohighlight">\(D(\omega_{\mathrm{n}}^2) = -K_2 M_2 \omega_{01}^2 &lt; 0\)</span></p>
+<p>当<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}}^2 = \omega_{02}^2\)</span>时 ，<span class="math notranslate nohighlight">\(D(\omega_{\mathrm{n}}^2) = -K_2^2 &lt; 0\)</span></p>
+<p>当<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}}^2 \to \infty\)</span>时 ，<span class="math notranslate nohighlight">\(D(\omega_{\mathrm{n}}^2) &gt; 0\)</span></p>
+<p>由此可见，组合系统的第一阶固有频率<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span>，介于0和<span class="math notranslate nohighlight">\(\omega_{01}\)</span>之间，而第二阶固有频率<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span>介于 <span class="math notranslate nohighlight">\(\omega_{02}\)</span>和<span class="math notranslate nohighlight">\(\infty\)</span>之间。因而，<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1} &lt; \omega_{01} &lt; \omega_{02} &lt; \omega_{\mathrm{n}2}\)</span>。这表明，组合系统的第一阶固有频率 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span> 始终比任何一个子系统（主系统或从系统）本身的固有频率低；而其第二阶固有频率则高于任何一个子系统本身的固有频率。这一结论对复杂系统的振动分析很有用。</p>
+<p>其次，我们分析频率错开系数 <span class="math notranslate nohighlight">\(\xi\)</span> 对主从系统固有频率的影响。若两个子系统的固有频率<span class="math notranslate nohighlight">\(\omega_{01}\)</span>和<span class="math notranslate nohighlight">\(\omega_{02}\)</span>相差很大，则 <span class="math notranslate nohighlight">\(\xi\)</span> 趋于无穷大或为零。先讨论这两个极端情况。</p>
+<p>当 <span class="math notranslate nohighlight">\(\xi=0\)</span>，<span class="math notranslate nohighlight">\(Z₁=0\)</span>，即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}^2 = 0\)</span>；<span class="math notranslate nohighlight">\(Z_2 = 1\)</span>，即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}^2 = \omega_{01}^2\)</span>。这相当于从系统的固有频率<span class="math notranslate nohighlight">\(\omega_{02} = 0\)</span>，主从系统之间等于不发生联系。主从系统的两个固有频率即为两个子系统的单独的固有频率。</p>
+<p>当<span class="math notranslate nohighlight">\(\xi \to \infty\)</span>, <span class="math notranslate nohighlight">\(Z_1 = \frac{1}{1 + a}\)</span>，即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}^2 = \frac{\omega_{01}^2}{1 + a}\)</span>；; <span class="math notranslate nohighlight">\(Z_2 \to \infty\)</span>, 即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}^2 \to \infty\)</span>。这相当于从系统的固有频率 <span class="math notranslate nohighlight">\(\omega_{02}^2 \to \infty\)</span>的情况，实际上即从系统质量 <span class="math notranslate nohighlight">\(M_2\)</span> 与主系统质量 <span class="math notranslate nohighlight">\(M_2\)</span> 刚性连接的结果。主从系统的耦合只相当于在主系统的质量上再增加<span class="math notranslate nohighlight">\(M_2\)</span>。将<span class="math notranslate nohighlight">\(\omega_{01}^2\)</span>和<span class="math notranslate nohighlight">\(a\)</span>的值代入<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}^2\)</span>的表达式也可从数字上对此进行验证。</p>
+<p>若主系统和从系统的固有频率相等，即<span class="math notranslate nohighlight">\(\xi = 1\)</span>。此时耦合作用十分显著。主从系统的固有频率由式<a class="reference internal" href="#equation-eq-2-132">(2.26)</a>可得</p>
+<div class="math notranslate nohighlight">
+\[
+Z_{1,2} = \frac{2 + a \pm \sqrt{a(4 + a)}}{2}
+\]</div>
+<p>下面再讨论质量比<span class="math notranslate nohighlight">\(a\)</span>的影响。若<span class="math notranslate nohighlight">\(a=0\)</span>，即从系统的质量<span class="math notranslate nohighlight">\(M_2\)</span>与主系统质量<span class="math notranslate nohighlight">\(M_1\)</span>相比极小而可忽略时</p>
+<div class="math notranslate nohighlight">
+\[
+Z_1 \approx 1, 即 \ \omega_{\mathrm{n}1} = \omega_{01}; \quad Z_2 \approx \xi, 即 \ \omega_{\mathrm{n}2} \approx \omega_{02}
+\]</div>
+<p>因而组合系统的固有频率<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span>、<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span>和两个子系统本身的固有频率相差甚微，故两子系统之间的耦合作用很小。随着<span class="math notranslate nohighlight">\(a\)</span>的增加，耦合系统的固有频率<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span>、<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span>和子系统的固有频率<span class="math notranslate nohighlight">\(\omega_{01}\)</span>、<span class="math notranslate nohighlight">\(\omega_{01}\)</span>差异也随之增大，主从系统的耦合作用越来越强。</p>
+<p>主从系统的振动原理对船舶振动分析甚为重要。如果称主系统<span class="math notranslate nohighlight">\(M_1\)</span>的振动为总振动，从系统<span class="math notranslate nohighlight">\(M_2\)</span>的振动为局部振动，则以上的分析表明，当局部振动的质量<span class="math notranslate nohighlight">\(M_2\)</span>远小于总振动的质量<span class="math notranslate nohighlight">\(M_1\)</span>时，或局部振动的固有频率与总振动频率相差甚远时，可不计两者的耦合作用。因而，在计算船体总振动的最初几个固有频率时，常不考虑船体局部振动（如双层底等）的影响。船舶摇摆和船体振动可分别计算的原因也在于前者的固有频率比后者小一个数量级之故（摇摆频率的数量级为<span class="math notranslate nohighlight">\(0.1\)</span>次<span class="math notranslate nohighlight">\(/s\)</span>,而船体振动第一阶频率的数量级约为<span class="math notranslate nohighlight">\(1\)</span>次/<span class="math notranslate nohighlight">\(s\)</span>）。</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -504,6 +586,22 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.1. 主从系统</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.4.2. 主从系统的耦合作用</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

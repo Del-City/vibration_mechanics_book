@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -714,59 +714,100 @@ K_{n1} - \lambda_r^2 M_{n1} &amp; \cdots &amp; K_{n,j-1} - \lambda_r^2 M_{n,j-1}
 <p>而<span class="math notranslate nohighlight">\(p^{(r)}\)</span>是一任意的比例常数。显然，特征矢量<span class="math notranslate nohighlight">\(A^{(r)}\)</span>或<span class="math notranslate nohighlight">\(\boldsymbol{\rho}^{(r)}\)</span>表示系统按第<span class="math notranslate nohighlight">\(r\)</span>阶固有频率<span class="math notranslate nohighlight">\(\lambda_r\)</span>,作主振动时的振动形式，称为固有振型。因为它也与初始条件无关，故仅取决于系统的固有属性<span class="math notranslate nohighlight">\(M\)</span>和<span class="math notranslate nohighlight">\(K\)</span>。</p>
 <p><span class="math notranslate nohighlight">\(n\)</span>自由度系统有<span class="math notranslate nohighlight">\(n\)</span>个固有频率和对应的固有振型。还应当了解，固有振型只能确定到包含一个常数因子，它并不代表系统的实际振幅，而只是系统振动特性的反映。</p>
 <p>一般来说，特征方程式<a class="reference internal" href="#equation-eq-2-31">(2.15)</a>的<span class="math notranslate nohighlight">\(n\)</span>个根，可以是单根或复根，也可以是实根或重根。但是，对系统的质量矩阵为正定实对称矩阵，刚度矩阵为正定或半正定实对称矩阵时，根据线性代数理论，所有的特征值都是实数，为正数或零。其中，只有半正定系统(在物理上为可能发生刚体运动的系统)才有零特征值。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
 <p>例2.8 确定图2-11(a)所示系统的固有频率和固有振型，并求正则振型。令<span class="math notranslate nohighlight">\(M=1\)</span>,<span class="math notranslate nohighlight">\(K=1\)</span>。</p>
 <p>解：写出质量矩阵和刚度矩阵为</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}
-\boldsymbol{M}=\begin{bmatrix}1&amp;0&amp;0\\0&amp;1&amp;0\\0&amp;0&amp;1\end{bmatrix},\quad\boldsymbol{K}=\begin{bmatrix}2&amp;-1&amp;0\\-1&amp;2&amp;-1\\0&amp;-1&amp;2\end{bmatrix}
-$$（1）\end{split}\\系统的运动微分方程有\end{aligned}\end{align} \]</div>
-<p>\boldsymbol{M}\ddot{\boldsymbol{x}}(t)+\boldsymbol{K}\boldsymbol{x}(t)=\boldsymbol{0}
-$$（2）</p>
+\[
+\boldsymbol{M}=\begin{bmatrix}1&amp;0&amp;0 \cr 0&amp;1&amp;0 \cr 0&amp;0&amp;1\end{bmatrix} \quad
+\boldsymbol{K}=\begin{bmatrix}2&amp;-1&amp;0 \cr -1&amp;2&amp;-1 \cr 0&amp;-1&amp;2\end{bmatrix} \tag{1}
+\]</div>
+<p>系统的运动微分方程有</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{M}\ddot{\boldsymbol{x}}(t)+\boldsymbol{K}\boldsymbol{x}(t)=\boldsymbol{0} \tag{2}
+\]</div>
 <p>其特征值问题为</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\boldsymbol{K}\boldsymbol{A}=\omega_n^2\boldsymbol{M}\boldsymbol{A}
-$$（3）\\特征方程为\end{aligned}\end{align} \]</div>
-<p>\begin{aligned}\Delta(\omega_n^2)&amp;=\begin{vmatrix}2-\omega_n^2&amp;-1&amp;0-1&amp;2-\omega_n^2&amp;-1\0&amp;-1&amp;2-\omega_n^2\end{vmatrix}\&amp;=\left(2-\omega_n^2\right)\left(\omega_n^4-4\omega_n^2+2\right)=0\end{aligned}
-$$（4）</p>
+\[
+\boldsymbol{K}\boldsymbol{A}=\omega_n^2\boldsymbol{M}\boldsymbol{A} \tag{3}
+\]</div>
+<p>特征方程为</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{aligned}
+\Delta(\omega_n^2)&amp;=\begin{vmatrix}2-\omega_n^2&amp;-1&amp;0 \cr -1&amp;2-\omega_n^2&amp;-1 \cr 0&amp;-1&amp;2-\omega_n^2\end{vmatrix} \cr
+&amp;=\left(2-\omega_n^2\right)\left(\omega_n^4-4\omega_n^2+2\right)=0
+\end{aligned} \tag{4}
+\]</div>
 <p>求得特征值</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}
-\omega_{n1}^2=2-\sqrt{2},\quad\omega_{n2}^2=2,\quad\omega_{n3}^2=2+\sqrt{2}
-$$（5）\\以下，计算对应于三个固有频率的振型向量。
-将$\omega_{n1}^2 = 2 - \sqrt{2}$代人方程式(3)中，有\end{aligned}\end{align} \]</div>
-<p>\begin{bmatrix}\sqrt{2}&amp;-1&amp;0-1&amp;\sqrt{2}&amp;-1\0&amp;-1&amp;\sqrt{2}\end{bmatrix}\begin{Bmatrix}A_1^{(1)}\A_2^{(1)}\A_3^{(1)}\end{Bmatrix}=\begin{Bmatrix}0\0\0\end{Bmatrix}
-$$（6）</p>
+\[
+\omega_{n1}^2=2-\sqrt{2},\quad\omega_{n2}^2=2,\quad\omega_{n3}^2=2+\sqrt{2} \tag{5}
+\]</div>
+<p>以下，计算对应于三个固有频率的振型向量。
+将<span class="math notranslate nohighlight">\(\omega_{n1}^2 = 2 - \sqrt{2}\)</span>代人方程式(3)中，有</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}\sqrt{2}&amp;-1&amp;0 \cr -1&amp;\sqrt{2}&amp;-1 \cr0&amp;-1&amp;\sqrt{2}\end{bmatrix}
+\begin{Bmatrix}A_1^{(1)} \cr A_2^{(1)} \cr A_3^{(1)}\end{Bmatrix}
+=\begin{Bmatrix}0 \cr0 \cr0\end{Bmatrix} \tag{6}
+\]</div>
 <p>因为是齐次方程组，如果未知数中有一个被给定，那么就可以唯一地求出其余2个未知数。令<span class="math notranslate nohighlight">\(A_1^{(1)} = 1\)</span>,则方程式(6)变为</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}
-\begin{bmatrix}\sqrt{2}&amp;-1&amp;0\\-1&amp;\sqrt{2}&amp;-1\\0&amp;-1&amp;\sqrt{2}\end{bmatrix}\begin{Bmatrix}1\\A_2^{(1)}\\A_3^{(1)}\end{Bmatrix}=\begin{Bmatrix}0\\0\\0\end{Bmatrix}
-$$（7）\end{split}\\解出\end{aligned}\end{align} \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-afd66cb0-317f-45d0-b288-4e06145dc748">
-<span class="eqno">(2.20)<a class="headerlink" href="#equation-afd66cb0-317f-45d0-b288-4e06145dc748" title="Permalink to this equation">#</a></span>\[\begin{Bmatrix}A_2^{(1)}\\A_3^{(1)}\end{Bmatrix}=-\begin{bmatrix}\sqrt{2}&amp;-1\\-1&amp;\sqrt{2}\end{bmatrix}^{-1}\begin{Bmatrix}-1\\0\end{Bmatrix}=\begin{Bmatrix}\sqrt{2}\\1\end{Bmatrix}\]</div>
+\[
+\begin{bmatrix}\sqrt{2}&amp;-1&amp;0 \cr -1&amp;\sqrt{2}&amp;-1 \cr 0&amp;-1&amp;\sqrt{2}\end{bmatrix}
+\begin{Bmatrix}1 \cr A_2^{(1)} \cr A_3^{(1)}\end{Bmatrix}
+=\begin{Bmatrix}0 \cr 0 \cr 0\end{Bmatrix} \tag{7}
+\]</div>
+<p>解出</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}（8）\\故求得对应$\omega_{n1}^2 = 2 - \sqrt{2}$的振型向量\end{aligned}\end{align} \]</div>
-<p>\boldsymbol{A}^{(1)}=\begin{Bmatrix}1\sqrt{2}\1\end{Bmatrix}
-$$（9）</p>
-<p>再计算对应<span class="math notranslate nohighlight">\(\omega_{n2}^2 = 2\)</span>的振型向量。同样，将<span class="math notranslate nohighlight">\(\omega_{n2}^2 = 2\)</span>代入式<code class="xref eq docutils literal notranslate"><span class="pre">(3)</span></code>中，并令<span class="math notranslate nohighlight">\(A_1^{(2)} = 1\)</span>,有</p>
+\[
+\begin{Bmatrix}A_2^{(1)} \cr A_3^{(1)}\end{Bmatrix}
+=-\begin{bmatrix}\sqrt{2}&amp;-1 \cr -1&amp;\sqrt{2}\end{bmatrix}^{-1}
+\begin{Bmatrix}-1 \cr 0\end{Bmatrix}
+=\begin{Bmatrix}\sqrt{2} \cr 1\end{Bmatrix} \tag{8}
+\]</div>
+<p>故求得对应<span class="math notranslate nohighlight">\(\omega_{n1}^2 = 2 - \sqrt{2}\)</span>的振型向量</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}
-\begin{bmatrix}0&amp;-1&amp;0\\-1&amp;0&amp;-1\\0&amp;-1&amp;0\end{bmatrix}\begin{Bmatrix}1\\A_2^{(2)}\\A_3^{(2)}\end{Bmatrix}=\begin{Bmatrix}0\\0\\0\end{Bmatrix}
-$$（10）\end{split}\\求得\end{aligned}\end{align} \]</div>
-<div class="amsmath math notranslate nohighlight" id="equation-a13441f9-438d-452c-92ef-c9d39ca35c35">
-<span class="eqno">(2.21)<a class="headerlink" href="#equation-a13441f9-438d-452c-92ef-c9d39ca35c35" title="Permalink to this equation">#</a></span>\[\begin{Bmatrix}A_2^{(2)}\\A_3^{(2)}\end{Bmatrix}=-\begin{bmatrix}0&amp;-1\\-1&amp;0\end{bmatrix}^{-1}\begin{Bmatrix}-1\\0\end{Bmatrix}=\begin{Bmatrix}0\\-1\end{Bmatrix}\]</div>
+\[
+\boldsymbol{A}^{(1)}=\begin{Bmatrix}1 \cr \sqrt{2} \cr 1\end{Bmatrix} \tag{9}
+\]</div>
+<p>再计算对应<span class="math notranslate nohighlight">\(\omega_{n2}^2 = 2\)</span>的振型向量。同样，将<span class="math notranslate nohighlight">\(\omega_{n2}^2 = 2\)</span>代入式(3)中，并令<span class="math notranslate nohighlight">\(A_1^{(2)} = 1\)</span>,有</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}（11）\\则对应$\omega_{n3}^2 = 2 + \sqrt{2}$的振型向量\end{aligned}\end{align} \]</div>
-<p>\boldsymbol{A}^{(2)}=\begin{Bmatrix}1\0-1\end{Bmatrix}
-$$（12）</p>
-<p>同理，将<span class="math notranslate nohighlight">\(\omega_{n3}^2 = 2 + \sqrt{2}\)</span>代入式<code class="xref eq docutils literal notranslate"><span class="pre">(3)</span></code>中，并令<span class="math notranslate nohighlight">\(A_1^{(3)} = 1\)</span>，有</p>
+\[
+\begin{bmatrix}0&amp;-1&amp;0 \cr -1&amp;0&amp;-1 \cr 0&amp;-1&amp;0\end{bmatrix}
+\begin{Bmatrix}1 \cr A_2^{(2)} \cr A_3^{(2)}\end{Bmatrix}
+=\begin{Bmatrix}0 \cr 0 \cr 0\end{Bmatrix} \tag{10}
+\]</div>
+<p>求得</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}
-\begin{bmatrix}-\sqrt{2}&amp;-1&amp;0\\-1&amp;-\sqrt{2}&amp;-1\\0&amp;-1&amp;-\sqrt{2}\end{bmatrix}\begin{Bmatrix}1\\A_2^{(3)}\\A_3^{(3)}\end{Bmatrix}=\begin{Bmatrix}0\\0\\0\end{Bmatrix}
-$$（13）\end{split}\\求得对应$\omega_{n3}^2 = 2 + \sqrt{2}$的振型向量为\end{aligned}\end{align} \]</div>
-<p>\boldsymbol{A}^{(3)}=\begin{Bmatrix}1-\sqrt{2}\1\end{Bmatrix}
-$$（14）</p>
+\[
+\begin{Bmatrix}A_2^{(2)} \cr A_3^{(2)}\end{Bmatrix}
+=-\begin{bmatrix}0&amp;-1 \cr -1&amp;0\end{bmatrix}^{-1}
+\begin{Bmatrix}-1 \cr 0\end{Bmatrix}
+=\begin{Bmatrix}0 \cr -1\end{Bmatrix} \tag{11}
+\]</div>
+<p>则对应<span class="math notranslate nohighlight">\(\omega_{n3}^2 = 2 + \sqrt{2}\)</span>的振型向量</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{A}^{(2)}=\begin{Bmatrix}1 \cr 0 \cr -1\end{Bmatrix} \tag{12}
+\]</div>
+<p>同理，将<span class="math notranslate nohighlight">\(\omega_{n3}^2 = 2 + \sqrt{2}\)</span>代入式(3)中，并令<span class="math notranslate nohighlight">\(A_1^{(3)} = 1\)</span>，有</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}-\sqrt{2}&amp;-1&amp;0 \cr -1&amp;-\sqrt{2}&amp;-1 \cr 0&amp;-1&amp;-\sqrt{2}\end{bmatrix}
+\begin{Bmatrix}1 \cr A_2^{(3)} \cr A_3^{(3)}\end{Bmatrix}
+=\begin{Bmatrix}0 \cr 0 \cr 0\end{Bmatrix} \tag{13}
+\]</div>
+<p>求得对应<span class="math notranslate nohighlight">\(\omega_{n3}^2 = 2 + \sqrt{2}\)</span>的振型向量为</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{A}^{(3)}=\begin{Bmatrix}1 \cr -\sqrt{2} \cr 1\end{Bmatrix} \tag{14}
+\]</div>
 <p>各阶振型图如图2-11(b)所示。</p>
+</div>
 </section>
 </section>
 
