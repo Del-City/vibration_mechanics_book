@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch02/2.3';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -420,7 +422,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -436,6 +440,20 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 阻尼的表达与处理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 系统对任意激励的响应</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.3. 系统对正弦激励的响应</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.3.1. 振型叠加法求响应</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.3.2. 直接解法</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -447,7 +465,492 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2.3. </span>多自由度系统的强迫振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>此处添加内容…</p>
+<section id="id2">
+<h2><span class="section-number">2.3.1. </span>阻尼的表达与处理<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>至今仅限于讨论多自由度无阻尼系统的振动分析。如果系统的阻尼很小，而激励频率又远离共振频率，阻尼效应影响很小，可以略去不计。但当激励频率接近固有频率时，阻尼的影响显著，便不能忽略其影响。</p>
+<p>由于阻尼机理很复杂，通常采用黏性阻尼假设，即假设系统的阻尼力大小与速度的一次方成正比，于是，系统的运动微分方程式为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-94">
+<span class="eqno">(2.20)<a class="headerlink" href="#equation-eq-2-94" title="Link to this equation">#</a></span>\[
+\boldsymbol{M} \ddot{\boldsymbol{q}} + \boldsymbol{C} \dot{\boldsymbol{q}} + \boldsymbol{K} \boldsymbol{q} = \boldsymbol{F}(t)
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\boldsymbol{C}\)</span>——阻尼矩阵，与 <span class="math notranslate nohighlight">\(\boldsymbol{M}\)</span>、<span class="math notranslate nohighlight">\(\boldsymbol{K}\)</span> 同样为对称矩阵，其元素 <span class="math notranslate nohighlight">\(C_{ij}\ (i,j=1,2,\dots,n)\)</span> 成为阻尼影响系数。</p>
+<p>在结构动力分析时，经常采用的是以下的瑞利阻尼假设，即阻尼矩阵 <span class="math notranslate nohighlight">\(\boldsymbol{C}\)</span> 为如下形式：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-95">
+<span class="eqno">(2.21)<a class="headerlink" href="#equation-eq-2-95" title="Link to this equation">#</a></span>\[
+\boldsymbol{C} = \alpha \boldsymbol{M} + \beta \boldsymbol{K}
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\alpha\)</span> 与 <span class="math notranslate nohighlight">\(\beta\)</span>——比例常数。上式表示阻尼矩阵正比于质量矩阵（<span class="math notranslate nohighlight">\(\beta=0\)</span>）或正比于刚度矩阵（<span class="math notranslate nohighlight">\(\alpha=0\)</span>），或者正比于它们的线性组合，称这种阻尼为比例阻尼。</p>
+<p>如果用无阻尼系统的固有振型，便可使 <span class="math notranslate nohighlight">\(\boldsymbol{C}\)</span> 对角化。设 <span class="math notranslate nohighlight">\(\boldsymbol{\varPhi}\)</span> 为正则化振型，则</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-96">
+<span class="eqno">(2.22)<a class="headerlink" href="#equation-eq-2-96" title="Link to this equation">#</a></span>\[
+\boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{C} \boldsymbol{\varPhi} = \alpha \boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{M} \boldsymbol{\varPhi} + \beta \boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{K} \boldsymbol{\varPhi} = \alpha \boldsymbol{I} + \beta \boldsymbol{\varLambda}
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\boldsymbol{I}\)</span>——单位矩阵；<span class="math notranslate nohighlight">\(\boldsymbol{\varLambda}\)</span>——对角矩阵，</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-97">
+<span class="eqno">(2.23)<a class="headerlink" href="#equation-eq-2-97" title="Link to this equation">#</a></span>\[
+\boldsymbol{\varLambda} = \mathrm{diag}\left( \omega_{\mathrm{n}r}^2 \right)
+\]</div>
+<p>令</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-98">
+<span class="eqno">(2.24)<a class="headerlink" href="#equation-eq-2-98" title="Link to this equation">#</a></span>\[
+\alpha + \beta \omega_{\mathrm{n}r}^2 = 2\omega_{\mathrm{n}r} \zeta_r
+\]</div>
+<p>或写成</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-99">
+<span class="eqno">(2.25)<a class="headerlink" href="#equation-eq-2-99" title="Link to this equation">#</a></span>\[
+\zeta_r = \frac{\alpha + \beta \omega_{\mathrm{n}r}^2}{2\omega_{\mathrm{n}r}} = \frac{\alpha}{2\omega_{\mathrm{n}r}} + \frac{\beta \omega_{\mathrm{n}r}}{2}
+\]</div>
+<p>称 <span class="math notranslate nohighlight">\(\zeta_r\)</span> 为振型（或模态）比例阻尼比。由式 <a class="reference internal" href="#equation-eq-2-99">(2.25)</a> 可见，当阻尼矩阵正比于质量矩阵（<span class="math notranslate nohighlight">\(\beta=0\)</span>）时，阻尼比 <span class="math notranslate nohighlight">\(\zeta_r\)</span> 与频率 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}r}\)</span> 成反比，因此在系统的总响应中，低阶振型起的作用较小。而反之，若阻尼矩阵正比于刚度矩阵，即 <span class="math notranslate nohighlight">\(\alpha=0\)</span>，阻尼比 <span class="math notranslate nohighlight">\(\zeta_r\)</span> 正比于频率 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}r}\)</span>，则高阶振型起的作用较小。因此，适当地选取 <span class="math notranslate nohighlight">\(\alpha\)</span> 与 <span class="math notranslate nohighlight">\(\beta\)</span>，可以近似地反映实际振动系统中阻尼的影响。</p>
+<p>由于阻尼的机理很复杂，至今并不完全清楚，故精确地确定阻尼矩阵是困难的，通常采用实验测定方法近似地确定阻尼比 <span class="math notranslate nohighlight">\(\zeta_r\)</span>。由于系统并非总是有比例阻尼，因此，非对角元素不总是全为零，但当阻尼比很小时，可以令非对角元素为零，建立对角阻尼矩阵。</p>
+<p>这样，对应正则坐标的阻尼矩阵为对角阵，</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-100">
+<span class="eqno">(2.26)<a class="headerlink" href="#equation-eq-2-100" title="Link to this equation">#</a></span>\[\begin{split}
+\boldsymbol{C} =
+\begin{bmatrix}
+2\omega_{\mathrm{n}1}\zeta_1 &amp; &amp; &amp; &amp; \\
+&amp; 2\omega_{\mathrm{n}2}\zeta_2 &amp; &amp; &amp; \\
+&amp; &amp; \ddots &amp; &amp; \\
+&amp; &amp; &amp; 2\omega_{\mathrm{n}r}\zeta_r &amp; \\
+&amp; &amp; &amp; &amp; \ddots \\
+&amp; &amp; &amp; &amp; &amp; 2\omega_{\mathrm{n}n}\zeta_n
+\end{bmatrix}
+\end{split}\]</div>
+<p>对于这样的阻尼矩阵，可以对方程式解耦，给求解多自由度系统的响应带来很大的便利。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">2.3.2. </span>系统对任意激励的响应<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>线性多自由度系统有阻尼强迫振动的运动方程式<a class="reference internal" href="#equation-eq-2-94">(2.20)</a>为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-101">
+<span class="eqno">(2.27)<a class="headerlink" href="#equation-eq-2-101" title="Link to this equation">#</a></span>\[
+\boldsymbol{M} \ddot{\boldsymbol{q}} + \boldsymbol{C} \dot{\boldsymbol{q}} + \boldsymbol{K} \boldsymbol{q} = \boldsymbol{F}(t)
+\]</div>
+<p>一般情况下，<span class="math notranslate nohighlight">\(\boldsymbol{M}\)</span>、<span class="math notranslate nohighlight">\(\boldsymbol{C}\)</span> 和 <span class="math notranslate nohighlight">\(\boldsymbol{K}\)</span> 这三个矩阵中有非零的耦合项，如 <span class="math notranslate nohighlight">\(K_{ij}=K_{ji}\neq0\)</span>。因而需要解有 <span class="math notranslate nohighlight">\(n\)</span> 个未知数的常微分方程组。利用广义坐标 <span class="math notranslate nohighlight">\(\boldsymbol{q}\)</span> 和主坐标 <span class="math notranslate nohighlight">\(\boldsymbol{p}\)</span> 之间的变换关系<!--式{eq}`eq:2-51`-->，可以将广义坐标的响应用主振型和主坐标乘积的级数和来描述，这就是展开定理，而用此求响应的方法称为振型叠加法。主振型取无阻尼时的固有振型，主坐标是待求的，从而可将用广义坐标描述的振动方程转换为用主坐标表示的振动方程表示，求出主坐标的响应式，然后再反回求出广义坐标的响应。这是一种求多自由度系统响应的有效方法。</p>
+<p>为此，先要求解自由振动中的特征值问题：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-102">
+<span class="eqno">(2.28)<a class="headerlink" href="#equation-eq-2-102" title="Link to this equation">#</a></span>\[
+\left( \boldsymbol{K} - \omega_{\mathrm{n}r}^2 \boldsymbol{M} \right) \boldsymbol{A}_r = \boldsymbol{0}
+\]</div>
+<p>由此确定固有振型 <span class="math notranslate nohighlight">\(\boldsymbol{A}_r\)</span> 和固有频率 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}r}(r=1,2,\dots,n)\)</span>。然后，作坐标变换</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-103">
+<span class="eqno">(2.29)<a class="headerlink" href="#equation-eq-2-103" title="Link to this equation">#</a></span>\[
+\boldsymbol{q} = \boldsymbol{\varPhi} \boldsymbol{p}
+\]</div>
+<p>为取更普遍化的形式，上式中 <span class="math notranslate nohighlight">\(\boldsymbol{\varPhi}\)</span> 取未正则化的振型，<span class="math notranslate nohighlight">\(\boldsymbol{p}\)</span> 为系统的主坐标矢量。再将此变换式代入运动方程式 <a class="reference internal" href="#equation-eq-2-101">(2.27)</a> 并前乘 <span class="math notranslate nohighlight">\(\boldsymbol{\varPhi}^\mathrm{T}\)</span>，可得</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-104">
+<span class="eqno">(2.30)<a class="headerlink" href="#equation-eq-2-104" title="Link to this equation">#</a></span>\[
+\widetilde{\boldsymbol{M}} \ddot{\boldsymbol{p}} + \widetilde{\boldsymbol{C}} \dot{\boldsymbol{p}} + \widetilde{\boldsymbol{K}} \boldsymbol{p} = \widetilde{\boldsymbol{F}}(t)
+\]</div>
+<p>式中，</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-105">
+<span class="eqno">(2.31)<a class="headerlink" href="#equation-eq-2-105" title="Link to this equation">#</a></span>\[\begin{split}
+\left.
+\begin{aligned}
+&amp;\widetilde{\boldsymbol{M}} = \boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{M} \boldsymbol{\varPhi} \text{——模态质量矩阵} \\
+&amp;\widetilde{\boldsymbol{C}} = \boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{C} \boldsymbol{\varPhi} \text{——模态阻尼矩阵} \\
+&amp;\widetilde{\boldsymbol{K}} = \boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{K} \boldsymbol{\varPhi} \text{——模态刚度矩阵} \\
+&amp;\widetilde{\boldsymbol{F}}(t) = \boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{F}(t) \text{——模态力矢量}
+\end{aligned}
+\right\}
+\end{split}\]</div>
+<p>由正交条件知，<span class="math notranslate nohighlight">\(\boldsymbol{M}\)</span> 和 <span class="math notranslate nohighlight">\(\boldsymbol{K}\)</span> 是对角矩阵，若 <span class="math notranslate nohighlight">\(\widetilde{\boldsymbol{C}}\)</span> 是黏性阻尼形式的对角阵，则式 <a class="reference internal" href="#equation-eq-2-104">(2.30)</a> 解耦为主坐标描述的振动方程：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-106">
+<span class="eqno">(2.32)<a class="headerlink" href="#equation-eq-2-106" title="Link to this equation">#</a></span>\[
+\ddot{p}_r + 2\zeta_r \omega_{\mathrm{n}r} \dot{p}_r + \omega_{\mathrm{n}r}^2 p_r = \frac{\widetilde{F}_r(t)}{M_r} \quad (r=1,2,\dots,n)
+\]</div>
+<p>式中，</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-107">
+<span class="eqno">(2.33)<a class="headerlink" href="#equation-eq-2-107" title="Link to this equation">#</a></span>\[
+M_r = \boldsymbol{\varphi}^{(r)\mathrm{T}} \boldsymbol{M} \boldsymbol{\varphi}^{(r)}, \quad \widetilde{F}_r(t) = \boldsymbol{\varphi}^{(r)\mathrm{T}} \boldsymbol{F}(t)
+\]</div>
+<p>问题归结为求解上述单自由度系统的振动，即主振动。总响应为初始条件引起的自由振动响应与激励力响应之和：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-108">
+<span class="eqno">(2.34)<a class="headerlink" href="#equation-eq-2-108" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{aligned}
+p_r(t) &amp;= \mathrm{e}^{-\zeta_r \omega_{\mathrm{n}r} t} \left[ p_r(0)\cos\omega_{\mathrm{d}r} t + \frac{\dot{p}_r(0) + \zeta_r \omega_{\mathrm{n}r} p_r(0)}{\omega_{\mathrm{d}r}} \sin\omega_{\mathrm{d}r} t \right] + \\
+&amp;\quad \frac{1}{\omega_{\mathrm{d}r}} \int_{0}^{t} \frac{\widetilde{F}_r(\tau)}{M_r} \mathrm{e}^{-\zeta_r \omega_{\mathrm{n}r} (t-\tau)} \sin\omega_{\mathrm{d}r} (t-\tau) \mathrm{d}\tau \quad (r=1,2,\dots,n)
+\end{aligned}
+\end{split}\]</div>
+<p>若广义坐标的初始条件为 <span class="math notranslate nohighlight">\(t=0\)</span> 时，<span class="math notranslate nohighlight">\(\boldsymbol{q}=\boldsymbol{q}(0)\)</span>，<span class="math notranslate nohighlight">\(\dot{\boldsymbol{q}}=\dot{\boldsymbol{q}}(0)\)</span>，它们与主坐标的初始条件 <span class="math notranslate nohighlight">\(\boldsymbol{p}(0)\)</span> 和 <span class="math notranslate nohighlight">\(\dot{\boldsymbol{p}}(0)\)</span> 之间的关系不难由式 <a class="reference internal" href="#equation-eq-2-103">(2.29)</a> 写出：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-109">
+<span class="eqno">(2.35)<a class="headerlink" href="#equation-eq-2-109" title="Link to this equation">#</a></span>\[
+\boldsymbol{q}(0) = \boldsymbol{\varPhi} \boldsymbol{p}(0), \quad \dot{\boldsymbol{q}}(0) = \boldsymbol{\varPhi} \dot{\boldsymbol{p}}(0)
+\]</div>
+<p>然后前乘式 <a class="reference internal" href="#equation-eq-2-109">(2.35)</a> 以 <span class="math notranslate nohighlight">\(\boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{M}\)</span>，得</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-110">
+<span class="eqno">(2.36)<a class="headerlink" href="#equation-eq-2-110" title="Link to this equation">#</a></span>\[
+\boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{M} \boldsymbol{q}(0) = \widetilde{\boldsymbol{M}} \boldsymbol{p}(0), \quad \boldsymbol{\varPhi}^\mathrm{T} \boldsymbol{M} \dot{\boldsymbol{q}}(0) = \widetilde{\boldsymbol{M}} \dot{\boldsymbol{p}}(0)
+\]</div>
+<p>因为 <span class="math notranslate nohighlight">\(\widetilde{\boldsymbol{M}}\)</span> 是对角阵，故由上式可得主坐标的初始条件为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-111">
+<span class="eqno">(2.37)<a class="headerlink" href="#equation-eq-2-111" title="Link to this equation">#</a></span>\[
+p_r(0) = \left( \frac{1}{M_r} \right) \boldsymbol{\varphi}^{(r)\mathrm{T}} \boldsymbol{M} \boldsymbol{q}(0), \quad \dot{p}_r(0) = \left( \frac{1}{M_r} \right) \boldsymbol{\varphi}^{(r)\mathrm{T}} \boldsymbol{M} \dot{\boldsymbol{q}}(0)
+\]</div>
+<!--式{eq}`eq:2-61`和{eq}`eq:2-62`与此处的区别是，由于前者采用正则振型，经过了归一化处理，故广义质量 $M_r$ 值为 1。-->
+<p>求得主坐标响应式 <a class="reference internal" href="#equation-eq-2-108">(2.34)</a> 后，再代入式 <a class="reference internal" href="#equation-eq-2-103">(2.29)</a> 便得广义坐标表示的响应表达式。</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>例2.15</strong> 试求图 2-15 所示的两自由度系统的强迫振动响应。其中 <span class="math notranslate nohighlight">\(F_1(t)=0\)</span>，<span class="math notranslate nohighlight">\(F_2(t)\)</span> 是一脉冲载荷：</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+F_2(t) =
+\begin{cases}
+F_0 &amp; (0 \leqslant t &lt; t_1) \\
+0 &amp; (t \geqslant t_1)
+\end{cases}
+\end{split}\]</div>
+<p><strong>图 2-15 两自由度系统</strong></p>
+<p>解：该系统的运动方程式为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}M_1 &amp; 0 \\0 &amp; M_2\end{bmatrix}\begin{Bmatrix}\ddot{x}_1 \\\ddot{x}_2\end{Bmatrix}+\begin{bmatrix}C_1 + C_2 &amp; -C_2 \\-C_2 &amp; C_2 + C_3\end{bmatrix}\begin{Bmatrix}\dot{x}_1 \\\dot{x}_2\end{Bmatrix}+\begin{bmatrix}K_1 + K_2 &amp; -K_2 \\-K_2 &amp; K_2 + K_3\end{bmatrix}\begin{Bmatrix}x_1 \\x_2\end{Bmatrix}=\begin{Bmatrix}0 \\F_2(t)\end{Bmatrix}
+\end{split}\]</div>
+<p>前已求得，当 <span class="math notranslate nohighlight">\(M_1 = M_2, K_1 = K_2 = K_3\)</span> 时，系统的固有频率和固有振型分别为</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{\mathrm{n}1} = \sqrt{\frac{K_1}{M_1}}, \quad \omega_{\mathrm{n}2} = \sqrt{\frac{3K_1}{M_1}}
+\]</div>
+<p>和</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{p}^{(1)} =
+\begin{Bmatrix}
+1 \\
+1
+\end{Bmatrix}, \quad
+\boldsymbol{p}^{(2)} =
+\begin{Bmatrix}
+1 \\
+-1
+\end{Bmatrix}
+\end{split}\]</div>
+<p>故其正则振型为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\varphi}^{(1)} = \frac{1}{\sqrt{\boldsymbol{\rho}^{(1)\mathrm{T}} \boldsymbol{M} \boldsymbol{\rho}^{(1)}}}\begin{Bmatrix}1 \\1\end{Bmatrix} = \frac{1}{\sqrt{2M_1}}\begin{Bmatrix}1 \\1\end{Bmatrix}
+\end{split}\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\varphi}^{(2)} = \frac{1}{\sqrt{\boldsymbol{\rho}^{(2)\mathrm{T}} \boldsymbol{M} \boldsymbol{\rho}^{(2)}}}\begin{Bmatrix}1 \\-1\end{Bmatrix} = \frac{1}{\sqrt{2M_1}}\begin{Bmatrix}1 \\-1\end{Bmatrix}
+\end{split}\]</div>
+<p>设 <span class="math notranslate nohighlight">\(C_1 = C_2 = C_3\)</span>，则运动方程式化为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{bmatrix}M_1 &amp; 0 \\0 &amp; M_2\end{bmatrix}\begin{Bmatrix}\ddot{x}_1 \\\ddot{x}_2\end{Bmatrix}+\begin{bmatrix}2C_1 &amp; -C_1 \\-C_1 &amp; 2C_1\end{bmatrix}\begin{Bmatrix}\dot{x}_1 \\\dot{x}_2\end{Bmatrix}+\begin{bmatrix}2K_1 &amp; -K_1 \\-K_1 &amp; 2K_1\end{bmatrix}\begin{Bmatrix}x_1 \\x_2\end{Bmatrix}=\begin{Bmatrix}0 \\F_2(t)\end{Bmatrix}
+\end{split}\]</div>
+<p>令</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{x}(t)=\boldsymbol{\varPhi}\boldsymbol{p}(t)
+\]</div>
+<p>代入上式并前乘 <span class="math notranslate nohighlight">\(\boldsymbol{\varPhi}^\mathrm{T}\)</span> 可得</p>
+<div class="math notranslate nohighlight">
+\[
+\ddot{\boldsymbol{p}}+\boldsymbol{\varPhi}^\mathrm{T}\boldsymbol{C}\boldsymbol{\varPhi}\dot{\boldsymbol{p}}+\boldsymbol{\Lambda}\boldsymbol{p}=\boldsymbol{\varPhi}^\mathrm{T}\boldsymbol{F}=\widetilde{\boldsymbol{F}}(t)
+\]</div>
+<p>式中：</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{\Lambda}=\mathrm{diag}\left(\omega_{\mathrm{n}1}^2,\omega_{\mathrm{n}2}^2\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\widetilde{\boldsymbol{C}}=\boldsymbol{\varPhi}^\mathrm{T}\boldsymbol{C}\boldsymbol{\varPhi}=\frac{C_1}{2M_1}\begin{bmatrix}1 &amp; 1 \\1 &amp; -1\end{bmatrix}\begin{bmatrix}2 &amp; -1 \\-1 &amp; 2\end{bmatrix}\begin{bmatrix}1 &amp; 1 \\1 &amp; -1\end{bmatrix}=\frac{C_1}{M_1}\begin{bmatrix}1 &amp; 0 \\0 &amp; 3\end{bmatrix}
+\end{split}\]</div>
+<p><span class="math notranslate nohighlight">\(\widetilde{\boldsymbol{C}}\)</span> 是对角阵，因本例的阻尼矩阵 <span class="math notranslate nohighlight">\(\boldsymbol{C}\)</span> 是比例阻尼 <span class="math notranslate nohighlight">\(\boldsymbol{C}=\alpha\boldsymbol{M}+\beta\boldsymbol{K}\)</span> 在 <span class="math notranslate nohighlight">\(\alpha=0\)</span> 及 <span class="math notranslate nohighlight">\(\beta=\frac{C_1}{K_1}\)</span> 时的特例，故 <span class="math notranslate nohighlight">\(\widetilde{\boldsymbol{C}}\)</span> 必为对角阵。于是可得</p>
+<div class="math notranslate nohighlight">
+\[
+2\zeta_1\omega_{\mathrm{n}1}=\frac{C_1}{M_1},\quad 2\zeta_2\omega_{\mathrm{n}2}=\frac{3C_1}{M_1}
+\]</div>
+<p>或</p>
+<div class="math notranslate nohighlight">
+\[
+\zeta_1=\frac{C_1}{2M_1\omega_{\mathrm{n}1}},\quad \zeta_2=\frac{3C_1}{2M_1\omega_{\mathrm{n}2}}
+\]</div>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\widetilde{\boldsymbol{F}}(t)=\boldsymbol{\varPhi}^\mathrm{T}\boldsymbol{F}=\frac{1}{\sqrt{2M_1}}\begin{bmatrix}1 &amp; 1 \\1 &amp; -1\end{bmatrix}\begin{Bmatrix}0 \\F_2(t)\end{Bmatrix}=\frac{1}{\sqrt{2M_1}}\begin{Bmatrix}F_2(t) \\-F_2(t)\end{Bmatrix}
+\end{split}\]</div>
+<p>因而</p>
+<div class="math notranslate nohighlight">
+\[
+\ddot{p}_1(t)+2\zeta_1\omega_{\mathrm{n}1}\dot{p}_1+\omega_{\mathrm{n}1}^2p_1=\frac{1}{\sqrt{2M_1}}F_2(t)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\ddot{p}_2(t)+2\zeta_2\omega_{\mathrm{n}2}\dot{p}_2+\omega_{\mathrm{n}2}^2p_2=\frac{-1}{\sqrt{2M_1}}F_2(t)
+\]</div>
+<p>可用杜哈梅积分求得任意激励 <span class="math notranslate nohighlight">\(F_2(t)\)</span> 作用下的主坐标响应。为简单计，在计算时略去阻尼，并考虑零初始条件，于是当 <span class="math notranslate nohighlight">\(0 \leqslant t \leqslant t_1\)</span> 时，</p>
+<div class="math notranslate nohighlight">
+\[
+p_1(t)=\frac{F_0}{\omega_{\mathrm{n}1}^2}\cdot\frac{1}{\sqrt{2M_1}}(1-\cos\omega_{\mathrm{n}1}t)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+p_2(t)=\frac{F_0}{\omega_{\mathrm{n}2}^2}\cdot\frac{1}{\sqrt{2M_1}}(1-\cos\omega_{\mathrm{n}2}t)
+\]</div>
+<p>当 <span class="math notranslate nohighlight">\(t &gt; t_1\)</span> 时，</p>
+<div class="math notranslate nohighlight">
+\[
+p_1(t)=\frac{F_0}{\sqrt{2M_1}\omega_{\mathrm{n}1}^2}\cdot2\sin\frac{\omega_{\mathrm{n}1}t_1}{2}\sin\omega_{\mathrm{n}1}\left(t-\frac{t_1}{2}\right)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+p_2(t)=\frac{F_0}{\sqrt{2M_1}\omega_{\mathrm{n}2}^2}\cdot2\sin\frac{\omega_{\mathrm{n}2}t_1}{2}\sin\omega_{\mathrm{n}2}\left(t-\frac{t_1}{2}\right)
+\]</div>
+<p>故最终可由叠加原理求得</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{Bmatrix}x_1(t) \\x_2(t)\end{Bmatrix}=\frac{1}{\sqrt{2M_1}}\begin{bmatrix}1 &amp; 1 \\1 &amp; -1\end{bmatrix}\begin{Bmatrix}p_1(t) \\p_2(t)\end{Bmatrix}=\begin{Bmatrix}\frac{1}{\sqrt{2M_1}}[p_1(t)+p_2(t)] \\\frac{1}{\sqrt{2M_1}}[p_1(t)-p_2(t)]\end{Bmatrix}
+\end{split}\]</div>
+<p>因而两个阶段的系统物理坐标的响应分别为：</p>
+<p>当 <span class="math notranslate nohighlight">\(0\leqslant t\leqslant t_1\)</span> 时，</p>
+<div class="math notranslate nohighlight">
+\[
+x_1(t)=\frac{F_0}{2M_1}\left[\frac{1-\cos\omega_{\mathrm{n}1}t}{\omega_{\mathrm{n}1}^2}+\frac{1-\cos\omega_{\mathrm{n}2}t}{\omega_{\mathrm{n}2}^2}\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x_2(t)=\frac{F_0}{2M_1}\left[\frac{1-\cos\omega_{\mathrm{n}1}t}{\omega_{\mathrm{n}1}^2}-\frac{1-\cos\omega_{\mathrm{n}2}t}{\omega_{\mathrm{n}2}^2}\right]
+\]</div>
+<p>当 <span class="math notranslate nohighlight">\(t&gt;t_1\)</span> 时，</p>
+<div class="math notranslate nohighlight">
+\[
+x_1(t)=\frac{F_0}{M_1}\left[\frac{1}{\omega_{\mathrm{n}1}^2}\sin\frac{\omega_{\mathrm{n}1}t_1}{2}\sin\omega_{\mathrm{n}1}\left(t-\frac{t_1}{2}\right)+\frac{1}{\omega_{\mathrm{n}2}^2}\sin\frac{\omega_{\mathrm{n}2}t_1}{2}\sin\omega_{\mathrm{n}2}\left(t-\frac{t_1}{2}\right)\right]
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+x_2(t)=\frac{F_0}{M_1}\left[\frac{1}{\omega_{\mathrm{n}1}^2}\sin\frac{\omega_{\mathrm{n}1}t_1}{2}\sin\omega_{\mathrm{n}1}\left(t-\frac{t_1}{2}\right)-\frac{1}{\omega_{\mathrm{n}2}^2}\sin\frac{\omega_{\mathrm{n}2}t_1}{2}\sin\omega_{\mathrm{n}2}\left(t-\frac{t_1}{2}\right)\right]
+\]</div>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.3.3. </span>系统对正弦激励的响应<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h3><span class="section-number">2.3.3.1. </span>振型叠加法求响应<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<p>若系统受到简谐激励 <span class="math notranslate nohighlight">\(\boldsymbol{F}(t)=\boldsymbol{F}_0\sin\omega t\)</span> 作用，则式 <a class="reference internal" href="#equation-eq-2-106">(2.32)</a> 可写为</p>
+<div class="math notranslate nohighlight">
+\[
+\ddot{p}_r+2\zeta_r\omega_{\mathrm{n}r}\dot{p}_r+\omega_{\mathrm{n}r}^2p_r=\left(\frac{1}{M_r}\right)\widetilde{F}_r\sin\omega t
+\]</div>
+<p>式中，</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-112">
+<span class="eqno">(2.38)<a class="headerlink" href="#equation-eq-2-112" title="Link to this equation">#</a></span>\[
+\widetilde{F}_r=\boldsymbol{\varphi}^{(r)\mathrm{T}}\boldsymbol{F}_0
+\]</div>
+<p>如果将正弦力用复数力表示，则</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-113">
+<span class="eqno">(2.39)<a class="headerlink" href="#equation-eq-2-113" title="Link to this equation">#</a></span>\[
+\ddot{\overline{p}}_r+2\zeta_r\omega_{\mathrm{n}r}\dot{\overline{p}}_r+\omega_{\mathrm{n}r}^2\overline{p}_r=\left(\frac{1}{M_r}\right)\widetilde{F}_r\mathrm{e}^{\mathrm{i}\omega t}
+\]</div>
+<p>主坐标 <span class="math notranslate nohighlight">\(\overline{p}_r\)</span> 的复数稳态解可写为如下形式：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-114">
+<span class="eqno">(2.40)<a class="headerlink" href="#equation-eq-2-114" title="Link to this equation">#</a></span>\[
+\overline{p}_r=\overline{H}(\omega)\widetilde{F}_r\mathrm{e}^{\mathrm{i}\omega t}
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\overline{H}(\omega)\)</span>——主坐标的复频响应函数，其中第 <span class="math notranslate nohighlight">\(r\)</span> 个元素为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-115">
+<span class="eqno">(2.41)<a class="headerlink" href="#equation-eq-2-115" title="Link to this equation">#</a></span>\[
+\overline{H}_r(\omega)=\frac{1/K_r}{(1-\gamma_r^2)+\mathrm{i}(2\zeta_r\gamma_r)},\quad K_r=M_r\omega_{\mathrm{n}r}^2\text{ 和 }\gamma_r=\frac{\omega}{\omega_{\mathrm{n}r}}
+\]</div>
+<p>因此，物理坐标的频率响应可写为以下复数形式：</p>
+<div class="math notranslate nohighlight">
+\[
+\overline{\boldsymbol{q}}=\boldsymbol{\Phi}\overline{\boldsymbol{p}}(t)=\sum_{r=1}^n\boldsymbol{\varphi}^{(r)}\overline{p}_r(t)
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-2-116">
+<span class="eqno">(2.42)<a class="headerlink" href="#equation-eq-2-116" title="Link to this equation">#</a></span>\[
+=\sum_{r=1}^n\left(\frac{\boldsymbol{\varphi}^{(r)}\boldsymbol{\varphi}^{(r)\mathrm{T}}\boldsymbol{F}_0}{K_r}\right)\left[\frac{1}{(1-\gamma_r^2)+\mathrm{i}(2\zeta_r\gamma_r)}\right]\mathrm{e}^{\mathrm{i}\omega t}
+\]</div>
+<p>因而，在坐标 <span class="math notranslate nohighlight">\(q_j\)</span> 处受单位简谐力作用，而在坐标 <span class="math notranslate nohighlight">\(q_i\)</span> 处的复数响应</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-117">
+<span class="eqno">(2.43)<a class="headerlink" href="#equation-eq-2-117" title="Link to this equation">#</a></span>\[
+\overline{H}_{ij}(\omega)=\sum_{r=1}^n\left(\frac{\varphi_j^{(r)}\varphi_i^{(r)}}{K_r}\right)\left[\frac{1}{(1-\gamma_r^2)+\mathrm{i}(2\zeta_r\gamma_r)}\right]
+\]</div>
+<p>称为复频响应函数，有时又称为传递函数，常常用于实验确定系统振动特性的场合。由式 <a class="reference internal" href="#equation-eq-2-117">(2.43)</a> 不难写出其实部和虚部。激励力是正弦形式，取式 <a class="reference internal" href="#equation-eq-2-116">(2.42)</a> 的虚部，便得到稳态响应的最终解：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-118">
+<span class="eqno">(2.44)<a class="headerlink" href="#equation-eq-2-118" title="Link to this equation">#</a></span>\[
+\boldsymbol{q}(t)=\sum_{r=1}^n\left(\frac{\boldsymbol{\varphi}^{(r)}\boldsymbol{\varphi}^{(r)\mathrm{T}}\boldsymbol{F}_0}{K_r}\right)\left[\frac{1}{\sqrt{(1-\gamma_r^2)^2+(2\zeta_r\gamma_r)^2}}\right]\sin(\omega t-\alpha_r)
+\]</div>
+<p>式中，</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-119">
+<span class="eqno">(2.45)<a class="headerlink" href="#equation-eq-2-119" title="Link to this equation">#</a></span>\[
+\alpha = \arctan\frac{2\zeta_r\gamma_r}{1-\gamma_r^2}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>例2.16</strong> 如图2-16(a)所示的两自由度系统，已知 <span class="math notranslate nohighlight">\(Q_1(t)=Q_0\cos\omega t,K_1=987,K_2=217,C_1=0.6284,C_2=0.0628\)</span>。求：</p>
+<ol class="arabic simple">
+<li><p>无阻尼的固有频率 <span class="math notranslate nohighlight">\(f_1\)</span>、<span class="math notranslate nohighlight">\(f_2\)</span> 和固有振型。</p></li>
+<li><p>复频率响应函数 <span class="math notranslate nohighlight">\(H_{11}(\omega)\)</span> 及 <span class="math notranslate nohighlight">\(H_{21}(\omega)\)</span> 的模态展开式。</p></li>
+</ol>
+<p><strong>图2-16 两自由度系统示意图</strong></p>
+<p>解：(1) 由图2-16(b)所示的受力图，写出运动微分方程为</p>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}M &amp; 0 \cr 0 &amp; M\end{bmatrix}\begin{Bmatrix}\ddot{x}_1 \cr \ddot{x}_2\end{Bmatrix}+\begin{bmatrix}(C_1+C_2) &amp; -C_2 \cr -C_2 &amp; (C_1+C_2)\end{bmatrix}\begin{Bmatrix}\dot{x}_1 \cr \dot{x}_2\end{Bmatrix}+
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\begin{bmatrix}(K_1+K_2) &amp; -K_2 \cr -K_2 &amp; (K_1+K_2)\end{bmatrix}\begin{Bmatrix}x_1 \cr x_2\end{Bmatrix}=\begin{Bmatrix}Q_0\cos\omega t \cr 0\end{Bmatrix} \tag{1}
+\]</div>
+<p>由特征值问题</p>
+<div class="math notranslate nohighlight">
+\[
+\left[\begin{bmatrix}(K_1+K_2) &amp; -K_2 \cr -K_2 &amp; (K_1+K_2)\end{bmatrix}-\omega_{\mathrm{n}}^2\begin{bmatrix}M &amp; 0 \cr 0 &amp; M\end{bmatrix}\right]\begin{Bmatrix}A_1 \cr A_2\end{Bmatrix}=\begin{Bmatrix}0 \cr 0\end{Bmatrix} \tag{2}
+\]</div>
+<p>求得</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{\mathrm{n}1}^2=\frac{K}{M}=987,\quad (\boldsymbol{\rho}^{(1)})^\mathrm{T}=\{1\quad 1\}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+\omega_{\mathrm{n}2}^2=\frac{K_1+2K_2}{M}=1421,\quad (\boldsymbol{\rho}^{(2)})^\mathrm{T}=\{1\quad -1\}  \tag{3}
+\]</div>
+<p>于是有</p>
+<div class="math notranslate nohighlight">
+\[
+f_1=\frac{\omega_{\mathrm{n}1}}{2\pi}=\frac{31.42}{2\pi}=5.00\mathrm{Hz}
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+f_2=\frac{\omega_{\mathrm{n}2}}{2\pi}=\frac{37.70}{2\pi}=6.00\mathrm{Hz}  \tag{4}
+\]</div>
+<p>并经正则化，求出正则振型为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\varphi}^{(1)}=\begin{Bmatrix}0.707 \\0.707\end{Bmatrix},\quad \boldsymbol{\varphi}^{(2)}=\begin{Bmatrix}0.707 \\-0.707\end{Bmatrix}  \tag{5}
+\end{split}\]</div>
+<p>(2) 求复频率响应函数 <span class="math notranslate nohighlight">\(H_{11}(\omega)\)</span>、<span class="math notranslate nohighlight">\(H_{21}(\omega)\)</span>。由式 <a class="reference internal" href="#equation-eq-2-119">(2.45)</a> 得</p>
+<div class="math notranslate nohighlight">
+\[
+H_{ij}(\omega)=\sum_{r=1}^2\frac{\varphi_i^{(r)}\varphi_j^{(r)}}{\omega_{\mathrm{n}r}^2}\frac{1}{1-\left(\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2+\mathrm{i}2\zeta_r\left(\frac{\omega}{\omega_{\mathrm{n}r}}\right)} \tag{6}
+\]</div>
+<p>即有</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\begin{aligned}
+H_{11}(\omega) &amp;= \frac{(0.707)(0.707)}{987}\left[\frac{1}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}2(0.01)\frac{\omega}{31.42}}\right] \\
+&amp;\quad + \frac{(0.707)(0.707)}{1421}\left[\frac{1}{1-\frac{\omega^2}{(37.7)^2}+\mathrm{i}2(0.01)\frac{\omega}{37.7}}\right] \\
+&amp;= \frac{(5.064)\times10^{-4}}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}(0.02)\frac{\omega}{31.42}} + \frac{(3.58)\times10^{-4}}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}(0.02)\frac{\omega}{37.7}}
+\end{aligned}
+\tag{7}
+\end{split}\]</div>
+<p>同样有
+$<span class="math notranslate nohighlight">\(
+\begin{aligned}
+H_{21}(\omega) &amp;= \frac{(0.707)(0.707)}{987}\left[\frac{1}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}2(0.01)\frac{\omega}{31.42}}\right] \\
+&amp;\quad + \frac{(-0.707)(0.707)}{1421}\left[\frac{1}{1-\frac{\omega^2}{(37.7)^2}+\mathrm{i}2(0.01)\frac{\omega}{37.7}}\right] \\
+&amp;= \frac{(5.064)\times10^{-4}}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}(0.02)\frac{\omega}{31.42}} - \frac{(3.519)\times10^{-4}}{1-\frac{\omega^2}{(37.7)^2}+\mathrm{i}(0.02)\frac{\omega}{37.7}}
+\end{aligned}
+\tag{8}
+\)</span>$</p>
+<p>将式(6)的实部和虚部表示如下：
+$<span class="math notranslate nohighlight">\(
+R(H_{ij})=\sum_{r=1}^2\left(\frac{\varphi_i^{(r)}\varphi_j^{(r)}}{\omega_{\mathrm{n}r}^2}\right)\left[\frac{1-\left(\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2}{\left(1-\left(\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2\right)^2+\left(2\zeta_r\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2}\right] \tag{9}
+\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+I(H_{ij})=\sum_{r=1}^2\left(\frac{\varphi_i^{(r)}\varphi_j^{(r)}}{\omega_{\mathrm{n}r}^2}\right)\left[\frac{-2\zeta_r\frac{\omega}{\omega_{\mathrm{n}r}}}{\left(1-\left(\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2\right)^2+\left(2\zeta_r\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2}\right] \tag{10}
+\]</div>
+<p>式(9)和式(10)均是激励频率 <span class="math notranslate nohighlight">\(\omega\)</span> 的实函数。若将 <span class="math notranslate nohighlight">\(H_{11}(\omega)\)</span> 的实部和虚部分别用式(9)和式(10)表示，并令 <span class="math notranslate nohighlight">\(f=\frac{\omega}{2\pi}\)</span>，则可以分别绘出 <span class="math notranslate nohighlight">\(R(H_{11})\)</span> 和 <span class="math notranslate nohighlight">\(I(H_{11})\)</span> 的函数曲线，如图 2-17 所示。由图可见，在固有频率 <span class="math notranslate nohighlight">\(f_1\)</span> 和 <span class="math notranslate nohighlight">\(f_2\)</span> 处，<span class="math notranslate nohighlight">\(R(H_{11})\)</span> 接近等于零，而 <span class="math notranslate nohighlight">\(I(H_{11})\)</span> 有最大值。此种曲线在振动试验中很有用。</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>例2.17</strong> 图示三质量弹簧系统，在其最外端质量 <span class="math notranslate nohighlight">\(M\)</span> 上作用了常值阶跃激励力 <span class="math notranslate nohighlight">\(p_0\)</span>。若不计系统阻尼，试求系统的零初值位移响应。</p>
+<p><strong>图2-18 三质量弹簧系统</strong></p>
+<p>解：(1) 先行求得该系统的主模态，即模态频率（主频率）为</p>
+<div class="math notranslate nohighlight">
+\[
+\omega_{\mathrm{n}1}^2=0.198\frac{K}{M};\quad \omega_{\mathrm{n}2}^2=1.555\frac{K}{M};\quad \omega_{\mathrm{n}3}^2=3.247\frac{K}{M}
+\]</div>
+<p>模态矩阵为</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{\rho}=\begin{bmatrix}1 &amp; 1 &amp; 1 \\1.802 &amp; 0.445 &amp; -1.247 \\2.247 &amp; -0.802 &amp; 0.555\end{bmatrix}
+\end{split}\]</div>
+<p>模态质量为</p>
+<div class="math notranslate nohighlight">
+\[
+M^{(1)}=9.296;\quad M^{(2)}=1.841;\quad M^{(3)}=2.863
+\]</div>
+<p>(2) 计算广义力。</p>
+<p>因为</p>
+<div class="math notranslate nohighlight">
+\[
+\boldsymbol{F} = \begin{bmatrix}0 &amp; 0 &amp; p_0\end{bmatrix}^\mathrm{T}
+\]</div>
+<p>则广义力</p>
+<div class="math notranslate nohighlight">
+\[
+F_r(t)=\boldsymbol{\rho}^{(r)}_{(1\times3)}\boldsymbol{F}_{(3\times1)}\ (r=1,2,3)
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+F_1(t)=2.247p_0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+F_2(t)=-0.802p_0
+\]</div>
+<div class="math notranslate nohighlight">
+\[
+F_3(t)=0.555p_0
+\]</div>
+<p>(3) 计算主坐标的位移。</p>
+<div class="math notranslate nohighlight">
+\[
+p_i=\frac{F_i}{m^{(i)}\omega_{\mathrm{n}i}^2}(1-\cos\omega_{\mathrm{n}i}t)\quad (t&gt;0,i=1,2,3)
+\]</div>
+<p>故</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{p}=\begin{Bmatrix}p_1 \\p_2 \\p_3\end{Bmatrix}=\begin{Bmatrix}1.221(1-\cos\omega_{\mathrm{n}1}t) \\-0.280(1-\cos\omega_{\mathrm{n}2}t) \\0.060(1-\cos\omega_{\mathrm{n}3}t)\end{Bmatrix}\frac{p_0}{K}
+\end{split}\]</div>
+<p>(4) 由振型叠加法求得系统物理坐标的响应。</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}
+\boldsymbol{q}=\boldsymbol{\rho}\boldsymbol{p}=\begin{bmatrix}1 &amp; 1 &amp; 1 \\1.802 &amp; 0.445 &amp; -1.247 \\2.247 &amp; -0.802 &amp; 0.555\end{bmatrix}\begin{Bmatrix}1.221(1-\cos\omega_{\mathrm{n}1}t) \\-0.280(1-\cos\omega_{\mathrm{n}2}t) \\0.060(1-\cos\omega_{\mathrm{n}3}t)\end{Bmatrix}\frac{p_0}{K}
+\end{split}\]</div>
+</div>
+</section>
+<section id="id6">
+<h3><span class="section-number">2.3.3.2. </span>直接解法<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<p>当系统受到简谐激励作用时，可以用复数方法直接求解。设简谐激励力为 <span class="math notranslate nohighlight">\(F_0\mathrm{e}^{\mathrm{i}\omega t}\)</span>，则运动方程式为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-120">
+<span class="eqno">(2.46)<a class="headerlink" href="#equation-eq-2-120" title="Link to this equation">#</a></span>\[
+\boldsymbol{M}\ddot{\boldsymbol{q}}+\boldsymbol{C}\dot{\boldsymbol{q}}+\boldsymbol{K}\boldsymbol{q}=\boldsymbol{F}_0\mathrm{e}^{\mathrm{i}\omega t}
+\]</div>
+<p>式中，<span class="math notranslate nohighlight">\(\boldsymbol{F}_0=[F_{01},F_{02},\dots,F_{0n}]^\mathrm{T}\)</span>——激励力的幅值分量。</p>
+<p>设其稳态响应为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-121">
+<span class="eqno">(2.47)<a class="headerlink" href="#equation-eq-2-121" title="Link to this equation">#</a></span>\[
+\boldsymbol{q}(t)=\boldsymbol{q}_0\mathrm{e}^{\mathrm{i}\omega t}
+\]</div>
+<p>代入式<a class="reference internal" href="#equation-eq-2-120">(2.46)</a>，并消去 <span class="math notranslate nohighlight">\(\mathrm{e}^{\mathrm{i}\omega t}\)</span> 后，便得到矩阵运算式：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-122">
+<span class="eqno">(2.48)<a class="headerlink" href="#equation-eq-2-122" title="Link to this equation">#</a></span>\[
+(\boldsymbol{K}-\omega^2\boldsymbol{M}+\mathrm{i}\omega\boldsymbol{C})\boldsymbol{q}_0=\boldsymbol{F}_0
+\]</div>
+<p>设矩阵</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-123">
+<span class="eqno">(2.49)<a class="headerlink" href="#equation-eq-2-123" title="Link to this equation">#</a></span>\[
+\boldsymbol{G}=(\boldsymbol{K}-\omega^2\boldsymbol{M}+\mathrm{i}\omega\boldsymbol{C})^{-1}
+\]</div>
+<p>代入上式即可得</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-124">
+<span class="eqno">(2.50)<a class="headerlink" href="#equation-eq-2-124" title="Link to this equation">#</a></span>\[
+\boldsymbol{q}_0=\boldsymbol{G}\boldsymbol{F}_0
+\]</div>
+<p>则式<a class="reference internal" href="#equation-eq-2-120">(2.46)</a>的稳态响应为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-125">
+<span class="eqno">(2.51)<a class="headerlink" href="#equation-eq-2-125" title="Link to this equation">#</a></span>\[
+\boldsymbol{q}(t)=\boldsymbol{G}\boldsymbol{F}_0\mathrm{e}^{\mathrm{i}\omega t}
+\]</div>
+<p>由以上两式可知，矩阵 <span class="math notranslate nohighlight">\(\boldsymbol{G}\)</span> 建立了系统的激励（又称输入）<span class="math notranslate nohighlight">\(\boldsymbol{F}_0\)</span> 和位移响应（又称输出）<span class="math notranslate nohighlight">\(\boldsymbol{q}_0\)</span> 之间的联系，因此称为传递函数矩阵。由于其元素是随激励频率 <span class="math notranslate nohighlight">\(\omega\)</span> 变化的复函数，又因其具有柔度的量纲，故也可称为动柔度矩阵，有时亦称为复频接受率矩阵或导纳矩阵。</p>
+<p><span class="math notranslate nohighlight">\(\boldsymbol{G}\)</span> 的物理意义是，由单位简谐力所引起的系统响应。其元素 <span class="math notranslate nohighlight">\(g_{ij}\)</span> 表示在 <span class="math notranslate nohighlight">\(j\)</span> 坐标上作用一个圆频率为 <span class="math notranslate nohighlight">\(\omega\)</span> 的单位简谐力时，在 <span class="math notranslate nohighlight">\(i\)</span> 坐标所引起的稳态响应（包括振幅和相位的响应）。在工程中，常由实验方法确定 <span class="math notranslate nohighlight">\(g_{ij}\)</span>，从而确定系统的固有频率。传递函数的测试与分析，广泛地应用于工程中。</p>
+</section>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -504,6 +1007,27 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 阻尼的表达与处理</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 系统对任意激励的响应</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.3. 系统对正弦激励的响应</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.3.1. 振型叠加法求响应</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.3.2. 直接解法</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

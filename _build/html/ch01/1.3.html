@@ -555,19 +555,25 @@ X_{\mathrm{dyn}}=\frac{1}{1-r^{2}}x_{\mathrm{st}}
 \]</div>
 <p><span class="math notranslate nohighlight">\(\beta\)</span> 与 <span class="math notranslate nohighlight">\(r\)</span> 的关系如<a class="reference internal" href="#fig1-15"><span class="xref myst">图 1-15</span></a> 所示。
 由<a class="reference internal" href="#fig1-15"><span class="xref myst">图 1-15</span></a>可见, 动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 与 <span class="math notranslate nohighlight">\(r\)</span> 有很大的关系。参照图 2-15 讨论以下 3 种情况：</p>
-<p>(1) 如果 <span class="math notranslate nohighlight">\(\theta\ll\omega\)</span>, 即 <span class="math notranslate nohighlight">\(r\approx0\)</span>, 则</p>
+<ol class="arabic simple">
+<li><p>如果 <span class="math notranslate nohighlight">\(\theta\ll\omega\)</span>, 即 <span class="math notranslate nohighlight">\(r\approx0\)</span>, 则</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
 \beta\approx1,\quad X_{\mathrm{dyn}}\approx x_{\mathrm{st}}
 \]</div>
 <p>由此可见, 缓慢变化的简谐力的作用, 就产生的振幅大小而言, 接近于静力作用。</p>
-<p>(2) 如果 <span class="math notranslate nohighlight">\(\theta\gg\omega\)</span>, 即 <span class="math notranslate nohighlight">\(r\to\infty\)</span>, 则</p>
+<ol class="arabic simple" start="2">
+<li><p>如果 <span class="math notranslate nohighlight">\(\theta\gg\omega\)</span>, 即 <span class="math notranslate nohighlight">\(r\to\infty\)</span>, 则</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
 \beta\approx0,\quad X_{\mathrm{dyn}}\approx0
 \]</div>
 <p>可见, 当干扰力的频率远高于系统的自振频率时, 系统强迫振动的振幅非常微小。</p>
-<p>(3) 如果 <span class="math notranslate nohighlight">\(\theta\to\omega\)</span>, 即 <span class="math notranslate nohighlight">\(r\approx1\)</span>, 则</p>
+<ol class="arabic simple" start="3">
+<li><p>如果 <span class="math notranslate nohighlight">\(\theta\to\omega\)</span>, 即 <span class="math notranslate nohighlight">\(r\approx1\)</span>, 则</p></li>
+</ol>
 <div class="math notranslate nohighlight">
 \[
 \beta\to\infty,\quad X_{\mathrm{dyn}}\to\pm\infty
@@ -612,13 +618,13 @@ m=3500\ \mathrm{kg},\quad L=4\ \mathrm{m}
 \]</div>
 <p>在梁中点的最大挠度, 应包括静力与动力荷载所引起的挠度总和, 即</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
 \begin{aligned}
-x_{\max} &amp;= x_{\mathrm{st}} + X_{\mathrm{dyn}} = \frac{mgL^3}{48EJ} + \beta\frac{PL^3}{48EJ} \\
+x_{\max} &amp;= x_{\mathrm{st}} + X_{\mathrm{dyn}} = \frac{mgL^3}{48EJ} + \beta\frac{PL^3}{48EJ} \cr
 &amp;= \frac{(3500\times9.81 + 3.3\times19600)\times4^3}{48\times2.058\times10^{11}\times8.88\times10^{-5}} = 0.00722\ \mathrm{m}
 \end{aligned}
 \tag{5}
-\end{split}\]</div>
+\]</div>
 </div>
 </section>
 <section id="id3">
@@ -637,7 +643,7 @@ m\ddot{x}(t)+c\dot{x}(t)+kx(t)=F_{\mathrm{e}}(t)
 <span class="eqno">(1.70)<a class="headerlink" href="#equation-eq-1-68c" title="Link to this equation">#</a></span>\[
 \ddot{x}(t)+2\zeta\omega\dot{x}(t)+\omega^{2}x(t)=\frac{1}{m}F_{\mathrm{e}}(t)
 \]</div>
-<p>方程<code class="xref eq docutils literal notranslate"><span class="pre">eq:1-68</span></code>的通解仍是对应齐次方程的通解和非齐次方程的特解之和。前者与式<a class="reference internal" href="1.2.html#equation-eq-1-36">(1.36)</a>或式<a class="reference internal" href="1.2.html#equation-eq-1-39">(1.39)</a>完全相同。假定干扰力 <span class="math notranslate nohighlight">\(F_{\mathrm{e}}(t)=P\sin\theta t\)</span>, 则考虑阻尼作用的单自由度系统运动方程为[以方程<a class="reference internal" href="#equation-eq-1-68b">(1.69)</a>为例]</p>
+<p>方程<a class="reference internal" href="#equation-eq-1-68a">(1.68)</a>的通解仍是对应齐次方程的通解和非齐次方程的特解之和。前者与式<a class="reference internal" href="1.2.html#equation-eq-1-36">(1.36)</a>或式<a class="reference internal" href="1.2.html#equation-eq-1-39">(1.39)</a>完全相同。假定干扰力 <span class="math notranslate nohighlight">\(F_{\mathrm{e}}(t)=P\sin\theta t\)</span>, 则考虑阻尼作用的单自由度系统运动方程为[以方程<a class="reference internal" href="#equation-eq-1-68b">(1.69)</a>为例]</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-69">
 <span class="eqno">(1.71)<a class="headerlink" href="#equation-eq-1-69" title="Link to this equation">#</a></span>\[
 \ddot{x}+2\varepsilon\dot{x}+\omega^{2}x=\frac{P}{m}\sin\theta t
@@ -689,41 +695,42 @@ A=\sqrt{A_{1}^{2}+A_{2}^{2}}=\frac{P}{m\sqrt{(\theta^{2}-\omega^{2})^{2}+4\varep
 <span class="eqno">(1.76)<a class="headerlink" href="#equation-eq-1-74" title="Link to this equation">#</a></span>\[
 \tan\phi=\frac{2\varepsilon\theta}{\omega^{2}-\theta^{2}}
 \]</div>
-<p>由以上推导, 可知方程<a class="reference internal" href="#equation-eq-1-69">(1.71)</a>的通解为
-$<span class="math notranslate nohighlight">\(
+<p>由以上推导, 可知方程<a class="reference internal" href="#equation-eq-1-69">(1.71)</a>的通解为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-75a">
+<span class="eqno">(1.77)<a class="headerlink" href="#equation-eq-1-75a" title="Link to this equation">#</a></span>\[
 x=e^{-\varepsilon t}\left(B_{1}\sin\omega_{\varepsilon}t+B_{2}\cos\omega_{\varepsilon}t\right)+A\sin(\theta t-\phi)
-\)</span>$ (eq:1-75a)</p>
+\]</div>
 <p>或</p>
-<div class="math notranslate nohighlight" id="equation-eq-1-75">
-<span class="eqno">(1.77)<a class="headerlink" href="#equation-eq-1-75" title="Link to this equation">#</a></span>\[
+<div class="math notranslate nohighlight" id="equation-eq-1-75b">
+<span class="eqno">(1.78)<a class="headerlink" href="#equation-eq-1-75b" title="Link to this equation">#</a></span>\[
 x=e^{-\varepsilon t}\left(B_{1}\sin\omega_{\varepsilon}t+B_{2}\cos\omega_{\varepsilon}t\right)+A_{1}\cos\theta t+A_{2}\sin\theta t
 \]</div>
-<p>将初始条件 <span class="math notranslate nohighlight">\(x(0)=x_{0}\)</span> 与 <span class="math notranslate nohighlight">\(\dot{x}(0)=\dot{x}_{0}\)</span> 代入式<code class="xref eq docutils literal notranslate"><span class="pre">eq:1-75a</span></code>, 即可解出 <span class="math notranslate nohighlight">\(B_{1}\)</span> 与 <span class="math notranslate nohighlight">\(B_{2}\)</span>。则</p>
+<p>将初始条件 <span class="math notranslate nohighlight">\(x(0)=x_{0}\)</span> 与 <span class="math notranslate nohighlight">\(\dot{x}(0)=\dot{x}_{0}\)</span> 代入式<a class="reference internal" href="#equation-eq-1-75a">(1.77)</a>, 即可解出 <span class="math notranslate nohighlight">\(B_{1}\)</span> 与 <span class="math notranslate nohighlight">\(B_{2}\)</span>。则</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-76">
-<span class="eqno">(1.78)<a class="headerlink" href="#equation-eq-1-76" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.79)<a class="headerlink" href="#equation-eq-1-76" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 x(t)=&amp;e^{-\varepsilon t}\left(\frac{\dot{x}_{0}+\varepsilon x_{0}}{\omega_{\varepsilon}}\sin\omega_{\varepsilon}t+x_{0}\cos\omega_{\varepsilon}t\right)+ \\
 &amp;Ae^{-\varepsilon t}\left(\sin\phi\cos\omega_{\varepsilon}t+\frac{\varepsilon\sin\phi-\theta\cos\phi}{\omega_{\varepsilon}}\sin\omega_{\varepsilon}t\right)+A\sin(\theta t-\phi)
 \end{aligned}
 \end{split}\]</div>
-<p>上式的第 1 项为决定于初始条件的自由振动, 第 2 项表示伴生的自由振动。这两项皆因有阻尼的存在而逐渐衰减。第 3 项是纯强迫振动, 其振幅与周期都不随时间而变, 是稳定的周期运动。式<a class="reference internal" href="#equation-eq-1-76">(1.78)</a>所表示的系统的运动如<a class="reference internal" href="#fig1-17"><span class="xref myst">图 1-17</span></a> 所示。
-也可将初始条件 <span class="math notranslate nohighlight">\(x(0)=x_{0}\)</span> 与 <span class="math notranslate nohighlight">\(\dot{x}(0)=\dot{x}_{0}\)</span> 代入式\eqref{eq:1-75b}, 从而得到式<a class="reference internal" href="#equation-eq-1-76">(1.78)</a>的另一种形式</p>
+<p>上式的第 1 项为决定于初始条件的自由振动, 第 2 项表示伴生的自由振动。这两项皆因有阻尼的存在而逐渐衰减。第 3 项是纯强迫振动, 其振幅与周期都不随时间而变, 是稳定的周期运动。式<a class="reference internal" href="#equation-eq-1-76">(1.79)</a>所表示的系统的运动如<a class="reference internal" href="#fig1-17"><span class="xref myst">图 1-17</span></a> 所示。
+也可将初始条件 <span class="math notranslate nohighlight">\(x(0)=x_{0}\)</span> 与 <span class="math notranslate nohighlight">\(\dot{x}(0)=\dot{x}_{0}\)</span> 代入式\eqref{eq:1-75b}, 从而得到式<a class="reference internal" href="#equation-eq-1-76">(1.79)</a>的另一种形式</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-77">
-<span class="eqno">(1.79)<a class="headerlink" href="#equation-eq-1-77" title="Link to this equation">#</a></span>\[\begin{split}
+<span class="eqno">(1.80)<a class="headerlink" href="#equation-eq-1-77" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
 x(t)=&amp;e^{-\varepsilon t}\left[\frac{\dot{x}_{0}+\varepsilon(x_{0}-A_{1})}{\omega_{\varepsilon}}\sin\omega_{\varepsilon}t+x_{0}\cos\omega_{\varepsilon}t\right]- \\
 &amp;e^{-\varepsilon t}\left(\frac{A_{2}\theta}{\omega_{\varepsilon}}\sin\omega_{\varepsilon}t+A_{1}\cos\omega_{\varepsilon}t\right)+A_{1}\cos\theta t+A_{2}\sin\theta t
 \end{aligned}
 \end{split}\]</div>
-<p>由式<a class="reference internal" href="#equation-eq-1-76">(1.78)</a>知, 纯强迫振动的振幅</p>
+<p>由式<a class="reference internal" href="#equation-eq-1-76">(1.79)</a>知, 纯强迫振动的振幅</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-78">
-<span class="eqno">(1.80)<a class="headerlink" href="#equation-eq-1-78" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.81)<a class="headerlink" href="#equation-eq-1-78" title="Link to this equation">#</a></span>\[
 |X_{\mathrm{dyn}}|=A=\frac{P}{m\sqrt{(\theta^{2}-\omega^{2})^{2}+4\varepsilon^{2}\theta^{2}}}
 =\frac{1}{\sqrt{(1-r^{2})^{2}+4\zeta^{2}r^{2}}}x_{\mathrm{st}}
 \]</div>
 <p>式中, <span class="math notranslate nohighlight">\(r=\frac{\theta}{\omega}\)</span> 为干扰力频率与系统自振频率之比。上式还用到了关系式<a class="reference internal" href="1.2.html#equation-eq-1-10">(1.10)</a>, 即 <span class="math notranslate nohighlight">\(\omega^{2}=\frac{k}{m}\)</span> 以及关系式 <span class="math notranslate nohighlight">\(x_{\mathrm{st}}=\frac{P}{k}\)</span>。则动力放大系数</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-79">
-<span class="eqno">(1.81)<a class="headerlink" href="#equation-eq-1-79" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.82)<a class="headerlink" href="#equation-eq-1-79" title="Link to this equation">#</a></span>\[
 \beta=\frac{|X_{\mathrm{dyn}}|}{x_{\mathrm{st}}}=\frac{1}{\sqrt{(1-r^{2})^{2}+4\zeta^{2}r^{2}}}
 \]</div>
 <div class="admonition note">
@@ -744,7 +751,7 @@ x(t)=&amp;e^{-\varepsilon t}\left[\frac{\dot{x}_{0}+\varepsilon(x_{0}-A_{1})}{\o
 \[
 r=\frac{\theta}{\omega}=\frac{52.3}{62.6}=0.8368 \tag{3}
 \]</div>
-<p>由式<a class="reference internal" href="#equation-eq-1-79">(1.81)</a>可得动力放大系数</p>
+<p>由式<a class="reference internal" href="#equation-eq-1-79">(1.82)</a>可得动力放大系数</p>
 <div class="math notranslate nohighlight">
 \[
 \beta=\frac{1}{\sqrt{(1-0.8368^{2})^{2}+4\times0.0128^{2}\times0.8368^{2}}}\approx3.33 \tag{4}
@@ -764,6 +771,7 @@ r=\frac{\theta}{\omega}=\frac{52.3}{62.6}=0.8368 \tag{3}
 \[
 \beta\approx38.87 \tag{7}
 \]</div>
+</div>
 <p>考虑阻尼时, 动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 与 <span class="math notranslate nohighlight">\(r=\frac{\theta}{\omega}\)</span> 的关系如<a class="reference internal" href="#fig1-18"><span class="xref myst">图 1-18</span></a> 所示。</p>
 <p>由<a class="reference internal" href="#fig1-18"><span class="xref myst">图 1-18</span></a>可见, 在共振区附近, 阻尼对于降低动力放大系数或强迫振动振幅之值起着很大的作用。阻尼 <span class="math notranslate nohighlight">\(\zeta\)</span> 之值略为增加, 就可以使动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 之值降低很多; 但在远离共振区的地方, 阻尼的作用就很小了。</p>
 <p>为了确定 <span class="math notranslate nohighlight">\(r\)</span> 为何值时, <span class="math notranslate nohighlight">\(\beta\)</span> 达到最大值, 可令</p>
@@ -771,26 +779,27 @@ r=\frac{\theta}{\omega}=\frac{52.3}{62.6}=0.8368 \tag{3}
 \[
 \frac{\mathrm{d}\beta}{\mathrm{d}r}=0
 \]</div>
-<p>由式<a class="reference internal" href="#equation-eq-1-79">(1.81)</a>可求得</p>
+<p>由式<a class="reference internal" href="#equation-eq-1-79">(1.82)</a>可求得</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-80">
-<span class="eqno">(1.82)<a class="headerlink" href="#equation-eq-1-80" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.83)<a class="headerlink" href="#equation-eq-1-80" title="Link to this equation">#</a></span>\[
 r=\sqrt{1-2\zeta^{2}}
 \]</div>
-<p>由上式知, 动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 的最大值, 并不是发生在 <span class="math notranslate nohighlight">\(r=1\)</span> (即 <span class="math notranslate nohighlight">\(\theta=\omega\)</span>) 时, 而是发生在 <span class="math notranslate nohighlight">\(\theta\)</span> 略小于 <span class="math notranslate nohighlight">\(\omega\)</span> 时。但通常 <span class="math notranslate nohighlight">\(\zeta\ll1\)</span>, 故式<a class="reference internal" href="#equation-eq-1-80">(1.82)</a>等号右端总是非常接近于 1。因此, 在考虑阻尼的情况下, 仍可认为共振是发生在干扰力频率与系统无阻尼自振频率相等的时候。因此, 既然共振时 <span class="math notranslate nohighlight">\(\theta\approx\omega\)</span>, 将其代入式<a class="reference internal" href="#equation-eq-1-79">(1.81)</a>, 可得最大动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 的近似值。</p>
+<p>由上式知, 动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 的最大值, 并不是发生在 <span class="math notranslate nohighlight">\(r=1\)</span> (即 <span class="math notranslate nohighlight">\(\theta=\omega\)</span>) 时, 而是发生在 <span class="math notranslate nohighlight">\(\theta\)</span> 略小于 <span class="math notranslate nohighlight">\(\omega\)</span> 时。但通常 <span class="math notranslate nohighlight">\(\zeta\ll1\)</span>, 故式<a class="reference internal" href="#equation-eq-1-80">(1.83)</a>等号右端总是非常接近于 1。因此, 在考虑阻尼的情况下, 仍可认为共振是发生在干扰力频率与系统无阻尼自振频率相等的时候。因此, 既然共振时 <span class="math notranslate nohighlight">\(\theta\approx\omega\)</span>, 将其代入式<a class="reference internal" href="#equation-eq-1-79">(1.82)</a>, 可得最大动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 的近似值。</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-81">
-<span class="eqno">(1.83)<a class="headerlink" href="#equation-eq-1-81" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.84)<a class="headerlink" href="#equation-eq-1-81" title="Link to this equation">#</a></span>\[
 \beta_{\max}=\frac{1}{2\zeta}
 \]</div>
-<p>因
-$<span class="math notranslate nohighlight">\(
+<p>因</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-82">
+<span class="eqno">(1.85)<a class="headerlink" href="#equation-eq-1-82" title="Link to this equation">#</a></span>\[
 \beta_{\max}=\frac{x_{\max}}{x_{\mathrm{st}}}
-\)</span>$ (eq:1-82)</p>
-<p>故不难得到
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>故不难得到</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-83">
+<span class="eqno">(1.86)<a class="headerlink" href="#equation-eq-1-83" title="Link to this equation">#</a></span>\[
 \zeta=\frac{1}{2\beta_{\max}}=\frac{x_{\mathrm{st}}}{2x_{\max}}
-\)</span>$ (eq:1-83)</p>
-<p>因此, 在简谐干扰力作用下, 如能算出 <span class="math notranslate nohighlight">\(x_{\mathrm{st}}\)</span>, 只要再测出最大动力位移值 <span class="math notranslate nohighlight">\(x_{\max}\)</span>, 便不难由式<code class="xref eq docutils literal notranslate"><span class="pre">eq:1-83</span></code>计算阻尼比。测定阻尼系数的这一方法通常称为<strong>共振振幅法</strong>(Resonance Amplification Method)。</p>
-</div>
+\]</div>
+<p>因此, 在简谐干扰力作用下, 如能算出 <span class="math notranslate nohighlight">\(x_{\mathrm{st}}\)</span>, 只要再测出最大动力位移值 <span class="math notranslate nohighlight">\(x_{\max}\)</span>, 便不难由式<a class="reference internal" href="#equation-eq-1-83">(1.86)</a>计算阻尼比。测定阻尼系数的这一方法通常称为<strong>共振振幅法</strong>(Resonance Amplification Method)。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>【例2-7】某部件在液体中运动, 干扰力 <span class="math notranslate nohighlight">\(P=49\sin\theta t\ (\mathrm{N})\)</span>, 在周期 <span class="math notranslate nohighlight">\(\tau=0.2\ \mathrm{s}\)</span> 时发生共振, 振幅为 <span class="math notranslate nohighlight">\(0.50\ \mathrm{cm}\)</span>, 求阻尼系数 <span class="math notranslate nohighlight">\(c\)</span>。</p>
@@ -798,7 +807,7 @@ $<span class="math notranslate nohighlight">\(
 $<span class="math notranslate nohighlight">\(
 \theta=\frac{2\pi}{\tau}=\frac{2\pi}{0.2}=10\pi \tag{1}
 \)</span>$</p>
-<p>因此, 可判断该部件的自振频率为 <span class="math notranslate nohighlight">\(\omega=10\pi\)</span>。由式<a class="reference internal" href="1.2.html#equation-eq-1-27">(1.27)</a>、式<a class="reference internal" href="1.2.html#equation-eq-1-42">(1.42)</a>和式<code class="xref eq docutils literal notranslate"><span class="pre">eq:1-83</span></code>知</p>
+<p>因此, 可判断该部件的自振频率为 <span class="math notranslate nohighlight">\(\omega=10\pi\)</span>。由式<a class="reference internal" href="1.2.html#equation-eq-1-27">(1.27)</a>、式<a class="reference internal" href="1.2.html#equation-eq-1-42">(1.42)</a>和式<a class="reference internal" href="#equation-eq-1-83">(1.86)</a>知</p>
 <div class="math notranslate nohighlight">
 \[
 c=2m\varepsilon=2m\omega\zeta=\frac{m\omega x_{\mathrm{st}}}{x_{\max}} \tag{2}
@@ -816,27 +825,27 @@ c=\frac{P}{x_{\max}\omega}=\frac{49}{0.005\times10\pi}=311.9\ \mathrm{N\cdot s/m
 </div>
 <p>纯强迫位移响应与简谐干扰力的相位差 <span class="math notranslate nohighlight">\(\phi\)</span> 由式<a class="reference internal" href="#equation-eq-1-74">(1.76)</a>求得为</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-84">
-<span class="eqno">(1.84)<a class="headerlink" href="#equation-eq-1-84" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.87)<a class="headerlink" href="#equation-eq-1-84" title="Link to this equation">#</a></span>\[
 \phi=\arctan\left(\frac{2\varepsilon\theta}{\omega^{2}-\theta^{2}}\right)=\arctan\frac{2\zeta r}{1-r^{2}}
 \]</div>
 <p>它与 <span class="math notranslate nohighlight">\(r=\frac{\theta}{\omega}\)</span> 的关系如<a class="reference internal" href="#1-19"><span class="xref myst">图 1-19</span></a> 所示。在零阻尼情况下, 当 <span class="math notranslate nohighlight">\(r&lt;1\)</span> (即 <span class="math notranslate nohighlight">\(\theta&lt;\omega\)</span>) 时, 强迫振动正好与干扰力同相(<span class="math notranslate nohighlight">\(\phi=0\)</span>); 当 <span class="math notranslate nohighlight">\(r&gt;1\)</span> (即 <span class="math notranslate nohighlight">\(\theta&gt;\omega\)</span>) 时, 强迫振动则刚好与干扰力反相(<span class="math notranslate nohighlight">\(\phi=\pi\)</span>); 当共振时, 可以看出相位 <span class="math notranslate nohighlight">\(\phi\)</span> 是不定的。当存在阻尼时, 纯强迫位移响应总是滞后于干扰力。阻尼不同, 滞后相位角也不同。但是当 <span class="math notranslate nohighlight">\(r=1\)</span> (共振) 时, 无论阻尼是多少, 相位角都等于 <span class="math notranslate nohighlight">\(\frac{\pi}{2}\)</span>。因此也可以利用这一性质由实验测定系统的固有频率。</p>
 <p>对于远离共振区域的 <span class="math notranslate nohighlight">\(r\)</span> 值, 当阻尼很小时, 相位 <span class="math notranslate nohighlight">\(\phi\)</span> 与不考虑阻尼时相差不大。亦即在 <span class="math notranslate nohighlight">\(r\)</span> 低于共振区很远时, 相位 <span class="math notranslate nohighlight">\(\phi\)</span> 接近于 <span class="math notranslate nohighlight">\(0\)</span>; 在 <span class="math notranslate nohighlight">\(r\)</span> 远高于共振区时, 相位 <span class="math notranslate nohighlight">\(\phi\)</span> 接近于 <span class="math notranslate nohighlight">\(\pi\)</span>。因而阻尼对相位的影响常忽略不计, 但在共振区域附近除外。</p>
 <p>在实际测振时, 还常用下面的<strong>带宽法</strong>(Band-Width Method)或<strong>半功率法</strong>(Half-Power Method)来求得系统的阻尼系数。假定在某项实测中, 得到一条频率-振幅曲线, 如图 2-20 所示。自振频率为 <span class="math notranslate nohighlight">\(\omega\)</span>, 它对应的振幅峰值为 <span class="math notranslate nohighlight">\(A_{0}\)</span>, 而与振幅 <span class="math notranslate nohighlight">\(0.707A_{0}\)</span> 对应的频率共有 2 个, 分别记为 <span class="math notranslate nohighlight">\(\omega_{1}\)</span> 和 <span class="math notranslate nohighlight">\(\omega_{2}\)</span>。则阻尼比的近似表达式为</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-85">
-<span class="eqno">(1.85)<a class="headerlink" href="#equation-eq-1-85" title="Link to this equation">#</a></span>\[
+<span class="eqno">(1.88)<a class="headerlink" href="#equation-eq-1-85" title="Link to this equation">#</a></span>\[
 \zeta=\frac{\omega_{2}-\omega_{1}}{2\omega}
 \]</div>
-<p>当 <span class="math notranslate nohighlight">\(\theta=\omega\)</span>, 即 <span class="math notranslate nohighlight">\(r=1\)</span> 时, 由式\eqref{eq:1-82}和式\eqref{eq:1-83}得</p>
+<p>当 <span class="math notranslate nohighlight">\(\theta=\omega\)</span>, 即 <span class="math notranslate nohighlight">\(r=1\)</span> 时, 由式<a class="reference internal" href="#equation-eq-1-82">(1.85)</a>和式<a class="reference internal" href="#equation-eq-1-83">(1.86)</a>得</p>
 <div class="math notranslate nohighlight">
 \[
 A_{0}=x_{\mathrm{st}}\beta_{\max}=\frac{x_{\mathrm{st}}}{2\zeta} \tag{1}
 \]</div>
-<p>由式<a class="reference internal" href="#equation-eq-1-79">(1.81)</a>可知</p>
+<p>由式<a class="reference internal" href="#equation-eq-1-79">(1.82)</a>可知</p>
 <div class="math notranslate nohighlight">
 \[
 A_{1}^{2}=A_{2}^{2}=\beta^{2}x_{\mathrm{st}}^{2}=\frac{x_{\mathrm{st}}^{2}}{(1-r^{2})^{2}+4r^{2}\zeta^{2}} \tag{2}
 \]</div>
-<p>注意到 <span class="math notranslate nohighlight">\(A_{1}=A_{2}=0.707A_{0}\)</span>, 再由式①和式②, 可知与 <span class="math notranslate nohighlight">\(A_{1}\)</span>、<span class="math notranslate nohighlight">\(A_{2}\)</span> 所对应的 <span class="math notranslate nohighlight">\(r\)</span> 值应满足方程</p>
+<p>注意到 <span class="math notranslate nohighlight">\(A_{1}=A_{2}=0.707A_{0}\)</span>, 再由式(1)和式(2), 可知与 <span class="math notranslate nohighlight">\(A_{1}\)</span>、<span class="math notranslate nohighlight">\(A_{2}\)</span> 所对应的 <span class="math notranslate nohighlight">\(r\)</span> 值应满足方程</p>
 <div class="math notranslate nohighlight">
 \[
 8\zeta^{2}=(1-r^{2})^{2}+4r^{2}\zeta^{2} \tag{3}
@@ -877,7 +886,7 @@ r_{2}-r_{1}=2\zeta \tag{9}
 \[
 \frac{\omega_{2}}{\omega}-\frac{\omega_{1}}{\omega}=2\zeta \tag{10}
 \]</div>
-<p>于是得到式<a class="reference internal" href="#equation-eq-1-85">(1.85)</a>。</p>
+<p>于是得到式<a class="reference internal" href="#equation-eq-1-85">(1.88)</a>。</p>
 </section>
 </section>
 
