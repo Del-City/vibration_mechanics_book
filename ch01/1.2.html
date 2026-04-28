@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -446,7 +446,13 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 无阻尼自由振动</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 有阻尼自由振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 有阻尼自由振动</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#over-critically-damped-system">1.2.2.1. 超临界阻尼系统(Over Critically Damped System)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#critically-damped-system">1.2.2.2. 临界阻尼系统(Critically Damped System)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#under-critically-damped-system">1.2.2.3. 低临界阻尼系统(Under Critically Damped System)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.2.3. 交互探索：阻尼如何影响振动？</a></li>
 </ul>
             </nav>
         </div>
@@ -460,37 +466,306 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.2. </span>自由振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>系统在初始扰动（初始位移或初始速度）作用下，撤去外力后自发产生的振动称为<strong>自由振动</strong>。根据系统是否受到阻尼力的作用，自由振动可以分为无阻尼自由振动和有阻尼自由振动。</p>
+<p>若系统不受外部的干扰(阻尼除外)作用，仅由初始条件（初位移和初速度）引起的振动，称为<strong>自由振动</strong>（FreeVibration）。反之，系统因持续地受到外部干扰作用而发生的振动,称为<strong>强迫振动</strong>（Forced Vibration）。
+由于系统在自由振动中不受外力作用，由方程<a class="reference internal" href="1.1.html#equation-eq-1-5">(1.5)</a>可知响应的特解为0。因此齐次方程通解<span class="math notranslate nohighlight">\(x_h(t)\)</span>就是自由振动响应，式<a class="reference internal" href="1.1.html#equation-eq-1-4">(1.4)</a>就是自由振动方程，即</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-8">
+<span class="eqno">(1.8)<a class="headerlink" href="#equation-eq-1-8" title="Link to this equation">#</a></span>\[
+m\ddot{x}(t)+c\dot{x}(t)+kx(t)=0
+\]</div>
+<p>自由振动方程<a class="reference internal" href="#equation-eq-1-8">(1.8)</a>考虑了阻尼的影响，称为<strong>有阻尼自由振动</strong>（Damped Free Vibration）。如不考虑阻尼影响，则称为<strong>无阻尼自由振动</strong>（Undamped Free Vibration）。</p>
 <section id="id2">
 <h2><span class="section-number">1.2.1. </span>无阻尼自由振动<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>对于质量为 <span class="math notranslate nohighlight">\(m\)</span>、刚度为 <span class="math notranslate nohighlight">\(k\)</span> 的单自由度系统，根据牛顿第二定律，其无阻尼自由振动的微分方程如公式 <a class="reference internal" href="#equation-eq-1-1">(1.1)</a> 所示：</p>
-<div class="math notranslate nohighlight" id="equation-eq-1-1">
-<span class="eqno">(1.1)<a class="headerlink" href="#equation-eq-1-1" title="Link to this equation">#</a></span>\[
-m\ddot{x} + kx = 0
+<p>当不考虑阻尼作用时，自由振动方程<a class="reference internal" href="#equation-eq-1-8">(1.8)</a>退化为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-9">
+<span class="eqno">(1.9)<a class="headerlink" href="#equation-eq-1-9" title="Link to this equation">#</a></span>\[
+m\ddot{x}(t)+kx(t)=0
 \]</div>
-<p>将公式 <a class="reference internal" href="#equation-eq-1-1">(1.1)</a> 两边同除以 <span class="math notranslate nohighlight">\(m\)</span>，令 <span class="math notranslate nohighlight">\(\omega_n^2 = k/m\)</span>，方程可化为标准形式：</p>
-<div class="math notranslate nohighlight" id="equation-eq-1-2">
-<span class="eqno">(1.2)<a class="headerlink" href="#equation-eq-1-2" title="Link to this equation">#</a></span>\[
-\ddot{x} + \omega_n^2 x = 0
+<p>若令</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-10">
+<span class="eqno">(1.10)<a class="headerlink" href="#equation-eq-1-10" title="Link to this equation">#</a></span>\[
+\omega^2 = \dfrac{k}{m}
 \]</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p><strong>物理意义：</strong> 式中的 <span class="math notranslate nohighlight">\(\omega_n\)</span> 称为系统的<strong>无阻尼圆频率（固有频率）</strong>，单位为 rad/s。它完全由系统自身的固有属性（质量 <span class="math notranslate nohighlight">\(m\)</span> 和刚度 <span class="math notranslate nohighlight">\(k\)</span>）决定，与外界初始条件无关。</p>
-</div>
-<p>该常系数线性齐次微分方程的通解为 <span class="math notranslate nohighlight">\(x(t) = A \cos(\omega_n t - \phi)\)</span>，表明系统将永远以固有频率 <span class="math notranslate nohighlight">\(\omega_n\)</span> 进行等幅简谐振动。</p>
+<p>则方程<a class="reference internal" href="#equation-eq-1-9">(1.9)</a>可以改写为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-11">
+<span class="eqno">(1.11)<a class="headerlink" href="#equation-eq-1-11" title="Link to this equation">#</a></span>\[
+\ddot{x}(t) + \omega^2 x(t) = 0
+\]</div>
+<p>常微分方程<a class="reference internal" href="#equation-eq-1-11">(1.11)</a>的通解很容易得到，可表示为：</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-12">
+<span class="eqno">(1.12)<a class="headerlink" href="#equation-eq-1-12" title="Link to this equation">#</a></span>\[
+x(t) = A_1 \sin \omega t + A_2 \cos \omega t = A \sin(\omega t + \phi)
+\]</div>
+<p>则</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-13">
+<span class="eqno">(1.13)<a class="headerlink" href="#equation-eq-1-13" title="Link to this equation">#</a></span>\[
+\dot{x}(t) = A_1 \omega \cos \omega t - A_2 \omega \sin \omega t = A\omega \cos(\omega t + \phi)
+\]</div>
+<p>式中,<span class="math notranslate nohighlight">\(A1\)</span>、<span class="math notranslate nohighlight">\(A2\)</span>（或<span class="math notranslate nohighlight">\(A\)</span>、<span class="math notranslate nohighlight">\(\phi\)</span>）是待定常数,取决于初始条件。如将初始条件,即式<a class="reference internal" href="1.1.html#equation-eq-1-7">(1.7)</a>,分别代入式<a class="reference internal" href="#equation-eq-1-12">(1.12)</a>和式<a class="reference internal" href="#equation-eq-1-13">(1.13)</a>,就可以得到</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-14">
+<span class="eqno">(1.14)<a class="headerlink" href="#equation-eq-1-14" title="Link to this equation">#</a></span>\[
+A_1 = \frac{\dot{x}_0}{\omega}, \quad A_2 = x_0
+\]</div>
+<p>则</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-15">
+<span class="eqno">(1.15)<a class="headerlink" href="#equation-eq-1-15" title="Link to this equation">#</a></span>\[
+x(t) = \frac{\dot{x}_0}{\omega} \sin \omega t + x_0 \cos \omega t
+\]</div>
+<p>从式<a class="reference internal" href="#equation-eq-1-12">(1.12)</a>或式<a class="reference internal" href="#equation-eq-1-15">(1.15)</a>可以看出，当不考虑阻尼作用时，<span class="math notranslate nohighlight">\(x\)</span> 的值总是随着时间的增加周而复始地改变。这种振动称为<strong>简谐</strong>（或<strong>谐和</strong>）<strong>振动</strong>（Harmonic Vibration）。<span class="math notranslate nohighlight">\(A\)</span> 称为振动的<strong>振幅</strong>（Amplitude），<span class="math notranslate nohighlight">\(\omega t+\phi\)</span> 称为<strong>相角</strong>（Phase Angle），<span class="math notranslate nohighlight">\(\phi\)</span> 称为<strong>初相角</strong>（<span class="math notranslate nohighlight">\(t=0\)</span> 时的<strong>相角</strong>）。容易证明</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-16">
+<span class="eqno">(1.16)<a class="headerlink" href="#equation-eq-1-16" title="Link to this equation">#</a></span>\[
+A=\sqrt{A_1^2+A_2^2}=\sqrt{\frac{\dot{x}_0^2}{\omega^2}+x_0^2}, \quad \tan\phi=\frac{A_2}{A_1}=\frac{x_0\omega}{\dot{x}_0}
+\]</div>
+<p>只要知道了 <span class="math notranslate nohighlight">\(A_1\)</span>、<span class="math notranslate nohighlight">\(A_2\)</span>，就容易求出 <span class="math notranslate nohighlight">\(A\)</span> 与 <span class="math notranslate nohighlight">\(\phi\)</span>，反之亦然。式<a class="reference internal" href="#equation-eq-1-15">(1.15)</a>表示的无阻尼自由振动如<a class="reference internal" href="#fig-1-4"><span class="xref myst">图 1-4 </span></a>所示。
+简谐振动属于周期性振动。从式<a class="reference internal" href="#equation-eq-1-12">(1.12)</a>不难看出，<span class="math notranslate nohighlight">\(\omega\)</span> 是周期振动的<strong>角频率</strong>（Angular Frequency）或<strong>圆频率</strong>（Circular Frequency），称为单自由度系统的<strong>无阻尼自振（或固有）频率</strong>（Undamped Natural Frequency of Vibration）。单位为弧度/秒（rad/s）或 1/秒（1/s）。由式<a class="reference internal" href="#equation-eq-1-10">(1.10)</a>知</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-17">
+<span class="eqno">(1.17)<a class="headerlink" href="#equation-eq-1-17" title="Link to this equation">#</a></span>\[
+\omega = \sqrt{\frac{k}{m}}
+\]</div>
+<p>工程上常用每秒内系统振动的次数来表示自振频率，也称<strong>自振（或固有）频率</strong>（Natural Frequency），即</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-18">
+<span class="eqno">(1.18)<a class="headerlink" href="#equation-eq-1-18" title="Link to this equation">#</a></span>\[
+f=\frac{\omega}{2\pi}
+\]</div>
+<p>其单位为周/秒（或赫兹、Hz）。区别于 <span class="math notranslate nohighlight">\(f\)</span>，<span class="math notranslate nohighlight">\(\omega\)</span> 通常称为自振（或固有）圆（或角）频率（Natural Circular/Angular Frequency）。系统振动一次所需时间</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-19">
+<span class="eqno">(1.19)<a class="headerlink" href="#equation-eq-1-19" title="Link to this equation">#</a></span>\[
+T=\frac{2\pi}{\omega}=\frac{1}{f}
+\]</div>
+<p>称为自振（或固有）周期（Natural Period of Vibration），单位为秒（s）。</p>
+<p>从上面的讨论可知，振幅 <span class="math notranslate nohighlight">\(A\)</span> 与初相角 <span class="math notranslate nohighlight">\(\phi\)</span> 是由初始条件确定的；但自振频率 <span class="math notranslate nohighlight">\(f\)</span>（或 <span class="math notranslate nohighlight">\(\omega\)</span>）和自振周期 <span class="math notranslate nohighlight">\(T\)</span> 则与初始条件无关，而仅取决于系统本身的刚度和质量。</p>
+<p>由式<a class="reference internal" href="#equation-eq-1-17">(1.17)</a>可知：当振动系统的质量 <span class="math notranslate nohighlight">\(m\)</span> 增加时，将引起自振频率的下降，而当刚度 <span class="math notranslate nohighlight">\(k\)</span> 增加时，将引起自振频率的增加。一切弹性振动系统都是这样。因此，在处理实际工程问题时，如果想提高某结构的自振频率，可以从两方面设法：或者提高结构的刚度（如增加约束，采用刚度大的构件等）；或者减小结构的重量（如改用轻质材料等）。</p>
+<p>考虑如<a class="reference internal" href="#fig1-5a"><span class="xref myst">图1-5（a）</span></a> 所示悬挂质量系统（不考虑弹簧的质量），它可看做是如<a class="reference internal" href="#fig1-1a"><span class="xref myst">图 1-1（a）</span></a> 所示系统旋转了 90°。假定质量块在重力 <span class="math notranslate nohighlight">\(G\)</span> 作用下的静伸长为 <span class="math notranslate nohighlight">\(x_{\text{st}}\)</span>。如果质量块偏离静平衡位置的位移为 <span class="math notranslate nohighlight">\(x\)</span>，此时作用在质量块上的力如图2-5(b) 所示。仿照方程<a class="reference internal" href="1.1.html#equation-eq-1-3">(1.3)</a>的推导，系统的动力平衡方程可以写做</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-20">
+<span class="eqno">(1.20)<a class="headerlink" href="#equation-eq-1-20" title="Link to this equation">#</a></span>\[
+m \ddot{\tilde{x}}(t) + c \dot{\tilde{x}}(t) + k \tilde{x}(t) = F_e(t) + G
+\]</div>
+<p>其中：</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-21">
+<span class="eqno">(1.21)<a class="headerlink" href="#equation-eq-1-21" title="Link to this equation">#</a></span>\[
+\tilde{x}(t)=x(t)+x_{st}
+\]</div>
+<p>为质量块的绝对位移。注意到</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-22">
+<span class="eqno">(1.22)<a class="headerlink" href="#equation-eq-1-22" title="Link to this equation">#</a></span>\[
+G=kx_{st}
+\]</div>
+<p>将式<a class="reference internal" href="#equation-eq-1-22">(1.22)</a>和式<a class="reference internal" href="#equation-eq-1-21">(1.21)</a>代入方程<a class="reference internal" href="#equation-eq-1-20">(1.20)</a>, 同时注意到 <span class="math notranslate nohighlight">\(x_{\text{st}}\)</span> 是不随时间变化的, 则方程<a class="reference internal" href="#equation-eq-1-20">(1.20)</a>可化为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-23">
+<span class="eqno">(1.23)<a class="headerlink" href="#equation-eq-1-23" title="Link to this equation">#</a></span>\[
+m \ddot{x}(t)+c \dot{x}(t)+k x(t)=F_{\mathrm{e}}(t)
+\]</div>
+<p>这说明相对于振动系统静平衡位置写出的运动方程不受重力影响。因此, 在本书以后的讨论中, 动力响应一般以静平衡位置作为基准。求总的位移、内力响应时, 只要把动力分析的结果与相应的静力结果相加即可。</p>
+<p>对于如<a class="reference internal" href="#fig-1-5a"><span class="xref myst">图 2-5(a)</span></a>所示的悬挂质量系统, 可以推得其自振频率的另一种表达方式。由式<a class="reference internal" href="#equation-eq-1-17">(1.17)</a>可知</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-24">
+<span class="eqno">(1.24)<a class="headerlink" href="#equation-eq-1-24" title="Link to this equation">#</a></span>\[
+\omega=\sqrt{\frac{k}{m}}=\sqrt{\frac{k g}{G}}=\sqrt{\frac{k g}{k x_{\mathrm{st}}}}=\sqrt{\frac{g}{x_{\mathrm{st}}}}
+\]</div>
+<p>虽然我们并不知道重物的质量 <span class="math notranslate nohighlight">\(m\)</span> 是多少, 也不知道弹簧的刚度 <span class="math notranslate nohighlight">\(k\)</span> 是多少, 但很容易根据式<a class="reference internal" href="#equation-eq-1-24">(1.24)</a>由其静伸长求出系统的自振频率。</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">1.2.2. </span>有阻尼自由振动<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>在实际船舶工程中，结构不可避免地受到流体粘性或材料内摩擦的阻碍，这种耗散能量的作用称为<strong>阻尼</strong>。引入粘性阻尼 <span class="math notranslate nohighlight">\(c\)</span> 后，系统的运动微分方程变为：</p>
-<div class="math notranslate nohighlight" id="equation-eq-1-3">
-<span class="eqno">(1.3)<a class="headerlink" href="#equation-eq-1-3" title="Link to this equation">#</a></span>\[
-m\ddot{x} + c\dot{x} + kx = 0
+<p>前面已经提过, 系统在振动过程中, 总要受到各种阻尼的作用, 所以自由振动将逐渐衰减。1.2.1节中所述的简谐振动只是一种理想化情况。
+单自由度系统考虑阻尼作用的自由振动方程为式<a class="reference internal" href="#equation-eq-1-8">(1.8)</a>, 即</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-25">
+<span class="eqno">(1.25)<a class="headerlink" href="#equation-eq-1-25" title="Link to this equation">#</a></span>\[
+m\ddot{x}(t)+c\dot{x}(t)+kx(t)=0
 \]</div>
-<p>为了便于分析，我们引入阻尼比 <span class="math notranslate nohighlight">\(\zeta = c/(2\sqrt{mk})\)</span>，方程化为：</p>
-<div class="math notranslate nohighlight" id="equation-eq-1-4">
-<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-1-4" title="Link to this equation">#</a></span>\[
-\ddot{x} + 2\zeta\omega_n\dot{x} + \omega_n^2 x = 0
+<p>或写为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-26">
+<span class="eqno">(1.26)<a class="headerlink" href="#equation-eq-1-26" title="Link to this equation">#</a></span>\[
+\ddot{x}(t)+2\varepsilon\dot{x}(t)+\omega^{2}x(t)=0
 \]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-27">
+<span class="eqno">(1.27)<a class="headerlink" href="#equation-eq-1-27" title="Link to this equation">#</a></span>\[
+\varepsilon=\frac{c}{2m}
+\]</div>
+<p>可称为阻尼特性系数(Damping Coefficient), 单位为 <span class="math notranslate nohighlight">\(1/\)</span>秒(<span class="math notranslate nohighlight">\(1/\text{s}\)</span>)；<span class="math notranslate nohighlight">\(\omega^{2}\)</span>仍由式<a class="reference internal" href="#equation-eq-1-10">(1.10)</a>定义。
+常微分方程<a class="reference internal" href="#equation-eq-1-26">(1.26)</a>的特征方程为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-28">
+<span class="eqno">(1.28)<a class="headerlink" href="#equation-eq-1-28" title="Link to this equation">#</a></span>\[
+s^{2}+2\varepsilon s+\omega^{2}=0
+\]</div>
+<p>特征方程的根为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-29">
+<span class="eqno">(1.29)<a class="headerlink" href="#equation-eq-1-29" title="Link to this equation">#</a></span>\[
+s_{1,2}=-\varepsilon\pm\sqrt{\varepsilon^{2}-\omega^{2}}
+\]</div>
+<p>下面针对阻尼取值的几种情况来讨论方程<a class="reference internal" href="#equation-eq-1-26">(1.26)</a>的解。</p>
+<section id="over-critically-damped-system">
+<h3><span class="section-number">1.2.2.1. </span>超临界阻尼系统(Over Critically Damped System)<a class="headerlink" href="#over-critically-damped-system" title="Link to this heading">#</a></h3>
+<p>阻尼很大, 即 <span class="math notranslate nohighlight">\(\varepsilon&gt;\omega\)</span>, 此时特征方程<a class="reference internal" href="#equation-eq-1-28">(1.28)</a>有两个不等的实根, 则微分方程的通解为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-30">
+<span class="eqno">(1.30)<a class="headerlink" href="#equation-eq-1-30" title="Link to this equation">#</a></span>\[
+x(t)=c_{1}\mathrm{e}^{s_{1}t}+c_{2}\mathrm{e}^{s_{2}t}=c_{1}\mathrm{e}^{\left(-\varepsilon+\sqrt{\varepsilon^{2}-\omega^{2}}\right)t}+c_{2}\mathrm{e}^{\left(-\varepsilon-\sqrt{\varepsilon^{2}-\omega^{2}}\right)t}
+\]</div>
+<p>对于初始条件 <span class="math notranslate nohighlight">\(x(0)=x_{0},\dot{x}(0)=\dot{x}_{0}\)</span>, 不难得到</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-31">
+<span class="eqno">(1.31)<a class="headerlink" href="#equation-eq-1-31" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{align}
+x(t)=&amp;\frac{\left(\varepsilon+\sqrt{\varepsilon^{2}-\omega^{2}}\right)x_{0}+\dot{x}_{0}}{2\sqrt{\varepsilon^{2}-\omega^{2}}}\mathrm{e}^{\left(-\varepsilon+\sqrt{\varepsilon^{2}-\omega^{2}}\right)t}+ \\
+&amp;\frac{\left(-\varepsilon+\sqrt{\varepsilon^{2}-\omega^{2}}\right)x_{0}-\dot{x}_{0}}{2\sqrt{\varepsilon^{2}-\omega^{2}}}\mathrm{e}^{\left(-\varepsilon-\sqrt{\varepsilon^{2}-\omega^{2}}\right)t}
+\end{align}
+\end{split}\]</div>
+</section>
+<section id="critically-damped-system">
+<h3><span class="section-number">1.2.2.2. </span>临界阻尼系统(Critically Damped System)<a class="headerlink" href="#critically-damped-system" title="Link to this heading">#</a></h3>
+<p>阻尼很大, 但 <span class="math notranslate nohighlight">\(\varepsilon=\omega\)</span>。由式<a class="reference internal" href="#equation-eq-1-29">(1.29)</a>知 <span class="math notranslate nohighlight">\(s_{1}=s_{2}=-\varepsilon\)</span>, 特征方程有两个相等的实根, 则微分方程的通解为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-32">
+<span class="eqno">(1.32)<a class="headerlink" href="#equation-eq-1-32" title="Link to this equation">#</a></span>\[
+x(t)=\mathrm{e}^{-\varepsilon t}\left(c_{1}+c_{2} t\right)
+\]</div>
+<p>由初始条件 <span class="math notranslate nohighlight">\(x(0)=x_{0},\dot{x}(0)=\dot{x}_{0}\)</span>, 不难得到</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-33">
+<span class="eqno">(1.33)<a class="headerlink" href="#equation-eq-1-33" title="Link to this equation">#</a></span>\[
+x(t)=\mathrm{e}^{-\varepsilon t}\left[x_{0}+\left(\dot{x}_{0}+\varepsilon x_{0}\right) t\right]
+\]</div>
+<p>式<a class="reference internal" href="#equation-eq-1-31">(1.31)</a>和式<a class="reference internal" href="#equation-eq-1-33">(1.33)</a>所表示的运动都没有振动的特征。不难验证, 当 <span class="math notranslate nohighlight">\(t\)</span> 增大时, <span class="math notranslate nohighlight">\(x\)</span> 值单调地趋于零, <a class="reference internal" href="#fig-1-8"><span class="xref myst">如图 1-8</span></a> 所示。</p>
+</section>
+<section id="under-critically-damped-system">
+<h3><span class="section-number">1.2.2.3. </span>低临界阻尼系统(Under Critically Damped System)<a class="headerlink" href="#under-critically-damped-system" title="Link to this heading">#</a></h3>
+<p>阻尼不大, <span class="math notranslate nohighlight">\(\varepsilon&lt;\omega\)</span>, 这时特征方程的根为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-34">
+<span class="eqno">(1.34)<a class="headerlink" href="#equation-eq-1-34" title="Link to this equation">#</a></span>\[
+s_{1,2}=-\varepsilon\pm\mathrm{i}\omega_{\varepsilon}
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-35">
+<span class="eqno">(1.35)<a class="headerlink" href="#equation-eq-1-35" title="Link to this equation">#</a></span>\[
+\omega_{\varepsilon}=\sqrt{\omega^{2}-\varepsilon^{2}}
+\]</div>
+<p>此时微分方程的通解为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-36">
+<span class="eqno">(1.36)<a class="headerlink" href="#equation-eq-1-36" title="Link to this equation">#</a></span>\[
+x(t)=\mathrm{e}^{-\varepsilon t}\left(B_{1}\sin\omega_{\varepsilon}t+B_{2}\cos\omega_{\varepsilon}t\right)
+\]</div>
+<p>由初始条件 <span class="math notranslate nohighlight">\(x(0)=x_{0},\dot{x}(0)=\dot{x}_{0}\)</span>, 不难求得</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-37">
+<span class="eqno">(1.37)<a class="headerlink" href="#equation-eq-1-37" title="Link to this equation">#</a></span>\[
+B_{1}=\frac{\dot{x}_{0}+\varepsilon x_{0}}{\omega_{\varepsilon}},\quad B_{2}=x_{0}
+\]</div>
+<p>故式<a class="reference internal" href="#equation-eq-1-36">(1.36)</a>可写为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-38">
+<span class="eqno">(1.38)<a class="headerlink" href="#equation-eq-1-38" title="Link to this equation">#</a></span>\[
+x(t)=\mathrm{e}^{-\varepsilon t}\left(\frac{\dot{x}_{0}+\varepsilon x_{0}}{\omega_{\varepsilon}}\sin\omega_{\varepsilon}t+x_{0}\cos\omega_{\varepsilon}t\right)
+\]</div>
+<p>还可将式<a class="reference internal" href="#equation-eq-1-38">(1.38)</a>写为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-39">
+<span class="eqno">(1.39)<a class="headerlink" href="#equation-eq-1-39" title="Link to this equation">#</a></span>\[
+x(t)=B\mathrm{e}^{-\varepsilon t}\sin(\omega_{\varepsilon}t+\phi)
+\]</div>
+<p>其中</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-40">
+<span class="eqno">(1.40)<a class="headerlink" href="#equation-eq-1-40" title="Link to this equation">#</a></span>\[
+B=\sqrt{B_{1}^{2}+B_{2}^{2}}=\frac{\sqrt{\left(\dot{x}_{0}+\varepsilon x_{0}\right)^{2}+\omega_{\varepsilon}^{2} x_{0}^{2}}}{\omega_{\varepsilon}},
+\quad
+\tan\phi=\frac{B_{2}}{B_{1}}=\frac{\omega_{\varepsilon} x_{0}}{\dot{x}_{0}+\varepsilon x_{0}}
+\]</div>
+<p>式<a class="reference internal" href="#equation-eq-1-38">(1.38)</a>表示的运动如<a class="reference internal" href="#fig1-9"><span class="xref myst">图 1-9</span></a>所示。由<a class="reference internal" href="#fig1-9"><span class="xref myst">图 1-9</span></a> 可见, 由于阻尼的影响, 振动逐渐衰减至静止。由此可以看出, 有阻尼的自由振动不是谐和振动或周期振动。
+习惯上称 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 为有阻尼自振频率(Damped Natural Frequency of Vibration), 称</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-41">
+<span class="eqno">(1.41)<a class="headerlink" href="#equation-eq-1-41" title="Link to this equation">#</a></span>\[
+T_{\varepsilon}=\frac{2\pi}{\omega_{\varepsilon}}
+\]</div>
+<p>为有阻尼自振周期(Damped Natural Period of Vibration)。</p>
+<p>如果系统的阻尼特性系数 <span class="math notranslate nohighlight">\(\varepsilon=\omega\)</span>, 称这时的阻尼为临界阻尼(Critical Damping)。令</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-42">
+<span class="eqno">(1.42)<a class="headerlink" href="#equation-eq-1-42" title="Link to this equation">#</a></span>\[
+\zeta=\frac{\varepsilon}{\omega}
+\]</div>
+<p>称为系统的阻尼比(Damping Ratio), 是系统实际阻尼与其临界阻尼之比。显然 <span class="math notranslate nohighlight">\(\zeta=1\)</span>时的阻尼就是临界阻尼。容易证明</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-43">
+<span class="eqno">(1.43)<a class="headerlink" href="#equation-eq-1-43" title="Link to this equation">#</a></span>\[
+\omega_{\varepsilon}=\omega\sqrt{1-\zeta^{2}}
+\]</div>
+<p>将式<a class="reference internal" href="#equation-eq-1-42">(1.42)</a>代入方程<a class="reference internal" href="#equation-eq-1-26">(1.26)</a>, 可得到考虑阻尼作用的自由振动方程的另一种形式, 即</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-44">
+<span class="eqno">(1.44)<a class="headerlink" href="#equation-eq-1-44" title="Link to this equation">#</a></span>\[
+\ddot{x}(t)+2\zeta\omega\dot{x}(t)+\omega^{2}x(t)=0
+\]</div>
+<p>对于通常的工程结构, <span class="math notranslate nohighlight">\(\zeta\)</span>的值一般在<span class="math notranslate nohighlight">\(1\%\sim10\%\)</span>之间。因此, 式<a class="reference internal" href="#equation-eq-1-43">(1.43)</a>等号右端根号内的值非常接近 <span class="math notranslate nohighlight">\(1\)</span>, 故常近似地认为 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}=\omega\)</span>。<a class="reference internal" href="#fig1-10"><span class="xref myst">图 1-10</span></a> 给出了 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 与 <span class="math notranslate nohighlight">\(\omega\)</span> 的比值随 <span class="math notranslate nohighlight">\(\zeta\)</span> 的变化曲线, 可以看到：在 <span class="math notranslate nohighlight">\(0\leqslant\zeta\leqslant0.1\)</span> 区间, <span class="math notranslate nohighlight">\(\frac{\omega_{\varepsilon}}{\omega}\)</span> 非常接近 <span class="math notranslate nohighlight">\(1\)</span>。因此, 在计算结构的自振频率时, 可不考虑阻尼的影响。这样计算的 <span class="math notranslate nohighlight">\(\omega\)</span> 与实际的 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 是很接近的, 但却大大简化了计算。例如, 在例 2-4 中将会看到, 系统的振幅每周期衰减 <span class="math notranslate nohighlight">\(50\%\)</span> (实际结构物一般没有这么大的阻尼)。即使在这样的情况下, 容易验证 <span class="math notranslate nohighlight">\(\omega\)</span> 与 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 的差别亦仅在 <span class="math notranslate nohighlight">\(0.6\%\)</span> 左右。当然, 在工程中也有一些阻尼相对比较大的结构或机械系统。例如，为了减小结构或机械系统的振动而人为地在系统中加入一些阻尼器或耗能元件。又如, 为了使仪器有较大的量程, 大多加速度计将其弹簧振子的阻尼比 <span class="math notranslate nohighlight">\(\zeta\)</span> 取为 <span class="math notranslate nohighlight">\(0.7\)</span>。</p>
+<p>如以 <span class="math notranslate nohighlight">\(B_n\)</span> 表示在某一时刻 <span class="math notranslate nohighlight">\(t_n\)</span> 时的振幅,<span class="math notranslate nohighlight">\(B_{n+1}\)</span> 表示经过一个周期后(即时刻 <span class="math notranslate nohighlight">\(t=t_n+T_{\varepsilon}\)</span>)的振幅。由式<a class="reference internal" href="#equation-eq-1-39">(1.39)</a>知, 当振动达到振幅时, 必有 <span class="math notranslate nohighlight">\(\sin(\omega_{\varepsilon}t+\phi)=1\)</span>, 故有</p>
+<div class="math notranslate nohighlight">
+\[
+B_n=x\big|_{t=t_n}=B\mathrm{e}^{-\varepsilon t_n},\quad B_{n+1}=x\big|_{t=t_n+T_{\varepsilon}}=B\mathrm{e}^{-\varepsilon(t_n+T_{\varepsilon})}
+\]</div>
+<p>所以</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-45">
+<span class="eqno">(1.45)<a class="headerlink" href="#equation-eq-1-45" title="Link to this equation">#</a></span>\[
+\frac{B_{n}}{B_{n+1}}=\mathrm{e}^{\varepsilon T_{\varepsilon}}
+\]</div>
+<p>若令</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-46">
+<span class="eqno">(1.46)<a class="headerlink" href="#equation-eq-1-46" title="Link to this equation">#</a></span>\[
+\lambda=\ln\frac{B_{n}}{B_{n+1}}
+\]</div>
+<p>则</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-47">
+<span class="eqno">(1.47)<a class="headerlink" href="#equation-eq-1-47" title="Link to this equation">#</a></span>\[
+\lambda=\varepsilon T_{\varepsilon}=\frac{c}{2m}T_{\varepsilon}=\text{常数}
+\]</div>
+<p><span class="math notranslate nohighlight">\(\lambda\)</span> 称为<strong>对数递减量或对数递减率(Logarithmic Decrement)</strong>, 则</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-48">
+<span class="eqno">(1.48)<a class="headerlink" href="#equation-eq-1-48" title="Link to this equation">#</a></span>\[
+\frac{B_{n}}{B_{n+1}}=\mathrm{e}^{\lambda}=\text{常数}
+\]</div>
+<p>因此, 对于有黏滞阻尼情况下的自由振动, 其振幅是逐渐衰减的; 且任意“相邻”二振幅之间的比值是一常数。利用这个性质, 可以由实验得出阻尼系数 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 或 <span class="math notranslate nohighlight">\(c\)</span> 的值。</p>
+<p>由式<a class="reference internal" href="#equation-eq-1-47">(1.47)</a>与式<a class="reference internal" href="#equation-eq-1-42">(1.42)</a>, 知</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-49">
+<span class="eqno">(1.49)<a class="headerlink" href="#equation-eq-1-49" title="Link to this equation">#</a></span>\[
+\zeta=\frac{\lambda}{T_{\varepsilon}\omega}
+\]</div>
+<p>进而由式<a class="reference internal" href="#equation-eq-1-41">(1.41)</a>与式<a class="reference internal" href="#equation-eq-1-43">(1.43)</a>可得到</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-50">
+<span class="eqno">(1.50)<a class="headerlink" href="#equation-eq-1-50" title="Link to this equation">#</a></span>\[
+\zeta=\frac{\lambda\omega_{\varepsilon}}{2\pi\omega}=\frac{\lambda}{2\pi}\sqrt{1-\zeta^{2}}
+\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>【例1-4】设单自由度振动系统的质量 <span class="math notranslate nohighlight">\(m=1\ \mathrm{kg}\)</span>, 刚度 <span class="math notranslate nohighlight">\(k=4900\ \mathrm{N/m}\)</span>。假定由实验测得系统振动时的位移曲线如图2-9所示。量得某相邻两次振幅为 <span class="math notranslate nohighlight">\(B_n=2.5\ \mathrm{cm}\)</span>, <span class="math notranslate nohighlight">\(B_{n+1}=1.25\ \mathrm{cm}\)</span>。求 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 与 <span class="math notranslate nohighlight">\(c\)</span> 的值。</p>
+<p>解 由式<a class="reference internal" href="#equation-eq-1-46">(1.46)</a>知对数衰减量
+$<span class="math notranslate nohighlight">\(
+\lambda=\ln\frac{2.5}{1.25}=0.6931 \tag{1}
+\)</span>$</p>
+<p>再由式<a class="reference internal" href="#equation-eq-1-50">(1.50)</a>, 建立关于 <span class="math notranslate nohighlight">\(\zeta\)</span> 的方程</p>
+<div class="math notranslate nohighlight">
+\[
+\zeta=\frac{0.6931}{2\pi}\sqrt{1-\zeta^{2}} \tag{2}
+\]</div>
+<p>由此可解得</p>
+<div class="math notranslate nohighlight">
+\[
+\zeta=0.1097 \tag{3}
+\]</div>
+<p>系统自振频率为</p>
+<div class="math notranslate nohighlight">
+\[
+\omega=\sqrt{\frac{k}{m}}=\sqrt{\frac{4900}{1}}=70\ \text{s}^{-1} \tag{4}
+\]</div>
+<p>则</p>
+<div class="math notranslate nohighlight">
+\[
+\varepsilon=\zeta\omega=7.679\ \text{s}^{-1},\quad c=2m\varepsilon=15.36\ \text{N}\cdot\text{s/m} \tag{5}
+\]</div>
+</div>
+<p>由于式<a class="reference internal" href="#equation-eq-1-50">(1.50)</a>右端根号内值非常接近 <span class="math notranslate nohighlight">\(1\)</span>, 因此, 式<a class="reference internal" href="#equation-eq-1-50">(1.50)</a>可近似为</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-51">
+<span class="eqno">(1.51)<a class="headerlink" href="#equation-eq-1-51" title="Link to this equation">#</a></span>\[
+\zeta=\frac{\lambda}{2\pi}
+\]</div>
+<p>用式<a class="reference internal" href="#equation-eq-1-51">(1.51)</a>计算 <span class="math notranslate nohighlight">\(\zeta\)</span> 值比用式<a class="reference internal" href="#equation-eq-1-50">(1.50)</a>要容易得多, 而两种方法所得到的结果却非常接近。例如, 用式<a class="reference internal" href="#equation-eq-1-51">(1.51)</a>计算得到例2-4中的 <span class="math notranslate nohighlight">\(\zeta\)</span> 值为 <span class="math notranslate nohighlight">\(0.1103\)</span>, 和用式<a class="reference internal" href="#equation-eq-1-50">(1.50)</a>的计算结果仅相差 <span class="math notranslate nohighlight">\(0.5\%\)</span>。</p>
+<p>当用自由振动衰减曲线求阻尼系数时, 为了提高计算精度, 总是量出相距 <span class="math notranslate nohighlight">\(l\)</span> 个周期的振幅 <span class="math notranslate nohighlight">\(B_n\)</span> 与 <span class="math notranslate nohighlight">\(B_{n+l}\)</span>, 算出</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-52">
+<span class="eqno">(1.52)<a class="headerlink" href="#equation-eq-1-52" title="Link to this equation">#</a></span>\[
+\lambda_l=\ln\frac{B_n}{B_{n+l}}
+\]</div>
+<p>然后按下式计算阻尼比</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-53">
+<span class="eqno">(1.53)<a class="headerlink" href="#equation-eq-1-53" title="Link to this equation">#</a></span>\[
+\zeta=\frac{\lambda_l}{2\pi l}
+\]</div>
+<p>上述测定阻尼系数的方法称为<strong>自振衰减法(Free Vibration Decay Method)</strong>。</p>
+<p>由本节的讨论可知, 在不考虑阻尼作用时, 系统自由振动的振幅不随时间而衰减。亦即在振动过程中, 不发生能量的损耗(或说能量不向外界散逸), 这样的系统, 通常称为保守系统(Conservative System)。反之, 在考虑阻尼作用时, 系统的振幅随时间逐渐衰减, 甚至根本振动不起来, 质量单调地趋于平衡位置。亦即系统在振动过程中, 发生了能量的损耗(或能量向外界散逸), 这样的系统则是非保守系统(Non-Conservative System)。</p>
 <figure class="align-center" id="fig-1dof-system">
 <a class="reference internal image-reference" href="../_images/fig1.png"><img alt="../_images/fig1.png" src="../_images/fig1.png" style="width: 400px;" />
 </a>
@@ -505,17 +780,35 @@ m\ddot{x} + c\dot{x} + kx = 0
 <p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">单自由度受迫振动力学模型</span><a class="headerlink" href="#fig-test" title="Link to this image">#</a></p>
 </figcaption>
 </figure>
+<figure class="align-center" id="id4">
+<a class="reference internal image-reference" href="../_images/fig2.9.png"><img alt="../_images/fig2.9.png" src="../_images/fig2.9.png" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">单自由度受迫振动力学模型</span><a class="headerlink" href="#id4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id5">
+<a class="reference internal image-reference" href="../_images/fig3.svg"><img alt="../_images/fig3.svg" src="../_images/fig3.svg" style="width: 400px;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">单自由度受迫振动力学模型</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+</section>
+</section>
+<section id="id6">
+<h2><span class="section-number">1.2.3. </span>交互探索：阻尼如何影响振动？<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p><strong>阻尼比 <span class="math notranslate nohighlight">\(\zeta\)</span> 的大小直接决定了系统的运动形态：</strong></p>
 <ol class="arabic simple">
-<li><p><span class="math notranslate nohighlight">\(0 \le \zeta &lt; 1\)</span>：<strong>欠阻尼状态</strong>。系统发生振幅按指数衰减的周期性振荡。</p></li>
+<li><p><span class="math notranslate nohighlight">\(\zeta = 0\)</span>：<strong>无阻尼状态</strong>。系统发生持续等幅的周期性振荡。</p></li>
+<li><p><span class="math notranslate nohighlight">\(0 &lt; \zeta &lt; 1\)</span>：<strong>欠阻尼状态</strong>。系统发生振幅按指数衰减的周期性振荡。</p></li>
 <li><p><span class="math notranslate nohighlight">\(\zeta = 1\)</span>：<strong>临界阻尼状态</strong>。系统不发生振荡，以最快速度回到平衡位置。</p></li>
 <li><p><span class="math notranslate nohighlight">\(\zeta &gt; 1\)</span>：<strong>过阻尼状态</strong>。系统不发生振荡，极其缓慢地回到平衡位置。</p></li>
 </ol>
 </div>
-<p>交互探索：阻尼如何影响振动？</p>
-<p>下面是一个基于单自由度系统精确解析解构建的仿真模型（设初始位移 <span class="math notranslate nohighlight">\(x_0=1\)</span>，初始速度 <span class="math notranslate nohighlight">\(v_0=0\)</span>，固有频率 <span class="math notranslate nohighlight">\(\omega_n=10\)</span>）。</p>
+<p>下面是一个基于单自由度系统精确解析解构建的仿真模型（设初始位移 <span class="math notranslate nohighlight">\(x_0=1\)</span>，初始速度 <span class="math notranslate nohighlight">\(\dot{x}=0\)</span>，固有频率 <span class="math notranslate nohighlight">\(\omega=10\)</span>）。</p>
 <p>请尝试拖动下方的滑动条，观察阻尼比 <span class="math notranslate nohighlight">\(\zeta\)</span> 从 0 增加到 1.5 时，振动曲线是如何从“等幅振荡”过渡到“迅速衰减”，最终变为“缓慢爬行”的过阻尼状态的。</p>
 <div class="cell tag_remove-input docutils container">
 <div class="cell_output docutils container">
@@ -604,7 +897,7 @@ m\ddot{x} + c\dot{x} + kx = 0
     </div>
     <div style="padding: 0.8rem 0.95rem; border-radius: 16px; background: rgba(255,255,255,0.78); border: 1px solid rgba(15,118,110,0.10);">
       <div style="font-size: 12px; color: #64748b; text-transform: uppercase; letter-spacing: 0.08em;">过阻尼</div>
-      <div style="margin-top: 0.3rem; font-size: 14px; color: #0f172a;">不振荡，但回位变慢，像“缓慢爬行”。</div>
+      <div style="margin-top: 0.3rem; font-size: 14px; color: #0f172a;">不振荡，极其缓慢地回到平衡位置。</div>
     </div>
   </div>
 
@@ -618,7 +911,7 @@ m\ddot{x} + c\dot{x} + kx = 0
         <span id="fv-state" style="margin-left:0.7rem; color:#0f172a;">系统状态：欠阻尼</span>
       </label>
     </div>
-    <input id="fv-zeta-slider" type="range" min="0" max="75" step="1" value="10">
+    <input id="fv-zeta-slider" type="range" min="0" max="75" step="1" value="3">
     <div style="position:relative; height:14px; margin-top:0.25rem;">
       <div style="position:absolute; left:9px; right:9px; top:0; bottom:0;">
         <span style='position:absolute; left:1.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:2.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:4.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:5.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:8.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:9.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:10.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:12.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:14.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:16.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:17.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:18.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:21.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:22.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:24.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:25.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:28.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:29.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:30.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:32.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:34.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:36.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:37.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:38.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:41.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:42.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:44.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:45.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:48.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:49.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:50.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:52.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:54.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:56.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:57.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:58.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:61.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:62.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:64.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:65.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:68.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:69.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:70.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:72.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:74.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:76.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:77.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:78.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:81.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:82.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:84.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:85.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:88.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:89.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:90.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:92.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:94.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:96.0000%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:97.3333%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span><span style='position:absolute; left:98.6667%; transform:translateX(-50%); top:4px; width:1px; height:6px; background:rgba(148,163,184,0.65);'></span>
@@ -704,7 +997,7 @@ m\ddot{x} + c\dot{x} + kx = 0
   const zetaValues = [0.0, 0.02, 0.04, 0.06, 0.08, 0.1, 0.12, 0.14, 0.16, 0.18, 0.2, 0.22, 0.24, 0.26, 0.28, 0.3, 0.32, 0.34, 0.36, 0.38, 0.4, 0.42, 0.44, 0.46, 0.48, 0.5, 0.52, 0.54, 0.56, 0.58, 0.6, 0.62, 0.64, 0.66, 0.68, 0.7, 0.72, 0.74, 0.76, 0.78, 0.8, 0.82, 0.84, 0.86, 0.88, 0.9, 0.92, 0.94, 0.96, 0.98, 1.0, 1.02, 1.04, 1.06, 1.08, 1.1, 1.12, 1.14, 1.16, 1.18, 1.2, 1.22, 1.24, 1.26, 1.28, 1.3, 1.32, 1.34, 1.36, 1.38, 1.4, 1.42, 1.44, 1.46, 1.48, 1.5];
   const omegaN = 10.0;
   const x0 = 1.0;
-  const initActive = 10;
+  const initActive = 3;
   const accent = "#0f766e";
   const playbackDuration = 8000;
   const equilibriumX = 258;
@@ -850,7 +1143,7 @@ m\ddot{x} + c\dot{x} + kx = 0
       paper_bgcolor: "rgba(0,0,0,0)",
       plot_bgcolor: "#ffffff",
       xaxis: {
-        title: "时间 t (s)",
+        title: "时间 <i>t</i> (s)",
         range: [0, 10],
         showgrid: true,
         gridcolor: "rgba(148, 163, 184, 0.22)",
@@ -860,7 +1153,7 @@ m\ddot{x} + c\dot{x} + kx = 0
         ticks: "outside",
       },
       yaxis: {
-        title: "归一化位移 x",
+        title: "归一化位移 <i>x</i>",
         range: [-1.2, 1.2],
         showgrid: true,
         gridcolor: "rgba(148, 163, 184, 0.22)",
@@ -1097,7 +1390,13 @@ m\ddot{x} + c\dot{x} + kx = 0
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.2.1. 无阻尼自由振动</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 有阻尼自由振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.2.2. 有阻尼自由振动</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#over-critically-damped-system">1.2.2.1. 超临界阻尼系统(Over Critically Damped System)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#critically-damped-system">1.2.2.2. 临界阻尼系统(Critically Damped System)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#under-critically-damped-system">1.2.2.3. 低临界阻尼系统(Under Critically Damped System)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">1.2.3. 交互探索：阻尼如何影响振动？</a></li>
 </ul>
   </nav></div>
 

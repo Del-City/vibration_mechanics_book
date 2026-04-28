@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch01/1.1';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -420,7 +422,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -436,6 +440,19 @@ document.write(`
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restoring-force">1.1.1. 恢复力(Restoring Force)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#damping-force">1.1.2. 阻尼力(Damping Force)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-force">1.1.3. 外力(External Force)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1.4. 周期力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.5. 瞬变力或非周期性的力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.6. 随机力</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -447,7 +464,73 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.1. </span>引言<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>此处添加内容…</p>
+<p>理解和掌握单自由度（Single Degree of Freedom，SDOF）系统的振动特性对初学者来说是至关重要的。一方面，单自由度系统可用于许多实际工程结构的初步设计和分析；另一方面，单自由度系统的一些重要概念、特性和研究方法，又是研究复杂结构系统振动问题的基础。</p>
+<p>理解和掌握单自由度（Single Degree of Freedom，SDOF）系统的振动特性对初学者来说是至关重要的。一方面，单自由度系统可用于许多实际工程结构的初步设计和分析；另一方面，单自由度系统的一些重要概念、特性和研究方法，又是研究复杂结构系统振动问题的基础。</p>
+<p><a class="reference internal" href="#fig1-1"><span class="xref myst">图 1-1</span></a> 给出了两种典型的单自由度系统的力学模型。其中，如 <a class="reference internal" href="#fig1-1a"><span class="xref myst">图1-1(a)</span></a>所示系统称为<strong>弹簧-质量系统</strong>（Spring-Mass System），它由刚性质量块、弹簧和阻尼器组成，弹簧和阻尼器的质量与刚性质量块相比可以忽略，系统的位移完全由刚性质量块的位移 <span class="math notranslate nohighlight">\(x\)</span> 确定。如<a class="reference internal" href="#fig1-1a"><span class="xref myst">图1-1(b)</span></a>所示剪力框架结构，质量主要集中在刚度极大的梁上，柱子质量很小，并且可以按一定方式叠加到梁上。柱子的竖向位移和两端的转动都假定为零，系统的运动由梁的水平位移 <span class="math notranslate nohighlight">\(x\)</span> 给出。</p>
+<p>以<a class="reference internal" href="#fig1-1a"><span class="xref myst">图1-1(a)</span></a>所示的弹簧-质量系统为例，对单自由度系统进行受力分析。如<a class="reference internal" href="#fig1-2"><span class="xref myst">图1-2</span></a>所示，假定质量块偏离静平衡位置(虚线所示)的位移为<span class="math notranslate nohighlight">\(x(t)\)</span>。此时共有3种力作用在质量块上：恢复力、阻尼力和外力。
+<a class="reference internal" href="#%E5%9B%BE1-1.png"><span class="xref myst">图1-1</span></a></p>
+<section id="restoring-force">
+<h2><span class="section-number">1.1.1. </span>恢复力(Restoring Force)<a class="headerlink" href="#restoring-force" title="Link to this heading">#</a></h2>
+<p>以如<a class="reference internal" href="#fig-2-1a"><span class="xref myst">图 2-1-a</span></a>所示的弹簧-质量系统为例，对单自由度系统进行受力分析。如<a class="reference internal" href="#fig-2-2"><span class="xref myst">图 2-2</span></a>所示，假定质量块偏离静平衡位置(虚线所示)的位移为<span class="math notranslate nohighlight">\(x(t)\)</span>。此时共有3种力作用在质量块上:恢复力、阻尼力和外力。弹簧的变形产生的弹性力<span class="math notranslate nohighlight">\(F=-kx(t)\)</span>。这个弹性力阻止质量块产生位移，作用方向是使质量块回到平衡位置，即与<span class="math notranslate nohighlight">\(x(t)\)</span>方向相反，故称为恢复力。</p>
+</section>
+<section id="damping-force">
+<h2><span class="section-number">1.1.2. </span>阻尼力(Damping Force)<a class="headerlink" href="#damping-force" title="Link to this heading">#</a></h2>
+<p>系统振动时，总要受到材料内部的摩擦阻力，以及与介质间、各构件之间的摩擦。这种阻力的作用，称为阻尼(Damping)作用。目前国内外对阻尼机理的认识还不是很清楚。百余年来，人们提出了多种阻尼理论来解释结构的阻尼现象。这里采用黏滞(或黏性)阻尼(Viscous Damping)模型，这是目前应用最为广泛的一种阻尼模型。该模型假定质量振动时所受的阻尼作用与其运动速度成正比。若以<span class="math notranslate nohighlight">\(c\)</span>表示阻尼系数(Damping Coefficient),<span class="math notranslate nohighlight">\(R\)</span>表示阻尼力，则</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-1">
+<span class="eqno">(1.1)<a class="headerlink" href="#equation-eq-1-1" title="Link to this equation">#</a></span>\[
+R=-c\frac{dx(t)}{dt}=-c\dot{x}(t)
+\]</div>
+<p>式<a class="reference internal" href="#equation-eq-1-1">(1.1)</a>，在符号上加“·”号表示对时间的微商。<span class="math notranslate nohighlight">\(c\)</span>的单位是牛·秒/米(N·s/m)。因此，如<a class="reference internal" href="#fig-2-2"><span class="xref myst">图2-2</span></a>所示弹簧-质量系统的阻尼力<span class="math notranslate nohighlight">\(F_d = -c\dot{x}(t)\)</span>。</p>
+</section>
+<section id="external-force">
+<h2><span class="section-number">1.1.3. </span>外力(External Force)<a class="headerlink" href="#external-force" title="Link to this heading">#</a></h2>
+<p>外部作用在质量块上的力<span class="math notranslate nohighlight">\(F_e(t)\)</span>，一般情况下为时间的函数。
+根据牛顿第二定律，可以导出下式。</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-2">
+<span class="eqno">(1.2)<a class="headerlink" href="#equation-eq-1-2" title="Link to this equation">#</a></span>\[
+F = F_r + F_d + F_c = -kx(t) - c\dot{x}(t) + F_c(t) = m\ddot{x}(t)
+\]</div>
+<p>将式<a class="reference internal" href="#equation-eq-1-2">(1.2)</a>整理，可得：</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-3">
+<span class="eqno">(1.3)<a class="headerlink" href="#equation-eq-1-3" title="Link to this equation">#</a></span>\[
+m\ddot{x}(t) + c\dot{x}(t) + kx(t) = F_e(t)
+\]</div>
+<p>式<a class="reference internal" href="#equation-eq-1-3">(1.3)</a>即为单自由度系统的<strong>动力平衡方程</strong>(Dynamic Equilibrium Equation)，通常称为<strong>运动方程</strong>（Equation of Motion）。这是一个二阶非齐次线性常微分方程。要求非齐应的齐次方程的<strong>通解</strong>,只需求它的一个<strong>特解</strong>(Particular Solution)<span class="math notranslate nohighlight">\(x_p(t)\)</span>和它相应的齐次方程的通解<span class="math notranslate nohighlight">\(x_h(t)\)</span>。其中<span class="math notranslate nohighlight">\(x_h(t)\)</span>满足</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-4">
+<span class="eqno">(1.4)<a class="headerlink" href="#equation-eq-1-4" title="Link to this equation">#</a></span>\[
+m\ddot{x}_h(t) + c\dot{x}_h(t) + kx_h(t) = 0
+\]</div>
+<p>方程<a class="reference internal" href="#equation-eq-1-4">(1.4)</a>的通解<span class="math notranslate nohighlight">\(x_h(t)\)</span>中含有两个待定常数。特解<span class="math notranslate nohighlight">\(x_p(t)\)</span>满足</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-5">
+<span class="eqno">(1.5)<a class="headerlink" href="#equation-eq-1-5" title="Link to this equation">#</a></span>\[
+m\ddot{x}_p(t) + c\dot{x}_p(t) + kx_p(t) = F_e(t)
+\]</div>
+<p>齐次方程的通解和非齐次方程的特解之和，就构成了非齐次方程的通解</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-6">
+<span class="eqno">(1.6)<a class="headerlink" href="#equation-eq-1-6" title="Link to this equation">#</a></span>\[
+x(t)=x_h(t)+x_p(t)
+\]</div>
+<p>为确定通解中的两个待定常数，还需要两个<strong>初始条件</strong>(Initial Condition)。这两个初始条件通常为给定的初始位移<span class="math notranslate nohighlight">\(x_0\)</span>和初始速度<span class="math notranslate nohighlight">\(\dot{x}_0\)</span>，即</p>
+<div class="math notranslate nohighlight" id="equation-eq-1-7">
+<span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-1-7" title="Link to this equation">#</a></span>\[
+x(0)=x_0,\quad\dot{x}_0=\dot{x}_0
+\]</div>
+<p>在如<a class="reference internal" href="#fig-2-1"><span class="xref myst">图2-1</span></a>所示系统中，施加在质量块上的力<span class="math notranslate nohighlight">\(F_e(t)\)</span>主要有3种类型:</p>
+</section>
+<section id="id2">
+<h2><span class="section-number">1.1.4. </span>周期力<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<p>最常见的是简谐力，如<span class="math notranslate nohighlight">\( F_e(t) = P_0 \sin \theta t \)</span>或<span class="math notranslate nohighlight">\( F_e(t) = C\theta^2 \sin \theta t \)</span>，后者可描述由转动机被的不平衡而引起的典型分力。一个周期性的非简谐力可用<strong>傅里叶（Fourier）级数</strong>表示为一些简谐项的和。对于线性系统，总响应可由每一个简谐分量各自的响应叠加而得到。</p>
+</section>
+<section id="id3">
+<h2><span class="section-number">1.1.5. </span>瞬变力或非周期性的力<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<p>通常这些力是突然地或在一个短时间内施加的。这种类型的力的两个简单例子，如<a class="reference internal" href="#1-"><span class="xref myst">图1-</span></a>和<a class="reference internal" href="#1-"><span class="xref myst">图1-</span></a>所示。</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.1.6. </span>随机力<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>这种力随时间变化的过程不能用已知的函数来确定，而只能用统计的方式描述。阵风力即是典型的随机力。</p>
+<p>对于简谐激励(或周期性激励)，一般不重视初始条件的影响，只需求解结构的稳态响应。对于瞬变力或非周期性的激励，则往往需要考虑初始条件的影响而求解结构的瞬态响应。对于随机力，结构的响应只能统计地确定。</p>
+<p>振动也可能由支座的强迫运动所激发。支座的强迫运动也可以是简谐的、瞬变的或随机的。比较典型的课题为地震、爆炸引起的结构振动，不平路面引起在其上行驶车辆的振动等。</p>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -504,6 +587,26 @@ document.write(`
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#restoring-force">1.1.1. 恢复力(Restoring Force)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#damping-force">1.1.2. 阻尼力(Damping Force)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#external-force">1.1.3. 外力(External Force)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.1.4. 周期力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.1.5. 瞬变力或非周期性的力</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.1.6. 随机力</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>
