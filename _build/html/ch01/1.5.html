@@ -451,8 +451,8 @@ document.write(`
 <h1><span class="section-number">1.5. </span>任意激励载荷下作用下的强迫振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本节讨论单自由度系统在任意一般性荷载（例如图2-23中所示一实测荷载曲线）作 用下的强迫振动问题。</p>
 <p>在求解这个问题之前，先来看一种特殊情况。</p>
-<p>一个初始静止的单自由度系统，在初始时刻受到一个单位脉冲<span class="math notranslate nohighlight">\(\delta \left ( t \right )\)</span>的作用，求其运动规律。
-<span class="math notranslate nohighlight">\(\delta \left ( t \right )\)</span>可看做在一个非常短暂的时间间隔<span class="math notranslate nohighlight">\(\mu\)</span>内作用一个常量力<span class="math notranslate nohighlight">\(\frac{1}{\mu} \)</span>。于是该系统的运动方程为</p>
+<p>一个初始静止的单自由度系统，在初始时刻受到一个单位脉冲<span class="math notranslate nohighlight">\(\delta \left ( t \right )\)</span>的作用，求其运动规律。</p>
+<p><span class="math notranslate nohighlight">\(\delta \left ( t \right )\)</span>可看做在一个非常短暂的时间间隔<span class="math notranslate nohighlight">\(\mu\)</span>内作用一个常量力<span class="math notranslate nohighlight">\(\frac{1}{\mu} \)</span>。于是该系统的运动方程为</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-99">
 <span class="eqno">(1.104)<a class="headerlink" href="#equation-eq-1-99" title="Link to this equation">#</a></span>\[\begin{split}
 \left\{\begin{matrix}
@@ -579,7 +579,7 @@ H\left ( \omega\right ) = \int_{-  \infty }^{+  \infty } h\left (t \right ) e^{-
 <p>由式<a class="reference internal" href="#equation-eq-1-114">(1.119)</a>和式<a class="reference internal" href="#equation-eq-1-119">(1.124)</a>可知，脉冲响应函数<span class="math notranslate nohighlight">\(h\left (t \right )\)</span>和频率响应函数<span class="math notranslate nohighlight">\(H\left ( \omega\right )\)</span>之间构成傅氏变换对。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>【例1-9】一不计阻尼的单自由度系统，初始静止，受简谐扰力<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) =P\cos \theta t\)</span>作用。试用杜阿梅尔积分求它的响应。
+<p><strong>例1-9</strong> 一不计阻尼的单自由度系统，初始静止，受简谐扰力<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) =P\cos \theta t\)</span>作用。试用杜阿梅尔积分求它的响应。
 解：对于无阻尼系统，脉冲响应函数由式<a class="reference internal" href="#equation-eq-1-101">(1.106)</a>可写为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -599,8 +599,8 @@ x\left ( t \right ) &amp;= \int_{-  \infty }^{+  \infty } F_{e} \left (\tau   \r
 \end{aligned} \tag{2}
 \]</div>
 </div>
-<p>应用傅里叶变换进行频域分析时，要求荷载函数<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) \)</span>在<span class="math notranslate nohighlight">\(\left ( - \infty , +  \infty \right ) \)</span>内满足绝对可积等较强的条件。这样的条件，即使对于很简单的函数，如常数、多项式和三角函数等，都不能满足。拉普拉斯（Laplace）变换可以避免这样的困难。和傅里叶变换一样，拉普拉斯变换也是一种常用的研究线性系统的积分变换方法。它的严格数学定义和性质可参考有关的数学书籍，这里只简单介绍应用它来求解线性系统的动力响应。
-设函数<span class="math notranslate nohighlight">\(f\left ( t  \right ) \)</span>满足条件：</p>
+<p>应用傅里叶变换进行频域分析时，要求荷载函数<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) \)</span>在<span class="math notranslate nohighlight">\(\left ( - \infty , +  \infty \right ) \)</span>内满足绝对可积等较强的条件。这样的条件，即使对于很简单的函数，如常数、多项式和三角函数等，都不能满足。拉普拉斯（Laplace）变换可以避免这样的困难。和傅里叶变换一样，拉普拉斯变换也是一种常用的研究线性系统的积分变换方法。它的严格数学定义和性质可参考有关的数学书籍，这里只简单介绍应用它来求解线性系统的动力响应。</p>
+<p>设函数<span class="math notranslate nohighlight">\(f\left ( t  \right ) \)</span>满足条件：</p>
 <ol class="arabic simple">
 <li><p>在<span class="math notranslate nohighlight">\(t\ge 0\)</span>的任一有限区间上分段连续可导；</p></li>
 <li><p>当<span class="math notranslate nohighlight">\(t\to+  \infty \)</span>时,<span class="math notranslate nohighlight">\(f\left ( t  \right ) \)</span>的增长速度不超过某个指数函数，亦即存在某个常数<span class="math notranslate nohighlight">\(M\)</span>及<span class="math notranslate nohighlight">\(\sigma _{0} \ge 0 \)</span>,使得<span class="math notranslate nohighlight">\(\left | f\left ( t  \right ) \right | \le Me^{\sigma _{0} t} \left ( 0&lt; t&lt; +  \infty  \right )\)</span>
@@ -618,7 +618,7 @@ f\left ( t  \right ) = \mathcal{L} ^{- 1} \left [ L\left ( p \right )  \right ]=
 <p>为复变函数<span class="math notranslate nohighlight">\( L\left ( p \right )\)</span>的逆拉氏变换。拉普拉斯变换存在的条件要比傅里叶变换弱很多，描述工程问题的大多数荷载函数都能够满足。在实际工作中，简单函数的拉普拉斯变换可查找拉普拉斯变换表。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>【例1-10】应用拉普拉斯变换求解单自由度系统在任意荷载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right )\)</span>作用下的响应。设初始条件为<span class="math notranslate nohighlight">\(x\left ( 0 \right ) = x_{0}\)</span>及<span class="math notranslate nohighlight">\(\dot{x} \left ( 0 \right ) = \dot{x}_{0} \)</span>。</p>
+<p><strong>例1-10</strong> 应用拉普拉斯变换求解单自由度系统在任意荷载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right )\)</span>作用下的响应。设初始条件为<span class="math notranslate nohighlight">\(x\left ( 0 \right ) = x_{0}\)</span>及<span class="math notranslate nohighlight">\(\dot{x} \left ( 0 \right ) = \dot{x}_{0} \)</span>。</p>
 <p>解：单自由度系统在任意荷载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right )\)</span>作用下的运动方程为式<code class="xref eq docutils literal notranslate"><span class="pre">eq:1-68</span></code>的形式，即</p>
 <div class="math notranslate nohighlight">
 \[

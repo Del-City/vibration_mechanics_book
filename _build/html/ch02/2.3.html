@@ -818,9 +818,9 @@ f_2=\frac{\omega_{\mathrm{n}2}}{2\pi}=\frac{37.70}{2\pi}=6.00\mathrm{Hz}  \tag{4
 \]</div>
 <p>并经正则化，求出正则振型为</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
-\boldsymbol{\varphi}^{(1)}=\begin{Bmatrix}0.707 \\0.707\end{Bmatrix},\quad \boldsymbol{\varphi}^{(2)}=\begin{Bmatrix}0.707 \\-0.707\end{Bmatrix}  \tag{5}
-\end{split}\]</div>
+\[
+\boldsymbol{\varphi}^{(1)}=\begin{Bmatrix}0.707 \cr 0.707\end{Bmatrix},\quad \boldsymbol{\varphi}^{(2)}=\begin{Bmatrix}0.707 \cr -0.707\end{Bmatrix} \tag{5}
+\]</div>
 <p>(2) 求复频率响应函数 <span class="math notranslate nohighlight">\(H_{11}(\omega)\)</span>、<span class="math notranslate nohighlight">\(H_{21}(\omega)\)</span>。由式 <a class="reference internal" href="#equation-eq-2-119">(2.45)</a> 得</p>
 <div class="math notranslate nohighlight">
 \[
@@ -828,27 +828,29 @@ H_{ij}(\omega)=\sum_{r=1}^2\frac{\varphi_i^{(r)}\varphi_j^{(r)}}{\omega_{\mathrm
 \]</div>
 <p>即有</p>
 <div class="math notranslate nohighlight">
-\[\begin{split}
+\[
 \begin{aligned}
-H_{11}(\omega) &amp;= \frac{(0.707)(0.707)}{987}\left[\frac{1}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}2(0.01)\frac{\omega}{31.42}}\right] \\
-&amp;\quad + \frac{(0.707)(0.707)}{1421}\left[\frac{1}{1-\frac{\omega^2}{(37.7)^2}+\mathrm{i}2(0.01)\frac{\omega}{37.7}}\right] \\
+H_{11}(\omega) &amp;= \frac{(0.707)(0.707)}{987}\left[\frac{1}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}2(0.01)\frac{\omega}{31.42}}\right] \cr
+&amp;\quad + \frac{(0.707)(0.707)}{1421}\left[\frac{1}{1-\frac{\omega^2}{(37.7)^2}+\mathrm{i}2(0.01)\frac{\omega}{37.7}}\right] \cr
 &amp;= \frac{(5.064)\times10^{-4}}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}(0.02)\frac{\omega}{31.42}} + \frac{(3.58)\times10^{-4}}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}(0.02)\frac{\omega}{37.7}}
 \end{aligned}
 \tag{7}
-\end{split}\]</div>
-<p>同样有
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>同样有</p>
+<div class="math notranslate nohighlight">
+\[
 \begin{aligned}
-H_{21}(\omega) &amp;= \frac{(0.707)(0.707)}{987}\left[\frac{1}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}2(0.01)\frac{\omega}{31.42}}\right] \\
-&amp;\quad + \frac{(-0.707)(0.707)}{1421}\left[\frac{1}{1-\frac{\omega^2}{(37.7)^2}+\mathrm{i}2(0.01)\frac{\omega}{37.7}}\right] \\
+H_{21}(\omega) &amp;= \frac{(0.707)(0.707)}{987}\left[\frac{1}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}2(0.01)\frac{\omega}{31.42}}\right] \cr
+&amp;\quad + \frac{(-0.707)(0.707)}{1421}\left[\frac{1}{1-\frac{\omega^2}{(37.7)^2}+\mathrm{i}2(0.01)\frac{\omega}{37.7}}\right] \cr
 &amp;= \frac{(5.064)\times10^{-4}}{1-\frac{\omega^2}{(31.42)^2}+\mathrm{i}(0.02)\frac{\omega}{31.42}} - \frac{(3.519)\times10^{-4}}{1-\frac{\omega^2}{(37.7)^2}+\mathrm{i}(0.02)\frac{\omega}{37.7}}
 \end{aligned}
 \tag{8}
-\)</span>$</p>
-<p>将式(6)的实部和虚部表示如下：
-$<span class="math notranslate nohighlight">\(
+\]</div>
+<p>将式(6)的实部和虚部表示如下：</p>
+<div class="math notranslate nohighlight">
+\[
 R(H_{ij})=\sum_{r=1}^2\left(\frac{\varphi_i^{(r)}\varphi_j^{(r)}}{\omega_{\mathrm{n}r}^2}\right)\left[\frac{1-\left(\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2}{\left(1-\left(\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2\right)^2+\left(2\zeta_r\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2}\right] \tag{9}
-\)</span>$</p>
+\]</div>
 <div class="math notranslate nohighlight">
 \[
 I(H_{ij})=\sum_{r=1}^2\left(\frac{\varphi_i^{(r)}\varphi_j^{(r)}}{\omega_{\mathrm{n}r}^2}\right)\left[\frac{-2\zeta_r\frac{\omega}{\omega_{\mathrm{n}r}}}{\left(1-\left(\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2\right)^2+\left(2\zeta_r\frac{\omega}{\omega_{\mathrm{n}r}}\right)^2}\right] \tag{10}
