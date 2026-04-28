@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -57,6 +57,8 @@
     <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
     <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'ch02/2.5';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -447,7 +449,42 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">2.5. </span>动力吸振器的基本原理<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>此处添加内容…</p>
+<p>某机器及其安装系统由 <span class="math notranslate nohighlight">\(M_1\)</span> 和 <span class="math notranslate nohighlight">\(K_1\)</span> 的单自由度系统作为其简化模型。如果在机器运转时，由于不平衡力 <span class="math notranslate nohighlight">\(F_0\sin\omega t\)</span> 的作用，当激励频率 <span class="math notranslate nohighlight">\(\omega\)</span> 接近系统固有频率时，主从系统便发生共振。如果该系统的参数以及机器运转速度都无法改变时，则可在此主系统上附加一个 <span class="math notranslate nohighlight">\(K_2\)</span>-<span class="math notranslate nohighlight">\(M_2\)</span> 的从系统，适当选取从系统的质量和刚度，可以使主系统的振动大为减小，而附加的从系统却振动起来，就好像将主系统的振动能量都通过从系统吸收掉一样，这种附加的质量-弹簧系统便称为<strong>动力吸振器</strong>。其构成系统见图2-19，只需在 <span class="math notranslate nohighlight">\(M_1\)</span> 上加上作用力 <span class="math notranslate nohighlight">\(F_0\sin\omega t\)</span> 即可。</p>
+<p>取重力作用下的静平衡位置为坐标原点，其运动方程式为：</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-133">
+<span class="eqno">(2.59)<a class="headerlink" href="#equation-eq-2-133" title="Link to this equation">#</a></span>\[
+M_1\ddot{x}_1+(K_1+K_2)x_1-K_2x_2=F_0\sin\omega t
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-2-134">
+<span class="eqno">(2.60)<a class="headerlink" href="#equation-eq-2-134" title="Link to this equation">#</a></span>\[
+M_2\ddot{x}_2+K_2x_2-K_2x_1=0
+\]</div>
+<p>设其稳态响应为</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-135">
+<span class="eqno">(2.61)<a class="headerlink" href="#equation-eq-2-135" title="Link to this equation">#</a></span>\[\begin{split}
+\begin{cases}
+x_1=A_1\sin\omega t \\
+x_2=A_2\sin\omega t
+\end{cases}
+\end{split}\]</div>
+<p>由此得到</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-136">
+<span class="eqno">(2.62)<a class="headerlink" href="#equation-eq-2-136" title="Link to this equation">#</a></span>\[
+A_1=\frac{(K_2-M_2\omega^2)F_0}{(K_1+K_2-M_1\omega^2)(K_2-M_2\omega^2)-K_2^2}
+\]</div>
+<div class="math notranslate nohighlight" id="equation-eq-2-137">
+<span class="eqno">(2.63)<a class="headerlink" href="#equation-eq-2-137" title="Link to this equation">#</a></span>\[
+A_2=\frac{K_2F_0}{(K_1+K_2-M_1\omega^2)(K_2-M_2\omega^2)-K_2^2}
+\]</div>
+<p>由式<a class="reference internal" href="#equation-eq-2-136">(2.62)</a>可见，当 <span class="math notranslate nohighlight">\(\omega^2=\frac{K_2}{M_2}\)</span> 时，主系统质量的振幅 <span class="math notranslate nohighlight">\(A_1\)</span> 为零，也就是说，只要动力吸振器本身的固有频率等于激励频率时，就可以消除主系统质量的振动。此时，从系统质量的振幅</p>
+<div class="math notranslate nohighlight" id="equation-eq-2-138">
+<span class="eqno">(2.64)<a class="headerlink" href="#equation-eq-2-138" title="Link to this equation">#</a></span>\[
+A_2=-\frac{F_0}{K_2}
+\]</div>
+<p>因此，从系统通过弹簧 <span class="math notranslate nohighlight">\(K_2\)</span> 将一个大小与作用力 <span class="math notranslate nohighlight">\(F_0\)</span> 相等，而方向却反向的作用力加到主质量 <span class="math notranslate nohighlight">\(M_1\)</span> 上，正好与主系统上的激励力相抵消，从而消除主系统的振动，这便是动力吸振器的消振机理。</p>
+<p>图 2-20 是对某个特定的主从系统动力响应的频响特性，其从系统与主系统的质量比 <span class="math notranslate nohighlight">\(a=0.05\)</span>，且 <span class="math notranslate nohighlight">\(\omega_{02}=\omega_{01}\)</span>。图中横坐标为激励频率与吸振器（即从系统）的固有频率之比 <span class="math notranslate nohighlight">\(\omega/\omega_{02}\)</span>，纵坐标表示主系统振幅与激励引起主质量的静伸长之比，即 <span class="math notranslate nohighlight">\(A_1/(F_0/K_1)\)</span>。</p>
+<p>由图中可以看出，当 <span class="math notranslate nohighlight">\(\omega=\omega_{02}\)</span> 时，<span class="math notranslate nohighlight">\(A_1=0\)</span>，即主系统不振动。图中实线表示有吸振器的两自由度系统的频率响应曲线，虚线表示无吸振器的主系统本身的幅频响应曲线。显然，附加吸振器后，系统出现两个新的共振频率 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span> 与 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span>（由式(2.129)确定）。因此，当激励频率 <span class="math notranslate nohighlight">\(\omega\)</span> 等于 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span> 或 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span> 时，系统将产生新的共振。为了消除主系统的振动，同时又不要产生新的共振，使主系统能够安全地工作在远离新的共振点的频率范围内，两个固有频率 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span> 与 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span> 以相距较远为好，为此需要适当选取 <span class="math notranslate nohighlight">\(a\)</span> 值来实现。但若该吸振器质量与主系统质量之比过小时，为了吸收主系统的共振能量，吸振器质量的振幅 <span class="math notranslate nohighlight">\(A_2\)</span> 将是一个较大值。这样，吸振器的弹簧刚度与运动位置必须满足该条件，在吸振器设计时，还需注意这一方面问题。</p>
+<p>在此，我们再引入“反共振”的概念。主从系统中对于主系统的质量 <span class="math notranslate nohighlight">\(M_1\)</span> 施加简谐激振力，在某个频率点——反共振频率点上，主系统虽然受到激励但是却保持不动，这就是“反共振”的现象。实际上，从力平衡的角度分析，因为该“反共振频率”等于从系统的固有频率，由于从系统 <span class="math notranslate nohighlight">\(M_2\)</span> 共振运动的惯性力通过弹簧作用在 <span class="math notranslate nohighlight">\(M_1\)</span> 上，抵消了外界的激振力从而达到平衡，好像主系统没有受激励一样处于静止状态。设计动力吸振的原理也就是利用反共振来实现。这个原理可以引申到连续系统，对于连续系统出现的反共振现象，同样是由于惯性力和外界激振力平衡的结果，解释的道理是一样的，但是，在做试验的时候，响应信号信噪比可能很差。</p>
 </section>
 
     <script type="text/x-thebe-config">

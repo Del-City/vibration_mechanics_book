@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -466,9 +466,9 @@ document.write(`
 <p>下面通过举例来说明。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>例2.1  图2-3为无阻尼两自由度振动系统，试用达兰贝尔原理建立其运动微分方程式。
-解：以静平衡位置为坐标原点，设质量<span class="math notranslate nohighlight">\(M₁\)</span>和<span class="math notranslate nohighlight">\(M_{2} \)</span>的广义坐标为<span class="math notranslate nohighlight">\(x₁\)</span>和<span class="math notranslate nohighlight">\(x₂\)</span>, 并假设它们足够小，以保证系统在线性范围内运动。
-将<span class="math notranslate nohighlight">\(M₁\)</span>和<span class="math notranslate nohighlight">\(M_{2}\)</span>从系统中分离出来，并将其受到的弹性力和惯性力标于图上，容易得到如下的运动微分方程式。</p>
+<p><strong>例2.1</strong> 图2-3为无阻尼两自由度振动系统，试用达兰贝尔原理建立其运动微分方程式。</p>
+<p>解：以静平衡位置为坐标原点，设质量<span class="math notranslate nohighlight">\(M₁\)</span>和<span class="math notranslate nohighlight">\(M_{2} \)</span>的广义坐标为<span class="math notranslate nohighlight">\(x₁\)</span>和<span class="math notranslate nohighlight">\(x₂\)</span>, 并假设它们足够小，以保证系统在线性范围内运动。</p>
+<p>将<span class="math notranslate nohighlight">\(M₁\)</span>和<span class="math notranslate nohighlight">\(M_{2}\)</span>从系统中分离出来，并将其受到的弹性力和惯性力标于图上，容易得到如下的运动微分方程式。</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \begin{array}{l}
@@ -486,8 +486,8 @@ M_{11} \ddot{x}_{1}+M_{12} \ddot{x}_{2}+K_{11} x_{1}+K_{12} x_{2}=0
 <span class="eqno">(2.2)<a class="headerlink" href="#equation-eq-2-18" title="Link to this equation">#</a></span>\[
 M_{21} \ddot{x}_{1}+M_{22} \ddot{x}_{2}+K_{21} x_{1}+K_{22} x_{2}=0
 \]</div>
-<p>求解自由振动的步骤如下:
-(1)假设简谐形式的解。设振动时两广义坐标按相同频率和相位作简谐振动：</p>
+<p>求解自由振动的步骤如下:</p>
+<p>(1)假设简谐形式的解。设振动时两广义坐标按相同频率和相位作简谐振动：</p>
 <div class="math notranslate nohighlight" id="equation-eq-2-19">
 <span class="eqno">(2.3)<a class="headerlink" href="#equation-eq-2-19" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{array}{l}
@@ -515,8 +515,8 @@ K_{21}-\omega_{\mathrm{n}}^{2} M_{21} &amp; K_{22}-\omega_{\mathrm{n}}^{2} M_{22
 &amp; \left(K_{11} K_{22}-K_{12} K_{21}\right)=0
 \end{aligned}
 \end{split}\]</div>
-<p>这是<span class="math notranslate nohighlight">\(\omega _{n}^{2}\)</span>的二次多项式，亦称频率方程式。
-(4)解特征方程式的根，得两个根：</p>
+<p>这是<span class="math notranslate nohighlight">\(\omega _{n}^{2}\)</span>的二次多项式，亦称频率方程式。</p>
+<p>(4)解特征方程式的根，得两个根：</p>
 <div class="math notranslate nohighlight" id="equation-eq-2-22">
 <span class="eqno">(2.6)<a class="headerlink" href="#equation-eq-2-22" title="Link to this equation">#</a></span>\[\begin{split}
 \begin{aligned}
@@ -555,8 +555,8 @@ x_{2} &amp; =A_{2}^{(1)} \sin \left(\omega_{\mathrm{n} 1} t+\theta_{1}\right)+A_
 <p>在特殊的初始条件下，若<span class="math notranslate nohighlight">\(A_{i}^{(2)}=0(i=1,2)\)</span>,系统便作第一主振动；若<span class="math notranslate nohighlight">\(A_{i}^{(1)}=0(i=1,2)\)</span>，系统便作第二主振动。如果系统的初始位移和初始速度的比值都等于振幅比<span class="math notranslate nohighlight">\(\beta^{(1)}\)</span>或<span class="math notranslate nohighlight">\(\beta^{(2)}\)</span>,就可得到<span class="math notranslate nohighlight">\(A_{i}^{(2)}=0\)</span>或<span class="math notranslate nohighlight">\(A_{i}^{(1)}=0\)</span>的条件。当然，还可以有其他的初始条件达到此结果。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>例2.6 试求例2.1系统的无阻尼自由振动的固有频率、固有振型。设<span class="math notranslate nohighlight">\(M_{1}=M_{2}=M\)</span>及<span class="math notranslate nohighlight">\(K_{1}=K_{2}=K_{3}=K\)</span>。若初始条件为<span class="math notranslate nohighlight">\(x_{1}(0)=\dot{x}_{1}(0)=\dot{x}_{2}(0)=0\)</span>及<span class="math notranslate nohighlight">\(x_{2}(0)=x_{0}\)</span>，试求其自由振动响应。
-解：将上述质量与刚度代入运动微分方程式 <a class="reference internal" href="#equation-eq-2-17">(2.1)</a> 和 <a class="reference internal" href="#equation-eq-2-18">(2.2)</a> ,可知<span class="math notranslate nohighlight">\(M_{11}=M_{22}=M\)</span>,<span class="math notranslate nohighlight">\(M_{12}=M_{21}=0\)</span>,<span class="math notranslate nohighlight">\(K_{11}=K_{22}=2K\)</span>，<span class="math notranslate nohighlight">\(K_{12}=K_{21}=K\)</span>便可求得固有频率为</p>
+<p><strong>例2.6</strong> 试求例2.1系统的无阻尼自由振动的固有频率、固有振型。设<span class="math notranslate nohighlight">\(M_{1}=M_{2}=M\)</span>及<span class="math notranslate nohighlight">\(K_{1}=K_{2}=K_{3}=K\)</span>。若初始条件为<span class="math notranslate nohighlight">\(x_{1}(0)=\dot{x}_{1}(0)=\dot{x}_{2}(0)=0\)</span>及<span class="math notranslate nohighlight">\(x_{2}(0)=x_{0}\)</span>，试求其自由振动响应。</p>
+<p>解：将上述质量与刚度代入运动微分方程式 <a class="reference internal" href="#equation-eq-2-17">(2.1)</a> 和 <a class="reference internal" href="#equation-eq-2-18">(2.2)</a> ,可知<span class="math notranslate nohighlight">\(M_{11}=M_{22}=M\)</span>,<span class="math notranslate nohighlight">\(M_{12}=M_{21}=0\)</span>,<span class="math notranslate nohighlight">\(K_{11}=K_{22}=2K\)</span>，<span class="math notranslate nohighlight">\(K_{12}=K_{21}=K\)</span>便可求得固有频率为</p>
 <div class="math notranslate nohighlight">
 \[
 \omega_{n1}=\left(\frac{K}{M}\right)^{\frac{1}{2}}\quad\omega_{n2}=\left(\frac{3K}{M}\right)^{\frac{1}{2}}
@@ -566,8 +566,8 @@ x_{2} &amp; =A_{2}^{(1)} \sin \left(\omega_{\mathrm{n} 1} t+\theta_{1}\right)+A_
 \[
 \beta^{(1)}=1\quad\beta^{(2)}=-1
 \]</div>
-<p>若令<span class="math notranslate nohighlight">\(A_{i}^{(1)}=1\)</span>,则<span class="math notranslate nohighlight">\(A_{2}^{(i)}=\beta^{(i)} A_{1}^{(i)}=\beta^{(i)}(i=1,2)\)</span>,便可画出振型图(见图2-8)。
-将式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a>代入初始条件。为方便起见，将式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a>化为</p>
+<p>若令<span class="math notranslate nohighlight">\(A_{i}^{(1)}=1\)</span>,则<span class="math notranslate nohighlight">\(A_{2}^{(i)}=\beta^{(i)} A_{1}^{(i)}=\beta^{(i)}(i=1,2)\)</span>,便可画出振型图(见图2-8)。</p>
+<p>将式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a>代入初始条件。为方便起见，将式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a>化为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
 \left\{\begin{aligned}x_1&amp;=A_1\cos\omega_{n1}t+B_1\sin\omega_{n1}t+A_2\cos\omega_{n2}t+B_2\sin\omega_{n2}t\\x_2&amp;=\beta^{(1)}A_1\cos\omega_{n1}t+\beta^{(1)}B_1\sin\omega_{n1}t+\beta^{(2)}A_2\cos\omega_{n2}t+\beta^{(2)}B_2\sin\omega_{n2}t\end{aligned}\right.
@@ -582,7 +582,7 @@ x_{2} &amp; =A_{2}^{(1)} \sin \left(\omega_{\mathrm{n} 1} t+\theta_{1}\right)+A_
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>例2.7 确定例2.3中汽车的固有频率和固有振型。若设其参数如下：</p>
+<p><strong>例2.7</strong> 确定例2.3中汽车的固有频率和固有振型。若设其参数如下：</p>
 <p>质量<span class="math notranslate nohighlight">\(M=1500 \mathrm{kg}\)</span></p>
 <p>绕质心的回转半径<span class="math notranslate nohighlight">\(\rho_c=1.1 \mathrm{~m}\)</span></p>
 <p>前轴与质心的距离<span class="math notranslate nohighlight">\(l_1=1.5 \mathrm{~m}\)</span></p>
@@ -628,8 +628,8 @@ $<span class="math notranslate nohighlight">\(
 \[
 \beta^{(1)} = \frac{A_1^{(1)}}{A_2^{(1)}} = -10.8359
 \]</div>
-<p>其振型图见图2-10。
-请读者观察图2-10的两个振型图，并分别描述这两个振型的性质和特点。</p>
+<p>其振型图见图2-10。</p>
+<p>请读者观察图2-10的两个振型图，并分别描述这两个振型的性质和特点。</p>
 </div>
 </section>
 <section id="id3">
@@ -716,7 +716,7 @@ K_{n1} - \lambda_r^2 M_{n1} &amp; \cdots &amp; K_{n,j-1} - \lambda_r^2 M_{n,j-1}
 <p>一般来说，特征方程式<a class="reference internal" href="#equation-eq-2-31">(2.15)</a>的<span class="math notranslate nohighlight">\(n\)</span>个根，可以是单根或复根，也可以是实根或重根。但是，对系统的质量矩阵为正定实对称矩阵，刚度矩阵为正定或半正定实对称矩阵时，根据线性代数理论，所有的特征值都是实数，为正数或零。其中，只有半正定系统(在物理上为可能发生刚体运动的系统)才有零特征值。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>例2.8 确定图2-11(a)所示系统的固有频率和固有振型，并求正则振型。令<span class="math notranslate nohighlight">\(M=1\)</span>,<span class="math notranslate nohighlight">\(K=1\)</span>。</p>
+<p><strong>例2.8</strong> 确定图2-11(a)所示系统的固有频率和固有振型，并求正则振型。令<span class="math notranslate nohighlight">\(M=1\)</span>,<span class="math notranslate nohighlight">\(K=1\)</span>。</p>
 <p>解：写出质量矩阵和刚度矩阵为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -746,8 +746,8 @@ K_{n1} - \lambda_r^2 M_{n1} &amp; \cdots &amp; K_{n,j-1} - \lambda_r^2 M_{n,j-1}
 \[
 \omega_{n1}^2=2-\sqrt{2},\quad\omega_{n2}^2=2,\quad\omega_{n3}^2=2+\sqrt{2} \tag{5}
 \]</div>
-<p>以下，计算对应于三个固有频率的振型向量。
-将<span class="math notranslate nohighlight">\(\omega_{n1}^2 = 2 - \sqrt{2}\)</span>代人方程式(3)中，有</p>
+<p>以下，计算对应于三个固有频率的振型向量。</p>
+<p>将<span class="math notranslate nohighlight">\(\omega_{n1}^2 = 2 - \sqrt{2}\)</span>代人方程式(3)中，有</p>
 <div class="math notranslate nohighlight">
 \[
 \begin{bmatrix}\sqrt{2}&amp;-1&amp;0 \cr -1&amp;\sqrt{2}&amp;-1 \cr0&amp;-1&amp;\sqrt{2}\end{bmatrix}
