@@ -446,7 +446,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.3.1. 无阻尼强迫振动</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 有阻尼强迫振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 交互探索：无阻尼强迫振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.3.3. 有阻尼强迫振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3.4. 交互探索：有阻尼强迫振动</a></li>
 </ul>
             </nav>
         </div>
@@ -628,7 +630,469 @@ x_{\max} &amp;= x_{\mathrm{st}} + X_{\mathrm{dyn}} = \frac{mgL^3}{48EJ} + \beta\
 </div>
 </section>
 <section id="id3">
-<h2><span class="section-number">1.3.2. </span>有阻尼强迫振动<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.3.2. </span>交互探索：无阻尼强迫振动<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>改变频率比 <span class="math notranslate nohighlight">\(r=\theta/\omega\)</span>，可以直接观察简谐载荷频率与系统自振频率的相对关系：</p>
+<ul class="simple">
+<li><p>当 <span class="math notranslate nohighlight">\(r&lt;1\)</span> 时，系统响应以低频激励为主，位移与载荷大体同向变化。</p></li>
+<li><p>当 <span class="math notranslate nohighlight">\(r\approx1\)</span> 时，自由振动和强迫振动会持续交换能量，响应幅值不断增大，即共振。</p></li>
+<li><p>当 <span class="math notranslate nohighlight">\(r&gt;1\)</span> 时，激励变化很快，系统位移响应变小，并逐渐表现出反相特征。</p></li>
+</ul>
+</div>
+<p>请拖动下方滑动条，改变简谐激励频率与系统自振频率之比 <span class="math notranslate nohighlight">\(r=\theta/\omega\)</span>，观察弹簧振子动画与位移响应曲线如何随时间演化。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  #undamped-forced-demo input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.34);
+    outline: none;
+  }
+  #undamped-forced-demo input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.30);
+    cursor: pointer;
+  }
+  #undamped-forced-demo input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #2563eb;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.30);
+    cursor: pointer;
+  }
+</style>
+
+<div id="undamped-forced-demo" style="
+    max-width: 1080px; margin: 1.4rem auto; padding: 1.1rem;
+    border-radius: 22px; background: linear-gradient(135deg, #f8fafc 0%, #eef6ff 100%);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.09);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+">
+  <div style="display:grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap:0.8rem; margin-bottom:0.95rem;">
+    <div style="padding:0.8rem 0.95rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">频率比</div>
+      <div id="uf-r-value" style="margin-top:0.25rem; font-size:20px; font-weight:800; color:#1d4ed8;">r = 0.70</div>
+    </div>
+    <div style="padding:0.8rem 0.95rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">激励圆频率</div>
+      <div id="uf-theta-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">θ = 0.70ω</div>
+    </div>
+    <div style="padding:0.8rem 0.95rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">动力放大系数</div>
+      <div id="uf-beta-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">β = 1.96</div>
+    </div>
+    <div style="padding:0.8rem 0.95rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">当前状态</div>
+      <div id="uf-state-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">低于共振</div>
+    </div>
+  </div>
+
+  <div style="padding:0.4rem 0.55rem 1rem;">
+    <label for="uf-r-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:700;">
+      <span>调节频率比 r = θ / ω</span>
+      <span style="font-weight:500; color:#64748b;">0.10 ~ 3.00</span>
+    </label>
+    <input id="uf-r-slider" type="range" min="0.10" max="3.00" step="0.01" value="0.70">
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(360px, 1.45fr) minmax(260px, 0.75fr); gap:1rem; align-items:stretch;">
+    <div style="padding:0.9rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <svg id="uf-oscillator" viewBox="0 0 560 220" style="width:100%; height:250px; display:block; border-radius:14px; background:linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);">
+        <rect x="0" y="0" width="560" height="220" rx="14" fill="transparent"></rect>
+        <rect x="22" y="50" width="18" height="134" rx="5" fill="#94a3b8"></rect>
+        <line x1="40" y1="120" x2="520" y2="120" stroke="rgba(148,163,184,0.32)" stroke-width="6" stroke-linecap="round"></line>
+        <line x1="340" y1="32" x2="340" y2="188" stroke="rgba(249,115,22,0.45)" stroke-width="2" stroke-dasharray="6 5"></line>
+        <polyline id="uf-spring" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <rect id="uf-mass" x="306" y="86" width="68" height="68" rx="12" fill="#60a5fa" stroke="#1d4ed8" stroke-width="3"></rect>
+        <line id="uf-force-arrow" x1="392" y1="70" x2="450" y2="70" stroke="#ef4444" stroke-width="5" stroke-linecap="round"></line>
+        <polygon id="uf-force-head" points="450,70 438,62 438,78" fill="#ef4444"></polygon>
+        <text x="292" y="204" fill="#64748b" style="font-size:13px;">平衡位置</text>
+        <text id="uf-force-label" x="392" y="54" fill="#ef4444" style="font-size:13px; font-weight:700;">F(t)</text>
+      </svg>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr; gap:0.75rem;">
+      <div style="padding:0.85rem; border-radius:16px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+        <div style="font-size:12px; color:#64748b; font-weight:700;">无量纲时间</div>
+        <div id="uf-time-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">τ = 0.00</div>
+      </div>
+      <div style="padding:0.85rem; border-radius:16px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+        <div style="font-size:12px; color:#64748b; font-weight:700;">归一化位移</div>
+        <div id="uf-x-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">x / x<sub>st</sub> = 0.000</div>
+      </div>
+      <div style="display:flex; gap:0.65rem;">
+        <button id="uf-play" style="flex:1; padding:0.85rem 0.7rem; border:none; border-radius:999px; background:#2563eb; color:white; font-weight:800; cursor:pointer;">播放</button>
+        <button id="uf-reset" style="flex:1; padding:0.85rem 0.7rem; border:1px solid rgba(37,99,235,0.20); border-radius:999px; background:white; color:#0f172a; font-weight:800; cursor:pointer;">重播</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem; padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+    <div id="uf-plot" style="width:100%; height:390px;"></div>
+  </div>
+
+  <div style="margin-top:1rem; padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:0.55rem; flex-wrap:wrap;">
+      <div style="font-size:14px; font-weight:800; color:#0f172a;">动力放大系数采样图</div>
+      <button id="uf-beta-reset" style="padding:0.6rem 0.95rem; border:1px solid rgba(37,99,235,0.20); border-radius:999px; background:white; color:#0f172a; font-weight:800; cursor:pointer;">重置采样点</button>
+    </div>
+    <div id="uf-beta-plot" style="width:100%; height:360px;"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById("undamped-forced-demo");
+  if (!container || container.dataset.initialized === "true") return;
+  container.dataset.initialized = "true";
+
+  const steps = 2000;
+  const playbackDuration = 16000;
+  const accent = "#2563eb";
+  const equilibriumX = 340;
+  const massWidth = 68;
+  const baseMotionScale = 28;
+  const maxVisualTravel = 120;
+
+  const slider = container.querySelector("#uf-r-slider");
+  const rValue = container.querySelector("#uf-r-value");
+  const thetaValue = container.querySelector("#uf-theta-value");
+  const betaValue = container.querySelector("#uf-beta-value");
+  const stateValue = container.querySelector("#uf-state-value");
+  const timeValue = container.querySelector("#uf-time-value");
+  const xValue = container.querySelector("#uf-x-value");
+  const playBtn = container.querySelector("#uf-play");
+  const resetBtn = container.querySelector("#uf-reset");
+  const betaResetBtn = container.querySelector("#uf-beta-reset");
+  const plotEl = container.querySelector("#uf-plot");
+  const betaPlotEl = container.querySelector("#uf-beta-plot");
+  const springEl = container.querySelector("#uf-spring");
+  const massEl = container.querySelector("#uf-mass");
+  const arrowEl = container.querySelector("#uf-force-arrow");
+  const headEl = container.querySelector("#uf-force-head");
+  const forceLabel = container.querySelector("#uf-force-label");
+
+  let r = Number(slider.value);
+  let tauMax = getTauMax(r);
+  let currentIndex = 0;
+  let isPlaying = false;
+  let startTimestamp = null;
+  let rafId = null;
+  let response = computeResponse(r);
+  let betaSamples = [];
+
+  function classify(value) {
+    if (Math.abs(value - 1) < 0.04) return "接近共振";
+    if (value < 1) return "低于共振";
+    return "高于共振";
+  }
+
+  function getTauMax(freqRatio) {
+    const forcePeriodWindow = 16 * 2 * Math.PI / freqRatio;
+    return Math.max(45, Math.min(160, forcePeriodWindow));
+  }
+
+  function computeResponse(freqRatio) {
+    const tau = [];
+    const y = [];
+    const force = [];
+    const dt = tauMax / steps;
+    let pos = 0;
+    let vel = 0;
+
+    function acc(time, x) {
+      return Math.cos(freqRatio * time) - x;
+    }
+
+    for (let i = 0; i <= steps; i += 1) {
+      const time = i * dt;
+      tau.push(time);
+      y.push(pos);
+      force.push(Math.cos(freqRatio * time));
+
+      const k1x = vel;
+      const k1v = acc(time, pos);
+      const k2x = vel + 0.5 * dt * k1v;
+      const k2v = acc(time + 0.5 * dt, pos + 0.5 * dt * k1x);
+      const k3x = vel + 0.5 * dt * k2v;
+      const k3v = acc(time + 0.5 * dt, pos + 0.5 * dt * k2x);
+      const k4x = vel + dt * k3v;
+      const k4v = acc(time + dt, pos + dt * k3x);
+
+      pos += (dt / 6) * (k1x + 2 * k2x + 2 * k3x + k4x);
+      vel += (dt / 6) * (k1v + 2 * k2v + 2 * k3v + k4v);
+    }
+    const maxAbs = Math.max(0.001, ...y.map((value) => Math.abs(value)));
+    const motionScale = Math.min(baseMotionScale, maxVisualTravel / maxAbs);
+    return { tau, y, force, maxAbs, motionScale };
+  }
+
+  function buildSpringPoints(startX, endX, y) {
+    const points = [];
+    const straight = 18;
+    const turns = 11;
+    const amplitude = 18;
+    points.push(`${startX},${y}`);
+    points.push(`${startX + straight},${y}`);
+    const usable = Math.max(endX - startX - straight * 2, 28);
+    const step = usable / (turns * 2);
+    for (let i = 0; i < turns * 2; i += 1) {
+      const x = startX + straight + step * (i + 1);
+      points.push(`${x},${y + (i % 2 === 0 ? -amplitude : amplitude)}`);
+    }
+    points.push(`${endX - straight},${y}`);
+    points.push(`${endX},${y}`);
+    return points.join(" ");
+  }
+
+  function buildPlot(index) {
+    return [
+      {
+        x: response.tau,
+        y: response.y,
+        mode: "lines",
+        name: "完整响应",
+        line: { color: "rgba(15, 23, 42, 0.20)", width: 2 },
+        hovertemplate: "τ = %{x:.2f}<br>x/xst = %{y:.3f}<extra></extra>",
+      },
+      {
+        x: response.tau.slice(0, index + 1),
+        y: response.y.slice(0, index + 1),
+        mode: "lines",
+        name: "已绘响应",
+        line: { color: accent, width: 3.2 },
+        hovertemplate: "τ = %{x:.2f}<br>x/xst = %{y:.3f}<extra></extra>",
+      },
+      {
+        x: [response.tau[index]],
+        y: [response.y[index]],
+        mode: "markers",
+        name: "当前点",
+        marker: { size: 10, color: "#f97316", line: { color: "white", width: 2 } },
+        hovertemplate: "τ = %{x:.2f}<br>x/xst = %{y:.3f}<extra></extra>",
+      }
+    ];
+  }
+
+  function buildLayout() {
+    const yLimit = Math.max(1.4, response.maxAbs * 1.12);
+    return {
+      margin: { l: 68, r: 18, t: 18, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: {
+        title: "<b>无量纲时间 τ = ωt</b>",
+        range: [0, tauMax],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: false,
+        showline: true,
+        linecolor: "rgba(15, 23, 42, 0.25)",
+      },
+      yaxis: {
+        title: "<b>归一化位移 x / x<sub>st</sub></b>",
+        range: [-yLimit, yLimit],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: true,
+        zerolinecolor: "rgba(15, 23, 42, 0.22)",
+        zerolinewidth: 1.5,
+      },
+      legend: { orientation: "h", y: 1.02, x: 0.98, xanchor: "right", yanchor: "bottom" },
+      hoverlabel: { bgcolor: "#ffffff", bordercolor: "rgba(37,99,235,0.30)", font: { color: "#0f172a" } },
+    };
+  }
+
+  function betaRaw(freqRatio) {
+    const denom = 1 - freqRatio * freqRatio;
+    return Math.abs(denom) < 1e-10 ? Infinity : Math.abs(1 / denom);
+  }
+
+  function betaLabel(value) {
+    return Number.isFinite(value) ? value.toFixed(3) : "∞";
+  }
+
+  function buildBetaLayout() {
+    const finiteValues = betaSamples.map((sample) => sample.beta).filter(Number.isFinite);
+    const maxFinite = Math.max(5, ...finiteValues);
+    const yMax = Math.min(Math.max(5, maxFinite * 1.12), 80);
+    return {
+      margin: { l: 68, r: 18, t: 14, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: {
+        title: "<b>频率比 r = θ / ω</b>",
+        range: [0.05, 3.05],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: false,
+        showline: true,
+        linecolor: "rgba(15, 23, 42, 0.25)",
+      },
+      yaxis: {
+        title: "<b>动力放大系数 β</b>",
+        range: [0, yMax],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: true,
+        zerolinecolor: "rgba(15, 23, 42, 0.18)",
+      },
+      showlegend: false,
+      hoverlabel: { bgcolor: "#ffffff", bordercolor: "rgba(37,99,235,0.30)", font: { color: "#0f172a" } },
+    };
+  }
+
+  function buildBetaData() {
+    const finiteValues = betaSamples.map((sample) => sample.beta).filter(Number.isFinite);
+    const maxFinite = Math.max(5, ...finiteValues);
+    const cap = Math.min(Math.max(5, maxFinite * 1.05), 80);
+    return [{
+      x: betaSamples.map((sample) => sample.r),
+      y: betaSamples.map((sample) => Number.isFinite(sample.beta) ? Math.min(sample.beta, cap) : cap),
+      mode: "markers",
+      type: "scatter",
+      marker: {
+        size: 10,
+        color: betaSamples.map((sample) => Number.isFinite(sample.beta) ? "#2563eb" : "#ef4444"),
+        line: { color: "white", width: 1.5 },
+      },
+      customdata: betaSamples.map((sample) => betaLabel(sample.beta)),
+      hovertemplate: "r = %{x:.2f}<br>β = %{customdata}<extra></extra>",
+    }];
+  }
+
+  function renderBetaPlot() {
+    Plotly.react(betaPlotEl, buildBetaData(), buildBetaLayout(), {
+      displayModeBar: false,
+      responsive: true,
+    });
+  }
+
+  function addBetaSample() {
+    betaSamples.push({ r, beta: betaRaw(r) });
+    renderBetaPlot();
+  }
+
+  function updateReadouts(index) {
+    const tau = response.tau[index];
+    const y = response.y[index];
+    const force = response.force[index];
+    const beta = betaRaw(r);
+    rValue.textContent = `r = ${r.toFixed(2)}`;
+    thetaValue.textContent = `θ = ${r.toFixed(2)}ω`;
+    betaValue.textContent = `β = ${Number.isFinite(beta) ? beta.toFixed(2) : "∞"}`;
+    stateValue.textContent = classify(r);
+    timeValue.textContent = `τ = ${tau.toFixed(2)}`;
+    xValue.textContent = `x / xst = ${y.toFixed(3)}`;
+
+    const massCenterX = equilibriumX + y * response.motionScale;
+    const massLeft = massCenterX - massWidth / 2;
+    massEl.setAttribute("x", massLeft.toFixed(2));
+    springEl.setAttribute("points", buildSpringPoints(40, massLeft + 2, 120));
+
+    const arrowStart = massLeft + massWidth + 18;
+    const arrowLength = 48 * Math.abs(force);
+    const arrowEnd = arrowStart + (force >= 0 ? arrowLength : -arrowLength);
+    arrowEl.setAttribute("x1", arrowStart.toFixed(2));
+    arrowEl.setAttribute("x2", arrowEnd.toFixed(2));
+    if (force >= 0) {
+      headEl.setAttribute("points", `${arrowEnd},70 ${arrowEnd - 12},62 ${arrowEnd - 12},78`);
+    } else {
+      headEl.setAttribute("points", `${arrowEnd},70 ${arrowEnd + 12},62 ${arrowEnd + 12},78`);
+    }
+    forceLabel.setAttribute("x", Math.min(500, Math.max(48, arrowStart)).toFixed(2));
+  }
+
+  function render(index, fullRedraw = false) {
+    currentIndex = index;
+    updateReadouts(index);
+    if (fullRedraw) {
+      Plotly.react(plotEl, buildPlot(index), buildLayout(), { displayModeBar: false, responsive: true });
+    } else {
+      Plotly.restyle(plotEl, { x: [response.tau.slice(0, index + 1)], y: [response.y.slice(0, index + 1)] }, [1]);
+      Plotly.restyle(plotEl, { x: [[response.tau[index]]], y: [[response.y[index]]] }, [2]);
+    }
+  }
+
+  function stop() {
+    isPlaying = false;
+    startTimestamp = null;
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+    playBtn.textContent = "播放";
+  }
+
+  function tick(timestamp) {
+    if (!isPlaying) return;
+    if (startTimestamp === null) {
+      startTimestamp = timestamp - (currentIndex / steps) * playbackDuration;
+    }
+    const progress = Math.min((timestamp - startTimestamp) / playbackDuration, 1);
+    const nextIndex = Math.min(Math.floor(progress * steps), steps);
+    if (nextIndex !== currentIndex) render(nextIndex, false);
+    if (progress >= 1) {
+      stop();
+      return;
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function play(fromStart = false) {
+    if (fromStart) render(0, true);
+    isPlaying = true;
+    startTimestamp = null;
+    playBtn.textContent = "暂停";
+    rafId = requestAnimationFrame(tick);
+  }
+
+  slider.addEventListener("input", (event) => {
+    r = Number(event.target.value);
+    tauMax = getTauMax(r);
+    response = computeResponse(r);
+    stop();
+    render(0, true);
+    addBetaSample();
+    play(false);
+  });
+  playBtn.addEventListener("click", () => {
+    if (isPlaying) stop();
+    else play(currentIndex >= steps);
+  });
+  resetBtn.addEventListener("click", () => {
+    stop();
+    play(true);
+  });
+
+  betaResetBtn.addEventListener("click", () => {
+    betaSamples = [];
+    renderBetaPlot();
+  });
+
+  render(0, true);
+  addBetaSample();
+  play(false);
+})();
+</script>
+</div></div>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.3.3. </span>有阻尼强迫振动<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>单自由度系统考虑阻尼作用的运动方程为式<a class="reference internal" href="1.1.html#equation-eq-1-3">(1.3)</a>的形式, 即</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-68a">
 <span class="eqno">(1.68)<a class="headerlink" href="#equation-eq-1-68a" title="Link to this equation">#</a></span>\[
@@ -774,6 +1238,526 @@ r=\frac{\theta}{\omega}=\frac{52.3}{62.6}=0.8368 \tag{3}
 </div>
 <p>考虑阻尼时, 动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 与 <span class="math notranslate nohighlight">\(r=\frac{\theta}{\omega}\)</span> 的关系如<a class="reference internal" href="#fig1-18"><span class="xref myst">图 1-18</span></a> 所示。</p>
 <p>由<a class="reference internal" href="#fig1-18"><span class="xref myst">图 1-18</span></a>可见, 在共振区附近, 阻尼对于降低动力放大系数或强迫振动振幅之值起着很大的作用。阻尼 <span class="math notranslate nohighlight">\(\zeta\)</span> 之值略为增加, 就可以使动力放大系数 <span class="math notranslate nohighlight">\(\beta\)</span> 之值降低很多; 但在远离共振区的地方, 阻尼的作用就很小了。</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.3.4. </span>交互探索：有阻尼强迫振动<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>在有阻尼系统中，改变频率比 <span class="math notranslate nohighlight">\(r=\theta/\omega\)</span> 时，共振峰不再无限增大；阻尼会耗散能量，使瞬态响应逐渐消失，系统最终趋向稳定的简谐强迫振动。</p>
+</div>
+<p>请拖动下方滑动条，改变简谐激励频率与系统自振频率之比 <span class="math notranslate nohighlight">\(r=\theta/\omega\)</span>。动画和响应曲线会实时更新，可观察瞬态衰减、稳态响应以及共振附近幅值放大的过程。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  #damped-forced-demo input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.34);
+    outline: none;
+  }
+  #damped-forced-demo input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0f766e;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.30);
+    cursor: pointer;
+  }
+  #damped-forced-demo input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #0f766e;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.30);
+    cursor: pointer;
+  }
+</style>
+
+<div id="damped-forced-demo" style="
+    max-width: 1080px; margin: 1.4rem auto; padding: 1.1rem;
+    border-radius: 22px; background: linear-gradient(135deg, #f7fffd 0%, #eef7ff 100%);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.09);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+">
+  <div style="display:grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap:0.75rem; margin-bottom:0.95rem;">
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">阻尼比</div>
+      <div id="df-zeta-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">ζ = 0.10</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">频率比</div>
+      <div id="df-r-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">r = 0.70</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">动力放大系数</div>
+      <div id="df-beta-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">β = 1.87</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">相位滞后</div>
+      <div id="df-phase-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">φ = 15.5°</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.86); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">当前状态</div>
+      <div id="df-state-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">低于共振</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.1rem; padding:0.4rem 0.55rem 1rem;">
+    <div>
+      <label for="df-zeta-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:700;">
+        <span>调节阻尼比 ζ</span>
+        <span style="font-weight:500; color:#64748b;">0.10 ~ 1.00</span>
+      </label>
+      <input id="df-zeta-slider" type="range" min="0.10" max="1.00" step="0.10" value="0.10">
+    </div>
+    <div>
+      <label for="df-r-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:700;">
+        <span>调节频率比 r = θ / ω</span>
+        <span style="font-weight:500; color:#64748b;">0.10 ~ 3.00</span>
+      </label>
+      <input id="df-r-slider" type="range" min="0.10" max="3.00" step="0.01" value="0.70">
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(360px, 1.45fr) minmax(260px, 0.75fr); gap:1rem; align-items:stretch;">
+    <div style="padding:0.9rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <svg id="df-oscillator" viewBox="0 0 560 220" style="width:100%; height:250px; display:block; border-radius:14px; background:linear-gradient(180deg, #ffffff 0%, #f8fffd 100%);">
+        <rect x="0" y="0" width="560" height="220" rx="14" fill="transparent"></rect>
+        <rect x="22" y="38" width="18" height="140" rx="5" fill="#94a3b8"></rect>
+        <line x1="40" y1="96" x2="55" y2="96" stroke="rgba(15,23,42,0.22)" stroke-width="4" stroke-linecap="round"></line>
+        <line x1="55" y1="84" x2="290" y2="84" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"></line>
+        <line x1="55" y1="108" x2="290" y2="108" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"></line>
+        <line x1="55" y1="84" x2="55" y2="108" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"></line>
+        <line id="df-damper-piston" x1="104" y1="86" x2="104" y2="106" stroke="#64748b" stroke-width="4" stroke-linecap="round"></line>
+        <line id="df-damper-rod" x1="104" y1="96" x2="178" y2="96" stroke="#64748b" stroke-width="4" stroke-linecap="round"></line>
+        <line x1="40" y1="142" x2="520" y2="142" stroke="rgba(148,163,184,0.32)" stroke-width="6" stroke-linecap="round"></line>
+        <line x1="340" y1="32" x2="340" y2="188" stroke="rgba(249,115,22,0.42)" stroke-width="2" stroke-dasharray="6 5"></line>
+        <polyline id="df-spring" fill="none" stroke="#0f766e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <rect id="df-mass" x="306" y="83" width="68" height="68" rx="12" fill="#2dd4bf" stroke="#0f766e" stroke-width="3"></rect>
+        <line id="df-force-arrow" x1="392" y1="70" x2="450" y2="70" stroke="#ef4444" stroke-width="5" stroke-linecap="round"></line>
+        <polygon id="df-force-head" points="450,70 438,62 438,78" fill="#ef4444"></polygon>
+        <text x="292" y="204" fill="#64748b" style="font-size:13px;">平衡位置</text>
+        <text id="df-force-label" x="392" y="54" fill="#ef4444" style="font-size:13px; font-weight:700;">F(t)</text>
+      </svg>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr; gap:0.75rem;">
+      <div style="padding:0.85rem; border-radius:16px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+        <div style="font-size:12px; color:#64748b; font-weight:700;">无量纲时间</div>
+        <div id="df-time-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">τ = 0.00</div>
+      </div>
+      <div style="padding:0.85rem; border-radius:16px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+        <div style="font-size:12px; color:#64748b; font-weight:700;">归一化位移</div>
+        <div id="df-x-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">x / x<sub>st</sub> = 0.000</div>
+      </div>
+      <div style="display:flex; gap:0.65rem;">
+        <button id="df-play" style="flex:1; padding:0.85rem 0.7rem; border:none; border-radius:999px; background:#0f766e; color:white; font-weight:800; cursor:pointer;">播放</button>
+        <button id="df-reset" style="flex:1; padding:0.85rem 0.7rem; border:1px solid rgba(15,118,110,0.20); border-radius:999px; background:white; color:#0f172a; font-weight:800; cursor:pointer;">重播</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem; padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+    <div id="df-plot" style="width:100%; height:390px;"></div>
+  </div>
+
+  <div style="margin-top:1rem; padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+    <div style="display:flex; justify-content:space-between; align-items:center; gap:1rem; margin-bottom:0.55rem; flex-wrap:wrap;">
+      <div style="font-size:14px; font-weight:800; color:#0f172a;">动力放大系数采样图</div>
+      <button id="df-beta-reset" style="padding:0.6rem 0.95rem; border:1px solid rgba(15,118,110,0.20); border-radius:999px; background:white; color:#0f172a; font-weight:800; cursor:pointer;">重置采样点</button>
+    </div>
+    <div id="df-beta-plot" style="width:100%; height:360px;"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById("damped-forced-demo");
+  if (!container || container.dataset.initialized === "true") return;
+  container.dataset.initialized = "true";
+
+  const steps = 2000;
+  const playbackDuration = 16000;
+  const accent = "#0f766e";
+  const equilibriumX = 340;
+  const massWidth = 68;
+  const baseMotionScale = 30;
+  const maxVisualTravel = 120;
+  const damperRodLength = 132;
+
+  const rSlider = container.querySelector("#df-r-slider");
+  const zetaSlider = container.querySelector("#df-zeta-slider");
+  const zetaValue = container.querySelector("#df-zeta-value");
+  const rValue = container.querySelector("#df-r-value");
+  const betaValue = container.querySelector("#df-beta-value");
+  const phaseValue = container.querySelector("#df-phase-value");
+  const stateValue = container.querySelector("#df-state-value");
+  const timeValue = container.querySelector("#df-time-value");
+  const xValue = container.querySelector("#df-x-value");
+  const playBtn = container.querySelector("#df-play");
+  const resetBtn = container.querySelector("#df-reset");
+  const betaResetBtn = container.querySelector("#df-beta-reset");
+  const plotEl = container.querySelector("#df-plot");
+  const betaPlotEl = container.querySelector("#df-beta-plot");
+  const springEl = container.querySelector("#df-spring");
+  const massEl = container.querySelector("#df-mass");
+  const pistonEl = container.querySelector("#df-damper-piston");
+  const rodEl = container.querySelector("#df-damper-rod");
+  const arrowEl = container.querySelector("#df-force-arrow");
+  const headEl = container.querySelector("#df-force-head");
+  const forceLabel = container.querySelector("#df-force-label");
+
+  let r = Number(rSlider.value);
+  let zeta = Number(zetaSlider.value);
+  let tauMax = getTauMax(r, zeta);
+  let currentIndex = 0;
+  let isPlaying = false;
+  let startTimestamp = null;
+  let rafId = null;
+  let response = computeResponse(r);
+  let betaSamples = [];
+
+  function classify(value) {
+    const peak = Math.sqrt(Math.max(0, 1 - 2 * zeta * zeta));
+    if (Math.abs(value - peak) < 0.06) return "共振附近";
+    if (value < peak) return "低于共振";
+    return "高于共振";
+  }
+
+  function beta(freqRatio) {
+    return 1 / Math.sqrt((1 - freqRatio * freqRatio) ** 2 + (2 * zeta * freqRatio) ** 2);
+  }
+
+  function phase(freqRatio) {
+    let angle = Math.atan2(2 * zeta * freqRatio, 1 - freqRatio * freqRatio);
+    if (angle < 0) angle += Math.PI;
+    return angle * 180 / Math.PI;
+  }
+
+  function getTauMax(freqRatio, dampingRatio) {
+    const forcePeriodWindow = 16 * 2 * Math.PI / freqRatio;
+    const decayWindow = 5 / dampingRatio;
+    return Math.max(45, Math.min(160, Math.max(forcePeriodWindow, decayWindow)));
+  }
+
+  function computeResponse(freqRatio) {
+    const tau = [];
+    const y = [];
+    const force = [];
+    const dt = tauMax / steps;
+    let pos = 0;
+    let vel = 0;
+
+    function acc(time, x, v) {
+      return Math.cos(freqRatio * time) - 2 * zeta * v - x;
+    }
+
+    for (let i = 0; i <= steps; i += 1) {
+      const time = i * dt;
+      tau.push(time);
+      y.push(pos);
+      force.push(Math.cos(freqRatio * time));
+
+      const k1x = vel;
+      const k1v = acc(time, pos, vel);
+      const k2x = vel + 0.5 * dt * k1v;
+      const k2v = acc(time + 0.5 * dt, pos + 0.5 * dt * k1x, vel + 0.5 * dt * k1v);
+      const k3x = vel + 0.5 * dt * k2v;
+      const k3v = acc(time + 0.5 * dt, pos + 0.5 * dt * k2x, vel + 0.5 * dt * k2v);
+      const k4x = vel + dt * k3v;
+      const k4v = acc(time + dt, pos + dt * k3x, vel + dt * k3v);
+
+      pos += (dt / 6) * (k1x + 2 * k2x + 2 * k3x + k4x);
+      vel += (dt / 6) * (k1v + 2 * k2v + 2 * k3v + k4v);
+    }
+    const maxAbs = Math.max(0.001, ...y.map((value) => Math.abs(value)));
+    const motionScale = Math.min(baseMotionScale, maxVisualTravel / maxAbs);
+    return { tau, y, force, maxAbs, motionScale };
+  }
+
+  function buildSpringPoints(startX, endX, y) {
+    const points = [];
+    const straight = 18;
+    const turns = 10;
+    const amplitude = 16;
+    points.push(`${startX},${y}`);
+    points.push(`${startX + straight},${y}`);
+    const usable = Math.max(endX - startX - straight * 2, 28);
+    const step = usable / (turns * 2);
+    for (let i = 0; i < turns * 2; i += 1) {
+      const x = startX + straight + step * (i + 1);
+      points.push(`${x},${y + (i % 2 === 0 ? -amplitude : amplitude)}`);
+    }
+    points.push(`${endX - straight},${y}`);
+    points.push(`${endX},${y}`);
+    return points.join(" ");
+  }
+
+  function buildPlot(index) {
+    return [
+      {
+        x: response.tau,
+        y: response.y,
+        mode: "lines",
+        name: "完整响应",
+        line: { color: "rgba(15, 23, 42, 0.20)", width: 2 },
+        hovertemplate: "τ = %{x:.2f}<br>x/xst = %{y:.3f}<extra></extra>",
+      },
+      {
+        x: response.tau.slice(0, index + 1),
+        y: response.y.slice(0, index + 1),
+        mode: "lines",
+        name: "已绘响应",
+        line: { color: accent, width: 3.2 },
+        hovertemplate: "τ = %{x:.2f}<br>x/xst = %{y:.3f}<extra></extra>",
+      },
+      {
+        x: [response.tau[index]],
+        y: [response.y[index]],
+        mode: "markers",
+        name: "当前点",
+        marker: { size: 10, color: "#f97316", line: { color: "white", width: 2 } },
+        hovertemplate: "τ = %{x:.2f}<br>x/xst = %{y:.3f}<extra></extra>",
+      }
+    ];
+  }
+
+  function buildLayout() {
+    const yLimit = Math.max(1.4, response.maxAbs * 1.12);
+    return {
+      margin: { l: 68, r: 18, t: 18, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: {
+        title: "<b>无量纲时间 τ = ωt</b>",
+        range: [0, tauMax],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: false,
+        showline: true,
+        linecolor: "rgba(15, 23, 42, 0.25)",
+      },
+      yaxis: {
+        title: "<b>归一化位移 x / x<sub>st</sub></b>",
+        range: [-yLimit, yLimit],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: true,
+        zerolinecolor: "rgba(15, 23, 42, 0.22)",
+        zerolinewidth: 1.5,
+      },
+      legend: { orientation: "h", y: 1.02, x: 0.98, xanchor: "right", yanchor: "bottom" },
+      hoverlabel: { bgcolor: "#ffffff", bordercolor: "rgba(15,118,110,0.30)", font: { color: "#0f172a" } },
+    };
+  }
+
+  function zetaColor(value) {
+    const minZeta = Number(zetaSlider.min);
+    const maxZeta = Number(zetaSlider.max);
+    const ratio = (value - minZeta) / (maxZeta - minZeta);
+    const hue = 210 - ratio * 165;
+    return `hsl(${hue.toFixed(0)}, 72%, 45%)`;
+  }
+
+  function buildBetaLayout() {
+    const maxBeta = Math.max(5, ...betaSamples.map((sample) => sample.beta));
+    return {
+      margin: { l: 68, r: 18, t: 14, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: {
+        title: "<b>频率比 r = θ / ω</b>",
+        range: [0.05, 3.05],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: false,
+        showline: true,
+        linecolor: "rgba(15, 23, 42, 0.25)",
+      },
+      yaxis: {
+        title: "<b>动力放大系数 β</b>",
+        range: [0, maxBeta * 1.12],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: true,
+        zerolinecolor: "rgba(15, 23, 42, 0.18)",
+      },
+      legend: {
+        orientation: "h",
+        y: 1.02,
+        x: 0.98,
+        xanchor: "right",
+        yanchor: "bottom",
+        bgcolor: "rgba(255,255,255,0.72)",
+      },
+      hoverlabel: { bgcolor: "#ffffff", bordercolor: "rgba(15,118,110,0.30)", font: { color: "#0f172a" } },
+    };
+  }
+
+  function buildBetaData() {
+    const groups = new Map();
+    betaSamples.forEach((sample) => {
+      const key = sample.zeta.toFixed(2);
+      if (!groups.has(key)) groups.set(key, []);
+      groups.get(key).push(sample);
+    });
+
+    return Array.from(groups.entries())
+      .sort((a, b) => Number(a[0]) - Number(b[0]))
+      .map(([key, samples]) => ({
+        x: samples.map((sample) => sample.r),
+        y: samples.map((sample) => sample.beta),
+        mode: "markers",
+        type: "scatter",
+        name: `ζ = ${key}`,
+        marker: {
+          size: 10,
+          color: zetaColor(Number(key)),
+          line: { color: "white", width: 1.5 },
+        },
+        customdata: samples.map((sample) => sample.zeta),
+        hovertemplate: "r = %{x:.2f}<br>β = %{y:.3f}<br>ζ = %{customdata:.2f}<extra></extra>",
+      }));
+  }
+
+  function renderBetaPlot() {
+    Plotly.react(betaPlotEl, buildBetaData(), buildBetaLayout(), {
+      displayModeBar: false,
+      responsive: true,
+    });
+  }
+
+  function addBetaSample() {
+    betaSamples.push({ r, zeta, beta: beta(r) });
+    renderBetaPlot();
+  }
+
+  function updateReadouts(index) {
+    const tau = response.tau[index];
+    const y = response.y[index];
+    const force = response.force[index];
+    zetaValue.textContent = `ζ = ${zeta.toFixed(2)}`;
+    rValue.textContent = `r = ${r.toFixed(2)}`;
+    betaValue.textContent = `β = ${beta(r).toFixed(2)}`;
+    phaseValue.textContent = `φ = ${phase(r).toFixed(1)}°`;
+    stateValue.textContent = classify(r);
+    timeValue.textContent = `τ = ${tau.toFixed(2)}`;
+    xValue.textContent = `x / xst = ${y.toFixed(3)}`;
+
+    const massCenterX = equilibriumX + y * response.motionScale;
+    const massLeft = massCenterX - massWidth / 2;
+    const pistonX = massLeft - damperRodLength;
+    massEl.setAttribute("x", massLeft.toFixed(2));
+    springEl.setAttribute("points", buildSpringPoints(40, massLeft + 2, 142));
+    pistonEl.setAttribute("x1", pistonX.toFixed(2));
+    pistonEl.setAttribute("x2", pistonX.toFixed(2));
+    rodEl.setAttribute("x1", pistonX.toFixed(2));
+    rodEl.setAttribute("x2", massLeft.toFixed(2));
+
+    const arrowStart = massLeft + massWidth + 18;
+    const arrowLength = 48 * Math.abs(force);
+    const arrowEnd = arrowStart + (force >= 0 ? arrowLength : -arrowLength);
+    arrowEl.setAttribute("x1", arrowStart.toFixed(2));
+    arrowEl.setAttribute("x2", arrowEnd.toFixed(2));
+    if (force >= 0) {
+      headEl.setAttribute("points", `${arrowEnd},70 ${arrowEnd - 12},62 ${arrowEnd - 12},78`);
+    } else {
+      headEl.setAttribute("points", `${arrowEnd},70 ${arrowEnd + 12},62 ${arrowEnd + 12},78`);
+    }
+    forceLabel.setAttribute("x", Math.min(500, Math.max(48, arrowStart)).toFixed(2));
+  }
+
+  function render(index, fullRedraw = false) {
+    currentIndex = index;
+    updateReadouts(index);
+    if (fullRedraw) {
+      Plotly.react(plotEl, buildPlot(index), buildLayout(), { displayModeBar: false, responsive: true });
+    } else {
+      Plotly.restyle(plotEl, { x: [response.tau.slice(0, index + 1)], y: [response.y.slice(0, index + 1)] }, [1]);
+      Plotly.restyle(plotEl, { x: [[response.tau[index]]], y: [[response.y[index]]] }, [2]);
+    }
+  }
+
+  function stop() {
+    isPlaying = false;
+    startTimestamp = null;
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+    playBtn.textContent = "播放";
+  }
+
+  function tick(timestamp) {
+    if (!isPlaying) return;
+    if (startTimestamp === null) {
+      startTimestamp = timestamp - (currentIndex / steps) * playbackDuration;
+    }
+    const progress = Math.min((timestamp - startTimestamp) / playbackDuration, 1);
+    const nextIndex = Math.min(Math.floor(progress * steps), steps);
+    if (nextIndex !== currentIndex) render(nextIndex, false);
+    if (progress >= 1) {
+      stop();
+      return;
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function play(fromStart = false) {
+    if (fromStart) render(0, true);
+    isPlaying = true;
+    startTimestamp = null;
+    playBtn.textContent = "暂停";
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function applyParameters(recordSample = true) {
+    tauMax = getTauMax(r, zeta);
+    response = computeResponse(r);
+    stop();
+    render(0, true);
+    if (recordSample) addBetaSample();
+    play(false);
+  }
+
+  rSlider.addEventListener("input", (event) => {
+    r = Number(event.target.value);
+    applyParameters(true);
+  });
+
+  zetaSlider.addEventListener("input", (event) => {
+    zeta = Number(event.target.value);
+    applyParameters(true);
+  });
+
+  playBtn.addEventListener("click", () => {
+    if (isPlaying) stop();
+    else play(currentIndex >= steps);
+  });
+  resetBtn.addEventListener("click", () => {
+    stop();
+    play(true);
+  });
+
+  betaResetBtn.addEventListener("click", () => {
+    betaSamples = [];
+    renderBetaPlot();
+  });
+
+  render(0, true);
+  addBetaSample();
+  play(false);
+})();
+</script>
+</div></div>
+</div>
 <p>为了确定 <span class="math notranslate nohighlight">\(r\)</span> 为何值时, <span class="math notranslate nohighlight">\(\beta\)</span> 达到最大值, 可令</p>
 <div class="math notranslate nohighlight">
 \[
@@ -955,7 +1939,9 @@ r_{2}-r_{1}=2\zeta \tag{9}
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.3.1. 无阻尼强迫振动</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 有阻尼强迫振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.3.2. 交互探索：无阻尼强迫振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.3.3. 有阻尼强迫振动</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.3.4. 交互探索：有阻尼强迫振动</a></li>
 </ul>
   </nav></div>
 
