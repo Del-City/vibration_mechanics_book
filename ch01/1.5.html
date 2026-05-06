@@ -8,7 +8,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>1.5. 任意激励载荷下作用下的强迫振动 &#8212; My sample book</title>
+    <title>1.5. 任意激励作用下的强迫振动 &#8212; My sample book</title>
   
   
   
@@ -188,7 +188,7 @@
 <li class="toctree-l2"><a class="reference internal" href="1.2.html">1.2. 自由振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.3.html">1.3. 简谐载荷作用下的强迫振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.4.html">1.4. 周期激励作用下的强迫振动</a></li>
-<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.5. 任意激励载荷下作用下的强迫振动</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">1.5. 任意激励作用下的强迫振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.6.html">1.6. 隔振原理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exercises.html">1.7. 习题</a></li>
 </ul>
@@ -422,7 +422,9 @@ document.write(`
   </button>
 `);
 </script>
-
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</button>
 </div></div>
       
     </div>
@@ -433,11 +435,19 @@ document.write(`
               
 
 <div id="jb-print-docs-body" class="onlyprint">
-    <h1>任意激励载荷下作用下的强迫振动</h1>
+    <h1>任意激励作用下的强迫振动</h1>
     <!-- Table of contents -->
     <div id="print-main-content">
         <div id="jb-print-toc">
             
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.5.1. 交互探索：任意激励如何通过脉冲响应产生振动？</a></li>
+</ul>
+            </nav>
         </div>
     </div>
 </div>
@@ -448,7 +458,7 @@ document.write(`
                 <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1><span class="section-number">1.5. </span>任意激励载荷下作用下的强迫振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
+<h1><span class="section-number">1.5. </span>任意激励作用下的强迫振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本节讨论单自由度系统在任意一般性荷载（例如图2-23中所示一实测荷载曲线）作 用下的强迫振动问题。</p>
 <p>在求解这个问题之前，先来看一种特殊情况。</p>
 <p>一个初始静止的单自由度系统，在初始时刻受到一个单位脉冲<span class="math notranslate nohighlight">\(\delta \left ( t \right )\)</span>的作用，求其运动规律。</p>
@@ -577,6 +587,647 @@ H\left ( \omega\right ) = \int_{-  \infty }^{+  \infty } h\left (\theta   \right
 H\left ( \omega\right ) = \int_{-  \infty }^{+  \infty } h\left (t \right ) e^{-i\omega t } \mathrm{d}t 
 \]</div>
 <p>由式<a class="reference internal" href="#equation-eq-1-114">(1.119)</a>和式<a class="reference internal" href="#equation-eq-1-119">(1.124)</a>可知，脉冲响应函数<span class="math notranslate nohighlight">\(h\left (t \right )\)</span>和频率响应函数<span class="math notranslate nohighlight">\(H\left ( \omega\right )\)</span>之间构成傅氏变换对。</p>
+<section id="id2">
+<h2><span class="section-number">1.5.1. </span>交互探索：任意激励如何通过脉冲响应产生振动？<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>任意激励可以看作许多短时脉冲的叠加。每一个脉冲都会激起一段延迟后的自由衰减响应；所有这些响应叠加起来，就是系统的总响应。这正是杜阿梅尔积分的物理图像。</p>
+</div>
+<p>下方交互探索采用离散卷积近似</p>
+<div class="math notranslate nohighlight">
+\[
+x(t_i)\approx \sum_{j=0}^{i} F(t_j)h(t_i-t_j)\Delta t
+\]</div>
+<p>来计算有阻尼单自由度系统在任意激励作用下的响应。可以选择不同荷载形式、调节荷载参数和阻尼比，并观察脉冲响应、总响应、单个脉冲贡献以及弹簧阻尼振子的运动。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  #arbitrary-forced-demo input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(148, 163, 184, 0.34);
+    outline: none;
+  }
+  #arbitrary-forced-demo input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #dc2626;
+    border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.25);
+    cursor: pointer;
+  }
+  #arbitrary-forced-demo select {
+    width: 100%;
+    box-sizing: border-box;
+    border: 1px solid rgba(148, 163, 184, 0.35);
+    border-radius: 12px;
+    padding: 0.55rem 0.65rem;
+    color: #0f172a;
+    background: #ffffff;
+    font-weight: 800;
+  }
+</style>
+
+<div id="arbitrary-forced-demo" style="
+    max-width: 1120px; margin: 1.4rem auto; padding: 1.1rem;
+    border-radius: 22px; background: linear-gradient(135deg, #fff7f7 0%, #f6fbff 100%);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.09);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+">
+  <div style="display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:0.75rem; margin-bottom:0.95rem;">
+    <div style="padding:0.78rem 0.85rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(220,38,38,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">阻尼比</div>
+      <div id="af-zeta-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#b91c1c;">ζ = 0.10</div>
+    </div>
+    <div style="padding:0.78rem 0.85rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(220,38,38,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">荷载类型</div>
+      <div id="af-type-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">矩形脉冲</div>
+    </div>
+    <div style="padding:0.78rem 0.85rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(220,38,38,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">最大激励</div>
+      <div id="af-fmax-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">1.00</div>
+    </div>
+    <div style="padding:0.78rem 0.85rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(220,38,38,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">最大响应</div>
+      <div id="af-xmax-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">0.00</div>
+    </div>
+    <div style="padding:0.78rem 0.85rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(220,38,38,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">贡献脉冲时刻</div>
+      <div id="af-probe-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">τ = 2.0</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1rem; align-items:end;">
+    <div>
+      <label for="af-load-type" style="font-size:14px; color:#334155; font-weight:800;">荷载形式</label>
+      <select id="af-load-type" style="margin-top:0.35rem;">
+        <option value="rect">矩形脉冲</option>
+        <option value="tri">三角脉冲</option>
+        <option value="half">半正弦脉冲</option>
+        <option value="multi">多脉冲</option>
+        <option value="random">随机样荷载</option>
+      </select>
+    </div>
+    <div>
+      <label for="af-zeta-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>阻尼比 ζ</span><span style="font-weight:500; color:#64748b;">0.02 ~ 0.50</span>
+      </label>
+      <input id="af-zeta-slider" type="range" min="0.02" max="0.50" step="0.01" value="0.10">
+    </div>
+    <div>
+      <label for="af-probe-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>查看某一脉冲贡献 τ</span><span style="font-weight:500; color:#64748b;">0 ~ 20</span>
+      </label>
+      <input id="af-probe-slider" type="range" min="0" max="20" step="0.05" value="2.0">
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:1rem; margin-top:0.9rem;">
+    <div>
+      <label for="af-amp-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>幅值 A</span><span id="af-amp-label" style="font-weight:500; color:#64748b;">1.00</span>
+      </label>
+      <input id="af-amp-slider" type="range" min="0.2" max="3.0" step="0.05" value="1.0">
+    </div>
+    <div>
+      <label for="af-start-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>开始时间 τ<sub>0</sub></span><span id="af-start-label" style="font-weight:500; color:#64748b;">2.0</span>
+      </label>
+      <input id="af-start-slider" type="range" min="0" max="12" step="0.1" value="2.0">
+    </div>
+    <div>
+      <label for="af-duration-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>持续时间 Δτ</span><span id="af-duration-label" style="font-weight:500; color:#64748b;">3.0</span>
+      </label>
+      <input id="af-duration-slider" type="range" min="0.3" max="8.0" step="0.1" value="3.0">
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(0, 1fr); gap:1rem; margin-top:1rem;">
+    <div style="padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="af-impulse-plot" style="width:100%; height:175px;"></div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(360px, 1.2fr) minmax(300px, 0.8fr); gap:1rem; margin-top:1rem; align-items:stretch;">
+    <div style="padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="af-force-plot" style="width:100%; height:250px;"></div>
+    </div>
+    <div style="padding:0.9rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <svg id="af-oscillator" viewBox="0 0 560 220" style="width:100%; height:175px; display:block; border-radius:14px; background:linear-gradient(180deg, #ffffff 0%, #fff7f7 100%);">
+        <rect x="0" y="0" width="560" height="220" rx="14" fill="transparent"></rect>
+        <rect x="22" y="38" width="18" height="140" rx="5" fill="#94a3b8"></rect>
+        <line x1="40" y1="96" x2="60" y2="96" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"></line>
+        <line x1="60" y1="84" x2="300" y2="84" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"></line>
+        <line x1="60" y1="108" x2="300" y2="108" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"></line>
+        <line x1="60" y1="84" x2="60" y2="108" stroke="#94a3b8" stroke-width="3" stroke-linecap="round"></line>
+        <line id="af-damper-piston" x1="104" y1="86" x2="104" y2="106" stroke="#64748b" stroke-width="4" stroke-linecap="round"></line>
+        <line id="af-damper-rod" x1="104" y1="96" x2="178" y2="96" stroke="#64748b" stroke-width="4" stroke-linecap="round"></line>
+        <line x1="40" y1="142" x2="520" y2="142" stroke="rgba(148,163,184,0.32)" stroke-width="6" stroke-linecap="round"></line>
+        <line x1="340" y1="32" x2="340" y2="188" stroke="rgba(249,115,22,0.42)" stroke-width="2" stroke-dasharray="6 5"></line>
+        <polyline id="af-spring" fill="none" stroke="#dc2626" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <rect id="af-mass" x="306" y="83" width="68" height="68" rx="12" fill="#fca5a5" stroke="#b91c1c" stroke-width="3"></rect>
+        <line id="af-force-arrow" x1="392" y1="70" x2="450" y2="70" stroke="#ef4444" stroke-width="5" stroke-linecap="round"></line>
+        <polygon id="af-force-head" points="450,70 438,62 438,78" fill="#ef4444"></polygon>
+        <text x="292" y="204" fill="#64748b" style="font-size:13px;">平衡位置</text>
+        <text id="af-force-label" x="392" y="54" fill="#ef4444" style="font-size:20px; font-weight:700;">F(t)</text>
+      </svg>
+      <div style="display:flex; gap:0.65rem; margin-top:0.75rem;">
+        <button id="af-play" style="flex:1; padding:0.78rem 0.75rem; border:none; border-radius:999px; background:#dc2626; color:white; font-weight:800; cursor:pointer;">播放</button>
+        <button id="af-reset" style="flex:1; padding:0.78rem 0.75rem; border:1px solid rgba(220,38,38,0.22); border-radius:999px; background:white; color:#0f172a; font-weight:800; cursor:pointer;">重播</button>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(0, 1fr); gap:1rem; margin-top:1rem;">
+    <div style="padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="af-response-plot" style="width:100%; height:360px;"></div>
+    </div>
+    <div style="padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="af-spectrum-plot" style="width:100%; height:320px;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById("arbitrary-forced-demo");
+  if (!container || container.dataset.initialized === "true") return;
+  container.dataset.initialized = "true";
+
+  const tauMax = 20;
+  const steps = 1200;
+  const dt = tauMax / steps;
+  const playbackDuration = 13000;
+  const omegaN = 1;
+  const mass = 1;
+  const equilibriumX = 340;
+  const massWidth = 68;
+  const baseMotionScale = 55;
+  const maxVisualTravel = 120;
+  const damperRodLength = 132;
+
+  const loadTypeEl = container.querySelector("#af-load-type");
+  const zetaSlider = container.querySelector("#af-zeta-slider");
+  const ampSlider = container.querySelector("#af-amp-slider");
+  const startSlider = container.querySelector("#af-start-slider");
+  const durationSlider = container.querySelector("#af-duration-slider");
+  const probeSlider = container.querySelector("#af-probe-slider");
+  const zetaValue = container.querySelector("#af-zeta-value");
+  const typeValue = container.querySelector("#af-type-value");
+  const fmaxValue = container.querySelector("#af-fmax-value");
+  const xmaxValue = container.querySelector("#af-xmax-value");
+  const probeValue = container.querySelector("#af-probe-value");
+  const ampLabel = container.querySelector("#af-amp-label");
+  const startLabel = container.querySelector("#af-start-label");
+  const durationLabel = container.querySelector("#af-duration-label");
+  const playBtn = container.querySelector("#af-play");
+  const resetBtn = container.querySelector("#af-reset");
+  const forcePlot = container.querySelector("#af-force-plot");
+  const impulsePlot = container.querySelector("#af-impulse-plot");
+  const responsePlot = container.querySelector("#af-response-plot");
+  const spectrumPlot = container.querySelector("#af-spectrum-plot");
+  const springEl = container.querySelector("#af-spring");
+  const massEl = container.querySelector("#af-mass");
+  const pistonEl = container.querySelector("#af-damper-piston");
+  const rodEl = container.querySelector("#af-damper-rod");
+  const arrowEl = container.querySelector("#af-force-arrow");
+  const headEl = container.querySelector("#af-force-head");
+  const forceLabel = container.querySelector("#af-force-label");
+
+  let zeta = Number(zetaSlider.value);
+  let loadType = loadTypeEl.value;
+  let amplitude = Number(ampSlider.value);
+  let startTime = Number(startSlider.value);
+  let duration = Number(durationSlider.value);
+  let probeTime = Number(probeSlider.value);
+  let response = computeAll();
+  let currentIndex = 0;
+  let isPlaying = false;
+  let startTimestamp = null;
+  let rafId = null;
+
+  function loadTypeLabel(type) {
+    return {
+      rect: "矩形脉冲",
+      tri: "三角脉冲",
+      half: "半正弦脉冲",
+      multi: "多脉冲",
+      random: "随机样荷载",
+    }[type] || "矩形脉冲";
+  }
+
+  function pseudoRandom(seed) {
+    const value = Math.sin(seed * 12.9898) * 43758.5453;
+    return value - Math.floor(value);
+  }
+
+  function forceAt(t) {
+    const s = startTime;
+    const d = Math.max(duration, dt);
+    if (loadType === "rect") {
+      return (t >= s && t <= s + d) ? amplitude : 0;
+    }
+    if (loadType === "tri") {
+      if (t < s || t > s + d) return 0;
+      const local = (t - s) / d;
+      return amplitude * (local <= 0.5 ? local * 2 : (1 - local) * 2);
+    }
+    if (loadType === "half") {
+      if (t < s || t > s + d) return 0;
+      return amplitude * Math.sin(Math.PI * (t - s) / d);
+    }
+    if (loadType === "multi") {
+      const centers = [s, s + 0.55 * d, s + 1.18 * d];
+      const widths = [0.18 * d, 0.22 * d, 0.16 * d];
+      const scales = [1.0, -0.72, 0.52];
+      return centers.reduce((sum, center, idx) => {
+        const dist = Math.abs(t - center);
+        if (dist > widths[idx]) return sum;
+        return sum + amplitude * scales[idx] * (1 - dist / widths[idx]);
+      }, 0);
+    }
+    if (loadType === "random") {
+      if (t < s || t > s + d) return 0;
+      const local = (t - s) / d;
+      const envelope = Math.sin(Math.PI * local);
+      const k = Math.floor(local * 36);
+      const a = pseudoRandom(k + 3) * 2 - 1;
+      const b = pseudoRandom(k + 4) * 2 - 1;
+      const frac = local * 36 - k;
+      const noise = a * (1 - frac) + b * frac;
+      return amplitude * envelope * noise;
+    }
+    return 0;
+  }
+
+  function impulseResponse(t) {
+    if (t < 0) return 0;
+    if (zeta < 1) {
+      const omegaD = omegaN * Math.sqrt(1 - zeta * zeta);
+      return Math.exp(-zeta * omegaN * t) * Math.sin(omegaD * t) / (mass * omegaD);
+    }
+    const eps = 1e-4;
+    const omegaD = omegaN * Math.sqrt(1 - (1 - eps) * (1 - eps));
+    return Math.exp(-(1 - eps) * omegaN * t) * Math.sin(omegaD * t) / (mass * omegaD);
+  }
+
+  function discreteSpectrum(values) {
+    const sampleCount = 256;
+    const stride = Math.max(1, Math.floor(values.length / sampleCount));
+    const sampled = [];
+    for (let i = 0; i < values.length && sampled.length < sampleCount; i += stride) sampled.push(values[i]);
+    const n = sampled.length;
+    const freqs = [];
+    const mags = [];
+    const maxK = 48;
+    for (let k = 0; k <= maxK; k += 1) {
+      let re = 0;
+      let im = 0;
+      for (let j = 0; j < n; j += 1) {
+        const angle = -2 * Math.PI * k * j / n;
+        re += sampled[j] * Math.cos(angle);
+        im += sampled[j] * Math.sin(angle);
+      }
+      freqs.push(2 * Math.PI * k / tauMax);
+      mags.push(Math.sqrt(re * re + im * im) / n);
+    }
+    return { freqs, mags };
+  }
+
+  function computeAll() {
+    const tau = [];
+    const force = [];
+    const h = [];
+    for (let i = 0; i <= steps; i += 1) {
+      const t = i * dt;
+      tau.push(t);
+      force.push(forceAt(t));
+      h.push(impulseResponse(t));
+    }
+
+    const x = new Array(force.length).fill(0);
+    for (let i = 0; i < force.length; i += 1) {
+      let sum = 0;
+      for (let j = 0; j <= i; j += 1) {
+        sum += force[j] * h[i - j] * dt;
+      }
+      x[i] = sum;
+    }
+
+    const probeIndex = Math.max(0, Math.min(force.length - 1, Math.round(probeTime / dt)));
+    const contribution = tau.map((t, i) => (
+      i >= probeIndex ? force[probeIndex] * dt * h[i - probeIndex] : null
+    ));
+    const maxForce = Math.max(0.001, ...force.map((value) => Math.abs(value)));
+    const maxX = Math.max(0.001, ...x.map((value) => Math.abs(value)));
+    const motionScale = Math.min(baseMotionScale, maxVisualTravel / maxX);
+    const forceSpectrum = discreteSpectrum(force);
+    const responseSpectrum = discreteSpectrum(x);
+    return { tau, force, h, x, contribution, probeIndex, maxForce, maxX, motionScale, forceSpectrum, responseSpectrum };
+  }
+
+  function buildSpringPoints(startX, endX, y) {
+    const points = [];
+    const straight = 18;
+    const turns = 10;
+    const amplitude = 16;
+    points.push(`${startX},${y}`);
+    points.push(`${startX + straight},${y}`);
+    const usable = Math.max(endX - startX - straight * 2, 28);
+    const step = usable / (turns * 2);
+    for (let i = 0; i < turns * 2; i += 1) {
+      const x = startX + straight + step * (i + 1);
+      points.push(`${x},${y + (i % 2 === 0 ? -amplitude : amplitude)}`);
+    }
+    points.push(`${endX - straight},${y}`);
+    points.push(`${endX},${y}`);
+    return points.join(" ");
+  }
+
+  function baseLayout(yTitle, yRange) {
+    return {
+      margin: { l: 68, r: 18, t: 18, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: {
+        title: "<b>无量纲时间 τ = ω<sub>n</sub>t</b>",
+        range: [0, tauMax],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: false,
+        showline: true,
+        linecolor: "rgba(15, 23, 42, 0.25)",
+      },
+      yaxis: {
+        title: yTitle,
+        range: yRange,
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: true,
+        zerolinecolor: "rgba(15, 23, 42, 0.20)",
+      },
+      hoverlabel: { bgcolor: "#ffffff", bordercolor: "rgba(220,38,38,0.30)", font: { color: "#0f172a" } },
+      showlegend: false,
+    };
+  }
+
+  function renderPlots(index, fullRedraw = false) {
+    const partialTau = response.tau.slice(0, index + 1);
+    const partialForce = response.force.slice(0, index + 1);
+    const partialX = response.x.slice(0, index + 1);
+    const fLimit = Math.max(1, response.maxForce * 1.18);
+    const hLimit = Math.max(0.6, Math.max(...response.h.map((value) => Math.abs(value))) * 1.18);
+    const xLimit = Math.max(0.6, response.maxX * 1.18);
+
+    if (fullRedraw) {
+      Plotly.react(forcePlot, [
+        {
+          x: response.tau,
+          y: response.force,
+          mode: "lines",
+          line: { color: "rgba(15,23,42,0.20)", width: 2 },
+          hovertemplate: "τ = %{x:.2f}<br>F = %{y:.3f}<extra></extra>",
+        },
+        {
+          x: partialTau,
+          y: partialForce,
+          mode: "lines",
+          line: { color: "#dc2626", width: 3 },
+          hovertemplate: "τ = %{x:.2f}<br>F = %{y:.3f}<extra></extra>",
+        },
+        {
+          x: [response.tau[response.probeIndex], response.tau[response.probeIndex]],
+          y: [-fLimit, fLimit],
+          mode: "lines",
+          line: { color: "#f97316", width: 2, dash: "dot" },
+          hoverinfo: "skip",
+        },
+      ], baseLayout("<b>任意激励 F(τ)</b>", [-fLimit, fLimit]), { displayModeBar: false, responsive: true });
+
+      Plotly.react(impulsePlot, [
+        {
+          x: response.tau,
+          y: response.h,
+          mode: "lines",
+          line: { color: "#334155", width: 2.8 },
+          hovertemplate: "τ = %{x:.2f}<br>h = %{y:.4f}<extra></extra>",
+        },
+      ], baseLayout("<b>脉冲响应函数 h(τ)</b>", [-hLimit, hLimit]), { displayModeBar: false, responsive: true });
+
+      Plotly.react(responsePlot, [
+        {
+          x: response.tau,
+          y: response.x,
+          mode: "lines",
+          name: "总响应",
+          line: { color: "rgba(15,23,42,0.20)", width: 2 },
+          hovertemplate: "τ = %{x:.2f}<br>x = %{y:.4f}<extra></extra>",
+        },
+        {
+          x: response.tau,
+          y: response.contribution,
+          mode: "lines",
+          name: "单脉冲贡献",
+          line: { color: "#f97316", width: 2, dash: "dot" },
+          hovertemplate: "τ = %{x:.2f}<br>贡献 = %{y:.4f}<extra></extra>",
+        },
+        {
+          x: partialTau,
+          y: partialX,
+          mode: "lines",
+          name: "已绘响应",
+          line: { color: "#dc2626", width: 3 },
+          hovertemplate: "τ = %{x:.2f}<br>x = %{y:.4f}<extra></extra>",
+        },
+        {
+          x: [response.tau[index]],
+          y: [response.x[index]],
+          mode: "markers",
+          marker: { size: 10, color: "#16f929", line: { color: "white", width: 2 } },
+          name: "当前点",
+          hovertemplate: "τ = %{x:.2f}<br>x = %{y:.4f}<extra></extra>",
+        },
+      ], {
+        ...baseLayout("<b>响应 x(τ)</b>", [-xLimit, xLimit]),
+        showlegend: true,
+        legend: { orientation: "h", y: 1.02, x: 0.98, xanchor: "right", yanchor: "bottom" },
+      }, { displayModeBar: false, responsive: true });
+
+      renderSpectrumPlot();
+    } else {
+      Plotly.restyle(forcePlot, { x: [partialTau], y: [partialForce] }, [1]);
+      Plotly.restyle(responsePlot, { x: [partialTau], y: [partialX] }, [2]);
+      Plotly.restyle(responsePlot, { x: [[response.tau[index]]], y: [[response.x[index]]] }, [3]);
+    }
+  }
+
+  function renderSpectrumPlot() {
+    Plotly.react(spectrumPlot, [
+      {
+        x: response.forceSpectrum.freqs,
+        y: response.forceSpectrum.mags,
+        mode: "lines",
+        name: "|P(ω)|",
+        line: { color: "rgba(220,38,38,0.78)", width: 2.6 },
+        hovertemplate: "ω/ωn = %{x:.2f}<br>|P| = %{y:.4f}<extra></extra>",
+      },
+      {
+        x: response.responseSpectrum.freqs,
+        y: response.responseSpectrum.mags,
+        mode: "lines",
+        name: "|X(ω)|",
+        line: { color: "rgba(37,99,235,0.78)", width: 2.6 },
+        hovertemplate: "ω/ωn = %{x:.2f}<br>|X| = %{y:.4f}<extra></extra>",
+      },
+    ], {
+      margin: { l: 68, r: 18, t: 18, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: {
+        title: "<b>频率比 ω / ω<sub>n</sub></b>",
+        range: [0, 8],
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: false,
+        showline: true,
+        linecolor: "rgba(15, 23, 42, 0.25)",
+      },
+      yaxis: {
+        title: "<b>幅值谱</b>",
+        showgrid: true,
+        gridcolor: "rgba(148, 163, 184, 0.22)",
+        zeroline: true,
+        zerolinecolor: "rgba(15, 23, 42, 0.20)",
+      },
+      legend: { orientation: "h", y: 1.02, x: 0.98, xanchor: "right", yanchor: "bottom" },
+      hoverlabel: { bgcolor: "#ffffff", bordercolor: "rgba(220,38,38,0.30)", font: { color: "#0f172a" } },
+    }, { displayModeBar: false, responsive: true });
+  }
+
+  function updateOscillator(index) {
+    const x = response.x[index];
+    const force = response.force[index];
+    const massCenterX = equilibriumX + x * response.motionScale;
+    const massLeft = massCenterX - massWidth / 2;
+    const pistonX = massLeft - damperRodLength;
+    massEl.setAttribute("x", massLeft.toFixed(2));
+    springEl.setAttribute("points", buildSpringPoints(40, massLeft + 2, 142));
+    pistonEl.setAttribute("x1", pistonX.toFixed(2));
+    pistonEl.setAttribute("x2", pistonX.toFixed(2));
+    rodEl.setAttribute("x1", pistonX.toFixed(2));
+    rodEl.setAttribute("x2", massLeft.toFixed(2));
+
+    const arrowStart = massLeft + massWidth + 18;
+    const arrowLength = Math.min(62, 48 * Math.abs(force) / Math.max(1, response.maxForce));
+    const arrowEnd = arrowStart + (force >= 0 ? arrowLength : -arrowLength);
+    arrowEl.setAttribute("x1", arrowStart.toFixed(2));
+    arrowEl.setAttribute("x2", arrowEnd.toFixed(2));
+    if (force >= 0) {
+      headEl.setAttribute("points", `${arrowEnd},70 ${arrowEnd - 12},62 ${arrowEnd - 12},78`);
+    } else {
+      headEl.setAttribute("points", `${arrowEnd},70 ${arrowEnd + 12},62 ${arrowEnd + 12},78`);
+    }
+    forceLabel.setAttribute("x", Math.min(500, Math.max(48, arrowStart)).toFixed(2));
+  }
+
+  function updateReadouts() {
+    zetaValue.textContent = `ζ = ${zeta.toFixed(2)}`;
+    typeValue.textContent = loadTypeLabel(loadType);
+    fmaxValue.textContent = response.maxForce.toFixed(2);
+    xmaxValue.textContent = response.maxX.toFixed(3);
+    probeValue.textContent = `τ = ${probeTime.toFixed(2)}`;
+    ampLabel.textContent = amplitude.toFixed(2);
+    startLabel.textContent = startTime.toFixed(1);
+    durationLabel.textContent = duration.toFixed(1);
+  }
+
+  function render(index, fullRedraw = false) {
+    currentIndex = index;
+    updateReadouts();
+    updateOscillator(index);
+    renderPlots(index, fullRedraw);
+  }
+
+  function recompute(fullRedraw = true) {
+    response = computeAll();
+    currentIndex = Math.min(currentIndex, response.tau.length - 1);
+    render(0, fullRedraw);
+  }
+
+  function stop() {
+    isPlaying = false;
+    startTimestamp = null;
+    if (rafId) cancelAnimationFrame(rafId);
+    rafId = null;
+    playBtn.textContent = "播放";
+  }
+
+  function tick(timestamp) {
+    if (!isPlaying) return;
+    if (startTimestamp === null) {
+      startTimestamp = timestamp - (currentIndex / steps) * playbackDuration;
+    }
+    const progress = Math.min((timestamp - startTimestamp) / playbackDuration, 1);
+    const nextIndex = Math.min(Math.floor(progress * steps), steps);
+    if (nextIndex !== currentIndex) render(nextIndex, false);
+    if (progress >= 1) {
+      stop();
+      return;
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function play(fromStart = false) {
+    if (fromStart) render(0, true);
+    isPlaying = true;
+    startTimestamp = null;
+    playBtn.textContent = "暂停";
+    rafId = requestAnimationFrame(tick);
+  }
+
+  function applyControlChanges() {
+    zeta = Number(zetaSlider.value);
+    loadType = loadTypeEl.value;
+    amplitude = Number(ampSlider.value);
+    startTime = Number(startSlider.value);
+    duration = Number(durationSlider.value);
+    probeTime = Number(probeSlider.value);
+    stop();
+    recompute(true);
+    play(false);
+  }
+
+  [loadTypeEl, zetaSlider, ampSlider, startSlider, durationSlider, probeSlider].forEach((el) => {
+    el.addEventListener("input", applyControlChanges);
+    el.addEventListener("change", applyControlChanges);
+  });
+
+  playBtn.addEventListener("click", () => {
+    if (isPlaying) stop();
+    else play(currentIndex >= steps);
+  });
+
+  resetBtn.addEventListener("click", () => {
+    stop();
+    play(true);
+  });
+
+  render(0, true);
+  play(false);
+})();
+</script>
+</div></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>例1-9</strong> 一不计阻尼的单自由度系统，初始静止，受简谐扰力<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) =P\cos \theta t\)</span>作用。试用杜阿梅尔积分求它的响应。
@@ -655,6 +1306,7 @@ x(t) = &amp;\mathcal{L}^{-1}\left[ X(p) \right] = e^{-\zeta \omega_{0}t} \left( 
 <p>可以看出，式(6)与式<a class="reference internal" href="#equation-eq-1-105">(1.110)</a>是一致的。</p>
 </div>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -710,6 +1362,21 @@ x(t) = &amp;\mathcal{L}^{-1}\left[ X(p) \right] = e^{-\zeta \omega_{0}t} \left( 
             </div>
             
             
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.5.1. 交互探索：任意激励如何通过脉冲响应产生振动？</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
               
             
           </div>

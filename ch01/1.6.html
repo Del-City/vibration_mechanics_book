@@ -63,7 +63,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="1.7. 习题" href="exercises.html" />
-    <link rel="prev" title="1.5. 任意激励载荷下作用下的强迫振动" href="1.5.html" />
+    <link rel="prev" title="1.5. 任意激励作用下的强迫振动" href="1.5.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
   </head>
@@ -188,7 +188,7 @@
 <li class="toctree-l2"><a class="reference internal" href="1.2.html">1.2. 自由振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.3.html">1.3. 简谐载荷作用下的强迫振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.4.html">1.4. 周期激励作用下的强迫振动</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5.html">1.5. 任意激励载荷下作用下的强迫振动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5.html">1.5. 任意激励作用下的强迫振动</a></li>
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.6. 隔振原理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exercises.html">1.7. 习题</a></li>
 </ul>
@@ -446,7 +446,9 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.6.1. 第一类隔振</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.6.2. 第二类隔振</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.6.2. 交互探索：第一类隔振如何减少传递力？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.6.3. 第二类隔振</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.6.4. 交互探索：第二类隔振如何减少设备绝对位移？</a></li>
 </ul>
             </nav>
         </div>
@@ -509,7 +511,294 @@ H_{F} \left ( \omega  \right )=  \frac{F_{t}}{P}= \frac{\sqrt{1+  \left ( 2\zeta
 <p>显然，它与1.6.1节中位移传递函数<span class="math notranslate nohighlight">\(H_{1} \left ( \omega  \right ) \)</span>是相同的。由图1-16可见，当<span class="math notranslate nohighlight">\(r = \sqrt{2} \)</span>时，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )=1 \)</span>；当<span class="math notranslate nohighlight">\(r&gt;  \sqrt{2}\)</span>时，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )&lt; 1\)</span>，即引起隔振的效果，<span class="math notranslate nohighlight">\(r\)</span>越大，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )\)</span>越小，隔振效果越好。但<span class="math notranslate nohighlight">\(r\)</span>过大意味着<span class="math notranslate nohighlight">\(\omega _{n}\)</span>很小。这就造成隔振系统静伸长很大。在有外界低频骚扰时，往往会使动力机械不能正常工作。从图1-16还可看出当<span class="math notranslate nohighlight">\(r &gt;  \sqrt{2}\)</span>时，阻尼增大反而使隔振的效果降低。因而隔振器的阻尼比不能设计得太大。</p>
 </section>
 <section id="id3">
-<h2><span class="section-number">1.6.2. </span>第二类隔振<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<h2><span class="section-number">1.6.2. </span>交互探索：第一类隔振如何减少传递力？<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>第一类隔振关注的是振源产生的干扰力有多少传递给基础。只有当频率比 <span class="math notranslate nohighlight">\(r&gt;\sqrt{2}\)</span> 时，传递率才小于 1，系统才真正进入隔振区。</p>
+</div>
+<p>请调节频率比 <span class="math notranslate nohighlight">\(r=\omega/\omega_n\)</span> 和阻尼比 <span class="math notranslate nohighlight">\(\zeta\)</span>，观察机器振动、传递力箭头和力传递率曲线的变化。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  #force-isolation-demo input[type="range"] {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 8px;
+    border-radius: 999px; background: rgba(148, 163, 184, 0.34); outline: none;
+  }
+  #force-isolation-demo input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+    border-radius: 50%; background: #0f766e; border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(15, 118, 110, 0.28); cursor: pointer;
+  }
+</style>
+
+<div id="force-isolation-demo" style="
+    max-width: 1080px; margin: 1.4rem auto; padding: 1.1rem;
+    border-radius: 22px; background: linear-gradient(135deg, #f7fffd 0%, #eef7ff 100%);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.09);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+">
+  <div style="display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:0.75rem; margin-bottom:0.95rem;">
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">频率比</div>
+      <div id="fi-r-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">r = 2.00</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">阻尼比</div>
+      <div id="fi-zeta-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">ζ = 0.10</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">力传递率</div>
+      <div id="fi-tr-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">0.36</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">隔振效率</div>
+      <div id="fi-eff-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">64%</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(15,118,110,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">状态</div>
+      <div id="fi-state-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">隔振区</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.1rem; padding:0.35rem 0.55rem 1rem;">
+    <div>
+      <label for="fi-r-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>调节频率比 r = ω / ω<sub>n</sub></span><span style="font-weight:500; color:#64748b;">0.10 ~ 4.00</span>
+      </label>
+      <input id="fi-r-slider" type="range" min="0.10" max="4.00" step="0.01" value="2.00">
+    </div>
+    <div>
+      <label for="fi-zeta-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>调节阻尼比 ζ</span><span style="font-weight:500; color:#64748b;">0.00 ~ 1.00</span>
+      </label>
+      <input id="fi-zeta-slider" type="range" min="0.00" max="1.00" step="0.05" value="0.10">
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(360px, 1fr) minmax(360px, 1fr); gap:1rem; align-items:stretch;">
+    <div style="padding:0.9rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <svg id="fi-svg" viewBox="0 0 560 360" style="width:100%; height:360px; display:block; border-radius:14px; background:linear-gradient(180deg, #ffffff 0%, #f7fffd 100%);">
+        <rect x="0" y="0" width="560" height="360" rx="14" fill="transparent"></rect>
+        <line x1="60" y1="320" x2="500" y2="320" stroke="#64748b" stroke-width="9" stroke-linecap="round"></line>
+        <g id="fi-machine">
+          <rect x="190" y="42" width="180" height="72" rx="12" fill="#2dd4bf" stroke="#0f766e" stroke-width="3"></rect>
+          <text x="245" y="86" fill="#064e3b" style="font-size:18px; font-weight:800;">机器</text>
+        </g>
+        <polyline id="fi-spring" fill="none" stroke="#0f766e" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <rect id="fi-damper-case" x="310" y="214" width="54" height="84" rx="8" fill="none" stroke="#94a3b8" stroke-width="4"></rect>
+        <line id="fi-damper-rod" x1="337" y1="114" x2="337" y2="256" stroke="#64748b" stroke-width="4" stroke-linecap="round"></line>
+        <line id="fi-damper-piston" x1="314" y1="256" x2="360" y2="256" stroke="#64748b" stroke-width="5" stroke-linecap="round"></line>
+        <line x1="337" y1="298" x2="337" y2="315" stroke="#94a3b8" stroke-width="4" stroke-linecap="round"></line>
+        <line id="fi-excite-arrow" x1="430" y1="108" x2="430" y2="52" stroke="#ef4444" stroke-width="5" stroke-linecap="round"></line>
+        <polygon id="fi-excite-head" points="430,52 420,68 440,68" fill="#ef4444"></polygon>
+        <line id="fi-trans-arrow" x1="280" y1="320" x2="280" y2="272" stroke="#f97316" stroke-width="6" stroke-linecap="round"></line>
+        <polygon id="fi-trans-head" points="280,272 270,288 290,288" fill="#f97316"></polygon>
+        <text x="398" y="30" fill="#ef4444" style="font-size:20px; font-weight:800;">干扰力 P(t)</text>
+        <text x="300" y="350" fill="#f97316" style="font-size:20px; font-weight:800;">传递力 F<tspan baseline-shift="sub">t</tspan></text>
+      </svg>
+    </div>
+    <div style="padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="fi-plot" style="width:100%; height:320px;"></div>
+    </div>
+  </div>
+  <div style="margin-top:1rem; padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+    <div id="fi-time-plot" style="width:100%; height:300px;"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById("force-isolation-demo");
+  if (!container || container.dataset.initialized === "true") return;
+  container.dataset.initialized = "true";
+
+  const rSlider = container.querySelector("#fi-r-slider");
+  const zetaSlider = container.querySelector("#fi-zeta-slider");
+  const rValue = container.querySelector("#fi-r-value");
+  const zetaValue = container.querySelector("#fi-zeta-value");
+  const trValue = container.querySelector("#fi-tr-value");
+  const effValue = container.querySelector("#fi-eff-value");
+  const stateValue = container.querySelector("#fi-state-value");
+  const plotEl = container.querySelector("#fi-plot");
+  const timePlot = container.querySelector("#fi-time-plot");
+  const springEl = container.querySelector("#fi-spring");
+  const machineEl = container.querySelector("#fi-machine");
+  const exciteArrow = container.querySelector("#fi-excite-arrow");
+  const exciteHead = container.querySelector("#fi-excite-head");
+  const transArrow = container.querySelector("#fi-trans-arrow");
+  const transHead = container.querySelector("#fi-trans-head");
+  const damperRod = container.querySelector("#fi-damper-rod");
+  const damperPiston = container.querySelector("#fi-damper-piston");
+  let r = Number(rSlider.value);
+  let zeta = Number(zetaSlider.value);
+  let start = null;
+
+  function transmissibility(freqRatio, dampingRatio) {
+    return Math.sqrt(1 + (2 * dampingRatio * freqRatio) ** 2) /
+      Math.sqrt((1 - freqRatio * freqRatio) ** 2 + (2 * dampingRatio * freqRatio) ** 2);
+  }
+  function stateText(tr, freqRatio) {
+    if (Math.abs(freqRatio - Math.sqrt(2)) < 0.05) return "临界边界";
+    if (tr < 1) return "隔振区";
+    if (freqRatio < Math.sqrt(2)) return "放大区";
+    return "接近边界";
+  }
+  function efficiencyText(tr) {
+    const eta = (1 - tr) * 100;
+    return `${eta.toFixed(0)}%`;
+  }
+  function springPoints(yTop, yBottom) {
+    const x = 250;
+    const points = [];
+    const straight = 16;
+    const turns = 8;
+    const amp = 28;
+    points.push(`${x},${yTop}`);
+    points.push(`${x},${yTop + straight}`);
+    const usable = Math.max(yBottom - yTop - straight * 2, 30);
+    const step = usable / (turns * 2);
+    for (let i = 0; i < turns * 2; i += 1) {
+      points.push(`${x + (i % 2 === 0 ? -amp : amp)},${yTop + straight + step * (i + 1)}`);
+    }
+    points.push(`${x},${yBottom - straight}`);
+    points.push(`${x},${yBottom}`);
+    return points.join(" ");
+  }
+  function verticalArrow(lineEl, headEl, x, y0, value, scale, colorDirection = -1) {
+    const len = Math.min(82, scale * Math.abs(value));
+    const y1 = y0;
+    const y2 = y0 + (value >= 0 ? colorDirection * len : -colorDirection * len);
+    lineEl.setAttribute("x1", x.toFixed(2));
+    lineEl.setAttribute("x2", x.toFixed(2));
+    lineEl.setAttribute("y1", y1.toFixed(2));
+    lineEl.setAttribute("y2", y2.toFixed(2));
+    if (len < 0.8) {
+      headEl.setAttribute("points", `${x},${y0} ${x},${y0} ${x},${y0}`);
+      return;
+    }
+    if (y2 < y1) {
+      headEl.setAttribute("points", `${x},${y2} ${x - 10},${y2 + 16} ${x + 10},${y2 + 16}`);
+    } else {
+      headEl.setAttribute("points", `${x},${y2} ${x - 10},${y2 - 16} ${x + 10},${y2 - 16}`);
+    }
+  }
+  function renderTimePlot() {
+    const tr = transmissibility(r, zeta);
+    const t = [];
+    const machine = [];
+    const base = [];
+    const transmitted = [];
+    const maxT = Math.max(10, 8 * 2 * Math.PI / Math.max(r, 0.1));
+    for (let i = 0; i <= 800; i += 1) {
+      const time = i * maxT / 800;
+      t.push(time);
+      machine.push(Math.sin(r * time) / Math.max(1, r * r));
+      base.push(0);
+      transmitted.push(tr * Math.sin(r * time));
+    }
+    const yLimit = Math.max(1.2, Math.min(4, tr * 1.12));
+    Plotly.react(timePlot, [
+      { x: t, y: machine, mode: "lines", name: "机器位移 x(t)", line: { color: "#0f766e", width: 2.8 }, hovertemplate: "τ=%{x:.2f}<br>x=%{y:.3f}<extra></extra>" },
+      { x: t, y: transmitted, mode: "lines", name: "归一化传递力 Ft/P", line: { color: "#f97316", width: 2.5 }, hovertemplate: "τ=%{x:.2f}<br>Ft/P=%{y:.3f}<extra></extra>" },
+    ], {
+      margin: { l: 58, r: 18, t: 18, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: { title: "<b>无量纲时间 τ = ω<sub>n</sub>t</b>", range: [0, maxT], showgrid: true, gridcolor: "rgba(148,163,184,0.22)" },
+      yaxis: { title: "<b>归一化位移 / 力</b>", range: [-yLimit, yLimit], showgrid: true, gridcolor: "rgba(148,163,184,0.22)" },
+      legend: { orientation: "h", y: 1.02, x: 0.98, xanchor: "right", yanchor: "bottom" },
+    }, { displayModeBar: false, responsive: true });
+  }
+  function renderPlot() {
+    const xs = [];
+    const curves = [0.02, 0.10, 0.30, 0.60].map((z) => ({ z, y: [] }));
+    for (let i = 0; i <= 390; i += 1) {
+      const x = 0.1 + i * 3.9 / 390;
+      xs.push(x);
+      curves.forEach((curve) => curve.y.push(Math.min(8, transmissibility(x, curve.z))));
+    }
+    const data = curves.map((curve) => ({
+      x: xs,
+      y: curve.y,
+      mode: "lines",
+      name: `ζ=${curve.z.toFixed(2)}`,
+      line: { width: curve.z === 0.10 ? 3 : 2 },
+      hovertemplate: "r=%{x:.2f}<br>H=%{y:.3f}<extra></extra>",
+    }));
+    data.push({
+      x: [r],
+      y: [Math.min(8, transmissibility(r, zeta))],
+      mode: "markers",
+      name: "当前点",
+      marker: { size: 12, color: "#f97316", line: { color: "white", width: 2 } },
+      hovertemplate: "r=%{x:.2f}<br>H=%{y:.3f}<extra></extra>",
+    });
+    data.push({
+      x: [Math.sqrt(2), Math.sqrt(2)],
+      y: [0, 8],
+      mode: "lines",
+      name: "r=√2",
+      line: { color: "rgba(239,68,68,0.55)", width: 2, dash: "dash" },
+      hoverinfo: "skip",
+    });
+    Plotly.react(plotEl, data, {
+      margin: { l: 58, r: 18, t: 18, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: { title: "<b>频率比 r</b>", range: [0.1, 4], showgrid: true, gridcolor: "rgba(148,163,184,0.22)" },
+      yaxis: { title: "<b>力传递率 H<sub>F</sub></b>", range: [0, 4], showgrid: true, gridcolor: "rgba(148,163,184,0.22)" },
+      legend: { orientation: "h", y: 1.02, x: 0.98, xanchor: "right", yanchor: "bottom" },
+    }, { displayModeBar: false, responsive: true });
+  }
+  function updateReadouts() {
+    const tr = transmissibility(r, zeta);
+    rValue.textContent = `r = ${r.toFixed(2)}`;
+    zetaValue.textContent = `ζ = ${zeta.toFixed(2)}`;
+    trValue.textContent = tr.toFixed(3);
+    effValue.textContent = efficiencyText(tr);
+    stateValue.textContent = stateText(tr, r);
+    stateValue.style.color = tr < 1 ? "#0f766e" : "#b91c1c";
+  }
+  function animate(ts) {
+    if (start === null) start = ts;
+    const t = (ts - start) / 1000;
+    const tr = transmissibility(r, zeta);
+    const phase = Math.sin(2 * Math.PI * 0.55 * t);
+    const machineY = 42 + 24 * phase / Math.max(1, Math.sqrt(r));
+    machineEl.setAttribute("transform", `translate(0 ${machineY - 42})`);
+    springEl.setAttribute("points", springPoints(machineY + 72, 314));
+    const pistonY = Math.max(228, Math.min(284, 256 + 0.85 * (machineY - 42)));
+    damperRod.setAttribute("y1", (machineY + 72).toFixed(2));
+    damperRod.setAttribute("y2", pistonY.toFixed(2));
+    damperPiston.setAttribute("y1", pistonY.toFixed(2));
+    damperPiston.setAttribute("y2", pistonY.toFixed(2));
+    const forceSign = Math.sin(2 * Math.PI * 0.55 * t);
+    const arrowBaseY = machineY + 60;
+    verticalArrow(exciteArrow, exciteHead, 430, arrowBaseY, forceSign, 68, -1);
+    verticalArrow(transArrow, transHead, 280, 320, tr * phase, 34, -1);
+    requestAnimationFrame(animate);
+  }
+  function apply() {
+    r = Number(rSlider.value);
+    zeta = Number(zetaSlider.value);
+    updateReadouts();
+    renderPlot();
+    renderTimePlot();
+  }
+  rSlider.addEventListener("input", apply);
+  zetaSlider.addEventListener("input", apply);
+  apply();
+  requestAnimationFrame(animate);
+})();
+</script>
+</div></div>
+</div>
+</section>
+<section id="id4">
+<h2><span class="section-number">1.6.3. </span>第二类隔振<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <p>为了把某些经不起振动的精密仪器等与船舶舱室内振动的环境隔离开来，使其受不到周围剧烈环境振动的影响，往往在这些仪器和固定它们的基础（如船体或船上的舱室）之间也要安装弹性隔振装置，有时这种隔振装置称第二类隔振，或简称隔幅，即隔去基础振幅之意。图1-20(b)是此种隔振的示意图。</p>
 <p>对于第二类隔振，要求将被隔物体，即振动系统中质量<span class="math notranslate nohighlight">\(M\)</span>与外界基础或支座的振动隔离开，使被隔离的物体在空间保持静止状态。因此，人们关心的是其绝对位移的响应，其绝对位移传递函数的幅值及相位差同样可由式(1.88)和式(1.87)给出，与力的传递函数式<a class="reference internal" href="#equation-eq-1-129">(1.134)</a>和<a class="reference internal" href="#equation-eq-1-130">(1.135)</a>相同，因而隔振效果的结论也如第一类隔振所述。</p>
 <p>隔振效果通常用隔振效率<span class="math notranslate nohighlight">\(\eta \)</span>表示，<span class="math notranslate nohighlight">\(\eta= \left [ 1- H_{F} \left ( \omega  \right ) \right ]\times100\%\)</span>。</p>
@@ -519,6 +808,302 @@ H_{F} \left ( \omega  \right )=  \frac{F_{t}}{P}= \frac{\sqrt{1+  \left ( 2\zeta
 H_{F} \left ( \omega  \right )= H_{1} \left ( \omega  \right )= \frac{1}{r ^{2}- 1 } =\frac{1}{\frac{4\pi ^{2} }{g}f^{2} \delta _{st}- 1  } 
 \]</div>
 <p>式中，<span class="math notranslate nohighlight">\(f=\frac{\omega}{2\pi}\)</span>为隔振系统的输入频率；<span class="math notranslate nohighlight">\(\delta _{st}=\frac{Mg}{K}\)</span>为隔振系统的静伸长。</p>
+</section>
+<section id="id5">
+<h2><span class="section-number">1.6.4. </span>交互探索：第二类隔振如何减少设备绝对位移？<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>第二类隔振关注的是基础振动传到被隔物体上的位移。低频时设备几乎随基础一起运动；高频且 <span class="math notranslate nohighlight">\(r&gt;\sqrt{2}\)</span> 时，设备绝对位移显著小于基础位移。</p>
+</div>
+<p>请调节频率比 <span class="math notranslate nohighlight">\(r=\omega/\omega_n\)</span> 和阻尼比 <span class="math notranslate nohighlight">\(\zeta\)</span>，观察基础位移、设备绝对位移、位移传递率以及隔振效率的变化。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  #motion-isolation-demo input[type="range"] {
+    -webkit-appearance: none; appearance: none; width: 100%; height: 8px;
+    border-radius: 999px; background: rgba(148, 163, 184, 0.34); outline: none;
+  }
+  #motion-isolation-demo input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none; appearance: none; width: 20px; height: 20px;
+    border-radius: 50%; background: #2563eb; border: 3px solid #ffffff;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.28); cursor: pointer;
+  }
+</style>
+
+<div id="motion-isolation-demo" style="
+    max-width: 1080px; margin: 1.4rem auto; padding: 1.1rem;
+    border-radius: 22px; background: linear-gradient(135deg, #f8fafc 0%, #eef6ff 100%);
+    box-shadow: 0 18px 42px rgba(15, 23, 42, 0.09);
+    border: 1px solid rgba(148, 163, 184, 0.20);
+    font-family: 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+">
+  <div style="display:grid; grid-template-columns:repeat(5, minmax(0, 1fr)); gap:0.75rem; margin-bottom:0.95rem;">
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">频率比</div>
+      <div id="mi-r-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#1d4ed8;">r = 2.00</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">阻尼比</div>
+      <div id="mi-zeta-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#1d4ed8;">ζ = 0.10</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">位移传递率</div>
+      <div id="mi-tr-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">0.36</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">设备幅值 X/Y</div>
+      <div id="mi-amp-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">0.36</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:rgba(255,255,255,0.88); border:1px solid rgba(37,99,235,0.12);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">状态</div>
+      <div id="mi-state-value" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">隔振区</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.1rem; padding:0.35rem 0.55rem 1rem;">
+    <div>
+      <label for="mi-r-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>调节频率比 r = ω / ω<sub>n</sub></span><span style="font-weight:500; color:#64748b;">0.10 ~ 4.00</span>
+      </label>
+      <input id="mi-r-slider" type="range" min="0.10" max="4.00" step="0.01" value="2.00">
+    </div>
+    <div>
+      <label for="mi-zeta-slider" style="display:flex; justify-content:space-between; gap:1rem; flex-wrap:wrap; font-size:14px; color:#334155; font-weight:800;">
+        <span>调节阻尼比 ζ</span><span style="font-weight:500; color:#64748b;">0.00 ~ 1.00</span>
+      </label>
+      <input id="mi-zeta-slider" type="range" min="0.00" max="1.00" step="0.05" value="0.10">
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(360px, 1fr) minmax(360px, 1fr); gap:1rem; align-items:stretch;">
+    <div style="padding:0.9rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <svg id="mi-svg" viewBox="0 0 560 360" style="width:100%; height:360px; display:block; border-radius:14px; background:linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);">
+        <rect x="0" y="0" width="560" height="360" rx="14" fill="transparent"></rect>
+        <line x1="80" y1="318" x2="500" y2="318" stroke="rgba(249,115,22,0.45)" stroke-width="2" stroke-dasharray="6 5"></line>
+        <text x="30" y="306" fill="#f97316" style="font-size:15px; font-weight:800;">空间固定参考线</text>
+        <rect id="mi-base" x="140" y="302" width="280" height="34" rx="8" fill="#93c5fd" stroke="#2563eb" stroke-width="3"></rect>
+        <g id="mi-mass-group">
+          <rect id="mi-mass" x="230" y="62" width="100" height="64" rx="12" fill="#60a5fa" stroke="#1d4ed8" stroke-width="3"></rect>
+          <text x="248" y="101" fill="#1e3a8a" style="font-size:16px; font-weight:800;">仪器</text>
+        </g>
+        <polyline id="mi-spring" fill="none" stroke="#2563eb" stroke-width="4" stroke-linejoin="round" stroke-linecap="round"></polyline>
+        <rect id="mi-damper-case" x="296" y="220" width="54" height="82" rx="8" fill="none" stroke="#94a3b8" stroke-width="4"></rect>
+        <line id="mi-damper-piston" x1="300" y1="261" x2="346" y2="261" stroke="#64748b" stroke-width="5" stroke-linecap="round"></line>
+        <line id="mi-damper-rod" x1="323" y1="126" x2="323" y2="261" stroke="#64748b" stroke-width="4" stroke-linecap="round"></line>
+        <line id="mi-base-arrow" x1="462" y1="318" x2="462" y2="318" stroke="#2563eb" stroke-width="5" stroke-linecap="round"></line>
+        <polygon id="mi-base-head" points="462,318 462,318 462,318" fill="#2563eb"></polygon>
+        <line id="mi-mass-arrow" x1="462" y1="62" x2="462" y2="62" stroke="#f97316" stroke-width="5" stroke-linecap="round"></line>
+        <polygon id="mi-mass-head" points="462,62 462,62 462,62" fill="#f97316"></polygon>
+        <text x="480" y="346" fill="#2563eb" style="font-size:20px; font-weight:800;">y(t)</text>
+        <text x="480" y="70" fill="#f97316" style="font-size:20px; font-weight:800;">x(t)</text>
+      </svg>
+    </div>
+    <div style="padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="mi-plot" style="width:100%; height:320px;"></div>
+    </div>
+  </div>
+
+  <div style="margin-top:1rem; padding:0.95rem; border-radius:18px; background:#ffffff; border:1px solid rgba(148,163,184,0.18);">
+    <div id="mi-time-plot" style="width:100%; height:310px;"></div>
+  </div>
+</div>
+
+<script>
+(function() {
+  const container = document.getElementById("motion-isolation-demo");
+  if (!container || container.dataset.initialized === "true") return;
+  container.dataset.initialized = "true";
+
+  const rSlider = container.querySelector("#mi-r-slider");
+  const zetaSlider = container.querySelector("#mi-zeta-slider");
+  const rValue = container.querySelector("#mi-r-value");
+  const zetaValue = container.querySelector("#mi-zeta-value");
+  const trValue = container.querySelector("#mi-tr-value");
+  const ampValue = container.querySelector("#mi-amp-value");
+  const stateValue = container.querySelector("#mi-state-value");
+  const plotEl = container.querySelector("#mi-plot");
+  const timePlot = container.querySelector("#mi-time-plot");
+  const baseEl = container.querySelector("#mi-base");
+  const massEl = container.querySelector("#mi-mass-group");
+  const springEl = container.querySelector("#mi-spring");
+  const damperPiston = container.querySelector("#mi-damper-piston");
+  const damperRod = container.querySelector("#mi-damper-rod");
+  const damperCase = container.querySelector("#mi-damper-case");
+  const baseArrow = container.querySelector("#mi-base-arrow");
+  const baseHead = container.querySelector("#mi-base-head");
+  const massArrow = container.querySelector("#mi-mass-arrow");
+  const massHead = container.querySelector("#mi-mass-head");
+  let r = Number(rSlider.value);
+  let zeta = Number(zetaSlider.value);
+  let start = null;
+
+  function transmissibility(freqRatio, dampingRatio) {
+    return Math.sqrt(1 + (2 * dampingRatio * freqRatio) ** 2) /
+      Math.sqrt((1 - freqRatio * freqRatio) ** 2 + (2 * dampingRatio * freqRatio) ** 2);
+  }
+  function phaseLag(freqRatio, dampingRatio) {
+    let angle = Math.atan2(2 * dampingRatio * freqRatio ** 3, 1 - freqRatio ** 2 + (2 * dampingRatio * freqRatio) ** 2);
+    if (angle < 0) angle += Math.PI;
+    return angle;
+  }
+  function stateText(tr, freqRatio) {
+    if (Math.abs(freqRatio - Math.sqrt(2)) < 0.05) return "临界边界";
+    if (tr < 1) return "隔振区";
+    if (freqRatio < Math.sqrt(2)) return "随动/放大区";
+    return "接近边界";
+  }
+  function springPoints(baseY, massY) {
+    const yTop = massY + 64;
+    const yBottom = baseY;
+    const x = 250;
+    const points = [];
+    const turns = 7;
+    const amp = 24;
+    points.push(`${x},${yTop}`);
+    const usable = Math.max(yBottom - yTop, 30);
+    const step = usable / (turns * 2);
+    for (let i = 0; i < turns * 2; i += 1) {
+      points.push(`${x + (i % 2 === 0 ? -amp : amp)},${yTop + step * (i + 1)}`);
+    }
+    points.push(`${x},${yBottom}`);
+    return points.join(" ");
+  }
+  function displacementArrow(lineEl, headEl, x, y0, yTarget) {
+    const delta = yTarget - y0;
+    const len = Math.min(96, Math.abs(delta));
+    const y2 = y0 + Math.sign(delta || 1) * len;
+    lineEl.setAttribute("x1", x.toFixed(2));
+    lineEl.setAttribute("x2", x.toFixed(2));
+    lineEl.setAttribute("y1", y0.toFixed(2));
+    lineEl.setAttribute("y2", y2.toFixed(2));
+    if (len < 0.8) {
+      headEl.setAttribute("points", `${x},${y0} ${x},${y0} ${x},${y0}`);
+      return;
+    }
+    if (y2 < y0) {
+      headEl.setAttribute("points", `${x},${y2} ${x - 10},${y2 + 16} ${x + 10},${y2 + 16}`);
+    } else {
+      headEl.setAttribute("points", `${x},${y2} ${x - 10},${y2 - 16} ${x + 10},${y2 - 16}`);
+    }
+  }
+  function renderTransferPlot() {
+    const xs = [];
+    const curves = [0.02, 0.10, 0.30, 0.60].map((z) => ({ z, y: [] }));
+    for (let i = 0; i <= 390; i += 1) {
+      const x = 0.1 + i * 3.9 / 390;
+      xs.push(x);
+      curves.forEach((curve) => curve.y.push(Math.min(8, transmissibility(x, curve.z))));
+    }
+    const data = curves.map((curve) => ({
+      x: xs,
+      y: curve.y,
+      mode: "lines",
+      name: `ζ=${curve.z.toFixed(2)}`,
+      line: { width: curve.z === 0.10 ? 3 : 2 },
+      hovertemplate: "r=%{x:.2f}<br>H=%{y:.3f}<extra></extra>",
+    }));
+    data.push({
+      x: [r],
+      y: [Math.min(8, transmissibility(r, zeta))],
+      mode: "markers",
+      name: "当前点",
+      marker: { size: 12, color: "#f97316", line: { color: "white", width: 2 } },
+      hovertemplate: "r=%{x:.2f}<br>H=%{y:.3f}<extra></extra>",
+    });
+    data.push({
+      x: [Math.sqrt(2), Math.sqrt(2)],
+      y: [0, 8],
+      mode: "lines",
+      name: "r=√2",
+      line: { color: "rgba(239,68,68,0.55)", width: 2, dash: "dash" },
+      hoverinfo: "skip",
+    });
+    Plotly.react(plotEl, data, {
+      margin: { l: 58, r: 18, t: 18, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: { title: "<b>频率比 r</b>", range: [0.1, 4], showgrid: true, gridcolor: "rgba(148,163,184,0.22)" },
+      yaxis: { title: "<b>位移传递率 H<sub>X</sub></b>", range: [0, 4], showgrid: true, gridcolor: "rgba(148,163,184,0.22)" },
+      legend: { orientation: "h", y: 1.02, x: 0.98, xanchor: "right", yanchor: "bottom" },
+    }, { displayModeBar: false, responsive: true });
+  }
+  function renderTimePlot() {
+    const t = [];
+    const y = [];
+    const x = [];
+    const tr = transmissibility(r, zeta);
+    const lag = phaseLag(r, zeta);
+    const maxT = Math.max(10, 8 * 2 * Math.PI / Math.max(r, 0.1));
+    for (let i = 0; i <= 800; i += 1) {
+      const time = i * maxT / 800;
+      t.push(time);
+      y.push(Math.sin(r * time));
+      x.push(tr * Math.sin(r * time - lag));
+    }
+    const yLimit = Math.max(1.2, Math.min(4, tr * 1.15));
+    Plotly.react(timePlot, [
+      { x: t, y, mode: "lines", name: "基础位移 y(t)", line: { color: "#2563eb", width: 2.6 }, hovertemplate: "τ=%{x:.2f}<br>y=%{y:.3f}<extra></extra>" },
+      { x: t, y: x, mode: "lines", name: "设备绝对位移 x(t)", line: { color: "#f97316", width: 2.8 }, hovertemplate: "τ=%{x:.2f}<br>x=%{y:.3f}<extra></extra>" },
+    ], {
+      margin: { l: 58, r: 18, t: 18, b: 52 },
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff",
+      xaxis: { title: "<b>无量纲时间 τ = ω<sub>n</sub>t</b>", range: [0, maxT], showgrid: true, gridcolor: "rgba(148,163,184,0.22)" },
+      yaxis: { title: "<b>位移幅值比</b>", range: [-yLimit, yLimit], showgrid: true, gridcolor: "rgba(148,163,184,0.22)" },
+      legend: { orientation: "h", y: 1.02, x: 0.98, xanchor: "right", yanchor: "bottom" },
+    }, { displayModeBar: false, responsive: true });
+  }
+  function updateReadouts() {
+    const tr = transmissibility(r, zeta);
+    rValue.textContent = `r = ${r.toFixed(2)}`;
+    zetaValue.textContent = `ζ = ${zeta.toFixed(2)}`;
+    trValue.textContent = tr.toFixed(3);
+    ampValue.textContent = tr.toFixed(3);
+    stateValue.textContent = stateText(tr, r);
+    stateValue.style.color = tr < 1 ? "#1d4ed8" : "#b91c1c";
+  }
+  function animate(ts) {
+    if (start === null) start = ts;
+    const time = (ts - start) / 1000;
+    const tr = transmissibility(r, zeta);
+    const lag = phaseLag(r, zeta);
+    const baseMotion = 32 * Math.sin(2 * Math.PI * 0.55 * time);
+    const massMotion = Math.max(-110, Math.min(110, 32 * tr * Math.sin(2 * Math.PI * 0.55 * time - lag)));
+    const baseY = 318 + baseMotion;
+    const massY = 62 + massMotion;
+    baseEl.setAttribute("y", baseY.toFixed(2));
+    massEl.setAttribute("transform", `translate(0 ${massY - 62})`);
+    const springBottomY = baseY;
+    springEl.setAttribute("points", springPoints(springBottomY, massY));
+    const caseY = baseY - 82;
+    const relativeMotion = (massY - 62) - (baseY - 318);
+    const pistonY = Math.max(caseY + 14, Math.min(caseY + 68, caseY + 41 + 0.45 * relativeMotion));
+    damperCase.setAttribute("y", caseY.toFixed(2));
+    damperPiston.setAttribute("y1", pistonY.toFixed(2));
+    damperPiston.setAttribute("y2", pistonY.toFixed(2));
+    damperRod.setAttribute("y1", (massY + 64).toFixed(2));
+    damperRod.setAttribute("y2", pistonY.toFixed(2));
+    displacementArrow(baseArrow, baseHead, 462, 318, baseY);
+    displacementArrow(massArrow, massHead, 462, 62, massY);
+    requestAnimationFrame(animate);
+  }
+  function apply() {
+    r = Number(rSlider.value);
+    zeta = Number(zetaSlider.value);
+    updateReadouts();
+    renderTransferPlot();
+    renderTimePlot();
+  }
+  rSlider.addEventListener("input", apply);
+  zetaSlider.addEventListener("input", apply);
+  apply();
+  requestAnimationFrame(animate);
+})();
+</script>
+</div></div>
+</div>
 </section>
 </section>
 
@@ -558,7 +1143,7 @@ H_{F} \left ( \omega  \right )= H_{1} \left ( \omega  \right )= \frac{1}{r ^{2}-
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title"><span class="section-number">1.5. </span>任意激励载荷下作用下的强迫振动</p>
+        <p class="prev-next-title"><span class="section-number">1.5. </span>任意激励作用下的强迫振动</p>
       </div>
     </a>
     <a class="right-next"
@@ -587,7 +1172,9 @@ H_{F} \left ( \omega  \right )= H_{1} \left ( \omega  \right )= \frac{1}{r ^{2}-
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">1.6.1. 第一类隔振</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.6.2. 第二类隔振</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">1.6.2. 交互探索：第一类隔振如何减少传递力？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">1.6.3. 第二类隔振</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.6.4. 交互探索：第二类隔振如何减少设备绝对位移？</a></li>
 </ul>
   </nav></div>
 
