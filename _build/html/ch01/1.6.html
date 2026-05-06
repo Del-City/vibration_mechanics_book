@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -464,7 +464,14 @@ document.write(`
 <h1><span class="section-number">1.6. </span>隔振原理<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <section id="id2">
 <h2><span class="section-number">1.6.1. </span>第一类隔振<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
-<p>在船上有各种隔振，如主机、辅机等，它们在运转时所产生的干扰力会引起船体结构的振动。为了减少这些干扰力对船体的作用，通常在这些机械装置和船体结构之间装上一种称为减振器的隔振装置。它由弹性元件和阻尼元件组成。适当地选择减振器的弹簧常数和阻尼系数可使传递至船体结构的干扰力大为减小，这种隔振是把振源的干扰力和船体结构相隔离开，有时，称为第一类隔振，或简称为隔力。图1-20(a)是这种隔振的示意图。</p>
+<p>在船上有各种隔振，如主机、辅机等，它们在运转时所产生的干扰力会引起船体结构的振动。为了减少这些干扰力对船体的作用，通常在这些机械装置和船体结构之间装上一种称为减振器的隔振装置。它由弹性元件和阻尼元件组成。适当地选择减振器的弹簧常数和阻尼系数可使传递至船体结构的干扰力大为减小，这种隔振是把振源的干扰力和船体结构相隔离开，有时，称为第一类隔振，或简称为隔力。<a class="reference internal" href="#fig-1-25"><span class="std std-numref">Fig. 1.23</span></a>(a)是这种隔振的示意图。</p>
+<figure class="align-default" id="fig-1-25">
+<a class="reference internal image-reference" href="../_images/fig1-25.png"><img alt="../_images/fig1-25.png" src="../_images/fig1-25.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.23 </span><span class="caption-text">隔振示意图</span><a class="headerlink" href="#fig-1-25" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>对于第一类隔振，传递到基础的力是弹簧力和阻尼力之和，若采用复数解法，则传递力为</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-122">
 <span class="eqno">(1.127)<a class="headerlink" href="#equation-eq-1-122" title="Link to this equation">#</a></span>\[
@@ -508,7 +515,7 @@ H_{F} \left ( \omega  \right )=  \frac{F_{t}}{P}= \frac{\sqrt{1+  \left ( 2\zeta
 <span class="eqno">(1.135)<a class="headerlink" href="#equation-eq-1-130" title="Link to this equation">#</a></span>\[
 \theta = \arctan \frac{2\zeta r ^{3} }{1- r ^{2}+  \left ( 2\zeta r  \right )^{2}   }
 \]</div>
-<p>显然，它与1.6.1节中位移传递函数<span class="math notranslate nohighlight">\(H_{1} \left ( \omega  \right ) \)</span>是相同的。由图1-16可见，当<span class="math notranslate nohighlight">\(r = \sqrt{2} \)</span>时，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )=1 \)</span>；当<span class="math notranslate nohighlight">\(r&gt;  \sqrt{2}\)</span>时，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )&lt; 1\)</span>，即引起隔振的效果，<span class="math notranslate nohighlight">\(r\)</span>越大，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )\)</span>越小，隔振效果越好。但<span class="math notranslate nohighlight">\(r\)</span>过大意味着<span class="math notranslate nohighlight">\(\omega _{n}\)</span>很小。这就造成隔振系统静伸长很大。在有外界低频骚扰时，往往会使动力机械不能正常工作。从图1-16还可看出当<span class="math notranslate nohighlight">\(r &gt;  \sqrt{2}\)</span>时，阻尼增大反而使隔振的效果降低。因而隔振器的阻尼比不能设计得太大。</p>
+<p>显然，它与1.6.1节中位移传递函数<span class="math notranslate nohighlight">\(H_{1} \left ( \omega  \right ) \)</span>是相同的。由<a class="reference internal" href="1.3.html#fig-1-18"><span class="std std-numref">Fig. 1.16</span></a>可见，当<span class="math notranslate nohighlight">\(r = \sqrt{2} \)</span>时，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )=1 \)</span>；当<span class="math notranslate nohighlight">\(r&gt;  \sqrt{2}\)</span>时，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )&lt; 1\)</span>，即引起隔振的效果，<span class="math notranslate nohighlight">\(r\)</span>越大，<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )\)</span>越小，隔振效果越好。但<span class="math notranslate nohighlight">\(r\)</span>过大意味着<span class="math notranslate nohighlight">\(\omega _{n}\)</span>很小。这就造成隔振系统静伸长很大。在有外界低频骚扰时，往往会使动力机械不能正常工作。从<a class="reference internal" href="1.3.html#fig-1-18"><span class="std std-numref">Fig. 1.16</span></a>还可看出当<span class="math notranslate nohighlight">\(r &gt;  \sqrt{2}\)</span>时，阻尼增大反而使隔振的效果降低。因而隔振器的阻尼比不能设计得太大。</p>
 </section>
 <section id="id3">
 <h2><span class="section-number">1.6.2. </span>交互探索：第一类隔振如何减少传递力？<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
@@ -799,7 +806,7 @@ H_{F} \left ( \omega  \right )=  \frac{F_{t}}{P}= \frac{\sqrt{1+  \left ( 2\zeta
 </section>
 <section id="id4">
 <h2><span class="section-number">1.6.3. </span>第二类隔振<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>为了把某些经不起振动的精密仪器等与船舶舱室内振动的环境隔离开来，使其受不到周围剧烈环境振动的影响，往往在这些仪器和固定它们的基础（如船体或船上的舱室）之间也要安装弹性隔振装置，有时这种隔振装置称第二类隔振，或简称隔幅，即隔去基础振幅之意。图1-20(b)是此种隔振的示意图。</p>
+<p>为了把某些经不起振动的精密仪器等与船舶舱室内振动的环境隔离开来，使其受不到周围剧烈环境振动的影响，往往在这些仪器和固定它们的基础（如船体或船上的舱室）之间也要安装弹性隔振装置，有时这种隔振装置称第二类隔振，或简称隔幅，即隔去基础振幅之意。<a class="reference internal" href="#fig-1-25"><span class="std std-numref">Fig. 1.23</span></a>(b)是此种隔振的示意图。</p>
 <p>对于第二类隔振，要求将被隔物体，即振动系统中质量<span class="math notranslate nohighlight">\(M\)</span>与外界基础或支座的振动隔离开，使被隔离的物体在空间保持静止状态。因此，人们关心的是其绝对位移的响应，其绝对位移传递函数的幅值及相位差同样可由式(1.88)和式(1.87)给出，与力的传递函数式<a class="reference internal" href="#equation-eq-1-129">(1.134)</a>和<a class="reference internal" href="#equation-eq-1-130">(1.135)</a>相同，因而隔振效果的结论也如第一类隔振所述。</p>
 <p>隔振效果通常用隔振效率<span class="math notranslate nohighlight">\(\eta \)</span>表示，<span class="math notranslate nohighlight">\(\eta= \left [ 1- H_{F} \left ( \omega  \right ) \right ]\times100\%\)</span>。</p>
 <p>由于实际的减振器阻尼比不大，故可近似地取<span class="math notranslate nohighlight">\(\zeta = 0 \)</span>时的<span class="math notranslate nohighlight">\(H_{F} \left ( \omega  \right )\)</span></p>

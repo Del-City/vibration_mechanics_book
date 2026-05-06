@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -459,7 +459,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.4. </span>周期激励作用下的强迫振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>如果单自由度系统所受外荷载是周期性荷载，则可以通过傅里叶级数将此荷载化成一些简谐分量的叠加。将这些简谐荷载作用到系统上去，用前节给出的方法算出相应的简谐响应，然后应用叠加原理，就可以得到系统总的响应。如图2-21所示的周期性荷载可展为傅里叶级数,即:</p>
+<p>如果单自由度系统所受外荷载是周期性荷载，则可以通过傅里叶级数将此荷载化成一些简谐分量的叠加。将这些简谐荷载作用到系统上去，用前节给出的方法算出相应的简谐响应，然后应用叠加原理，就可以得到系统总的响应。如<a class="reference internal" href="#fig-1-21"><span class="std std-numref">Fig. 1.19</span></a>所示的周期性荷载可展为傅里叶级数,即:</p>
+<figure class="align-default" id="fig-1-21">
+<a class="reference internal image-reference" href="../_images/fig1-21.png"><img alt="../_images/fig1-21.png" src="../_images/fig1-21.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.19 </span><span class="caption-text">周期性荷载</span><a class="headerlink" href="#fig-1-21" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="math notranslate nohighlight" id="equation-eq-1-86">
 <span class="eqno">(1.89)<a class="headerlink" href="#equation-eq-1-86" title="Link to this equation">#</a></span>\[
 F_{\mathrm{e}}(t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty} a_{n} \cos \frac{2 n \pi t}{T_{\mathrm{f}}}+\sum_{n=1}^{\infty} b_{n} \sin \frac{2 n \pi t}{T_{\mathrm{f}}}
@@ -488,9 +495,16 @@ b_{n}=\frac{2}{T_{\mathrm{f}}} \int_{0}^{T_{\mathrm{f}}} F_{\mathrm{e}}(t) \sin 
 F_{\mathrm{e}}(t)=\frac{a_{0}}{2}+\sum_{n=1}^{\infty} a_{n} \cos n\omega _{f}t +\sum_{n=1}^{\infty} b_{n} \sin n\omega _{f}t
 \]</div>
 <p>当任一周期性荷载已展成式<a class="reference internal" href="#equation-eq-1-89">(1.94)</a>所表示的傅里叶级数形式时，显然这个级数包括常量荷载（用幅值<span class="math notranslate nohighlight">\(\frac{a_{0}}{2}\)</span>表示的平均荷载值）与一系列频率为<span class="math notranslate nohighlight">\(n\omega _{f}\)</span>、幅值为<span class="math notranslate nohighlight">\(a_{n}\)</span>和<span class="math notranslate nohighlight">\(b_{n}\)</span>的简谐荷载。对常量荷载的稳态响应仅为静挠度，而对每个简谐荷载的稳态响应可由1.3节给出的方法算出，系统总的响应即为上述各项响应的总和。</p>
+<figure class="align-default" id="fig-1-22">
+<a class="reference internal image-reference" href="../_images/fig1-22.png"><img alt="../_images/fig1-22.png" src="../_images/fig1-22.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.20 </span><span class="caption-text">例1-8中的周期力</span><a class="headerlink" href="#fig-1-22" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>例1-8</strong> 假设无阻尼单自由度系统受到如图2-22所示周期力<span class="math notranslate nohighlight">\(F_{e} \left (t  \right )\)</span>的作用。应用傅里叶级数求该系统的稳态响应。</p>
+<p><strong>例1-8</strong> 假设无阻尼单自由度系统受到如<a class="reference internal" href="#fig-1-22"><span class="std std-numref">Fig. 1.20</span></a>所示周期力<span class="math notranslate nohighlight">\(F_{e} \left (t  \right )\)</span>的作用。应用傅里叶级数求该系统的稳态响应。</p>
 <p>解：首先确定<span class="math notranslate nohighlight">\(F_{e} \left (t  \right )\)</span>的傅里叶级数展开式。由式<a class="reference internal" href="#equation-eq-1-87a">(1.90)</a>-<a class="reference internal" href="#equation-eq-1-87c">(1.92)</a>求出其相应的各项系数如下：</p>
 <div class="math notranslate nohighlight">
 \[

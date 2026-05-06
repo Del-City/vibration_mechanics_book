@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -459,7 +459,14 @@ document.write(`
                   
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.5. </span>任意激励作用下的强迫振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
-<p>本节讨论单自由度系统在任意一般性荷载（例如图2-23中所示一实测荷载曲线）作 用下的强迫振动问题。</p>
+<p>本节讨论单自由度系统在任意一般性荷载（例如<a class="reference internal" href="#fig-1-23"><span class="std std-numref">Fig. 1.21</span></a>中所示一实测荷载曲线）作 用下的强迫振动问题。</p>
+<figure class="align-default" id="fig-1-23">
+<a class="reference internal image-reference" href="../_images/fig1-23.png"><img alt="../_images/fig1-23.png" src="../_images/fig1-23.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.21 </span><span class="caption-text">实测荷载曲线</span><a class="headerlink" href="#fig-1-23" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>在求解这个问题之前，先来看一种特殊情况。</p>
 <p>一个初始静止的单自由度系统，在初始时刻受到一个单位脉冲<span class="math notranslate nohighlight">\(\delta \left ( t \right )\)</span>的作用，求其运动规律。</p>
 <p><span class="math notranslate nohighlight">\(\delta \left ( t \right )\)</span>可看做在一个非常短暂的时间间隔<span class="math notranslate nohighlight">\(\mu\)</span>内作用一个常量力<span class="math notranslate nohighlight">\(\frac{1}{\mu} \)</span>。于是该系统的运动方程为</p>
@@ -492,7 +499,14 @@ h\left ( t \right )=   \frac{1}{\omega _{\varepsilon } } e^{- \zeta\omega _{0}t\
 \end{split}\]</div>
 <p>式中，<span class="math notranslate nohighlight">\(\omega _{0} = \sqrt{\frac{k}{m} } \)</span>、<span class="math notranslate nohighlight">\(\zeta  =\frac{c}{2\sqrt{mk} }  \)</span>分别为系统的自振圆频率与阻尼比；<span class="math notranslate nohighlight">\(\omega _{\varepsilon }  =\omega _{0} \sqrt{1-\zeta ^{2} } \)</span>为系统有阻尼自振圆频率。</p>
 <p><span class="math notranslate nohighlight">\( h\left ( t \right ) \)</span>是在初始时刻作用单位脉冲而使单自由度系统产生的响应，所以称之为脉冲响应函数（Impulse Response Function）。</p>
-<p>在时间间隔<span class="math notranslate nohighlight">\(\left [ 0,t \right ] \)</span>内作用的任意外载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) \)</span>，可以看做是在该时间间隔内的大量脉冲<span class="math notranslate nohighlight">\(F_{e} \left (\tau   \right ) \mathrm{d}\tau \)</span>的叠加，如图2-24所示。由每一个这种冲量而使系统产生的响应是<span class="math notranslate nohighlight">\(F_{e} \left (\tau   \right ) \mathrm{d}\tau h\left ( t- \tau  \right ) \)</span>它仅在时刻<span class="math notranslate nohighlight">\(\tau \)</span>之后才起作用。所以力<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) \)</span>在时刻<span class="math notranslate nohighlight">\(t\)</span>的总响应为</p>
+<p>在时间间隔<span class="math notranslate nohighlight">\(\left [ 0,t \right ] \)</span>内作用的任意外载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) \)</span>，可以看做是在该时间间隔内的大量脉冲<span class="math notranslate nohighlight">\(F_{e} \left (\tau   \right ) \mathrm{d}\tau \)</span>的叠加，如<a class="reference internal" href="#fig-1-24"><span class="std std-numref">Fig. 1.22</span></a>所示。由每一个这种冲量而使系统产生的响应是<span class="math notranslate nohighlight">\(F_{e} \left (\tau   \right ) \mathrm{d}\tau h\left ( t- \tau  \right ) \)</span>它仅在时刻<span class="math notranslate nohighlight">\(\tau \)</span>之后才起作用。所以力<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) \)</span>在时刻<span class="math notranslate nohighlight">\(t\)</span>的总响应为</p>
+<figure class="align-default" id="fig-1-24">
+<a class="reference internal image-reference" href="../_images/fig1-24.png"><img alt="../_images/fig1-24.png" src="../_images/fig1-24.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.22 </span><span class="caption-text">任意外载的脉冲分解</span><a class="headerlink" href="#fig-1-24" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="math notranslate nohighlight" id="equation-eq-1-102">
 <span class="eqno">(1.107)<a class="headerlink" href="#equation-eq-1-102" title="Link to this equation">#</a></span>\[
 x\left ( t \right ) = \int_{0}^{t} F_{e} \left (\tau   \right )  h\left ( t- \tau  \right )\mathrm{d}\tau
