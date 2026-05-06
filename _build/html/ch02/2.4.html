@@ -447,6 +447,7 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.1. 主从系统</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.4.2. 主从系统的耦合作用</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.4.3. 交互探索：主从系统耦合规律实验台</a></li>
 </ul>
             </nav>
         </div>
@@ -516,7 +517,7 @@ Z_1 = \omega_{\mathrm{n}1}^2 / \omega_{01}^2, \quad Z_2 = \omega_{\mathrm{n}2}^2
 <p>由此可见，组合系统的第一阶固有频率<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span>，介于0和<span class="math notranslate nohighlight">\(\omega_{01}\)</span>之间，而第二阶固有频率<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span>介于 <span class="math notranslate nohighlight">\(\omega_{02}\)</span>和<span class="math notranslate nohighlight">\(\infty\)</span>之间。因而，<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1} &lt; \omega_{01} &lt; \omega_{02} &lt; \omega_{\mathrm{n}2}\)</span>。这表明，组合系统的第一阶固有频率 <span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span> 始终比任何一个子系统（主系统或从系统）本身的固有频率低；而其第二阶固有频率则高于任何一个子系统本身的固有频率。这一结论对复杂系统的振动分析很有用。</p>
 <p>其次，我们分析频率错开系数 <span class="math notranslate nohighlight">\(\xi\)</span> 对主从系统固有频率的影响。若两个子系统的固有频率<span class="math notranslate nohighlight">\(\omega_{01}\)</span>和<span class="math notranslate nohighlight">\(\omega_{02}\)</span>相差很大，则 <span class="math notranslate nohighlight">\(\xi\)</span> 趋于无穷大或为零。先讨论这两个极端情况。</p>
 <p>当 <span class="math notranslate nohighlight">\(\xi=0\)</span>，<span class="math notranslate nohighlight">\(Z₁=0\)</span>，即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}^2 = 0\)</span>；<span class="math notranslate nohighlight">\(Z_2 = 1\)</span>，即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}^2 = \omega_{01}^2\)</span>。这相当于从系统的固有频率<span class="math notranslate nohighlight">\(\omega_{02} = 0\)</span>，主从系统之间等于不发生联系。主从系统的两个固有频率即为两个子系统的单独的固有频率。</p>
-<p>当<span class="math notranslate nohighlight">\(\xi \to \infty\)</span>, <span class="math notranslate nohighlight">\(Z_1 = \frac{1}{1 + a}\)</span>，即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}^2 = \frac{\omega_{01}^2}{1 + a}\)</span>；; <span class="math notranslate nohighlight">\(Z_2 \to \infty\)</span>, 即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}^2 \to \infty\)</span>。这相当于从系统的固有频率 <span class="math notranslate nohighlight">\(\omega_{02}^2 \to \infty\)</span>的情况，实际上即从系统质量 <span class="math notranslate nohighlight">\(M_2\)</span> 与主系统质量 <span class="math notranslate nohighlight">\(M_2\)</span> 刚性连接的结果。主从系统的耦合只相当于在主系统的质量上再增加<span class="math notranslate nohighlight">\(M_2\)</span>。将<span class="math notranslate nohighlight">\(\omega_{01}^2\)</span>和<span class="math notranslate nohighlight">\(a\)</span>的值代入<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}^2\)</span>的表达式也可从数字上对此进行验证。</p>
+<p>当<span class="math notranslate nohighlight">\(\xi \to \infty\)</span>, <span class="math notranslate nohighlight">\(Z_1 = \frac{1}{1 + a}\)</span>，即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}^2 = \frac{\omega_{01}^2}{1 + a}\)</span>；; <span class="math notranslate nohighlight">\(Z_2 \to \infty\)</span>, 即<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}^2 \to \infty\)</span>。这相当于从系统的固有频率 <span class="math notranslate nohighlight">\(\omega_{02}^2 \to \infty\)</span>的情况，实际上即从系统质量 <span class="math notranslate nohighlight">\(M_2\)</span> 与主系统质量 <span class="math notranslate nohighlight">\(M_1\)</span> 刚性连接的结果。主从系统的耦合只相当于在主系统的质量上再增加<span class="math notranslate nohighlight">\(M_2\)</span>。将<span class="math notranslate nohighlight">\(\omega_{01}^2\)</span>和<span class="math notranslate nohighlight">\(a\)</span>的值代入<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}^2\)</span>的表达式也可从数字上对此进行验证。</p>
 <p>若主系统和从系统的固有频率相等，即<span class="math notranslate nohighlight">\(\xi = 1\)</span>。此时耦合作用十分显著。主从系统的固有频率由式<a class="reference internal" href="#equation-eq-2-132">(2.58)</a>可得</p>
 <div class="math notranslate nohighlight">
 \[
@@ -529,6 +530,343 @@ Z_1 \approx 1, 即 \ \omega_{\mathrm{n}1} = \omega_{01}; \quad Z_2 \approx \xi, 
 \]</div>
 <p>因而组合系统的固有频率<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span>、<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span>和两个子系统本身的固有频率相差甚微，故两子系统之间的耦合作用很小。随着<span class="math notranslate nohighlight">\(a\)</span>的增加，耦合系统的固有频率<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}1}\)</span>、<span class="math notranslate nohighlight">\(\omega_{\mathrm{n}2}\)</span>和子系统的固有频率<span class="math notranslate nohighlight">\(\omega_{01}\)</span>、<span class="math notranslate nohighlight">\(\omega_{01}\)</span>差异也随之增大，主从系统的耦合作用越来越强。</p>
 <p>主从系统的振动原理对船舶振动分析甚为重要。如果称主系统<span class="math notranslate nohighlight">\(M_1\)</span>的振动为总振动，从系统<span class="math notranslate nohighlight">\(M_2\)</span>的振动为局部振动，则以上的分析表明，当局部振动的质量<span class="math notranslate nohighlight">\(M_2\)</span>远小于总振动的质量<span class="math notranslate nohighlight">\(M_1\)</span>时，或局部振动的固有频率与总振动频率相差甚远时，可不计两者的耦合作用。因而，在计算船体总振动的最初几个固有频率时，常不考虑船体局部振动（如双层底等）的影响。船舶摇摆和船体振动可分别计算的原因也在于前者的固有频率比后者小一个数量级之故（摇摆频率的数量级为<span class="math notranslate nohighlight">\(0.1\)</span>次<span class="math notranslate nohighlight">\(/s\)</span>,而船体振动第一阶频率的数量级约为<span class="math notranslate nohighlight">\(1\)</span>次/<span class="math notranslate nohighlight">\(s\)</span>）。</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.4.3. </span>交互探索：主从系统耦合规律实验台<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>下方交互探索把主系统与从系统都看作单自由度子系统，并用无因次参数 <span class="math notranslate nohighlight">\(a\)</span> 与 <span class="math notranslate nohighlight">\(\xi\)</span> 控制它们的耦合作用。可以同时观察两个无因次固有频率 <span class="math notranslate nohighlight">\(Z_1\)</span>、<span class="math notranslate nohighlight">\(Z_2\)</span> 的参数地图、组合频率相对于子系统频率的迁移、两个振型的形状，以及当前从系统更接近“弱耦合”“共频耦合”还是“附加质量”的哪一种情况。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  #master-slave-lab-demo input[type="range"] {
+    width: 100%;
+    accent-color: #0f766e;
+  }
+  #master-slave-lab-demo button {
+    padding: 0.58rem 0.78rem;
+    border-radius: 999px;
+    border: 1px solid rgba(15,118,110,0.22);
+    background: #ffffff;
+    color: #0f172a;
+    font-weight: 800;
+    cursor: pointer;
+  }
+</style>
+<div id="master-slave-lab-demo" style="border:1px solid rgba(15,118,110,0.14); border-radius:20px; padding:1rem; background:linear-gradient(180deg,#ecfdf5 0%,#ffffff 100%);">
+  <div style="display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:0.75rem; margin-bottom:0.95rem;">
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">质量比</div>
+      <div id="msl-a-card" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">a = 0.50</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">错开系数</div>
+      <div id="msl-xi-card" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">ξ = 1.00</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">从系统频率</div>
+      <div id="msl-w02" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">ω₀₂ = 1.000</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">组合一阶</div>
+      <div id="msl-wn1" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">组合二阶</div>
+      <div id="msl-wn2" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">当前工况</div>
+      <div id="msl-state" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(0,1fr); gap:1rem; align-items:start;">
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:0.78rem 0.9rem;">
+        <div>
+          <label style="display:flex; justify-content:space-between; gap:0.8rem; font-size:13px; color:#334155; font-weight:800;">
+            <span>质量比 a = M₂ / M₁</span><span id="msl-a-label">0.50</span>
+          </label>
+          <input id="msl-a-slider" type="range" min="0.00" max="2.00" step="0.01" value="0.50">
+        </div>
+        <div>
+          <label style="display:flex; justify-content:space-between; gap:0.8rem; font-size:13px; color:#334155; font-weight:800;">
+            <span>错开系数 ξ = ω₀₂² / ω₀₁²</span><span id="msl-xi-label">1.00</span>
+          </label>
+          <input id="msl-xi-slider" type="range" min="0.05" max="4.00" step="0.01" value="1.00">
+        </div>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.95rem;">
+        <button id="msl-weak">轻小从系统</button>
+        <button id="msl-tuned">共频耦合</button>
+        <button id="msl-rigid">附加质量</button>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.75rem;">
+        <button id="msl-view-1">播放一阶</button>
+        <button id="msl-view-2">播放二阶</button>
+        <button id="msl-view-both">对比两阶</button>
+        <button id="msl-play">暂停动画</button>
+      </div>
+      <div style="margin-top:1rem; padding:0.85rem 0.9rem; border-radius:14px; background:#f8fafc; border:1px solid rgba(148,163,184,0.16);">
+        <div style="font-size:13px; font-weight:800; color:#334155;">工程解释</div>
+        <div id="msl-note" style="margin-top:0.45rem; font-size:14px; line-height:1.5; color:#0f172a;">-</div>
+      </div>
+      <div style="margin-top:0.9rem; padding:0.85rem 0.9rem; border-radius:14px; background:#f8fafc; border:1px solid rgba(148,163,184,0.16);">
+        <div style="font-size:13px; font-weight:800; color:#334155;">频率与迁移摘要</div>
+        <div id="msl-z-card" style="margin-top:0.45rem; font-size:14px; color:#0f172a;">Z₁/Z₂</div>
+        <div id="msl-d1" style="margin-top:0.3rem; font-size:14px; color:#0f172a;">-</div>
+      </div>
+      <div style="margin-top:0.9rem; padding:0.85rem 0.9rem; border-radius:14px; background:#f8fafc; border:1px solid rgba(148,163,184,0.16);">
+        <div style="font-size:13px; font-weight:800; color:#334155;">当前区间关系</div>
+        <div id="msl-ineq" style="margin-top:0.45rem; font-size:15px; font-weight:800; color:#0f172a;">ωₙ₁ &lt; ω₀₁ &lt; ω₀₂ &lt; ωₙ₂</div>
+      </div>
+    </div>
+
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="msl-map-plot" style="width:100%; height:340px;"></div>
+    </div>
+    <div style="padding:0.9rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <canvas id="msl-canvas" width="820" height="260" style="width:100%; aspect-ratio:820 / 260; height:auto; display:block;"></canvas>
+    </div>
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="msl-mode-plot" style="width:100%; height:250px;"></div>
+    </div>
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="msl-migrate-plot" style="width:100%; height:230px;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const container = document.querySelector("#master-slave-lab-demo");
+  if (!container || container.dataset.ready) return;
+  container.dataset.ready = "true";
+
+  const aSlider = container.querySelector("#msl-a-slider");
+  const xiSlider = container.querySelector("#msl-xi-slider");
+  let animationMode = "mode1";
+  let playing = true;
+  let phase = 0;
+  let lastTime = null;
+  let currentScene = null;
+
+  function roots(a, xi) {
+    const disc = Math.max(0, (1 + (1 + a) * xi) ** 2 - 4 * xi);
+    const z1 = (1 + (1 + a) * xi - Math.sqrt(disc)) / 2;
+    const z2 = (1 + (1 + a) * xi + Math.sqrt(disc)) / 2;
+    return {z1, z2};
+  }
+
+  function modeShapes(a, xi, z1, z2) {
+    const k2 = a * xi;
+    const phi1 = [1, (1 + k2 - z1) / k2];
+    const phi2 = [1, (1 + k2 - z2) / k2];
+    return [phi1, phi2].map((phi) => {
+      const maxAbs = Math.max(...phi.map((v) => Math.abs(v)), 1e-9);
+      return phi.map((v) => v / maxAbs);
+    });
+  }
+
+  function classify(a, xi) {
+    if (a < 0.12) return {state: "弱耦合", note: "从系统质量很小，组合频率与两个子系统本身的频率差别不大。"};
+    if (Math.abs(xi - 1) < 0.18) return {state: "共频耦合", note: "主从系统本征频率接近时，两个组合频率分离明显，耦合作用最显著。"};
+    if (xi > 2.8) return {state: "附加质量", note: "从系统刚度很高，更像附着在主系统上的附加质量，会显著拉低第一阶频率。"};
+    return {state: "中等耦合", note: "从系统既不会完全脱开，也未达到最强耦合，主频率和振型都会发生可见偏移。"};
+  }
+
+  function draw(a, xi, modes, scenePhase = 0, mode = "mode1") {
+    const canvas = container.querySelector("#msl-canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#94a3b8";
+    ctx.fillStyle = "#f8fafc";
+    const labelFont = '700 24px "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif';
+    const infoFont = '600 18px "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif';
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#bfdbfe";
+    ctx.fillRect(25, 44, 18, 156);
+    ctx.strokeStyle = "#2563eb";
+    ctx.strokeRect(25, 44, 18, 156);
+    const y = 126;
+    const center1 = 285;
+    const center2 = 560;
+    const ampScale = 30;
+    const selected = mode === "mode2" ? modes[1] : modes[0];
+    const compareAmp = 0.22;
+    const shape = mode === "both"
+      ? [
+          compareAmp * modes[0][0] * Math.sin(scenePhase) + compareAmp * modes[1][0] * Math.sin(1.45 * scenePhase),
+          compareAmp * modes[0][1] * Math.sin(scenePhase) + compareAmp * modes[1][1] * Math.sin(1.45 * scenePhase),
+        ]
+      : [
+          selected[0] * Math.sin(scenePhase),
+          selected[1] * Math.sin(scenePhase),
+        ];
+    const x1 = center1 + ampScale * shape[0];
+    const x2 = center2 + ampScale * shape[1];
+    function spring(x0, x1p) {
+      ctx.beginPath();
+      ctx.moveTo(x0, y);
+      for (let i = 1; i <= 18; i++) {
+        const xp = x0 + (x1p - x0) * i / 19;
+        const yp = y + (i % 2 ? -16 : 16);
+        ctx.lineTo(xp, yp);
+      }
+      ctx.lineTo(x1p, y);
+      ctx.stroke();
+    }
+    spring(43, x1 - 42);
+    spring(x1 + 42, x2 - 42);
+    [["主系统", x1, "#0f766e"], ["从系统", x2, "#2563eb"]].forEach(([label, x, color]) => {
+      ctx.fillStyle = color;
+      ctx.fillRect(x - 42, y - 32, 84, 64);
+      ctx.fillStyle = "#fff";
+      ctx.font = labelFont;
+      ctx.textAlign = "center";
+      ctx.fillText(label, x, y + 2);
+    });
+    ctx.fillStyle = "#0f172a";
+    ctx.font = infoFont;
+    ctx.textAlign = "left";
+    ctx.fillText(`M₁ = 1.00, K₁ = 1.00`, 96, 220);
+    ctx.fillText(`M₂ = ${a.toFixed(2)}, K₂ = ${(a * xi).toFixed(2)}`, 404, 220);
+    const modeLabel = mode === "mode1" ? "一阶振型动画" : mode === "mode2" ? "二阶振型动画" : "两阶组合对比";
+    ctx.fillText(`振型趋势: 一阶 ${modes[0][1] > 0 ? "同向" : "反向"}，二阶 ${modes[1][1] > 0 ? "同向" : "反向"}`, 404, 42);
+    ctx.fillText(`当前视图: ${modeLabel}`, 404, 64);
+  }
+
+  function update() {
+    const a = Number(aSlider.value);
+    const xi = Number(xiSlider.value);
+    const {z1, z2} = roots(a, xi);
+    const w01 = 1.0;
+    const w02 = Math.sqrt(xi);
+    const wn1 = Math.sqrt(z1);
+    const wn2 = Math.sqrt(z2);
+    const modes = modeShapes(a, xi, z1, z2);
+    const info = classify(a, xi);
+
+    container.querySelector("#msl-a-card").textContent = `a = ${a.toFixed(2)}`;
+    container.querySelector("#msl-xi-card").textContent = `ξ = ${xi.toFixed(2)}`;
+    container.querySelector("#msl-a-label").textContent = a.toFixed(2);
+    container.querySelector("#msl-xi-label").textContent = xi.toFixed(2);
+    container.querySelector("#msl-w02").textContent = `ω₀₂ = ${w02.toFixed(3)}`;
+    container.querySelector("#msl-wn1").textContent = `ωₙ₁ = ${wn1.toFixed(3)}`;
+    container.querySelector("#msl-wn2").textContent = `ωₙ₂ = ${wn2.toFixed(3)}`;
+    container.querySelector("#msl-d1").textContent = `Z₁ = ${z1.toFixed(3)}，Z₂ = ${z2.toFixed(3)}；一阶迁移 ${((wn1 - w01) / w01 * 100).toFixed(1)}%`;
+    container.querySelector("#msl-state").textContent = info.state;
+    container.querySelector("#msl-note").textContent = info.note;
+    container.querySelector("#msl-z-card").textContent = `ω₀₁ = 1.000，ω₀₂ = ${w02.toFixed(3)}；ωₙ₁ = ${wn1.toFixed(3)}，ωₙ₂ = ${wn2.toFixed(3)}`;
+    container.querySelector("#msl-ineq").innerHTML = `ω<sub>n1</sub> = ${wn1.toFixed(3)} &lt; ω<sub>01</sub> = 1.000 &lt; ω<sub>02</sub> = ${w02.toFixed(3)} &lt; ω<sub>n2</sub> = ${wn2.toFixed(3)}`;
+
+    currentScene = {a, xi, modes};
+    draw(a, xi, modes, phase, animationMode);
+
+    const xiSeries = [];
+    const z1Series = [];
+    const z2Series = [];
+    for (let x = 0; x <= 4.0001; x += 0.02) {
+      const rz = roots(a, x);
+      xiSeries.push(Number(x.toFixed(2)));
+      z1Series.push(rz.z1);
+      z2Series.push(rz.z2);
+    }
+
+    Plotly.react(container.querySelector("#msl-map-plot"), [
+      {x: xiSeries, y: z1Series, mode: "lines", name: "Z₁(ξ)", line: {color: "#2563eb", width: 3}},
+      {x: xiSeries, y: z2Series, mode: "lines", name: "Z₂(ξ)", line: {color: "#0f766e", width: 3}},
+      {x: [xi], y: [z1], mode: "markers", name: "当前 Z₁", marker: {size: 10, color: "#1d4ed8"}},
+      {x: [xi], y: [z2], mode: "markers", name: "当前 Z₂", marker: {size: 10, color: "#0f766e"}},
+      {x: [0, 4], y: [1, 1], mode: "lines", name: "Z = 1", line: {color: "rgba(148,163,184,0.9)", width: 1.8, dash: "dash"}}
+    ], {
+      margin: {l: 52, r: 18, t: 18, b: 44},
+      xaxis: {title: "ξ", range: [0, 4], autorange: false, fixedrange: true},
+      yaxis: {title: "Z", range: [0, Math.max(4.2, ...z2Series) * 1.02], autorange: false, fixedrange: true},
+      legend: {x: 0.98, y: 0.98, xanchor: "right", yanchor: "top", bgcolor: "rgba(255,255,255,0.82)", bordercolor: "rgba(148,163,184,0.25)", borderwidth: 1},
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff"
+    }, {displayModeBar: false, responsive: true});
+
+    Plotly.react(container.querySelector("#msl-mode-plot"), [
+      {x: [0, 1, 2], y: [0, modes[0][0], modes[0][1]], mode: "lines+markers", name: "一阶振型", line: {color: "#0f766e", width: 3}, marker: {size: [8, 10, 10], color: ["#0f172a", "#0f766e", "#0f766e"]}},
+      {x: [0, 1, 2], y: [0, modes[1][0], modes[1][1]], mode: "lines+markers", name: "二阶振型", line: {color: "#2563eb", width: 3}, marker: {size: [8, 10, 10], color: ["#0f172a", "#2563eb", "#2563eb"]}}
+    ], {
+      margin: {l: 52, r: 18, t: 18, b: 44},
+      xaxis: {title: "位置", tickmode: "array", tickvals: [0, 1, 2], ticktext: ["边界", "主系统", "从系统"], range: [-0.1, 2.1], autorange: false, fixedrange: true},
+      yaxis: {title: "归一化振型", range: [-1.2, 1.2], autorange: false, fixedrange: true},
+      showlegend: true,
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff"
+    }, {displayModeBar: false, responsive: true});
+
+    Plotly.react(container.querySelector("#msl-migrate-plot"), [
+      {x: ["主系统", "从系统"], y: [w01, w02], type: "bar", name: "子系统本身", marker: {color: "#cbd5e1"}},
+      {x: ["一阶", "二阶"], y: [wn1, wn2], type: "bar", name: "耦合后", marker: {color: ["#0f766e", "#2563eb"]}}
+    ], {
+      barmode: "group",
+      margin: {l: 52, r: 18, t: 18, b: 44},
+      yaxis: {title: "频率比", range: [0, Math.max(3.2, wn2 * 1.12)], autorange: false, fixedrange: true},
+      xaxis: {fixedrange: true},
+      legend: {x: 0.98, y: 0.98, xanchor: "right", yanchor: "top", bgcolor: "rgba(255,255,255,0.82)", bordercolor: "rgba(148,163,184,0.25)", borderwidth: 1},
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff"
+    }, {displayModeBar: false, responsive: true});
+  }
+
+  container.querySelector("#msl-weak").addEventListener("click", () => {
+    aSlider.value = "0.08";
+    xiSlider.value = "1.60";
+    update();
+  });
+  container.querySelector("#msl-tuned").addEventListener("click", () => {
+    aSlider.value = "0.50";
+    xiSlider.value = "1.00";
+    update();
+  });
+  container.querySelector("#msl-rigid").addEventListener("click", () => {
+    aSlider.value = "0.80";
+    xiSlider.value = "3.60";
+    update();
+  });
+  container.querySelector("#msl-view-1").addEventListener("click", () => {
+    animationMode = "mode1";
+    draw(currentScene.a, currentScene.xi, currentScene.modes, phase, animationMode);
+  });
+  container.querySelector("#msl-view-2").addEventListener("click", () => {
+    animationMode = "mode2";
+    draw(currentScene.a, currentScene.xi, currentScene.modes, phase, animationMode);
+  });
+  container.querySelector("#msl-view-both").addEventListener("click", () => {
+    animationMode = "both";
+    draw(currentScene.a, currentScene.xi, currentScene.modes, phase, animationMode);
+  });
+  container.querySelector("#msl-play").addEventListener("click", () => {
+    playing = !playing;
+    container.querySelector("#msl-play").textContent = playing ? "暂停动画" : "播放动画";
+  });
+  aSlider.addEventListener("input", update);
+  xiSlider.addEventListener("input", update);
+
+  function animate(timestamp) {
+    if (lastTime === null) lastTime = timestamp;
+    const dt = Math.min(0.05, (timestamp - lastTime) / 1000);
+    lastTime = timestamp;
+    if (playing && currentScene) {
+      phase += dt * 2.4;
+      draw(currentScene.a, currentScene.xi, currentScene.modes, phase, animationMode);
+    }
+    requestAnimationFrame(animate);
+  }
+
+  update();
+  requestAnimationFrame(animate);
+})();
+</script>
+</div></div>
+</div>
 </section>
 </section>
 
@@ -598,6 +936,7 @@ Z_1 \approx 1, 即 \ \omega_{\mathrm{n}1} = \omega_{01}; \quad Z_2 \approx \xi, 
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.4.1. 主从系统</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.4.2. 主从系统的耦合作用</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.4.3. 交互探索：主从系统耦合规律实验台</a></li>
 </ul>
   </nav></div>
 

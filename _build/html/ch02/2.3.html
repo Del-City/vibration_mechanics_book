@@ -447,9 +447,10 @@ document.write(`
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 阻尼的表达与处理</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 系统对任意激励的响应</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.3. 系统对正弦激励的响应</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.3.1. 振型叠加法求响应</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.3.2. 直接解法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.3. 交互探索：解耦与模态叠加</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.4. 振型叠加法求系统对正弦激励的响应</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.5. 交互探索：扫频频响与模态贡献</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.5.1. 直接解法求系统对正弦激励的响应</a></li>
 </ul>
 </li>
 </ul>
@@ -587,6 +588,454 @@ p_r(0) = \left( \frac{1}{M_r} \right) \boldsymbol{\varphi}^{(r)\mathrm{T}} \bold
 \]</div>
 <!--式{eq}`eq:2-61`和{eq}`eq:2-62`与此处的区别是，由于前者采用正则振型，经过了归一化处理，故广义质量 $M_r$ 值为 1。-->
 <p>求得主坐标响应式 <a class="reference internal" href="#equation-eq-2-108">(2.34)</a> 后，再代入式 <a class="reference internal" href="#equation-eq-2-103">(2.29)</a> 便得广义坐标表示的响应表达式。</p>
+</section>
+<section id="id4">
+<h2><span class="section-number">2.3.3. </span>交互探索：解耦与模态叠加<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
+<p>下方交互探索以对称两自由度系统为对象，展示物理坐标 <span class="math notranslate nohighlight">\(\boldsymbol{q}\)</span> 与主坐标 <span class="math notranslate nohighlight">\(\boldsymbol{p}\)</span> 之间的关系。切换激励类型和受力位置后，可以同时观察物理力、模态力、主坐标响应以及总响应，从而看到“耦合系统如何在模态空间中解耦为两个单自由度问题”。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  #modal-superposition-demo input[type="range"] {
+    width: 100%;
+    accent-color: #0f766e;
+  }
+  #modal-superposition-demo button,
+  #modal-superposition-demo select {
+    border-radius: 12px;
+    border: 1px solid rgba(15,118,110,0.18);
+    background: #ffffff;
+    color: #0f172a;
+    font-weight: 700;
+  }
+  #modal-superposition-demo button {
+    padding: 0.58rem 0.82rem;
+    cursor: pointer;
+  }
+  #modal-superposition-demo button.primary {
+    border: none;
+    background: #0f766e;
+    color: #ffffff;
+  }
+  #modal-superposition-demo table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  #modal-superposition-demo td {
+    border: 1px solid rgba(148,163,184,0.18);
+    padding: 0.32rem 0.45rem;
+    text-align: center;
+  }
+</style>
+<div id="modal-superposition-demo" style="border:1px solid rgba(15,118,110,0.14); border-radius:20px; padding:1rem; background:linear-gradient(180deg,#ecfeff 0%,#ffffff 100%);">
+  <div style="display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:0.75rem; margin-bottom:0.95rem;">
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">一阶固有频率</div>
+      <div id="ms-wn1" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">二阶固有频率</div>
+      <div id="ms-wn2" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f766e;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">当前激励</div>
+      <div id="ms-force-state" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">模态力峰值</div>
+      <div id="ms-modal-force" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">当前状态</div>
+      <div id="ms-state" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">播放中</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(0,1fr); gap:1rem; align-items:start;">
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:14px; font-weight:800; color:#0f172a; margin-bottom:0.65rem;">系统与激励参数</div>
+      <div id="ms-controls" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.72rem 0.9rem;"></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; margin-top:0.8rem;">
+        <label style="font-size:13px; font-weight:800; color:#334155;">激励类型
+          <select id="ms-force-type" style="width:100%; margin-top:0.35rem; padding:0.5rem 0.6rem;">
+            <option value="pulse">矩形脉冲</option>
+            <option value="step">阶跃载荷</option>
+            <option value="harmonic">简谐激励</option>
+          </select>
+        </label>
+        <label style="font-size:13px; font-weight:800; color:#334155;">作用位置
+          <select id="ms-force-dof" style="width:100%; margin-top:0.35rem; padding:0.5rem 0.6rem;">
+            <option value="0">x₁</option>
+            <option value="1">x₂</option>
+          </select>
+        </label>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.9rem;">
+        <button class="primary" id="ms-play">暂停</button>
+        <button id="ms-reset">重播</button>
+        <button id="ms-preset-pulse">脉冲激励</button>
+        <button id="ms-preset-harmonic">近共振</button>
+      </div>
+    </div>
+
+    <div style="padding:0.9rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <canvas id="ms-canvas" width="820" height="250" style="width:100%; aspect-ratio:820 / 250; height:auto; display:block;"></canvas>
+    </div>
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+      <div style="padding:0.9rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+        <div style="font-size:13px; font-weight:800; color:#0f172a; margin-bottom:0.45rem;">物理空间矩阵</div>
+        <div id="ms-matrix-physical"></div>
+      </div>
+      <div style="padding:0.9rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+        <div style="font-size:13px; font-weight:800; color:#0f172a; margin-bottom:0.45rem;">模态空间矩阵</div>
+        <div id="ms-matrix-modal"></div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(0,1fr); gap:1rem; margin-top:1rem;">
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="ms-force-plot" style="width:100%; height:250px;"></div>
+    </div>
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="ms-modal-plot" style="width:100%; height:300px;"></div>
+    </div>
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="ms-response-plot" style="width:100%; height:320px;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const container = document.querySelector("#modal-superposition-demo");
+  if (!container || container.dataset.ready) return;
+  container.dataset.ready = "true";
+
+  const controls = [
+    ["m", "质量 m", 0.5, 5, 0.1, 1.0],
+    ["k", "弹簧刚度 k", 0.5, 8, 0.1, 1.0],
+    ["zeta", "模态阻尼比 ζ", 0.00, 0.20, 0.01, 0.05],
+    ["amp", "载荷幅值 F₀", 0.2, 3.0, 0.05, 1.0],
+    ["duration", "脉冲持续时间", 0.2, 6.0, 0.1, 1.2],
+    ["ratio", "简谐频率比 ω/ω₁", 0.4, 2.5, 0.02, 0.9],
+  ];
+  const state = {};
+  let playing = true;
+  let t = 0;
+  let lastTime = null;
+  let cached = null;
+
+  function addSlider(item) {
+    const [key, label, min, max, step, value] = item;
+    state[key] = value;
+    const row = document.createElement("div");
+    row.style.minWidth = "0";
+    row.innerHTML = `
+      <label style="display:flex; justify-content:space-between; gap:0.8rem; font-size:13px; color:#334155; font-weight:800;">
+        <span>${label}</span><span id="ms-${key}-value">${value.toFixed(2)}</span>
+      </label>
+      <input id="ms-${key}" type="range" min="${min}" max="${max}" step="${step}" value="${value}">
+    `;
+    container.querySelector("#ms-controls").appendChild(row);
+    row.querySelector("input").addEventListener("input", (event) => {
+      state[key] = Number(event.target.value);
+      row.querySelector(`#ms-${key}-value`).textContent = state[key].toFixed(2);
+      t = 0;
+      updateAll();
+    });
+  }
+  controls.forEach(addSlider);
+  state.forceType = "pulse";
+  state.forceDof = 1;
+  container.querySelector("#ms-force-type").value = state.forceType;
+  container.querySelector("#ms-force-dof").value = String(state.forceDof);
+
+  const phi = [
+    [1 / Math.sqrt(2), 1 / Math.sqrt(2)],
+    [1 / Math.sqrt(2), -1 / Math.sqrt(2)],
+  ];
+
+  function setValue(key, value) {
+    state[key] = value;
+    const input = container.querySelector(`#ms-${key}`);
+    const label = container.querySelector(`#ms-${key}-value`);
+    if (input) input.value = String(value);
+    if (label) label.textContent = Number(value).toFixed(2);
+  }
+
+  function matrices() {
+    const m = state.m;
+    const k = state.k;
+    const zeta = state.zeta;
+    const wn = [Math.sqrt(k / m), Math.sqrt(3 * k / m)];
+    const wd = wn.map((w) => w * Math.sqrt(Math.max(0, 1 - zeta * zeta)));
+    const M = [[m, 0], [0, m]];
+    const C = [[2 * zeta * m * wn[0], 0], [0, 2 * zeta * m * wn[1]]];
+    const K = [[2 * k, -k], [-k, 2 * k]];
+    return {wn, wd, M, C, K};
+  }
+
+  function externalForce(time, wn1) {
+    const amp = state.amp;
+    if (state.forceType === "pulse") return time <= state.duration ? amp : 0;
+    if (state.forceType === "step") return amp;
+    return amp * Math.sin(state.ratio * wn1 * time);
+  }
+
+  function computeResponse() {
+    const {wn, wd, M, K} = matrices();
+    const dt = 0.02;
+    const tMax = 22;
+    const steps = Math.round(tMax / dt) + 1;
+    const time = [];
+    const f1 = [];
+    const f2 = [];
+    const fr1 = [];
+    const fr2 = [];
+    const p1 = [];
+    const p2 = [];
+    const q1 = [];
+    const q2 = [];
+    let modalX = [0, 0];
+    let modalV = [0, 0];
+    for (let i = 0; i < steps; i++) {
+      const tt = i * dt;
+      const force = externalForce(tt, wn[0]);
+      const F = state.forceDof === 0 ? [force, 0] : [0, force];
+      const Ft = [
+        phi[0][0] * F[0] + phi[0][1] * F[1],
+        phi[1][0] * F[0] + phi[1][1] * F[1],
+      ];
+      for (let r = 0; r < 2; r++) {
+        const a = Ft[r] - 2 * state.zeta * wn[r] * modalV[r] - wn[r] * wn[r] * modalX[r];
+        modalV[r] += a * dt;
+        modalX[r] += modalV[r] * dt;
+      }
+      const q = [
+        phi[0][0] * modalX[0] + phi[1][0] * modalX[1],
+        phi[0][1] * modalX[0] + phi[1][1] * modalX[1],
+      ];
+      time.push(tt);
+      f1.push(F[0]);
+      f2.push(F[1]);
+      fr1.push(Ft[0]);
+      fr2.push(Ft[1]);
+      p1.push(modalX[0]);
+      p2.push(modalX[1]);
+      q1.push(q[0]);
+      q2.push(q[1]);
+    }
+    return {wn, wd, M, K, time, f1, f2, fr1, fr2, p1, p2, q1, q2, tMax};
+  }
+
+  function renderMatrix(el, label, matrix) {
+    el.innerHTML = `<div style="font-size:12px; color:#64748b; font-weight:700; margin:0.15rem 0 0.3rem;">${label}</div>` +
+      `<table>${matrix.map((row) => `<tr>${row.map((v) => `<td>${typeof v === "number" ? v.toFixed(3) : v}</td>`).join("")}</tr>`).join("")}</table>`;
+  }
+
+  function updatePlots(data) {
+    container.querySelector("#ms-wn1").textContent = `ω₁ = ${data.wn[0].toFixed(3)}`;
+    container.querySelector("#ms-wn2").textContent = `ω₂ = ${data.wn[1].toFixed(3)}`;
+    container.querySelector("#ms-force-state").textContent = `${state.forceType === "pulse" ? "脉冲" : state.forceType === "step" ? "阶跃" : "简谐"} @ x${state.forceDof + 1}`;
+    const modalPeak = Math.max(...data.fr1.map((v) => Math.abs(v)), ...data.fr2.map((v) => Math.abs(v)));
+    container.querySelector("#ms-modal-force").textContent = modalPeak.toFixed(3);
+
+    renderMatrix(container.querySelector("#ms-matrix-physical"), "M", data.M);
+    container.querySelector("#ms-matrix-physical").innerHTML += '<div style="height:0.55rem;"></div>';
+    renderMatrix(container.querySelector("#ms-matrix-physical"), "K", data.K);
+
+    const modalMass = [[1, 0], [0, 1]];
+    const modalDamp = [[2 * state.zeta * data.wn[0], 0], [0, 2 * state.zeta * data.wn[1]]];
+    const modalStiff = [[data.wn[0] * data.wn[0], 0], [0, data.wn[1] * data.wn[1]]];
+    const modalHtml = container.querySelector("#ms-matrix-modal");
+    renderMatrix(modalHtml, "Φ", [[phi[0][0], phi[1][0]], [phi[0][1], phi[1][1]]]);
+    modalHtml.innerHTML += '<div style="height:0.55rem;"></div>';
+    renderMatrix(modalHtml, "M~", modalMass);
+    modalHtml.innerHTML += '<div style="height:0.55rem;"></div>';
+    renderMatrix(modalHtml, "C~", modalDamp);
+    modalHtml.innerHTML += '<div style="height:0.55rem;"></div>';
+    renderMatrix(modalHtml, "K~", modalStiff);
+
+    const forceLimit = Math.max(0.25, ...data.f1.concat(data.f2, data.fr1, data.fr2).map((v) => Math.abs(v))) * 1.15;
+    Plotly.react(container.querySelector("#ms-force-plot"), [
+      {x: data.time, y: data.f1, mode: "lines", name: "F₁(t)", line: {color: "#0891b2", width: 2.4}},
+      {x: data.time, y: data.f2, mode: "lines", name: "F₂(t)", line: {color: "#0f766e", width: 2.4}},
+      {x: data.time, y: data.fr1, mode: "lines", name: "F~₁(t)", line: {color: "#f59e0b", width: 2.2, dash: "dot"}},
+      {x: data.time, y: data.fr2, mode: "lines", name: "F~₂(t)", line: {color: "#dc2626", width: 2.2, dash: "dot"}},
+    ], {
+      margin: {l: 48, r: 18, t: 18, b: 42},
+      xaxis: {title: "t", range: [0, data.tMax], autorange: false, fixedrange: true},
+      yaxis: {title: "力 / 模态力", range: [-forceLimit, forceLimit], autorange: false, fixedrange: true},
+      legend: {x: 0.98, y: 0.98, xanchor: "right", yanchor: "top", bgcolor: "rgba(255,255,255,0.82)", bordercolor: "rgba(148,163,184,0.25)", borderwidth: 1},
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff"
+    }, {displayModeBar: false, responsive: true});
+
+    const modalLimit = Math.max(0.25, ...data.p1.concat(data.p2).map((v) => Math.abs(v))) * 1.15;
+    Plotly.react(container.querySelector("#ms-modal-plot"), [
+      {x: data.time, y: data.p1, mode: "lines", name: "p₁(t)", line: {color: "#f59e0b", width: 2.5}},
+      {x: data.time, y: data.p2, mode: "lines", name: "p₂(t)", line: {color: "#dc2626", width: 2.5}},
+    ], {
+      margin: {l: 48, r: 18, t: 18, b: 42},
+      xaxis: {title: "t", range: [0, data.tMax], autorange: false, fixedrange: true},
+      yaxis: {title: "主坐标 p", range: [-modalLimit, modalLimit], autorange: false, fixedrange: true},
+      legend: {x: 0.98, y: 0.98, xanchor: "right", yanchor: "top", bgcolor: "rgba(255,255,255,0.82)", bordercolor: "rgba(148,163,184,0.25)", borderwidth: 1},
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff"
+    }, {displayModeBar: false, responsive: true});
+
+    const responseLimit = Math.max(0.25, ...data.q1.concat(data.q2).map((v) => Math.abs(v))) * 1.15;
+    Plotly.react(container.querySelector("#ms-response-plot"), [
+      {x: data.time, y: data.q1, mode: "lines", name: "x₁(t)", line: {color: "#0891b2", width: 2.5}},
+      {x: data.time, y: data.q2, mode: "lines", name: "x₂(t)", line: {color: "#0f766e", width: 2.5}},
+    ], {
+      margin: {l: 48, r: 18, t: 18, b: 42},
+      xaxis: {title: "t", range: [0, data.tMax], autorange: false, fixedrange: true},
+      yaxis: {title: "物理位移 q", range: [-responseLimit, responseLimit], autorange: false, fixedrange: true},
+      legend: {x: 0.98, y: 0.98, xanchor: "right", yanchor: "top", bgcolor: "rgba(255,255,255,0.82)", bordercolor: "rgba(148,163,184,0.25)", borderwidth: 1},
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff"
+    }, {displayModeBar: false, responsive: true});
+  }
+
+  function currentIndex(data) {
+    return Math.max(0, Math.min(data.time.length - 1, Math.round((t / data.tMax) * (data.time.length - 1))));
+  }
+
+  function draw(data) {
+    const canvas = container.querySelector("#ms-canvas");
+    const ctx = canvas.getContext("2d");
+    const idx = currentIndex(data);
+    const q = [data.q1[idx], data.q2[idx]];
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#94a3b8";
+    ctx.fillStyle = "#f8fafc";
+    const labelFont = '700 24px "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif';
+    const infoFont = '600 18px "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif';
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#cbd5e1";
+    ctx.fillRect(25, 44, 18, 156);
+    ctx.fillRect(777, 44, 18, 156);
+    ctx.strokeStyle = "#64748b";
+    ctx.strokeRect(25, 44, 18, 156);
+    ctx.strokeRect(777, 44, 18, 156);
+    const y = 126;
+    const scale = 46;
+    const x1 = 255 + scale * q[0];
+    const x2 = 560 + scale * q[1];
+    function spring(x0, x1p) {
+      ctx.beginPath();
+      ctx.moveTo(x0, y);
+      for (let i = 1; i <= 18; i++) {
+        const xp = x0 + (x1p - x0) * i / 19;
+        const yp = y + (i % 2 ? -16 : 16);
+        ctx.lineTo(xp, yp);
+      }
+      ctx.lineTo(x1p, y);
+      ctx.stroke();
+    }
+    spring(43, x1 - 40);
+    spring(x1 + 40, x2 - 40);
+    spring(x2 + 40, 777);
+    [["x₁", x1, "#0891b2"], ["x₂", x2, "#0f766e"]].forEach(([label, x, color]) => {
+      ctx.fillStyle = color;
+      ctx.fillRect(x - 40, y - 32, 80, 64);
+      ctx.fillStyle = "#fff";
+      ctx.font = labelFont;
+      ctx.textAlign = "center";
+      ctx.fillText(label, x, y + 2);
+    });
+    const force = state.forceDof === 0 ? data.f1[idx] : data.f2[idx];
+    const arrowX = state.forceDof === 0 ? x1 : x2;
+    const arrowDir = force >= 0 ? 1 : -1;
+    const arrowBase = arrowX - 92 * arrowDir;
+    const arrowTip = arrowX - 48 * arrowDir;
+    const arrowY = y - 54;
+    ctx.strokeStyle = "#ef4444";
+    ctx.fillStyle = "#ef4444";
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(arrowBase, arrowY);
+    ctx.lineTo(arrowTip, arrowY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(arrowTip, arrowY);
+    ctx.lineTo(arrowTip - 14 * arrowDir, arrowY - 10);
+    ctx.lineTo(arrowTip - 14 * arrowDir, arrowY + 10);
+    ctx.closePath();
+    ctx.fill();
+    ctx.fillStyle = "#0f172a";
+    ctx.font = infoFont;
+    ctx.fillText(`F = ${force.toFixed(2)}`, arrowX, arrowY - 16);
+  }
+
+  function updateAll() {
+    cached = computeResponse();
+    updatePlots(cached);
+    draw(cached);
+  }
+
+  container.querySelector("#ms-force-type").addEventListener("input", (event) => {
+    state.forceType = event.target.value;
+    t = 0;
+    updateAll();
+  });
+  container.querySelector("#ms-force-dof").addEventListener("input", (event) => {
+    state.forceDof = Number(event.target.value);
+    t = 0;
+    updateAll();
+  });
+  container.querySelector("#ms-play").addEventListener("click", () => {
+    playing = !playing;
+    container.querySelector("#ms-play").textContent = playing ? "暂停" : "播放";
+    container.querySelector("#ms-state").textContent = playing ? "播放中" : "已暂停";
+  });
+  container.querySelector("#ms-reset").addEventListener("click", () => {
+    t = 0;
+    updateAll();
+  });
+  container.querySelector("#ms-preset-pulse").addEventListener("click", () => {
+    state.forceType = "pulse";
+    state.forceDof = 1;
+    setValue("duration", 1.2);
+    setValue("amp", 1.0);
+    container.querySelector("#ms-force-type").value = "pulse";
+    container.querySelector("#ms-force-dof").value = "1";
+    t = 0;
+    updateAll();
+  });
+  container.querySelector("#ms-preset-harmonic").addEventListener("click", () => {
+    state.forceType = "harmonic";
+    state.forceDof = 0;
+    setValue("ratio", 0.98);
+    setValue("zeta", 0.03);
+    container.querySelector("#ms-force-type").value = "harmonic";
+    container.querySelector("#ms-force-dof").value = "0";
+    t = 0;
+    updateAll();
+  });
+
+  function animate(timestamp) {
+    if (lastTime === null) lastTime = timestamp;
+    const dt = Math.min(0.05, (timestamp - lastTime) / 1000);
+    lastTime = timestamp;
+    if (playing && cached) {
+      t = (t + dt) % cached.tMax;
+      draw(cached);
+    }
+    requestAnimationFrame(animate);
+  }
+
+  updateAll();
+  requestAnimationFrame(animate);
+})();
+</script>
+</div></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>例2.15</strong> 试求图 2-15 所示的两自由度系统的强迫振动响应。其中 <span class="math notranslate nohighlight">\(F_1(t)=0\)</span>，<span class="math notranslate nohighlight">\(F_2(t)\)</span> 是一脉冲载荷：</p>
@@ -723,10 +1172,8 @@ x_2(t)=\frac{F_0}{M_1}\left[\frac{1}{\omega_{\mathrm{n}1}^2}\sin\frac{\omega_{\m
 \]</div>
 </div>
 </section>
-<section id="id4">
-<h2><span class="section-number">2.3.3. </span>系统对正弦激励的响应<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
 <section id="id5">
-<h3><span class="section-number">2.3.3.1. </span>振型叠加法求响应<a class="headerlink" href="#id5" title="Link to this heading">#</a></h3>
+<h2><span class="section-number">2.3.4. </span>振型叠加法求系统对正弦激励的响应<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <p>若系统受到简谐激励 <span class="math notranslate nohighlight">\(\boldsymbol{F}(t)=\boldsymbol{F}_0\sin\omega t\)</span> 作用，则式 <a class="reference internal" href="#equation-eq-2-106">(2.32)</a> 可写为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -776,6 +1223,364 @@ x_2(t)=\frac{F_0}{M_1}\left[\frac{1}{\omega_{\mathrm{n}1}^2}\sin\frac{\omega_{\m
 <span class="eqno">(2.45)<a class="headerlink" href="#equation-eq-2-119" title="Link to this equation">#</a></span>\[
 \alpha = \arctan\frac{2\zeta_r\gamma_r}{1-\gamma_r^2}
 \]</div>
+</section>
+<section id="id6">
+<h2><span class="section-number">2.3.5. </span>交互探索：扫频频响与模态贡献<a class="headerlink" href="#id6" title="Link to this heading">#</a></h2>
+<p>下方交互探索基于两自由度对称系统的模态频响函数展开式。可以切换输入坐标与输出坐标，观察总频响函数与各阶模态贡献在扫频过程中如何叠加，并实时查看当前频率下的实部、虚部、幅值与相位。</p>
+<div class="cell tag_remove-input docutils container">
+<div class="cell_output docutils container">
+<div class="output text_html">
+<script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
+<style>
+  #frf-contribution-demo input[type="range"] {
+    width: 100%;
+    accent-color: #b45309;
+  }
+  #frf-contribution-demo button,
+  #frf-contribution-demo select {
+    border-radius: 12px;
+    border: 1px solid rgba(180,83,9,0.18);
+    background: #ffffff;
+    color: #0f172a;
+    font-weight: 700;
+  }
+  #frf-contribution-demo button {
+    padding: 0.58rem 0.82rem;
+    cursor: pointer;
+  }
+</style>
+<div id="frf-contribution-demo" style="border:1px solid rgba(180,83,9,0.14); border-radius:20px; padding:1rem; background:linear-gradient(180deg,#fffbeb 0%,#ffffff 100%);">
+  <div style="display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:0.75rem; margin-bottom:0.95rem;">
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">一阶频率</div>
+      <div id="frf-wn1" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#b45309;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">二阶频率</div>
+      <div id="frf-wn2" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#b45309;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">当前频率</div>
+      <div id="frf-w" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">|H<sub>ij</sub>|</div>
+      <div id="frf-mag" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">Re(H<sub>ij</sub>)</div>
+      <div id="frf-real" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+    <div style="padding:0.78rem 0.86rem; border-radius:14px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div style="font-size:12px; color:#64748b; font-weight:700;">Im(H<sub>ij</sub>)</div>
+      <div id="frf-imag" style="margin-top:0.25rem; font-size:18px; font-weight:800; color:#0f172a;">-</div>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(0,1fr); gap:1rem; align-items:start;">
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="frf-controls" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:0.72rem 0.9rem;"></div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:0.7rem; margin-top:0.8rem;">
+        <label style="font-size:13px; font-weight:800; color:#334155;">输入坐标 j
+          <select id="frf-input" style="width:100%; margin-top:0.35rem; padding:0.5rem 0.6rem;">
+            <option value="0">x₁</option>
+            <option value="1">x₂</option>
+          </select>
+        </label>
+        <label style="font-size:13px; font-weight:800; color:#334155;">输出坐标 i
+          <select id="frf-output" style="width:100%; margin-top:0.35rem; padding:0.5rem 0.6rem;">
+            <option value="0">x₁</option>
+            <option value="1">x₂</option>
+          </select>
+        </label>
+      </div>
+      <div style="display:flex; gap:0.5rem; flex-wrap:wrap; margin-top:0.9rem;">
+        <button id="frf-reset">重置参数</button>
+        <button id="frf-drive-11">看 H₁₁</button>
+        <button id="frf-drive-21">看 H₂₁</button>
+      </div>
+    </div>
+    <div style="padding:0.9rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <canvas id="frf-canvas" width="820" height="250" style="width:100%; aspect-ratio:820 / 250; height:auto; display:block;"></canvas>
+    </div>
+  </div>
+
+  <div style="display:grid; grid-template-columns:minmax(0,1fr); gap:1rem; margin-top:1rem;">
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="frf-mag-plot" style="width:100%; height:320px;"></div>
+    </div>
+    <div style="padding:0.95rem; border-radius:18px; background:#fff; border:1px solid rgba(148,163,184,0.18);">
+      <div id="frf-complex-plot" style="width:100%; height:300px;"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const container = document.querySelector("#frf-contribution-demo");
+  if (!container || container.dataset.ready) return;
+  container.dataset.ready = "true";
+
+  const sliders = [
+    ["m", "质量 m", 0.5, 5, 0.1, 1.0],
+    ["k1", "端部刚度 k₁", 0.5, 8, 0.1, 1.0],
+    ["k2", "耦合刚度 k₂", 0.2, 5, 0.1, 1.0],
+    ["zeta", "模态阻尼比 ζ", 0.005, 0.10, 0.005, 0.02],
+    ["wratio", "当前频率比 ω/ω₁", 0.2, 2.2, 0.01, 0.8],
+  ];
+  const state = {input: 0, output: 0};
+  const phi = [
+    [1 / Math.sqrt(2), 1 / Math.sqrt(2)],
+    [1 / Math.sqrt(2), -1 / Math.sqrt(2)],
+  ];
+
+  function addSlider(item) {
+    const [key, label, min, max, step, value] = item;
+    state[key] = value;
+    const row = document.createElement("div");
+    row.style.minWidth = "0";
+    row.innerHTML = `
+      <label style="display:flex; justify-content:space-between; gap:0.8rem; font-size:13px; color:#334155; font-weight:800;">
+        <span>${label}</span><span id="frf-${key}-value">${value.toFixed(3)}</span>
+      </label>
+      <input id="frf-${key}" type="range" min="${min}" max="${max}" step="${step}" value="${value}">
+    `;
+    container.querySelector("#frf-controls").appendChild(row);
+    row.querySelector("input").addEventListener("input", (event) => {
+      state[key] = Number(event.target.value);
+      row.querySelector(`#frf-${key}-value`).textContent = state[key].toFixed(3);
+      updateAll();
+    });
+  }
+  sliders.forEach(addSlider);
+
+  function setValue(key, value) {
+    state[key] = value;
+    const input = container.querySelector(`#frf-${key}`);
+    const label = container.querySelector(`#frf-${key}-value`);
+    if (input) input.value = String(value);
+    if (label) label.textContent = Number(value).toFixed(3);
+  }
+
+  function systemData() {
+    const m = state.m;
+    const k1 = state.k1;
+    const k2 = state.k2;
+    const wn = [Math.sqrt(k1 / m), Math.sqrt((k1 + 2 * k2) / m)];
+    return {m, k1, k2, wn};
+  }
+
+  function frfTerm(i, j, r, omega, wn) {
+    const coeff = (phi[r][i] * phi[r][j]) / (wn[r] * wn[r]);
+    const gamma = omega / wn[r];
+    const denRe = 1 - gamma * gamma;
+    const denIm = 2 * state.zeta * gamma;
+    const denom = denRe * denRe + denIm * denIm;
+    return {
+      re: coeff * denRe / denom,
+      im: -coeff * denIm / denom,
+      mag: Math.abs(coeff) / Math.sqrt(denom),
+    };
+  }
+
+  function compute() {
+    const {wn, m, k1, k2} = systemData();
+    const omegaMax = wn[1] * 1.9;
+    const omega = [];
+    const totalMag = [];
+    const real = [];
+    const imag = [];
+    const modal1 = [];
+    const modal2 = [];
+    for (let idx = 0; idx < 480; idx++) {
+      const w = omegaMax * idx / 479;
+      const t1 = frfTerm(state.output, state.input, 0, w, wn);
+      const t2 = frfTerm(state.output, state.input, 1, w, wn);
+      omega.push(w);
+      totalMag.push(Math.hypot(t1.re + t2.re, t1.im + t2.im));
+      real.push(t1.re + t2.re);
+      imag.push(t1.im + t2.im);
+      modal1.push(t1.mag);
+      modal2.push(t2.mag);
+    }
+    const currentW = state.wratio * wn[0];
+    const c1 = frfTerm(state.output, state.input, 0, currentW, wn);
+    const c2 = frfTerm(state.output, state.input, 1, currentW, wn);
+    const current = {
+      w: currentW,
+      re: c1.re + c2.re,
+      im: c1.im + c2.im,
+      mag: Math.hypot(c1.re + c2.re, c1.im + c2.im),
+      phase: Math.atan2(c1.im + c2.im, c1.re + c2.re),
+      modal1: c1,
+      modal2: c2,
+    };
+    return {m, k1, k2, wn, omega, totalMag, real, imag, modal1, modal2, current, omegaMax};
+  }
+
+  function draw(data) {
+    const canvas = container.querySelector("#frf-canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.lineWidth = 3;
+    ctx.strokeStyle = "#94a3b8";
+    ctx.fillStyle = "#f8fafc";
+    const labelFont = '700 24px "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif';
+    const infoFont = '600 18px "Microsoft YaHei", "PingFang SC", "Noto Sans SC", sans-serif';
+    ctx.textBaseline = "middle";
+    ctx.fillStyle = "#cbd5e1";
+    ctx.fillRect(25, 44, 18, 156);
+    ctx.fillRect(777, 44, 18, 156);
+    ctx.strokeStyle = "#64748b";
+    ctx.strokeRect(25, 44, 18, 156);
+    ctx.strokeRect(777, 44, 18, 156);
+    const y = 126;
+    const x1 = 255;
+    const x2 = 560;
+    function spring(x0, x1p) {
+      ctx.beginPath();
+      ctx.moveTo(x0, y);
+      for (let i = 1; i <= 18; i++) {
+        const xp = x0 + (x1p - x0) * i / 19;
+        const yp = y + (i % 2 ? -16 : 16);
+        ctx.lineTo(xp, yp);
+      }
+      ctx.lineTo(x1p, y);
+      ctx.stroke();
+    }
+    spring(43, x1 - 40);
+    spring(x1 + 40, x2 - 40);
+    spring(x2 + 40, 777);
+    [["x₁", x1, "#b45309"], ["x₂", x2, "#0f766e"]].forEach(([label, x, color]) => {
+      ctx.fillStyle = color;
+      ctx.fillRect(x - 40, y - 32, 80, 64);
+      ctx.fillStyle = "#fff";
+      ctx.font = labelFont;
+      ctx.textAlign = "center";
+      ctx.fillText(label, x, y + 2);
+    });
+    ctx.strokeStyle = "#2563eb";
+    ctx.fillStyle = "#2563eb";
+    ctx.lineWidth = 4;
+    const inputX = state.input === 0 ? x1 : x2;
+    const inputArrowY = y - 54;
+    ctx.beginPath();
+    ctx.moveTo(inputX - 92, inputArrowY);
+    ctx.lineTo(inputX - 48, inputArrowY);
+    ctx.stroke();
+    ctx.beginPath();
+    ctx.moveTo(inputX - 48, inputArrowY);
+    ctx.lineTo(inputX - 62, inputArrowY - 10);
+    ctx.lineTo(inputX - 62, inputArrowY + 10);
+    ctx.closePath();
+    ctx.fill();
+
+    const ampScale = 70;
+    const responseX = state.output === 0 ? x1 : x2;
+    const response = data.current.mag * Math.sin(data.current.phase);
+    ctx.strokeStyle = "#dc2626";
+    ctx.lineWidth = 5;
+    ctx.beginPath();
+    ctx.moveTo(responseX - ampScale * response, 210);
+    ctx.lineTo(responseX + ampScale * response, 210);
+    ctx.stroke();
+    ctx.fillStyle = "#0f172a";
+    ctx.font = infoFont;
+    ctx.textAlign = "left";
+    ctx.fillText(`输入: x${state.input + 1}  输出: x${state.output + 1}`, 560, 34);
+    ctx.fillText(`激励: F0 sinωt`, 560, 56);
+    ctx.fillText(`相位: ${data.current.phase.toFixed(2)} rad`, 560, 78);
+  }
+
+  function updatePlots(data) {
+    container.querySelector("#frf-wn1").textContent = `ω₁ = ${data.wn[0].toFixed(3)}`;
+    container.querySelector("#frf-wn2").textContent = `ω₂ = ${data.wn[1].toFixed(3)}`;
+    container.querySelector("#frf-w").textContent = data.current.w.toFixed(3);
+    container.querySelector("#frf-mag").textContent = data.current.mag.toExponential(2);
+    container.querySelector("#frf-real").textContent = data.current.re.toExponential(2);
+    container.querySelector("#frf-imag").textContent = data.current.im.toExponential(2);
+
+    const magMax = Math.max(...data.totalMag, ...data.modal1, ...data.modal2) * 1.08;
+    Plotly.react(container.querySelector("#frf-mag-plot"), [
+      {x: data.omega, y: data.totalMag, mode: "lines", name: "|Hᵢⱼ| 总和", line: {color: "#0f172a", width: 3}},
+      {x: data.omega, y: data.modal1, mode: "lines", name: "一阶贡献", line: {color: "#b45309", width: 2.4}},
+      {x: data.omega, y: data.modal2, mode: "lines", name: "二阶贡献", line: {color: "#0f766e", width: 2.4}},
+      {x: [data.current.w], y: [data.current.mag], mode: "markers", name: "当前频率", marker: {size: 10, color: "#2563eb"}}
+    ], {
+      margin: {l: 48, r: 18, t: 18, b: 42},
+      xaxis: {title: "ω", range: [0, data.omegaMax], autorange: false, fixedrange: true},
+      yaxis: {title: "|Hᵢⱼ(ω)|", range: [0, magMax], autorange: false, fixedrange: true},
+      legend: {x: 0.98, y: 0.98, xanchor: "right", yanchor: "top", bgcolor: "rgba(255,255,255,0.82)", bordercolor: "rgba(148,163,184,0.25)", borderwidth: 1},
+      shapes: [
+        {type: "line", x0: data.wn[0], x1: data.wn[0], y0: 0, y1: magMax, line: {color: "rgba(180,83,9,0.35)", dash: "dash"}},
+        {type: "line", x0: data.wn[1], x1: data.wn[1], y0: 0, y1: magMax, line: {color: "rgba(15,118,110,0.35)", dash: "dash"}},
+      ],
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff"
+    }, {displayModeBar: false, responsive: true});
+
+    const cMax = Math.max(...data.real.map((v) => Math.abs(v)), ...data.imag.map((v) => Math.abs(v))) * 1.12;
+    Plotly.react(container.querySelector("#frf-complex-plot"), [
+      {x: data.omega, y: data.real, mode: "lines", name: "Re(Hᵢⱼ)", line: {color: "#b45309", width: 2.5}},
+      {x: data.omega, y: data.imag, mode: "lines", name: "Im(Hᵢⱼ)", line: {color: "#0f766e", width: 2.5}},
+      {x: [data.current.w], y: [data.current.re], mode: "markers", name: "当前 Re", marker: {size: 9, color: "#b45309"}},
+      {x: [data.current.w], y: [data.current.im], mode: "markers", name: "当前 Im", marker: {size: 9, color: "#0f766e"}}
+    ], {
+      margin: {l: 48, r: 18, t: 18, b: 42},
+      xaxis: {title: "ω", range: [0, data.omegaMax], autorange: false, fixedrange: true},
+      yaxis: {title: "复频响分量", range: [-cMax, cMax], autorange: false, fixedrange: true},
+      legend: {x: 0.98, y: 0.98, xanchor: "right", yanchor: "top", bgcolor: "rgba(255,255,255,0.82)", bordercolor: "rgba(148,163,184,0.25)", borderwidth: 1},
+      paper_bgcolor: "rgba(0,0,0,0)",
+      plot_bgcolor: "#ffffff"
+    }, {displayModeBar: false, responsive: true});
+  }
+
+  function updateAll() {
+    const data = compute();
+    updatePlots(data);
+    draw(data);
+  }
+
+  container.querySelector("#frf-input").addEventListener("input", (event) => {
+    state.input = Number(event.target.value);
+    updateAll();
+  });
+  container.querySelector("#frf-output").addEventListener("input", (event) => {
+    state.output = Number(event.target.value);
+    updateAll();
+  });
+  container.querySelector("#frf-reset").addEventListener("click", () => {
+    setValue("m", 1.0);
+    setValue("k1", 1.0);
+    setValue("k2", 1.0);
+    setValue("zeta", 0.02);
+    setValue("wratio", 0.8);
+    state.input = 0;
+    state.output = 0;
+    container.querySelector("#frf-input").value = "0";
+    container.querySelector("#frf-output").value = "0";
+    updateAll();
+  });
+  container.querySelector("#frf-drive-11").addEventListener("click", () => {
+    state.input = 0;
+    state.output = 0;
+    container.querySelector("#frf-input").value = "0";
+    container.querySelector("#frf-output").value = "0";
+    updateAll();
+  });
+  container.querySelector("#frf-drive-21").addEventListener("click", () => {
+    state.input = 0;
+    state.output = 1;
+    container.querySelector("#frf-input").value = "0";
+    container.querySelector("#frf-output").value = "1";
+    updateAll();
+  });
+
+  updateAll();
+})();
+</script>
+</div></div>
+</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>例2.16</strong> 如图2-16(a)所示的两自由度系统，已知 <span class="math notranslate nohighlight">\(Q_1(t)=Q_0\cos\omega t,K_1=987,K_2=217,C_1=0.6284,C_2=0.0628\)</span>。求：</p>
@@ -915,9 +1720,8 @@ p_i=\frac{F_i}{m^{(i)}\omega_{\mathrm{n}i}^2}(1-\cos\omega_{\mathrm{n}i}t)\quad 
 \boldsymbol{q}=\boldsymbol{\rho}\boldsymbol{p}=\begin{bmatrix}1 &amp; 1 &amp; 1 \\1.802 &amp; 0.445 &amp; -1.247 \\2.247 &amp; -0.802 &amp; 0.555\end{bmatrix}\begin{Bmatrix}1.221(1-\cos\omega_{\mathrm{n}1}t) \\-0.280(1-\cos\omega_{\mathrm{n}2}t) \\0.060(1-\cos\omega_{\mathrm{n}3}t)\end{Bmatrix}\frac{p_0}{K}
 \end{split}\]</div>
 </div>
-</section>
-<section id="id6">
-<h3><span class="section-number">2.3.3.2. </span>直接解法<a class="headerlink" href="#id6" title="Link to this heading">#</a></h3>
+<section id="id7">
+<h3><span class="section-number">2.3.5.1. </span>直接解法求系统对正弦激励的响应<a class="headerlink" href="#id7" title="Link to this heading">#</a></h3>
 <p>当系统受到简谐激励作用时，可以用复数方法直接求解。设简谐激励力为 <span class="math notranslate nohighlight">\(F_0\mathrm{e}^{\mathrm{i}\omega t}\)</span>，则运动方程式为</p>
 <div class="math notranslate nohighlight" id="equation-eq-2-120">
 <span class="eqno">(2.46)<a class="headerlink" href="#equation-eq-2-120" title="Link to this equation">#</a></span>\[
@@ -1021,9 +1825,10 @@ p_i=\frac{F_i}{m^{(i)}\omega_{\mathrm{n}i}^2}(1-\cos\omega_{\mathrm{n}i}t)\quad 
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">2.3.1. 阻尼的表达与处理</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">2.3.2. 系统对任意激励的响应</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.3. 系统对正弦激励的响应</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.3.1. 振型叠加法求响应</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.3.2. 直接解法</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">2.3.3. 交互探索：解耦与模态叠加</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">2.3.4. 振型叠加法求系统对正弦激励的响应</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">2.3.5. 交互探索：扫频频响与模态贡献</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">2.3.5.1. 直接解法求系统对正弦激励的响应</a></li>
 </ul>
 </li>
 </ul>
