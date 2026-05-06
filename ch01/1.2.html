@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    振动力学数字教材
+                    船体振动学数字教材
                 </a>
             </li>
         </ul>
@@ -188,7 +188,7 @@
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">1.2. 自由振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.3.html">1.3. 简谐载荷作用下的强迫振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.4.html">1.4. 周期激励作用下的强迫振动</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5.html">1.5. 任意激励载荷下作用下的强迫振动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5.html">1.5. 任意激励作用下的强迫振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.6.html">1.6. 隔振原理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exercises.html">1.7. 习题</a></li>
 </ul>
@@ -453,7 +453,7 @@ document.write(`
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#under-critically-damped-system">1.2.3.3. 低临界阻尼系统(Under Critically Damped System)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.2.4. 交互探索：阻尼如何影响振动？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2.4. 交互探索：阻尼如何影响振动？</a></li>
 </ul>
             </nav>
         </div>
@@ -516,7 +516,14 @@ x(t) = \frac{\dot{x}_0}{\omega} \sin \omega t + x_0 \cos \omega t
 <span class="eqno">(1.16)<a class="headerlink" href="#equation-eq-1-16" title="Link to this equation">#</a></span>\[
 A=\sqrt{A_1^2+A_2^2}=\sqrt{\frac{\dot{x}_0^2}{\omega^2}+x_0^2}, \quad \tan\phi=\frac{A_2}{A_1}=\frac{x_0\omega}{\dot{x}_0}
 \]</div>
-<p>只要知道了 <span class="math notranslate nohighlight">\(A_1\)</span>、<span class="math notranslate nohighlight">\(A_2\)</span>，就容易求出 <span class="math notranslate nohighlight">\(A\)</span> 与 <span class="math notranslate nohighlight">\(\phi\)</span>，反之亦然。式<a class="reference internal" href="#equation-eq-1-15">(1.15)</a>表示的无阻尼自由振动如<a class="reference internal" href="#fig-1-4"><span class="xref myst">图 1-4 </span></a>所示。</p>
+<p>只要知道了 <span class="math notranslate nohighlight">\(A_1\)</span>、<span class="math notranslate nohighlight">\(A_2\)</span>，就容易求出 <span class="math notranslate nohighlight">\(A\)</span> 与 <span class="math notranslate nohighlight">\(\phi\)</span>，反之亦然。式<a class="reference internal" href="#equation-eq-1-15">(1.15)</a>表示的无阻尼自由振动如<a class="reference internal" href="#fig-1-4"><span class="std std-numref">Fig. 1.4</span></a>所示。</p>
+<figure class="align-default" id="fig-1-4">
+<a class="reference internal image-reference" href="../_images/fig1-4.png"><img alt="../_images/fig1-4.png" src="../_images/fig1-4.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">无阻尼自由振动</span><a class="headerlink" href="#fig-1-4" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>简谐振动属于周期性振动。从式<a class="reference internal" href="#equation-eq-1-12">(1.12)</a>不难看出，<span class="math notranslate nohighlight">\(\omega\)</span> 是周期振动的<strong>角频率</strong>（Angular Frequency）或<strong>圆频率</strong>（Circular Frequency），称为单自由度系统的<strong>无阻尼自振（或固有）频率</strong>（Undamped Natural Frequency of Vibration）。单位为弧度/秒（rad/s）或 1/秒（1/s）。由式<a class="reference internal" href="#equation-eq-1-10">(1.10)</a>知</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-17">
 <span class="eqno">(1.17)<a class="headerlink" href="#equation-eq-1-17" title="Link to this equation">#</a></span>\[
@@ -535,7 +542,14 @@ T=\frac{2\pi}{\omega}=\frac{1}{f}
 <p>称为自振（或固有）周期（Natural Period of Vibration），单位为秒（s）。</p>
 <p>从上面的讨论可知，振幅 <span class="math notranslate nohighlight">\(A\)</span> 与初相角 <span class="math notranslate nohighlight">\(\phi\)</span> 是由初始条件确定的；但自振频率 <span class="math notranslate nohighlight">\(f\)</span>（或 <span class="math notranslate nohighlight">\(\omega\)</span>）和自振周期 <span class="math notranslate nohighlight">\(T\)</span> 则与初始条件无关，而仅取决于系统本身的刚度和质量。</p>
 <p>由式<a class="reference internal" href="#equation-eq-1-17">(1.17)</a>可知：当振动系统的质量 <span class="math notranslate nohighlight">\(m\)</span> 增加时，将引起自振频率的下降，而当刚度 <span class="math notranslate nohighlight">\(k\)</span> 增加时，将引起自振频率的增加。一切弹性振动系统都是这样。因此，在处理实际工程问题时，如果想提高某结构的自振频率，可以从两方面设法：或者提高结构的刚度（如增加约束，采用刚度大的构件等）；或者减小结构的重量（如改用轻质材料等）。</p>
-<p>考虑如<a class="reference internal" href="#fig1-5a"><span class="xref myst">图1-5（a）</span></a> 所示悬挂质量系统（不考虑弹簧的质量），它可看做是如<a class="reference internal" href="#fig1-1a"><span class="xref myst">图 1-1（a）</span></a> 所示系统旋转了 90°。假定质量块在重力 <span class="math notranslate nohighlight">\(G\)</span> 作用下的静伸长为 <span class="math notranslate nohighlight">\(x_{\text{st}}\)</span>。如果质量块偏离静平衡位置的位移为 <span class="math notranslate nohighlight">\(x\)</span>，此时作用在质量块上的力如图2-5(b) 所示。仿照方程<a class="reference internal" href="1.1.html#equation-eq-1-3">(1.3)</a>的推导，系统的动力平衡方程可以写做</p>
+<figure class="align-default" id="fig-1-5">
+<a class="reference internal image-reference" href="../_images/fig1-5.png"><img alt="../_images/fig1-5.png" src="../_images/fig1-5.png" style="width: 50%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.5 </span><span class="caption-text">悬挂质量系统</span><a class="headerlink" href="#fig-1-5" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>考虑如<a class="reference internal" href="#fig-1-5"><span class="std std-numref">Fig. 1.5</span></a>(a) 所示悬挂质量系统（不考虑弹簧的质量），它可看做是如<a class="reference internal" href="1.1.html#fig-1-1"><span class="std std-numref">Fig. 1.1</span></a>(a) 所示系统旋转了 90°。假定质量块在重力 <span class="math notranslate nohighlight">\(G\)</span> 作用下的静伸长为 <span class="math notranslate nohighlight">\(x_{\text{st}}\)</span>。如果质量块偏离静平衡位置的位移为 <span class="math notranslate nohighlight">\(x\)</span>，此时作用在质量块上的力如<a class="reference internal" href="#fig-1-5"><span class="std std-numref">Fig. 1.5</span></a>(b) 所示。仿照方程<a class="reference internal" href="1.1.html#equation-eq-1-3">(1.3)</a>的推导，系统的动力平衡方程可以写做</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-20">
 <span class="eqno">(1.20)<a class="headerlink" href="#equation-eq-1-20" title="Link to this equation">#</a></span>\[
 m \ddot{\tilde{x}}(t) + c \dot{\tilde{x}}(t) + k \tilde{x}(t) = F_e(t) + G
@@ -556,7 +570,7 @@ G=kx_{st}
 m \ddot{x}(t)+c \dot{x}(t)+k x(t)=F_{\mathrm{e}}(t)
 \]</div>
 <p>这说明相对于振动系统静平衡位置写出的运动方程不受重力影响。因此, 在本书以后的讨论中, 动力响应一般以静平衡位置作为基准。求总的位移、内力响应时, 只要把动力分析的结果与相应的静力结果相加即可。</p>
-<p>对于如<a class="reference internal" href="#fig-1-5a"><span class="xref myst">图 2-5(a)</span></a>所示的悬挂质量系统, 可以推得其自振频率的另一种表达方式。由式<a class="reference internal" href="#equation-eq-1-17">(1.17)</a>可知</p>
+<p>对于如<a class="reference internal" href="#fig-1-5"><span class="std std-numref">Fig. 1.5</span></a>(a)所示的悬挂质量系统, 可以推得其自振频率的另一种表达方式。由式<a class="reference internal" href="#equation-eq-1-17">(1.17)</a>可知</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-24">
 <span class="eqno">(1.24)<a class="headerlink" href="#equation-eq-1-24" title="Link to this equation">#</a></span>\[
 \omega=\sqrt{\frac{k}{m}}=\sqrt{\frac{k g}{G}}=\sqrt{\frac{k g}{k x_{\mathrm{st}}}}=\sqrt{\frac{g}{x_{\mathrm{st}}}}
@@ -1007,7 +1021,14 @@ x(t)=\mathrm{e}^{-\varepsilon t}\left(c_{1}+c_{2} t\right)
 <span class="eqno">(1.33)<a class="headerlink" href="#equation-eq-1-33" title="Link to this equation">#</a></span>\[
 x(t)=\mathrm{e}^{-\varepsilon t}\left[x_{0}+\left(\dot{x}_{0}+\varepsilon x_{0}\right) t\right]
 \]</div>
-<p>式<a class="reference internal" href="#equation-eq-1-31">(1.31)</a>和式<a class="reference internal" href="#equation-eq-1-33">(1.33)</a>所表示的运动都没有振动的特征。不难验证, 当 <span class="math notranslate nohighlight">\(t\)</span> 增大时, <span class="math notranslate nohighlight">\(x\)</span> 值单调地趋于零, <a class="reference internal" href="#fig-1-8"><span class="xref myst">如图 1-8</span></a> 所示。</p>
+<p>式<a class="reference internal" href="#equation-eq-1-31">(1.31)</a>和式<a class="reference internal" href="#equation-eq-1-33">(1.33)</a>所表示的运动都没有振动的特征。不难验证, 当 <span class="math notranslate nohighlight">\(t\)</span> 增大时, <span class="math notranslate nohighlight">\(x\)</span> 值单调地趋于零, 如<a class="reference internal" href="#fig-1-8"><span class="std std-numref">Fig. 1.6</span></a>所示。</p>
+<figure class="align-default" id="fig-1-8">
+<a class="reference internal image-reference" href="../_images/fig1-8.png"><img alt="../_images/fig1-8.png" src="../_images/fig1-8.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.6 </span><span class="caption-text">临界阻尼和过阻尼系统的自由振动</span><a class="headerlink" href="#fig-1-8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="under-critically-damped-system">
 <h3><span class="section-number">1.2.3.3. </span>低临界阻尼系统(Under Critically Damped System)<a class="headerlink" href="#under-critically-damped-system" title="Link to this heading">#</a></h3>
@@ -1048,7 +1069,14 @@ B=\sqrt{B_{1}^{2}+B_{2}^{2}}=\frac{\sqrt{\left(\dot{x}_{0}+\varepsilon x_{0}\rig
 \quad
 \tan\phi=\frac{B_{2}}{B_{1}}=\frac{\omega_{\varepsilon} x_{0}}{\dot{x}_{0}+\varepsilon x_{0}}
 \]</div>
-<p>式<a class="reference internal" href="#equation-eq-1-38">(1.38)</a>表示的运动如<a class="reference internal" href="#fig1-9"><span class="xref myst">图 1-9</span></a>所示。由<a class="reference internal" href="#fig1-9"><span class="xref myst">图 1-9</span></a> 可见, 由于阻尼的影响, 振动逐渐衰减至静止。由此可以看出, 有阻尼的自由振动不是谐和振动或周期振动。</p>
+<p>式<a class="reference internal" href="#equation-eq-1-38">(1.38)</a>表示的运动如<a class="reference internal" href="#fig-1-9"><span class="std std-numref">Fig. 1.7</span></a>所示。由<a class="reference internal" href="#fig-1-9"><span class="std std-numref">Fig. 1.7</span></a>可见, 由于阻尼的影响, 振动逐渐衰减至静止。由此可以看出, 有阻尼的自由振动不是谐和振动或周期振动。</p>
+<figure class="align-default" id="fig-1-9">
+<a class="reference internal image-reference" href="../_images/fig1-9.png"><img alt="../_images/fig1-9.png" src="../_images/fig1-9.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.7 </span><span class="caption-text">有阻尼自由振动</span><a class="headerlink" href="#fig-1-9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>习惯上称 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 为有阻尼自振频率(Damped Natural Frequency of Vibration), 称</p>
 <div class="math notranslate nohighlight" id="equation-eq-1-41">
 <span class="eqno">(1.41)<a class="headerlink" href="#equation-eq-1-41" title="Link to this equation">#</a></span>\[
@@ -1070,7 +1098,14 @@ T_{\varepsilon}=\frac{2\pi}{\omega_{\varepsilon}}
 <span class="eqno">(1.44)<a class="headerlink" href="#equation-eq-1-44" title="Link to this equation">#</a></span>\[
 \ddot{x}(t)+2\zeta\omega\dot{x}(t)+\omega^{2}x(t)=0
 \]</div>
-<p>对于通常的工程结构, <span class="math notranslate nohighlight">\(\zeta\)</span>的值一般在<span class="math notranslate nohighlight">\(1\%\sim10\%\)</span>之间。因此, 式<a class="reference internal" href="#equation-eq-1-43">(1.43)</a>等号右端根号内的值非常接近 <span class="math notranslate nohighlight">\(1\)</span>, 故常近似地认为 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}=\omega\)</span>。<a class="reference internal" href="#fig1-10"><span class="xref myst">图 1-10</span></a> 给出了 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 与 <span class="math notranslate nohighlight">\(\omega\)</span> 的比值随 <span class="math notranslate nohighlight">\(\zeta\)</span> 的变化曲线, 可以看到：在 <span class="math notranslate nohighlight">\(0\leqslant\zeta\leqslant0.1\)</span> 区间, <span class="math notranslate nohighlight">\(\frac{\omega_{\varepsilon}}{\omega}\)</span> 非常接近 <span class="math notranslate nohighlight">\(1\)</span>。因此, 在计算结构的自振频率时, 可不考虑阻尼的影响。这样计算的 <span class="math notranslate nohighlight">\(\omega\)</span> 与实际的 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 是很接近的, 但却大大简化了计算。例如, 在例 2-4 中将会看到, 系统的振幅每周期衰减 <span class="math notranslate nohighlight">\(50\%\)</span> (实际结构物一般没有这么大的阻尼)。即使在这样的情况下, 容易验证 <span class="math notranslate nohighlight">\(\omega\)</span> 与 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 的差别亦仅在 <span class="math notranslate nohighlight">\(0.6\%\)</span> 左右。当然, 在工程中也有一些阻尼相对比较大的结构或机械系统。例如，为了减小结构或机械系统的振动而人为地在系统中加入一些阻尼器或耗能元件。又如, 为了使仪器有较大的量程, 大多加速度计将其弹簧振子的阻尼比 <span class="math notranslate nohighlight">\(\zeta\)</span> 取为 <span class="math notranslate nohighlight">\(0.7\)</span>。</p>
+<p>对于通常的工程结构, <span class="math notranslate nohighlight">\(\zeta\)</span>的值一般在<span class="math notranslate nohighlight">\(1\%\sim10\%\)</span>之间。因此, 式<a class="reference internal" href="#equation-eq-1-43">(1.43)</a>等号右端根号内的值非常接近 <span class="math notranslate nohighlight">\(1\)</span>, 故常近似地认为 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}=\omega\)</span>。<a class="reference internal" href="#fig-1-10"><span class="std std-numref">Fig. 1.8</span></a>给出了 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 与 <span class="math notranslate nohighlight">\(\omega\)</span> 的比值随 <span class="math notranslate nohighlight">\(\zeta\)</span> 的变化曲线, 可以看到：在 <span class="math notranslate nohighlight">\(0\leqslant\zeta\leqslant0.1\)</span> 区间, <span class="math notranslate nohighlight">\(\frac{\omega_{\varepsilon}}{\omega}\)</span> 非常接近 <span class="math notranslate nohighlight">\(1\)</span>。因此, 在计算结构的自振频率时, 可不考虑阻尼的影响。这样计算的 <span class="math notranslate nohighlight">\(\omega\)</span> 与实际的 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 是很接近的, 但却大大简化了计算。例如, 在例 2-4 中将会看到, 系统的振幅每周期衰减 <span class="math notranslate nohighlight">\(50\%\)</span> (实际结构物一般没有这么大的阻尼)。即使在这样的情况下, 容易验证 <span class="math notranslate nohighlight">\(\omega\)</span> 与 <span class="math notranslate nohighlight">\(\omega_{\varepsilon}\)</span> 的差别亦仅在 <span class="math notranslate nohighlight">\(0.6\%\)</span> 左右。当然, 在工程中也有一些阻尼相对比较大的结构或机械系统。例如，为了减小结构或机械系统的振动而人为地在系统中加入一些阻尼器或耗能元件。又如, 为了使仪器有较大的量程, 大多加速度计将其弹簧振子的阻尼比 <span class="math notranslate nohighlight">\(\zeta\)</span> 取为 <span class="math notranslate nohighlight">\(0.7\)</span>。</p>
+<figure class="align-default" id="fig-1-10">
+<a class="reference internal image-reference" href="../_images/fig1-10.png"><img alt="../_images/fig1-10.png" src="../_images/fig1-10.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.8 </span><span class="caption-text">有阻尼自振频率与无阻尼自振频率的比值</span><a class="headerlink" href="#fig-1-10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <p>如以 <span class="math notranslate nohighlight">\(B_n\)</span> 表示在某一时刻 <span class="math notranslate nohighlight">\(t_n\)</span> 时的振幅,<span class="math notranslate nohighlight">\(B_{n+1}\)</span> 表示经过一个周期后(即时刻 <span class="math notranslate nohighlight">\(t=t_n+T_{\varepsilon}\)</span>)的振幅。由式<a class="reference internal" href="#equation-eq-1-39">(1.39)</a>知, 当振动达到振幅时, 必有 <span class="math notranslate nohighlight">\(\sin(\omega_{\varepsilon}t+\phi)=1\)</span>, 故有</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1109,7 +1144,7 @@ B_n=x\big|_{t=t_n}=B\mathrm{e}^{-\varepsilon t_n},\quad B_{n+1}=x\big|_{t=t_n+T_
 \]</div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>例1-4</strong> 设单自由度振动系统的质量 <span class="math notranslate nohighlight">\(m=1\ \mathrm{kg}\)</span>, 刚度 <span class="math notranslate nohighlight">\(k=4900\ \mathrm{N/m}\)</span>。假定由实验测得系统振动时的位移曲线如图2-9所示。量得某相邻两次振幅为 <span class="math notranslate nohighlight">\(B_n=2.5\ \mathrm{cm}\)</span>, <span class="math notranslate nohighlight">\(B_{n+1}=1.25\ \mathrm{cm}\)</span>。求 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 与 <span class="math notranslate nohighlight">\(c\)</span> 的值。</p>
+<p><strong>例1-4</strong> 设单自由度振动系统的质量 <span class="math notranslate nohighlight">\(m=1\ \mathrm{kg}\)</span>, 刚度 <span class="math notranslate nohighlight">\(k=4900\ \mathrm{N/m}\)</span>。假定由实验测得系统振动时的位移曲线如<a class="reference internal" href="#fig-1-9"><span class="std std-numref">Fig. 1.7</span></a>所示。量得某相邻两次振幅为 <span class="math notranslate nohighlight">\(B_n=2.5\ \mathrm{cm}\)</span>, <span class="math notranslate nohighlight">\(B_{n+1}=1.25\ \mathrm{cm}\)</span>。求 <span class="math notranslate nohighlight">\(\varepsilon\)</span> 与 <span class="math notranslate nohighlight">\(c\)</span> 的值。</p>
 <p>解 由式<a class="reference internal" href="#equation-eq-1-46">(1.46)</a>知对数衰减量</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1154,38 +1189,10 @@ B_n=x\big|_{t=t_n}=B\mathrm{e}^{-\varepsilon t_n},\quad B_{n+1}=x\big|_{t=t_n+T_
 \]</div>
 <p>上述测定阻尼系数的方法称为<strong>自振衰减法(Free Vibration Decay Method)</strong>。</p>
 <p>由本节的讨论可知, 在不考虑阻尼作用时, 系统自由振动的振幅不随时间而衰减。亦即在振动过程中, 不发生能量的损耗(或说能量不向外界散逸), 这样的系统, 通常称为保守系统(Conservative System)。反之, 在考虑阻尼作用时, 系统的振幅随时间逐渐衰减, 甚至根本振动不起来, 质量单调地趋于平衡位置。亦即系统在振动过程中, 发生了能量的损耗(或能量向外界散逸), 这样的系统则是非保守系统(Non-Conservative System)。</p>
-<figure class="align-center" id="fig-1dof-system">
-<a class="reference internal image-reference" href="../_images/fig1.png"><img alt="../_images/fig1.png" src="../_images/fig1.png" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">单自由度受迫振动力学模型</span><a class="headerlink" href="#fig-1dof-system" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="fig-test">
-<a class="reference internal image-reference" href="../_images/fig2.png"><img alt="../_images/fig2.png" src="../_images/fig2.png" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">单自由度受迫振动力学模型</span><a class="headerlink" href="#fig-test" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id5">
-<a class="reference internal image-reference" href="../_images/fig2.9.png"><img alt="../_images/fig2.9.png" src="../_images/fig2.9.png" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">单自由度受迫振动力学模型</span><a class="headerlink" href="#id5" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
-<figure class="align-center" id="id6">
-<a class="reference internal image-reference" href="../_images/fig3.svg"><img alt="../_images/fig3.svg" src="../_images/fig3.svg" style="width: 400px;" />
-</a>
-<figcaption>
-<p><span class="caption-number">Fig. 1.4 </span><span class="caption-text">单自由度受迫振动力学模型</span><a class="headerlink" href="#id6" title="Link to this image">#</a></p>
-</figcaption>
-</figure>
 </section>
 </section>
-<section id="id7">
-<h2><span class="section-number">1.2.4. </span>交互探索：阻尼如何影响振动？<a class="headerlink" href="#id7" title="Link to this heading">#</a></h2>
+<section id="id5">
+<h2><span class="section-number">1.2.4. </span>交互探索：阻尼如何影响振动？<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
 <div class="admonition tip">
 <p class="admonition-title">Tip</p>
 <p><strong>阻尼比 <span class="math notranslate nohighlight">\(\zeta\)</span> 的大小直接决定了系统的运动形态：</strong></p>
@@ -1785,7 +1792,7 @@ B_n=x\big|_{t=t_n}=B\mathrm{e}^{-\varepsilon t_n},\quad B_{n+1}=x\big|_{t=t_n+T_
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#under-critically-damped-system">1.2.3.3. 低临界阻尼系统(Under Critically Damped System)</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">1.2.4. 交互探索：阻尼如何影响振动？</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">1.2.4. 交互探索：阻尼如何影响振动？</a></li>
 </ul>
   </nav></div>
 

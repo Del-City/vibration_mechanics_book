@@ -177,7 +177,7 @@
         <ul class="nav bd-sidenav bd-sidenav__home-link">
             <li class="toctree-l1">
                 <a class="reference internal" href="../index.html">
-                    振动力学数字教材
+                    船体振动学数字教材
                 </a>
             </li>
         </ul>
@@ -188,7 +188,7 @@
 <li class="toctree-l2"><a class="reference internal" href="1.2.html">1.2. 自由振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.3.html">1.3. 简谐载荷作用下的强迫振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.4.html">1.4. 周期激励作用下的强迫振动</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1.5.html">1.5. 任意激励载荷下作用下的强迫振动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1.5.html">1.5. 任意激励作用下的强迫振动</a></li>
 <li class="toctree-l2"><a class="reference internal" href="1.6.html">1.6. 隔振原理</a></li>
 <li class="toctree-l2"><a class="reference internal" href="exercises.html">1.7. 习题</a></li>
 </ul>
@@ -465,13 +465,25 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="id1">
 <h1><span class="section-number">1.1. </span>引言<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>理解和掌握单自由度（Single Degree of Freedom，SDOF）系统的振动特性对初学者来说是至关重要的。一方面，单自由度系统可用于许多实际工程结构的初步设计和分析；另一方面，单自由度系统的一些重要概念、特性和研究方法，又是研究复杂结构系统振动问题的基础。</p>
-<p>理解和掌握单自由度（Single Degree of Freedom，SDOF）系统的振动特性对初学者来说是至关重要的。一方面，单自由度系统可用于许多实际工程结构的初步设计和分析；另一方面，单自由度系统的一些重要概念、特性和研究方法，又是研究复杂结构系统振动问题的基础。</p>
-<p><a class="reference internal" href="#fig1-1"><span class="xref myst">图 1-1</span></a> 给出了两种典型的单自由度系统的力学模型。其中，如 <a class="reference internal" href="#fig1-1a"><span class="xref myst">图1-1(a)</span></a>所示系统称为<strong>弹簧-质量系统</strong>（Spring-Mass System），它由刚性质量块、弹簧和阻尼器组成，弹簧和阻尼器的质量与刚性质量块相比可以忽略，系统的位移完全由刚性质量块的位移 <span class="math notranslate nohighlight">\(x\)</span> 确定。如<a class="reference internal" href="#fig1-1a"><span class="xref myst">图1-1(b)</span></a>所示剪力框架结构，质量主要集中在刚度极大的梁上，柱子质量很小，并且可以按一定方式叠加到梁上。柱子的竖向位移和两端的转动都假定为零，系统的运动由梁的水平位移 <span class="math notranslate nohighlight">\(x\)</span> 给出。</p>
-<p>以<a class="reference internal" href="#fig1-1a"><span class="xref myst">图1-1(a)</span></a>所示的弹簧-质量系统为例，对单自由度系统进行受力分析。如<a class="reference internal" href="#fig1-2"><span class="xref myst">图1-2</span></a>所示，假定质量块偏离静平衡位置(虚线所示)的位移为<span class="math notranslate nohighlight">\(x(t)\)</span>。此时共有3种力作用在质量块上：恢复力、阻尼力和外力。
-<a class="reference internal" href="#%E5%9B%BE1-1.png"><span class="xref myst">图1-1</span></a></p>
+<figure class="align-default" id="fig-1-1">
+<a class="reference internal image-reference" href="../_images/fig1-1.png"><img alt="../_images/fig1-1.png" src="../_images/fig1-1.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.1 </span><span class="caption-text">典型的单自由度系统</span><a class="headerlink" href="#fig-1-1" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p><a class="reference internal" href="#fig-1-1"><span class="std std-numref">Fig. 1.1</span></a>给出了两种典型的单自由度系统的力学模型。其中，如 <a class="reference internal" href="#fig-1-1"><span class="std std-numref">Fig. 1.1</span></a>(a)所示系统称为<strong>弹簧-质量系统</strong>（Spring-Mass System），它由刚性质量块、弹簧和阻尼器组成，弹簧和阻尼器的质量与刚性质量块相比可以忽略，系统的位移完全由刚性质量块的位移 <span class="math notranslate nohighlight">\(x\)</span> 确定。如<a class="reference internal" href="#fig-1-1"><span class="std std-numref">Fig. 1.1</span></a>(b)所示剪力框架结构，质量主要集中在刚度极大的梁上，柱子质量很小，并且可以按一定方式叠加到梁上。柱子的竖向位移和两端的转动都假定为零，系统的运动由梁的水平位移 <span class="math notranslate nohighlight">\(x\)</span> 给出。</p>
+<figure class="align-default" id="fig-1-2">
+<a class="reference internal image-reference" href="../_images/fig1-2.png"><img alt="../_images/fig1-2.png" src="../_images/fig1-2.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.2 </span><span class="caption-text">弹簧-质量系统受力分析</span><a class="headerlink" href="#fig-1-2" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<p>以<a class="reference internal" href="#fig-1-1"><span class="std std-numref">Fig. 1.1</span></a>(a)所示的弹簧-质量系统为例，对单自由度系统进行受力分析。如<a class="reference internal" href="#fig-1-2"><span class="std std-numref">Fig. 1.2</span></a>(a)所示，假定质量块偏离静平衡位置(虚线所示)的位移为<span class="math notranslate nohighlight">\(x(t)\)</span>。此时共有3种力作用在质量块上：恢复力、阻尼力和外力。</p>
 <section id="restoring-force">
 <h2><span class="section-number">1.1.1. </span>恢复力(Restoring Force)<a class="headerlink" href="#restoring-force" title="Link to this heading">#</a></h2>
-<p>以如<a class="reference internal" href="#fig-2-1a"><span class="xref myst">图 2-1-a</span></a>所示的弹簧-质量系统为例，对单自由度系统进行受力分析。如<a class="reference internal" href="#fig-2-2"><span class="xref myst">图 2-2</span></a>所示，假定质量块偏离静平衡位置(虚线所示)的位移为<span class="math notranslate nohighlight">\(x(t)\)</span>。此时共有3种力作用在质量块上:恢复力、阻尼力和外力。弹簧的变形产生的弹性力<span class="math notranslate nohighlight">\(F=-kx(t)\)</span>。这个弹性力阻止质量块产生位移，作用方向是使质量块回到平衡位置，即与<span class="math notranslate nohighlight">\(x(t)\)</span>方向相反，故称为恢复力。</p>
+<p>弹簧的变形产生的弹性力<span class="math notranslate nohighlight">\(F=-kx(t)\)</span>。这个弹性力阻止质量块产生位移，作用方向是使质量块回到平衡位置，即与<span class="math notranslate nohighlight">\(x(t)\)</span>方向相反，故称为恢复力。</p>
 </section>
 <section id="damping-force">
 <h2><span class="section-number">1.1.2. </span>阻尼力(Damping Force)<a class="headerlink" href="#damping-force" title="Link to this heading">#</a></h2>
@@ -480,7 +492,7 @@ document.write(`
 <span class="eqno">(1.1)<a class="headerlink" href="#equation-eq-1-1" title="Link to this equation">#</a></span>\[
 R=-c\frac{dx(t)}{dt}=-c\dot{x}(t)
 \]</div>
-<p>式<a class="reference internal" href="#equation-eq-1-1">(1.1)</a>，在符号上加“·”号表示对时间的微商。<span class="math notranslate nohighlight">\(c\)</span>的单位是牛·秒/米(N·s/m)。因此，如<a class="reference internal" href="#fig-2-2"><span class="xref myst">图2-2</span></a>所示弹簧-质量系统的阻尼力<span class="math notranslate nohighlight">\(F_d = -c\dot{x}(t)\)</span>。</p>
+<p>式<a class="reference internal" href="#equation-eq-1-1">(1.1)</a>，在符号上加“·”号表示对时间的微商。<span class="math notranslate nohighlight">\(c\)</span>的单位是牛·秒/米(N·s/m)。因此，如<a class="reference internal" href="#fig-1-2"><span class="std std-numref">Fig. 1.2</span></a>所示弹簧-质量系统的阻尼力<span class="math notranslate nohighlight">\(F_d = -c\dot{x}(t)\)</span>。</p>
 </section>
 <section id="external-force">
 <h2><span class="section-number">1.1.3. </span>外力(External Force)<a class="headerlink" href="#external-force" title="Link to this heading">#</a></h2>
@@ -515,7 +527,7 @@ x(t)=x_h(t)+x_p(t)
 <span class="eqno">(1.7)<a class="headerlink" href="#equation-eq-1-7" title="Link to this equation">#</a></span>\[
 x(0)=x_0,\quad\dot{x}_0=\dot{x}_0
 \]</div>
-<p>在如<a class="reference internal" href="#fig-2-1"><span class="xref myst">图2-1</span></a>所示系统中，施加在质量块上的力<span class="math notranslate nohighlight">\(F_e(t)\)</span>主要有3种类型:</p>
+<p>在如<a class="reference internal" href="#fig-1-1"><span class="std std-numref">Fig. 1.1</span></a>所示系统中，施加在质量块上的力<span class="math notranslate nohighlight">\(F_e(t)\)</span>主要有3种类型:</p>
 </section>
 <section id="id2">
 <h2><span class="section-number">1.1.4. </span>周期力<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
@@ -523,7 +535,14 @@ x(0)=x_0,\quad\dot{x}_0=\dot{x}_0
 </section>
 <section id="id3">
 <h2><span class="section-number">1.1.5. </span>瞬变力或非周期性的力<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
-<p>通常这些力是突然地或在一个短时间内施加的。这种类型的力的两个简单例子，如<a class="reference internal" href="#1-"><span class="xref myst">图1-</span></a>和<a class="reference internal" href="#1-"><span class="xref myst">图1-</span></a>所示。</p>
+<p>通常这些力是突然地或在一个短时间内施加的。这种类型的力的两个简单例子，如<a class="reference internal" href="#fig-1-3"><span class="std std-numref">Fig. 1.3</span></a>(a)和<a class="reference internal" href="#fig-1-3"><span class="std std-numref">Fig. 1.3</span></a>(b)所示。</p>
+<figure class="align-default" id="fig-1-3">
+<a class="reference internal image-reference" href="../_images/fig1-3.png"><img alt="../_images/fig1-3.png" src="../_images/fig1-3.png" style="width: 80%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 1.3 </span><span class="caption-text">瞬变力</span><a class="headerlink" href="#fig-1-3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id4">
 <h2><span class="section-number">1.1.6. </span>随机力<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
