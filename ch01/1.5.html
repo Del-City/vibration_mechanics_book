@@ -32,7 +32,7 @@
     <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=9c3e77be" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.11b39860a7a0cbfd473a3ad8a317855267ff0bd372690045ca344a6b62be495e.css?v=8cd3d715" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
     <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
   
@@ -461,7 +461,7 @@ document.write(`
 <h1><span class="section-number">1.5. </span>任意激励作用下的强迫振动<a class="headerlink" href="#id1" title="Link to this heading">#</a></h1>
 <p>本节讨论单自由度系统在任意一般性荷载（例如<a class="reference internal" href="#fig-1-23"><span class="std std-numref">Fig. 1.21</span></a>中所示一实测荷载曲线）作 用下的强迫振动问题。</p>
 <figure class="align-default" id="fig-1-23">
-<a class="reference internal image-reference" href="../_images/fig1-23.png"><img alt="../_images/fig1-23.png" src="../_images/fig1-23.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fig1-23.png"><img alt="../_images/fig1-23.png" src="../_images/fig1-23.png" style="width: 70%;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 1.21 </span><span class="caption-text">实测荷载曲线</span><a class="headerlink" href="#fig-1-23" title="Link to this image">#</a></p>
@@ -501,7 +501,7 @@ h\left ( t \right )=   \frac{1}{\omega _{\varepsilon } } e^{- \zeta\omega _{0}t\
 <p><span class="math notranslate nohighlight">\( h\left ( t \right ) \)</span>是在初始时刻作用单位脉冲而使单自由度系统产生的响应，所以称之为脉冲响应函数（Impulse Response Function）。</p>
 <p>在时间间隔<span class="math notranslate nohighlight">\(\left [ 0,t \right ] \)</span>内作用的任意外载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) \)</span>，可以看做是在该时间间隔内的大量脉冲<span class="math notranslate nohighlight">\(F_{e} \left (\tau   \right ) \mathrm{d}\tau \)</span>的叠加，如<a class="reference internal" href="#fig-1-24"><span class="std std-numref">Fig. 1.22</span></a>所示。由每一个这种冲量而使系统产生的响应是<span class="math notranslate nohighlight">\(F_{e} \left (\tau   \right ) \mathrm{d}\tau h\left ( t- \tau  \right ) \)</span>它仅在时刻<span class="math notranslate nohighlight">\(\tau \)</span>之后才起作用。所以力<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right ) \)</span>在时刻<span class="math notranslate nohighlight">\(t\)</span>的总响应为</p>
 <figure class="align-default" id="fig-1-24">
-<a class="reference internal image-reference" href="../_images/fig1-24.png"><img alt="../_images/fig1-24.png" src="../_images/fig1-24.png" style="width: 80%;" />
+<a class="reference internal image-reference" href="../_images/fig1-24.png"><img alt="../_images/fig1-24.png" src="../_images/fig1-24.png" style="width: 50%;" />
 </a>
 <figcaption>
 <p><span class="caption-number">Fig. 1.22 </span><span class="caption-text">任意外载的脉冲分解</span><a class="headerlink" href="#fig-1-24" title="Link to this image">#</a></p>
@@ -1284,7 +1284,7 @@ f\left ( t  \right ) = \mathcal{L} ^{- 1} \left [ L\left ( p \right )  \right ]=
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p><strong>例1-10</strong> 应用拉普拉斯变换求解单自由度系统在任意荷载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right )\)</span>作用下的响应。设初始条件为<span class="math notranslate nohighlight">\(x\left ( 0 \right ) = x_{0}\)</span>及<span class="math notranslate nohighlight">\(\dot{x} \left ( 0 \right ) = \dot{x}_{0} \)</span>。</p>
-<p>解：单自由度系统在任意荷载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right )\)</span>作用下的运动方程为式<code class="xref eq docutils literal notranslate"><span class="pre">eq:1-68</span></code>的形式，即</p>
+<p>解：单自由度系统在任意荷载<span class="math notranslate nohighlight">\(F_{e} \left ( t  \right )\)</span>作用下的运动方程为</p>
 <div class="math notranslate nohighlight">
 \[
 \ddot{x} \left ( t \right ) +  2\zeta \omega _{0} \dot{x}\left ( t \right )+  \omega _{0}^{2}x\left ( t \right )= \frac{1}{m} F_{e} \left ( t  \right ) \tag{1}
