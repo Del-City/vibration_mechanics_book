@@ -466,9 +466,16 @@ document.write(`
 <h2><span class="section-number">2.2.1. </span>两自由度系统的自由振动<a class="headerlink" href="#id2" title="Link to this heading">#</a></h2>
 <p>与单自由度系统一样，建立多自由度系统的运动微分方程式，可以用牛顿-达兰贝尔原理， 即在系统上附加惯性力(力矩)后，按静力学方法建立平衡方程。应用这种方法需要画出质量的受力图，并考虑约束反力。对于自由度数很少的简单系统，这种方法有其方便性。</p>
 <p>下面通过举例来说明。</p>
+<figure class="align-default" id="fig-2-3">
+<a class="reference internal image-reference" href="../_images/fig2-3.png"><img alt="../_images/fig2-3.png" src="../_images/fig2-3.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.3 </span><span class="caption-text">无阻尼两自由度振动系统</span><a class="headerlink" href="#fig-2-3" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>例2.1</strong> 图2-3为无阻尼两自由度振动系统，试用达兰贝尔原理建立其运动微分方程式。</p>
+<p><strong>例2.1</strong> <a class="reference internal" href="#fig-2-3"><span class="std std-numref">Fig. 2.3</span></a>为无阻尼两自由度振动系统，试用达兰贝尔原理建立其运动微分方程式。</p>
 <p>解：以静平衡位置为坐标原点，设质量<span class="math notranslate nohighlight">\(M₁\)</span>和<span class="math notranslate nohighlight">\(M_{2} \)</span>的广义坐标为<span class="math notranslate nohighlight">\(x₁\)</span>和<span class="math notranslate nohighlight">\(x₂\)</span>, 并假设它们足够小，以保证系统在线性范围内运动。</p>
 <p>将<span class="math notranslate nohighlight">\(M₁\)</span>和<span class="math notranslate nohighlight">\(M_{2}\)</span>从系统中分离出来，并将其受到的弹性力和惯性力标于图上，容易得到如下的运动微分方程式。</p>
 <div class="math notranslate nohighlight">
@@ -584,7 +591,7 @@ x_{2} &amp; =A_{2}^{(1)} \sin \left(\omega_{\mathrm{n} 1} t+\theta_{1}\right)+A_
 \[
 \beta^{(1)}=1\quad\beta^{(2)}=-1
 \]</div>
-<p>若令<span class="math notranslate nohighlight">\(A_{i}^{(1)}=1\)</span>,则<span class="math notranslate nohighlight">\(A_{2}^{(i)}=\beta^{(i)} A_{1}^{(i)}=\beta^{(i)}(i=1,2)\)</span>,便可画出振型图(见图2-8)。</p>
+<p>若令<span class="math notranslate nohighlight">\(A_{i}^{(1)}=1\)</span>,则<span class="math notranslate nohighlight">\(A_{2}^{(i)}=\beta^{(i)} A_{1}^{(i)}=\beta^{(i)}(i=1,2)\)</span>,便可画出振型图(见<a class="reference internal" href="#fig-2-8"><span class="std std-numref">Fig. 2.4</span></a>)。</p>
 <p>将式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a>代入初始条件。为方便起见，将式 <a class="reference internal" href="#equation-eq-2-25">(2.9)</a>化为</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}
@@ -595,9 +602,23 @@ x_{2} &amp; =A_{2}^{(1)} \sin \left(\omega_{\mathrm{n} 1} t+\theta_{1}\right)+A_
 \[\begin{split}
 \left\{\begin{aligned}x_1&amp;=\frac{x_0}{2}\left(\cos\omega_{n1}t-\cos\omega_{n2}t\right)\\x_2&amp;=\frac{x_0}{2}\left(\cos\omega_{n1}t+\cos\omega_{n2}t\right)\end{aligned}\right.
 \end{split}\]</div>
-<p>若取<span class="math notranslate nohighlight">\(x_0=2cm\)</span>，<span class="math notranslate nohighlight">\(\omega _{n1} =1rad/s\)</span>则<span class="math notranslate nohighlight">\(\omega _{n2} =\sqrt{3} =1.732rad/s\)</span>,那么,最终的自由振动响应见图2-9。</p>
+<p>若取<span class="math notranslate nohighlight">\(x_0=2cm\)</span>，<span class="math notranslate nohighlight">\(\omega _{n1} =1rad/s\)</span>则<span class="math notranslate nohighlight">\(\omega _{n2} =\sqrt{3} =1.732rad/s\)</span>,那么,最终的自由振动响应见<a class="reference internal" href="#fig-2-9"><span class="std std-numref">Fig. 2.5</span></a>。</p>
 <p>在上述的初始条件下，自由振动不是简谐振动。只有在特定的初始条件下，其自由振动才表现为单一振型的主振动，才是一种简谐振动。有兴趣的读者可思考此条件该取何种形式。</p>
 </div>
+<figure class="align-default" id="fig-2-8">
+<a class="reference internal image-reference" href="../_images/fig2-8.png"><img alt="../_images/fig2-8.png" src="../_images/fig2-8.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.4 </span><span class="caption-text">例2.6固有振型示意图：(a) 一阶固有振型；(b) 二阶固有振型</span><a class="headerlink" href="#fig-2-8" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
+<figure class="align-default" id="fig-2-9">
+<a class="reference internal image-reference" href="../_images/fig2-9.png"><img alt="../_images/fig2-9.png" src="../_images/fig2-9.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.5 </span><span class="caption-text">例2.6双质量系统的自由位移-时间历程</span><a class="headerlink" href="#fig-2-9" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id3">
 <h2><span class="section-number">2.2.2. </span>交互探索：两自由度系统如何由两个主振动叠加而成？<a class="headerlink" href="#id3" title="Link to this heading">#</a></h2>
@@ -994,13 +1015,20 @@ $<span class="math notranslate nohighlight">\(
 \[
 \beta^{(2)} = \frac{A_1^{(2)}}{A_2^{(2)}} = 0.1117
 \]</div>
-<p>其振型图见图2-10。</p>
-<p>请读者观察图2-10的两个振型图，并分别描述这两个振型的性质和特点。</p>
+<p>其振型图见<a class="reference internal" href="#fig-2-10"><span class="std std-numref">Fig. 2.6</span></a>。</p>
+<p>请读者观察<a class="reference internal" href="#fig-2-10"><span class="std std-numref">Fig. 2.6</span></a>的两个振型图，并分别描述这两个振型的性质和特点。</p>
 </div>
+<figure class="align-default" id="fig-2-10">
+<a class="reference internal image-reference" href="../_images/fig2-10.png"><img alt="../_images/fig2-10.png" src="../_images/fig2-10.png" style="width: 70%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.6 </span><span class="caption-text">例2.7系统的振型图</span><a class="headerlink" href="#fig-2-10" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id4">
 <h2><span class="section-number">2.2.3. </span>多自由度系统的固有频率和固有振型<a class="headerlink" href="#id4" title="Link to this heading">#</a></h2>
-<p>式<code class="xref eq docutils literal notranslate"><span class="pre">eq:2-13</span></code>的等号右端项为零，为多自由度系统无阻尼自由振动方程式的一般形式：</p>
+<p>多自由度系统无阻尼自由振动方程式的一般形式：</p>
 <div class="math notranslate nohighlight" id="equation-eq-2-26">
 <span class="eqno">(2.10)<a class="headerlink" href="#equation-eq-2-26" title="Link to this equation">#</a></span>\[
 M\ddot{q}+Kq=0
@@ -1082,7 +1110,7 @@ K_{n1} - \lambda_r^2 M_{n1} &amp; \cdots &amp; K_{n,j-1} - \lambda_r^2 M_{n,j-1}
 <p>一般来说，特征方程式<a class="reference internal" href="#equation-eq-2-31">(2.15)</a>的<span class="math notranslate nohighlight">\(n\)</span>个根，可以是单根或复根，也可以是实根或重根。但是，对系统的质量矩阵为正定实对称矩阵，刚度矩阵为正定或半正定实对称矩阵时，根据线性代数理论，所有的特征值都是实数，为正数或零。其中，只有半正定系统(在物理上为可能发生刚体运动的系统)才有零特征值。</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p><strong>例2.8</strong> 确定图2-11(a)所示系统的固有频率和固有振型，并求正则振型。令<span class="math notranslate nohighlight">\(M=1\)</span>,<span class="math notranslate nohighlight">\(K=1\)</span>。</p>
+<p><strong>例2.8</strong> 确定<a class="reference internal" href="#fig-2-11"><span class="std std-numref">Fig. 2.7</span></a>(a)所示系统的固有频率和固有振型，并求正则振型。令<span class="math notranslate nohighlight">\(M=1\)</span>,<span class="math notranslate nohighlight">\(K=1\)</span>。</p>
 <p>解：写出质量矩阵和刚度矩阵为</p>
 <div class="math notranslate nohighlight">
 \[
@@ -1172,8 +1200,15 @@ K_{n1} - \lambda_r^2 M_{n1} &amp; \cdots &amp; K_{n,j-1} - \lambda_r^2 M_{n,j-1}
 \[
 \boldsymbol{A}^{(3)}=\begin{Bmatrix}1 \cr -\sqrt{2} \cr 1\end{Bmatrix} \tag{14}
 \]</div>
-<p>各阶振型图如图2-11(b)所示。</p>
+<p>各阶振型图如<a class="reference internal" href="#fig-2-11"><span class="std std-numref">Fig. 2.7</span></a>(b)所示。</p>
 </div>
+<figure class="align-default" id="fig-2-11">
+<a class="reference internal image-reference" href="../_images/fig2-11.png"><img alt="../_images/fig2-11.png" src="../_images/fig2-11.png" style="width: 50%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 2.7 </span><span class="caption-text">三自由度链式系统及其振型</span><a class="headerlink" href="#fig-2-11" title="Link to this image">#</a></p>
+</figcaption>
+</figure>
 </section>
 <section id="id5">
 <h2><span class="section-number">2.2.4. </span>交互探索：三自由度链式系统的振型如何叠加出响应？<a class="headerlink" href="#id5" title="Link to this heading">#</a></h2>
